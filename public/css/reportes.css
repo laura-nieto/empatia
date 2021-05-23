@@ -1,0 +1,7 @@
+.ancho-completo{
+    width: 90%;
+}
+.reporte--download{
+    display: flex;
+    justify-content: center;
+}

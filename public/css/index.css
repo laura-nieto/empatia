@@ -1,0 +1,67 @@
+.article__index{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 100px;
+    padding: 0 30px;
+    row-gap: 30px;
+}
+.section--ul{
+    list-style: none;
+}
+.section--ul li{
+    margin: 5px 10px;
+}
+.section--ul li a{
+    text-decoration: none;
+}
+.section--ul li a:visited{
+    color: blue;
+}
+
+/* MENSAJES */
+.div--success{
+    align-items: center;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+    border-radius: 5px;
+    color: #0f5132;
+    display: flex;
+    justify-content: center;
+    margin: 30px 30px;
+    padding: 20px 30px;
+}
+.img--success{
+    width: 20px;
+    margin-right: 10px;
+}
+
+/* ELEGIR EMPRESA */
+.ul__empresa{
+    display: grid;
+    gap: 30px 30px;
+    grid-template-columns: repeat(5,1fr);
+    list-style: none;
+    margin: 50px 50px;
+}
+.ul__empresa li a{
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+/* AGREGAR EMPRESA */
+.article__agregar form{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin: 0 auto;
+    row-gap: 30px;
+}
+.newEmpresa{
+    display: flex;
+    flex-direction: column;
+}
+.newEmpresa input{
+    margin-top: 5px;
+    padding: 5px;
+    width: 300px;
+}

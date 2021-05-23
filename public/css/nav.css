@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body{ 
+    min-height: 100vh;
+    overflow: auto;
+}
+h1,h2,h3,h4,h5,h6,button{
+    font-family: 'Nunito', sans-serif;
+}
+a,p,label,td,th{
+    font-family: 'Lato', sans-serif;
+}
+th{
+    font-weight: bold;
+}
+
+/* NAV */
+header nav{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    margin: 0 20px 100px;
+}
+.img--logo{
+    width: 60px;
+}
+
+/* HEADER ENCUESTA */
+.header--encuesta{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+.header--encuesta__img{
+    width: 10vw;
+}
+
+/* BUTTON */
+.btn{
+    background-color: transparent;
+    border: solid 1px rgb(72, 180, 0);
+    border-radius: 10px;
+    padding: 10px 20px;
+}

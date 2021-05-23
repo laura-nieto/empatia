@@ -1,0 +1,110 @@
+.h2__title{
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* CLIMA LABORAL */
+.form__clima{
+    display: grid;
+    grid-template-rows: max-content;
+    justify-items: center;
+    margin: 30px auto;
+    row-gap: 30px;
+    width: 90vw;
+}
+.form--clima__table{
+    border-collapse:collapse;
+    margin: 10px auto;
+    width: 35%;
+}
+.form--clima__table thead tr th{
+    border-bottom: solid 1px #000;
+    padding: 10px;
+    text-align: left;
+}
+.form--clima__table thead tr th:last-child{
+    width: 25%;
+    text-align: center;
+}
+.form--clima__table tbody tr {
+    border-bottom: solid 1px rgb(105, 105, 105);
+}
+.form--clima__table tbody tr td{
+    padding: 10px;
+}
+.td-radio-center{
+    display: flex;
+    justify-content: center;
+}
+.form--clima__table tbody tr td input{
+    vertical-align: middle;
+}
+.form--clima--div__cantidad input {
+    margin-left: 20px;
+    width: 50px;
+}
+.form--clima--div__email{
+    display: grid;
+    column-gap: 50px;
+    grid-template-columns: repeat(3,1fr);
+    row-gap: 30px;
+}
+.form--clima--div__email div{
+    display: flex;
+    flex-direction: column;
+}
+
+/* DESEMPEÑO LABORAL */
+.form__desempeño{
+    display: grid;
+    grid-template-columns: repeat(2,30%);
+    justify-content: center;
+    row-gap: 70px;
+}
+.form--desempeño__div{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 20vw;
+}
+.evaluar{
+    grid-column: span 2;
+}
+.form--desempeño__div input{
+    height: 20px;
+    margin-top: 5px;
+}
+.btn-center{
+    grid-column: span 2;
+    justify-self: center;
+}
+
+/* AUTOMATIZACION DE PRUEBAS */
+.form__automatizacion{
+    display: flex;
+    flex-direction: column;
+}
+.article__automatizacion{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.automatizacion__section, .automatizacion__table{
+    width: 40%;
+}
+.automatizacion__div{
+    display: flex;
+    flex-direction: column;
+    margin: 30px 50px;
+}
+.automatizacion__div input{
+    height: 25px;
+    width: 60%;
+}
+.automatizacion__div label{
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+.aling-center-self{
+    align-self: center;
+}
