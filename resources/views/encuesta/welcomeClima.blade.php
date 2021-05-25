@@ -36,8 +36,8 @@
     </section>
     <form action="" method="post" class="acept--terms">
         @csrf
-        <a class="btn-terms btn-no" href="/">No acepto</a>
-        <button class="btn-terms btn-yes">Acepto</button>
+        <button class="btn-terms btn-no" name="false">No acepto</button>
+        <button class="btn-terms btn-yes" name="true">Acepto</button>
     </form>
 </article>
 @endsection

@@ -25,24 +25,19 @@
                     </tr>  
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, hic?</td>
-                        <td ><input type="radio" name="" id="" value="1" class="radio-center"></td>
-                        <td ><input type="radio" name="" id="" value="2" class="radio-center"></td>
-                        <td ><input type="radio" name="" id="" value="3" class="radio-center"></td>
-                        <td ><input type="radio" name="" id="" value="4" class="radio-center"></td>
-                        <td ><input type="radio" name="" id="" value="5" class="radio-center"></td>
-                    </tr>
-                    <tr>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, hic?</td>
-                        <td><input type="radio" name="" id="" class="radio-center"></td>
-                        <td><input type="radio" name="" id="" class="radio-center"></td>
-                        <td><input type="radio" name="" id="" class="radio-center"></td>
-                        <td><input type="radio" name="" id="" class="radio-center"></td>
-                        <td><input type="radio" name="" id="" class="radio-center"></td>
-                    </tr>
+                    @foreach ($preguntas as $pregunta)
+                        <tr>
+                            <td>{{$pregunta->pregunta}}</td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="1" class="radio-center"></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="2" class="radio-center"></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="3" class="radio-center"></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="4" class="radio-center"></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="5" class="radio-center"></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+            <input type="submit" value="Siguiente" class="btn">
         </article>
     </form>
 @endsection

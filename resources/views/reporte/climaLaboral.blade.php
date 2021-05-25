@@ -7,27 +7,26 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Edad</th> 
                     <th>Género</th> 
-                    <th>País</th> 
-                    <th>Título</th> 
+                    <th>Título</th>
+                    @foreach($datos as $item)
+                        @foreach($item->encuesta_clima as $item)
+                           <th>{{$item->pregunta}}</th>
+                        @endforeach
+                    @endforeach
                 </tr>  
             </thead>
             <tbody>
-                <tr>
-                    <td>Jill</td>
-                    <td>12</td>
-                    <td>Femenino</td>
-                    <td>Brasil</td>
-                    <td>Secundario</td>
-                </tr>
-                <tr>
-                    <td>Laura</td>
-                    <td>14</td>
-                    <td>Femenino</td>
-                    <td>Brasil</td>
-                    <td>Secundario</td>
-                </tr>
+                @foreach ($datos as $dato)
+                    <tr>
+                        <td>{{$dato->nombre}}</td>
+                        <td>{{$dato->genero}}</td>
+                        <td>{{$dato->titulo}}</td>
+                        @foreach ($dato->encuesta_clima as $rta)
+                            <td>{{$rta->pivot->respuesta}}</td> 
+                        @endforeach
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </article>

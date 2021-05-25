@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('title','Empatia 360°')
 @section('main')  
-    @if (session('create.empresa'))
+    @if (session('create.empresa')|| session('create.encuesta'))
         <div class="div--success">
             <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
             {{ session('create.empresa') }}
+            {{ session('create.encuesta') }}
         </div>
     @endif
     <article class="article__index">

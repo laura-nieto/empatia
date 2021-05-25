@@ -65,3 +65,9 @@
     padding: 5px;
     width: 300px;
 }
+
+/* MODIFICAR EMAIL */
+.modify_container{
+    max-height: 30vh;
+    max-width: 70vw;
+}

@@ -13,7 +13,7 @@ var typewatch = function(){
 var crearInputs = function(){
     var value = $("input#who-send").val()
     for(i=0;i<value;i++){
-        divInside.append('<div><label>E-mail</label><input type="email" name="" id=""></input></div>')
+        divInside.append('<div><label>E-mail</label><input type="email" name="email[]"></input></div>')
     }
     value = 0;
 }

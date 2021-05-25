@@ -18,6 +18,10 @@ th{
     font-weight: bold;
 }
 
+:focus:not(:focus-visible) {
+    outline: 0;
+}
+
 /* NAV */
 header nav{
     align-items: center;

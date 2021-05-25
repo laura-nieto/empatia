@@ -40,6 +40,7 @@
     background-color: #dc3545;
     border-color: #dc3545;
     color: #fff;
+    cursor: pointer;
     text-decoration: none;
 }
 
@@ -51,14 +52,22 @@
 .form__encuesta--datos{
     display: grid;
     gap: 30px 60px;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(2,1fr);
 }
 .div__datos{
     display: flex;
     flex-direction: column;
 }
-.btn--center{
-    grid-column: span 4;
+.div__datos input, select{
+    height: 25px;
+    width: 50%;
+}
+.article__encuesta{
+    display: grid;
+    row-gap: 50px;
+}
+.article__encuesta input[type=submit]{
+    cursor: pointer;
     justify-self: center;
 }
 
@@ -89,7 +98,7 @@
     padding: 5px;
 }
 
-
+/* EXPLICACION */
 .encuesta--div__explain{
     background-color: #cfe2ff;
     border-color: #b6d4fe;
@@ -105,4 +114,31 @@
     text-align: center;
 }
 
+/* SECCION LIBRE */
+.div__container--libre{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 50px 70px;
+    row-gap: 50px;
+}
+.libre--div{
+    display: flex;
+    flex-direction: column;
+}
+.libre--textarea{
+    margin-top: 5px;
+    width: 70%;
+}
 
+/* FIN */
+.encuesta--fin{
+    align-items: center;
+    background-color: #2a8ebdb6;
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    justify-content: center;
+    margin: 30px auto;
+    width: 75%;
+}

@@ -5,3 +5,6 @@
     display: flex;
     justify-content: center;
 }
+.article__report>.form--clima__table>thead>tr>th:last-child{
+    width: auto;
+}

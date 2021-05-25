@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empresa;
+use App\Models\DesempenioLaboral;
 use Illuminate\Http\Request;
 
-class EmpresaController extends Controller
+class DesempenioLaboralController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $company = Empresa::all();
-        return view('elegirEmpresa',['empresas'=>$company]);
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class EmpresaController extends Controller
      */
     public function create()
     {
-        return view('newEmpresa');
+        //
     }
 
     /**
@@ -36,25 +35,16 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        $company = new Empresa;
-        $rules = ['name' => 'required'];
-        $message = ['required'=>'El campo es obligatorio'];
-
-        $validate = $request->validate($rules,$message);
-        
-        $company->nombre = $request->name;
-        $company->save();
-
-        return redirect('/')->with('create.empresa','Empresa creada con éxito');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\DesempenioLaboral  $desempenioLaboral
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(DesempenioLaboral $desempenioLaboral)
     {
         //
     }
@@ -62,10 +52,10 @@ class EmpresaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\DesempenioLaboral  $desempenioLaboral
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(DesempenioLaboral $desempenioLaboral)
     {
         //
     }
@@ -74,10 +64,10 @@ class EmpresaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\DesempenioLaboral  $desempenioLaboral
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, DesempenioLaboral $desempenioLaboral)
     {
         //
     }
@@ -85,10 +75,10 @@ class EmpresaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\DesempenioLaboral  $desempenioLaboral
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DesempenioLaboral $desempenioLaboral)
     {
         //
     }
