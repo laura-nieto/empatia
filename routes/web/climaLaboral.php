@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ClimaLaboralController;
-use App\Http\Controllers\idLinkController;
+use App\Http\Controllers\IdLinkController;
 use App\Http\Controllers\DatosController;
 
 
@@ -12,7 +12,7 @@ Route::get('/enviar/clima-laboral',[EmpresaController::class,'index']);
 Route::get('/enviar/clima-laboral/{name}',function(){
     return view('crear.climaLaboral');
 });
-Route::post('/enviar/clima-laboral/{name}',[idLinkController::class,'createClima']);
+Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima']);
 
 
 //REPORTE
@@ -26,7 +26,7 @@ Route::get('/encuesta/clima-laboral/{id}',function(){
 });
 Route::post('/encuesta/clima-laboral/{id}',[DatosController::class,'index']);
 
-Route::get('/encuesta/clima-laboral/{id}/datos',[idLinkController::class,'index'])->name('datosClima');
+Route::get('/encuesta/clima-laboral/{id}/datos',[IdLinkController::class,'index'])->name('datosClima');
 Route::post('/encuesta/clima-laboral/{id}/datos',[DatosController::class,'storeClima']);
 
 Route::get('/encuesta/clima-laboral/{id}/{datos}/page=1',[ClimaLaboralController::class,'page1'])->name('clima_pag1');
