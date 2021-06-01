@@ -31,7 +31,7 @@ class DatosController extends Controller
             $query->wherePivot('tipo','companiero');
         }])->simplePaginate(5);
        
-        return view('reporte.desempeñoLaboral',['empresa'=>$id,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'autoevaluacion'=>$auto,'supervisor'=>$supervisor,'subalterno'=>$subalterno,'companiero'=>$companiero]);
+        return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'autoevaluacion'=>$auto,'supervisor'=>$supervisor,'subalterno'=>$subalterno,'companiero'=>$companiero]);
     }
 
     public function storeClima(Request $request,$id)
