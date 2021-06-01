@@ -111,7 +111,7 @@ class DesempenioLaboralController extends Controller
      */
     public function index($idLink,$idDatos)
     {
-        $link = idLink::findOrFail($idLink);
+        $link = IdLink::findOrFail($idLink);
         $cargo = json_decode($link->nombre_desempeño,true);
         return view('encuesta.desempeño.welcomeDesempeño',['cargos'=>$cargo]);
     }
