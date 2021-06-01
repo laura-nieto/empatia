@@ -10,15 +10,15 @@ use App\Http\Controllers\DatosController;
 // ENVIAR
 Route::get('/enviar/clima-laboral',[EmpresaController::class,'index']);
 Route::get('/enviar/clima-laboral/{name}',function(){
-    return view('crear.climaLaboral');
+    return view('crear.climaLaboral')->middleware('auth');
 });
-Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima']);
+Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima'])->middleware('auth');
 
 
 //REPORTE
-Route::get('/reporte/clima-laboral',[EmpresaController::class,'index']);
-Route::get('/reporte/clima-laboral/{name}',[DatosController::class,'indexClima']);
-Route::get('/exportar/clima-laboral/{empresa}',[ClimaLaboralController::class,'export']);
+Route::get('/reporte/clima-laboral',[EmpresaController::class,'index'])->middleware('auth');
+Route::get('/reporte/clima-laboral/{name}',[DatosController::class,'indexClima'])->middleware('auth');
+Route::get('/exportar/clima-laboral/{empresa}',[ClimaLaboralController::class,'export'])->middleware('auth');
 
 
 //ENCUESTA

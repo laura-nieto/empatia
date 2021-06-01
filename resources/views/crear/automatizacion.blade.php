@@ -12,7 +12,7 @@
                 </div>
                 <div class="automatizacion__div">
                     <label for="name">Nombre</label>
-                    <input type="text" name="name" id="name">
+                    <input type="text" name="nombre" id="name">
                 </div>
                 <div class="automatizacion__div">
                     <label for="email">E-mail</label>
@@ -24,24 +24,24 @@
                     <thead>
                         <tr>
                             <th>Categoría</th>
-                            <th>Seleccionar</th> 
+                            <th>Seleccionar</th>
+                            <th>Tiempo</th> 
                         </tr>  
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Jill</td>
-                            <td><input type="radio" name="" id=""></td>
-                        </tr>
-                        <tr>
-                            <td>Laura</td>
-                            <td><input type="radio" name="" id=""></td>
-                        </tr>
+                        @foreach ($categorias as $categoria)
+                            <tr>
+                                <td>{{$categoria->nombre}}</td>
+                                <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>
         </article>
         
-        <button class="btn aling-center-self">Enviar</button>
+        <button class="btn aling-center-self margin-bot">Enviar</button>
     </form>  
 
 @endsection

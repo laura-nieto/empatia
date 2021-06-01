@@ -125,6 +125,6 @@
 
     </article>
     <article class="reporte--download">
-        <a class="btn margin-bot">Excel</a>
+        <a href="/exportar/desempenio-laboral/{{$empresa}}" class="btn margin-bot">Excel</a>
     </article>
 @endsection

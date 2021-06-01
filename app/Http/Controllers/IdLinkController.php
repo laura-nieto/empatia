@@ -11,9 +11,14 @@ use App\Mail\DesempeñoMailable;
 
 use App\Models\Datos;
 
-
 class IdLinkController extends Controller
 {
+    public function createAutomatizacion(Request $request,$idEmpresa){
+        $link = new idLink;
+        $datos = new Datos;
+
+        dd($request->tiempo);
+    }
 
     public function createDesempeño(Request $request,$id){
 
@@ -62,7 +67,9 @@ class IdLinkController extends Controller
 
         $correo = new EnviarMailable($sendLink);
         foreach($request->email as $email){
-            Mail::to($email)->send($correo);
+            if($email != null){
+                Mail::to($email)->send($correo);
+            }
         }
         return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
     }

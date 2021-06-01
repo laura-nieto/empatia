@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AutomatizacionPruebas extends Model
 {
     use HasFactory;
+
+    public function categorias()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
 }

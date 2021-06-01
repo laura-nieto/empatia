@@ -7,16 +7,17 @@ use App\Http\Controllers\IdLinkController;
 use App\Http\Controllers\DatosController;
 
 //ENVIAR
-Route::get('/enviar/desempenio-laboral',[EmpresaController::class,'index']);
+Route::get('/enviar/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');
 Route::get('/enviar/desempenio-laboral/{empresa}',function(){
     return view('crear.desempeñoLaboral');
-});
-Route::post('/enviar/desempenio-laboral/{empresa}',[IdLinkController::class,'createDesempeño']);
+})->middleware('auth');
+Route::post('/enviar/desempenio-laboral/{empresa}',[IdLinkController::class,'createDesempeño'])->middleware('auth');
 
 
 //REPORTE
-Route::get('/reporte/desempenio-laboral',[EmpresaController::class,'index']);
-Route::get('/reporte/desempenio-laboral/{empresa}',[DatosController::class,'indexDesempenio']);
+Route::get('/reporte/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');
+Route::get('/reporte/desempenio-laboral/{empresa}',[DatosController::class,'indexDesempenio'])->middleware('auth');
+Route::get('/exportar/desempenio-laboral/{empresa}',[DesempenioLaboralController::class,'export'])->middleware('auth');
 
 
 //ENCUESTA

@@ -17,7 +17,7 @@ use App\Http\Controllers\EmpresaController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('auth');
 
 // LOGIN - LOG-OUT
 Route::get('/login',function(){
@@ -27,13 +27,13 @@ Route::post('/login',[UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logOut']);
 
 //NEW EMPRESA
-Route::get('/new/empresa',[EmpresaController::class,'create']);
-Route::post('/new/empresa',[EmpresaController::class,'store']);
+Route::get('/new/empresa',[EmpresaController::class,'create'])->middleware('auth');
+Route::post('/new/empresa',[EmpresaController::class,'store'])->middleware('auth');
 
 //EDIT MESSAGE
 Route::get('/modificar',function(){
     return view('edit.email');
-});
+})->middleware('auth');
 
 require __DIR__.'/web/automatizacion.php';
 require __DIR__.'/web/climaLaboral.php';

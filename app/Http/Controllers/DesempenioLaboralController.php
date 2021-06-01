@@ -7,8 +7,15 @@ use Illuminate\Http\Request;
 use App\Models\Datos;
 use App\Models\idLink;
 
+use App\Exports\DesempenioLaboralExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class DesempenioLaboralController extends Controller
 {
+    public function export($idEmpresa){
+        return Excel::download(new DesempenioLaboralExport($idEmpresa), 'desempenioLaboral.xlsx');
+    }
+
     public function encuesta2(Request $request,$id,$idDatos)
     {
         $datos = Datos::findOrFail($idDatos);

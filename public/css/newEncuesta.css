@@ -99,6 +99,7 @@
 }
 .automatizacion__div input{
     height: 25px;
+    padding: 5px;
     width: 60%;
 }
 .automatizacion__div label{
@@ -107,4 +108,8 @@
 }
 .aling-center-self{
     align-self: center;
+}
+.time--input{
+    padding: 5px;
+    width: 90%;
 }
