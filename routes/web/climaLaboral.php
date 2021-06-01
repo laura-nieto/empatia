@@ -10,8 +10,8 @@ use App\Http\Controllers\DatosController;
 // ENVIAR
 Route::get('/enviar/clima-laboral',[EmpresaController::class,'index']);
 Route::get('/enviar/clima-laboral/{name}',function(){
-    return view('crear.climaLaboral')->middleware('auth');
-});
+    return view('crear.climaLaboral');
+})->middleware('auth');
 Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima'])->middleware('auth');
 
 
