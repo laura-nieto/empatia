@@ -14,6 +14,9 @@
 .article__report>.form--clima__table>thead>tr>th:last-child{
     width: auto;
 }
+.reporte--download>a{
+    color: #000;
+}
 .margin-bot{
     margin-bottom: 30px;
 }

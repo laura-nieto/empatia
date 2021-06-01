@@ -11,12 +11,6 @@
 .section--ul li{
     margin: 5px 10px;
 }
-.section--ul li a{
-    text-decoration: none;
-}
-.section--ul li a:visited{
-    color: blue;
-}
 
 /* MENSAJES */
 .div--success{

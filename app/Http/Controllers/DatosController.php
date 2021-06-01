@@ -6,12 +6,14 @@ use App\Models\Datos;
 use Illuminate\Http\Request;
 use App\Models\DesempenioLaboral;
 use App\Models\ClimaLaboral;
+use App\Models\Empresa;
 
 
 class DatosController extends Controller
 {
     public function indexDesempenio($idEmpresa){
         $preguntas = DesempenioLaboral::all();
+        $empresa = Empresa::findOrFail($idEmpresa)->nombre;
                 
         $auto = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
             $query->wherePivot('tipo','autoevaluacion');
@@ -29,7 +31,7 @@ class DatosController extends Controller
             $query->wherePivot('tipo','companiero');
         }])->simplePaginate(5);
        
-        return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'preguntas'=>$preguntas,'autoevaluacion'=>$auto,'supervisor'=>$supervisor,'subalterno'=>$subalterno,'companiero'=>$companiero]);
+        return view('reporte.desempeñoLaboral',['empresa'=>$empresa,'preguntas'=>$preguntas,'autoevaluacion'=>$auto,'supervisor'=>$supervisor,'subalterno'=>$subalterno,'companiero'=>$companiero]);
     }
 
     public function storeClima(Request $request,$id)
@@ -58,7 +60,9 @@ class DatosController extends Controller
     {
         $datos = Datos::has('encuesta_clima')->where('empresa_id',$id)->select('id','nombre','genero','titulo','empresa_id')->simplePaginate(10);
         $preguntas = ClimaLaboral::all();
-        return view('reporte.climaLaboral',['preguntas'=>$preguntas,'datos'=>$datos,'empresa'=>$id]);
+        $empresa = Empresa::findOrFail($id)->nombre;
+
+        return view('reporte.climaLaboral',['preguntas'=>$preguntas,'datos'=>$datos,'empresa'=>$empresa]);
     }
 
     /**

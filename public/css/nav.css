@@ -18,7 +18,11 @@ a,p,label,td,th{
 :focus:not(:focus-visible) {
     outline: 0;
 }
-
+a{
+    cursor: pointer;
+    text-decoration: none;
+}
+a:visited{color: blue;}
 /* NAV */
 header nav{
     align-items: center;
