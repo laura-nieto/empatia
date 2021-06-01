@@ -31,7 +31,7 @@ class DatosController extends Controller
             $query->wherePivot('tipo','companiero');
         }])->simplePaginate(5);
        
-        return view('reporte.desempeñoLaboral',['empresa'=>$empresa,'preguntas'=>$preguntas,'autoevaluacion'=>$auto,'supervisor'=>$supervisor,'subalterno'=>$subalterno,'companiero'=>$companiero]);
+        return view('reporte.desempeñoLaboral',['empresa'=>$id,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'autoevaluacion'=>$auto,'supervisor'=>$supervisor,'subalterno'=>$subalterno,'companiero'=>$companiero]);
     }
 
     public function storeClima(Request $request,$id)
@@ -62,7 +62,7 @@ class DatosController extends Controller
         $preguntas = ClimaLaboral::all();
         $empresa = Empresa::findOrFail($id)->nombre;
 
-        return view('reporte.climaLaboral',['preguntas'=>$preguntas,'datos'=>$datos,'empresa'=>$empresa]);
+        return view('reporte.climaLaboral',['preguntas'=>$preguntas,'datos'=>$datos,'empresaNombre'=>$empresa,'empresa'=>$id]);
     }
 
     /**

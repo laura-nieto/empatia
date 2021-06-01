@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Reporte Desempeño Laboral - Empatia 360°')
 @section('main')
-    <h2 class="h2__title">Desempeño Laboral - {{$empresa}}</h2>
+    <h2 class="h2__title">Desempeño Laboral - {{$empresaNombre}}</h2>
     <article class="article__report">
         <h4>Autoevaluación:</h4>
         <table class="form--clima__table ancho-completo" id="table-autoevaluación">
