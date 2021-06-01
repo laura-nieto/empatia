@@ -14,9 +14,6 @@ h1,h2,h3,h4,h5,h6,button{
 a,p,label,td,th{
     font-family: 'Lato', sans-serif;
 }
-th{
-    font-weight: bold;
-}
 
 :focus:not(:focus-visible) {
     outline: 0;

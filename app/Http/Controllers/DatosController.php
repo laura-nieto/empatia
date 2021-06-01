@@ -4,9 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Models\Datos;
 use Illuminate\Http\Request;
+use App\Models\DesempenioLaboral;
+use App\Models\ClimaLaboral;
+
 
 class DatosController extends Controller
 {
+    public function indexDesempenio($idEmpresa){
+        $preguntas = DesempenioLaboral::all();
+                
+        $auto = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
+            $query->wherePivot('tipo','autoevaluacion');
+        }])->simplePaginate(5);
+
+        $supervisor = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
+            $query->wherePivot('tipo','supervisor');
+        }])->simplePaginate(5);
+
+        $subalterno = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
+            $query->wherePivot('tipo','subalterno');
+        }])->simplePaginate(5);
+
+        $companiero = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
+            $query->wherePivot('tipo','companiero');
+        }])->simplePaginate(5);
+       
+        return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'preguntas'=>$preguntas,'autoevaluacion'=>$auto,'supervisor'=>$supervisor,'subalterno'=>$subalterno,'companiero'=>$companiero]);
+    }
+
     public function storeClima(Request $request,$id)
     {
         $newDatos = new Datos;
@@ -31,8 +56,9 @@ class DatosController extends Controller
     
     public function indexClima($id)
     {
-        $datos = Datos::with('encuesta_clima')->where('empresa_id',$id)->select('id','nombre','genero','titulo','empresa_id')->get();
-        return view('reporte.climaLaboral',['datos'=>$datos]);
+        $datos = Datos::has('encuesta_clima')->where('empresa_id',$id)->select('id','nombre','genero','titulo','empresa_id')->simplePaginate(10);
+        $preguntas = ClimaLaboral::all();
+        return view('reporte.climaLaboral',['preguntas'=>$preguntas,'datos'=>$datos,'empresa'=>$id]);
     }
 
     /**

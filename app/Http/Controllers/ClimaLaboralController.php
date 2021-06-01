@@ -5,8 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\ClimaLaboral;
 use Illuminate\Http\Request;
 
+use App\Exports\ClimaLaboralExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ClimaLaboralController extends Controller
 {
+    public function export($idEmpresa){
+        return Excel::download(new ClimaLaboralExport($idEmpresa), 'climaLaboral.xlsx');
+    }
+
     public function page1()
     {
         $preguntas = ClimaLaboral::take(10)->get();

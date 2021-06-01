@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Reporte Clima Laboral - Empatia 360°')
 @section('main')
-    <h2 class="h2__title">Clima Laboral - Empresa</h2>
+    <h2 class="h2__title">Clima Laboral</h2>
     <article class="article__report">
         <table class="form--clima__table ancho-completo">
             <thead>
@@ -9,10 +9,8 @@
                     <th>Nombre</th>
                     <th>Género</th> 
                     <th>Título</th>
-                    @foreach($datos as $item)
-                        @foreach($item->encuesta_clima as $item)
-                           <th>{{$item->pregunta}}</th>
-                        @endforeach
+                    @foreach($preguntas as $pregunta)
+                        <th>{{$pregunta->pregunta}}</th>
                     @endforeach
                 </tr>  
             </thead>
@@ -34,6 +32,6 @@
 
     </article>
     <article class="reporte--download">
-        <button class="btn">Excel</button>
+        <a href='/exportar/clima-laboral/{{$empresa}}' class="btn margin-bot">Excel</a>
     </article>
 @endsection

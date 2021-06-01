@@ -127,6 +127,7 @@
 }
 .libre--textarea{
     margin-top: 5px;
+    padding: 4px 10px;
     width: 70%;
 }
 
@@ -141,4 +142,64 @@
     justify-content: center;
     margin: 30px auto;
     width: 75%;
+}
+
+/* DESEMPEÑO LABORAL */
+/* WELCOME */
+.welcome--table{
+    margin: 0 auto;
+    width: 50%;
+}
+.welcome--table>table{
+    border: 1px solid #000;
+    border-collapse: collapse;
+    width: 100%;
+}
+.welcome--table>table>thead th{
+    border-right: 1px solid #000;
+    padding: 2px;
+}
+.welcome--table>table>tbody>tr{
+    border-top: 1px solid #000;
+}
+.welcome--table>table>tbody>tr>td:not(:last-child){
+    border-right: 1px solid #000;
+}
+.welcome--table>table>tbody>tr>td{
+    padding: 2px;
+}
+/* INSTRUCCIONES */
+.article__instruction{
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-top: 70px;
+}
+.article__instruction>form{
+    grid-column: span 2;
+    justify-self: center;
+}
+.section__instruction>p{
+    margin: 5px 0 15px;
+}
+.section__instruction2>p{
+    margin: 5px 0 15px;
+}
+.section__instruction2>ol{
+    margin: 0 40px 10px;
+}
+.section__instruction2>ol>li{
+    font-size: 1.1rem;
+}
+/* TITULO */
+.desempeño--title{
+    margin-top: 150px;
+    text-align: center;
+}
+.color--red{
+    color: crimson;
+    margin-top: 20px;
+}
+.desempeño--title>form{
+    margin-top: 50px;
 }

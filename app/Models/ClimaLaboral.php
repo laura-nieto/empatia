@@ -13,6 +13,6 @@ class ClimaLaboral extends Model
 
     public function datos()
     {
-        return $this->belongsToMany(ClimaLaboral::class,'encuesta_clima','pregunta_id','datos_id')->withPivot('respuesta');
+        return $this->belongsToMany(Datos::class,'encuesta_clima','pregunta_id','datos_id')->withPivot('respuesta');
     }
 }

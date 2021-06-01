@@ -5,6 +5,15 @@
     display: flex;
     justify-content: center;
 }
+.article__report{
+    margin: 100px 0
+}
+.article__report>h4{
+    margin-left: 30px;
+}
 .article__report>.form--clima__table>thead>tr>th:last-child{
     width: auto;
+}
+.margin-bot{
+    margin-bottom: 30px;
 }

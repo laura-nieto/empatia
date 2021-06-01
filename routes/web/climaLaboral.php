@@ -18,6 +18,7 @@ Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima
 //REPORTE
 Route::get('/reporte/clima-laboral',[EmpresaController::class,'index']);
 Route::get('/reporte/clima-laboral/{name}',[DatosController::class,'indexClima']);
+Route::get('/exportar/clima-laboral/{empresa}',[ClimaLaboralController::class,'export']);
 
 
 //ENCUESTA

@@ -7,14 +7,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EnviarMailable extends Mailable
+class DesempeñoMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = 'Encuesta sobre el Clima Laboral';
+    public $subject = 'Encuesta sobre el Desempeño Laboral';
 
     public $link;
-
     /**
      * Create a new message instance.
      *
@@ -32,6 +31,6 @@ class EnviarMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.climaLaboral');
+        return $this->view('emails.desempeñoLaboral');
     }
 }

@@ -7,10 +7,41 @@ use Illuminate\Http\Request;
 
 use Mail;
 use App\Mail\EnviarMailable;
+use App\Mail\DesempeñoMailable;
+
+use App\Models\Datos;
 
 
 class IdLinkController extends Controller
 {
+
+    public function createDesempeño(Request $request,$id){
+
+        $link = new idLink;
+        $datos = new Datos;
+
+        $pass = [];
+        $show = $request->except(['_token','email']);
+        $email = $request->email;
+        foreach($show as $key => $value){
+            $pass[$key] = $value;
+        }
+        
+        $link->nombre_desempeño = json_encode($pass);
+        $link->empresa_id = $id;
+        $link->save();
+
+        $datos->nombre = $request->autoevaluacion[0];
+        $datos->empresa_id = $id;
+        $datos->save();
+
+        $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $datos->id;
+
+        $correo = new DesempeñoMailable($sendLink);
+        Mail::to($email)->send($correo);
+
+        return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
+    }
 
     public function createClima(Request $request,$id){
 
@@ -30,7 +61,6 @@ class IdLinkController extends Controller
         //$sendLink = $request->gethost() . '/encuesta/clima-laboral/' . 'hola';
 
         $correo = new EnviarMailable($sendLink);
-        $subject = 'Entregar link';
         foreach($request->email as $email){
             Mail::to($email)->send($correo);
         }
