@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\DesempenioLaboral;
 use Illuminate\Http\Request;
 use App\Models\Datos;
-use App\Models\IdLink;
+use App\Models\idLink;
 
 class DesempenioLaboralController extends Controller
 {
     public function encuesta2(Request $request,$id,$idDatos)
     {
         $datos = Datos::findOrFail($idDatos);
-        $link = IdLink::findOrFail($id);
+        $link = idLink::findOrFail($id);
         $cargo = json_decode($link->nombre_desempeño,true);
         
         $preguntas = DesempenioLaboral::skip(10)->take(3)->get();
@@ -40,7 +40,7 @@ class DesempenioLaboralController extends Controller
     public function encuesta(Request $request,$id,$idDatos)
     {
         $datos = Datos::findOrFail($idDatos);
-        $link = IdLink::findOrFail($id);
+        $link = idLink::findOrFail($id);
         $cargo = json_decode($link->nombre_desempeño,true);
         
         $preguntas = DesempenioLaboral::take(10)->get();
@@ -81,7 +81,7 @@ class DesempenioLaboralController extends Controller
 
     public function get_title(Request $request,$id,$idDatos){
         $datos = Datos::findOrFail($idDatos);
-        $link = IdLink::findOrFail($id);
+        $link = idLink::findOrFail($id);
         $cargo = json_decode($link->nombre_desempeño,true);
         foreach ($cargo as $key => $value) {
             if ($key == 'supervisor') {
@@ -111,7 +111,7 @@ class DesempenioLaboralController extends Controller
      */
     public function index($idLink,$idDatos)
     {
-        $link = IdLink::findOrFail($idLink);
+        $link = idLink::findOrFail($idLink);
         $cargo = json_decode($link->nombre_desempeño,true);
         return view('encuesta.desempeño.welcomeDesempeño',['cargos'=>$cargo]);
     }
@@ -136,7 +136,7 @@ class DesempenioLaboralController extends Controller
     {
         $url = $request->segment(5).'/'.$request->segment(6);
 
-        $link = IdLink::findOrFail($idLink);
+        $link = idLink::findOrFail($idLink);
         $cargos = json_decode($link->nombre_desempeño,true);
         foreach($cargos as $cargo => $datos){
             if($cargo == last($request->segments())){
