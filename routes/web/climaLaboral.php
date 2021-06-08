@@ -5,13 +5,12 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\ClimaLaboralController;
 use App\Http\Controllers\IdLinkController;
 use App\Http\Controllers\DatosController;
+use App\Http\Controllers\DatosDemograficosController;
 
 
 // ENVIAR
 Route::get('/enviar/clima-laboral',[EmpresaController::class,'index']);
-Route::get('/enviar/clima-laboral/{name}',function(){
-    return view('crear.climaLaboral');
-})->middleware('auth');
+Route::get('/enviar/clima-laboral/{name}',[DatosDemograficosController::class,'index'])->middleware('auth');
 Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima'])->middleware('auth');
 
 

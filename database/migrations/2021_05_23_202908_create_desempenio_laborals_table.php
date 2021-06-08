@@ -27,6 +27,6 @@ class CreateDesempenioLaboralsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('desempenio_laborals');
+        Schema::dropIfExists('desempenio_laboral');
     }
 }

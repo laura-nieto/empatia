@@ -1,0 +1,15 @@
+/* MODIFICAR */
+.modify_container{
+    max-width: 70vw;
+    margin: 0 auto;
+}
+.modify__form{
+    display: grid;
+    row-gap: 40px;
+}
+.editor__submit{
+    justify-self: center;
+}
+.ck-content>ol, .ck-content>ul{
+    padding: 20px;
+}

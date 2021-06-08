@@ -16,8 +16,16 @@ class IdLinkController extends Controller
     public function createAutomatizacion(Request $request,$idEmpresa){
         $link = new idLink;
         $datos = new Datos;
+        $categorias = [];
 
-        dd($request->tiempo);
+        foreach($request->categorias as $categoria){
+            foreach($request->tiempo as $item => $tiempo){
+                if($categoria == $item && $tiempo!=null){
+                    $categorias[$categoria] = $tiempo;
+                }
+            }
+        }
+        dd($categorias);
     }
 
     public function createDesempeño(Request $request,$id){
@@ -35,9 +43,10 @@ class IdLinkController extends Controller
         $link->nombre_desempeño = json_encode($pass);
         $link->empresa_id = $id;
         $link->save();
-
+        
         $datos->nombre = $request->autoevaluacion[0];
         $datos->empresa_id = $id;
+        $datos->mail = $request->email;
         $datos->save();
 
         $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $datos->id;
@@ -63,7 +72,6 @@ class IdLinkController extends Controller
         $link->save();
 
         $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id;
-        //$sendLink = $request->gethost() . '/encuesta/clima-laboral/' . 'hola';
 
         $correo = new EnviarMailable($sendLink);
         foreach($request->email as $email){
@@ -76,7 +84,7 @@ class IdLinkController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * INDEX DE CLIMA LABORAL
      * @return \Illuminate\Http\Response
      */
     public function index($id)

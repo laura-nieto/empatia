@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\DatosDemograficosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +32,16 @@ Route::get('/logout', [UserController::class, 'logOut']);
 Route::get('/new/empresa',[EmpresaController::class,'create'])->middleware('auth');
 Route::post('/new/empresa',[EmpresaController::class,'store'])->middleware('auth');
 
+//NEW DATO
+Route::get('/new/dato',[DatosDemograficosController::class,'create']);
+Route::post('/new/dato',[DatosDemograficosController::class,'store']);
+
 //EDIT MESSAGE
 Route::get('/modificar',function(){
     return view('edit.email');
+})->middleware('auth');
+Route::post('/modificar',function(Request $request){
+   dd($request->editar);
 })->middleware('auth');
 
 require __DIR__.'/web/automatizacion.php';

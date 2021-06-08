@@ -3,7 +3,7 @@
     grid-template-columns: repeat(3,1fr);
     margin-top: 100px;
     padding: 0 30px;
-    row-gap: 30px;
+    row-gap: 50px;
 }
 .section--ul{
     list-style: none;
@@ -56,12 +56,5 @@
 }
 .newEmpresa input{
     margin-top: 5px;
-    padding: 5px;
     width: 300px;
-}
-
-/* MODIFICAR EMAIL */
-.modify_container{
-    max-height: 30vh;
-    max-width: 70vw;
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClimaLaboralsTable extends Migration
+class CreateDatosDemograficosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateClimaLaboralsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clima_laboral', function (Blueprint $table) {
+        Schema::create('datos_demograficos', function (Blueprint $table) {
             $table->id();
-            $table->string('pregunta');
+            $table->string('nombre_dato');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateClimaLaboralsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clima_laboral');
+        Schema::dropIfExists('datos_demograficos');
     }
 }

@@ -7,8 +7,11 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Género</th> 
-                    <th>Título</th>
+                    <th>Email</th> 
+                    <th>Observación</th>
+                    @foreach ($array_datos as $dato)
+                        <th>{{$dato}}</th>
+                    @endforeach
                     @foreach($preguntas as $pregunta)
                         <th>{{$pregunta->pregunta}}</th>
                     @endforeach
@@ -16,10 +19,16 @@
             </thead>
             <tbody>
                 @foreach ($datos as $dato)
+                    @php
+                        $viewDatos = json_decode($dato->datos_demograficos,true);
+                    @endphp
                     <tr>
                         <td>{{$dato->nombre}}</td>
-                        <td>{{$dato->genero}}</td>
-                        <td>{{$dato->titulo}}</td>
+                        <td>{{$dato->mail}}</td>
+                        <td>{{$dato->observacion}}</td>
+                        @foreach ($viewDatos as $item)
+                            <td>{{$item}}</td>
+                        @endforeach
                         @foreach ($dato->encuesta_clima as $rta)
                             <td>{{$rta->pivot->respuesta}}</td> 
                         @endforeach

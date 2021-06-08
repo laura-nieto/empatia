@@ -15,9 +15,10 @@ class CreateDatosTable extends Migration
     {
         Schema::create('datos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->nullable();
-            $table->string('genero')->nullable();
-            $table->string('titulo')->nullable();
+            $table->string('nombre');
+            $table->string('mail');
+            $table->string('observacion')->nullable();
+            $table->string('datos_demograficos')->nullable();
             $table->foreignId('empresa_id')->constrained('empresas');
             $table->timestamps();
         });

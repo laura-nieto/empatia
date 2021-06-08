@@ -13,7 +13,6 @@
         </p>
     </section>
     <section class="section--margin">
-        <h4 class="">Lorem ipsum dolor sit.</h4>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis quae maxime accusantium autem nulla in,
             voluptate facere quo dolores odit hic. Harum aliquid labore delectus. Praesentium eum, vel quisquam magni
             laboriosam reiciendis cumque aspernatur delectus fugiat sit, ab rerum sint libero pariatur impedit repellendus.
@@ -24,7 +23,6 @@
         </p>
     </section>
     <section class="section--margin">
-        <h4 class="">Lorem ipsum dolor sit.</h4>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis quae maxime accusantium autem nulla in,
             voluptate facere quo dolores odit hic. Harum aliquid labore delectus. Praesentium eum, vel quisquam magni
             laboriosam reiciendis cumque aspernatur delectus fugiat sit, ab rerum sint libero pariatur impedit repellendus.

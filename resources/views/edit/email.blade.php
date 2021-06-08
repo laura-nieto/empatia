@@ -3,9 +3,14 @@
 @section('main')
     <h2 class="h2__title">Modificar e-mail</h2>
     <div class="modify_container">
-        <div id="editor">
-            <textarea name="" id="" cols="20" rows="10" class="ck-content"></textarea>
-        </div>
+        <form action="" method="post" class="modify__form">
+            @csrf
+            <div class="editor--container">
+                <textarea id="editor" cols="20" rows="10" class="ck-content" name="editar"></textarea>
+            </div>
+            <input type="submit" value="Modificar" class="btn editor__submit">
+        </form>
+        
     </div>
 @endsection
 @section('js')

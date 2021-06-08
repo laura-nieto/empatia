@@ -4,21 +4,27 @@
         <form action="" method="post" class="form__encuesta--datos">
             @csrf
             <input type="hidden" name="empresa_id" value="{{$empresa_id}}">
+            <div class="div__datos">
+                <label for="">Nombre</label>
+                <input type="text" name="nombre">
+            </div>
+            <div class="div__datos">
+                <label for="">E-mail</label>
+                <input type="text" name="mail">
+            </div>
             @foreach ($datos as $dato)
-                @if($dato=='nombre')
-                    <div class="div__datos">
-                        <label for="">{{$dato}}</label>
-                        <input type="text" name="{{$dato}}">
-                    </div>
-                @elseif($dato=='genero')
+                @php
+                    $dato = str_replace('_',' ',$dato); 
+                @endphp
+                @if($dato=='genero')
                     <div class="div__datos">
                         <label for="">{{$dato}}</label>
                         <select name="{{$dato}}">
-                            <option value="femenino">Masculino</option>
-                            <option value="masculino">Femenino</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
                         </select>
                     </div>
-                @elseif($dato=='titulo')
+                @elseif($dato=='grado de instruccion')
                     <div class="div__datos">
                         <label for="">{{$dato}}</label>
                         <select name="{{$dato}}">
@@ -26,6 +32,11 @@
                             <option value="universitario en curso">Universitario en Curso</option>
                             <option value="universitario finalizado">Universitario Finalizado</option>
                         </select>
+                    </div>
+                @else
+                    <div class="div__datos">
+                        <label for="">{{$dato}}</label>
+                        <input type="text" name="{{$dato}}">
                     </div>
                 @endif
             @endforeach

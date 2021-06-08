@@ -36,19 +36,18 @@ class DatosController extends Controller
 
     public function storeClima(Request $request,$id)
     {
+        $pass = $request->except(['_token','empresa_id','nombre','mail']);
+        $save = [];
         $newDatos = new Datos;
 
-        if ($request->has('nombre')){
-            $newDatos->nombre = $request->nombre;
-        };
-        if ($request->has('genero')){
-            $newDatos->genero = $request->genero;
-        };
-        if ($request->has('titulo')){
-            $newDatos->titulo = $request->titulo;
-        };
-
+        $newDatos->nombre = $request->nombre;
+        $newDatos->mail = $request->mail;
         $newDatos->empresa_id = $request->empresa_id;
+        
+        foreach($pass as $key => $dato){
+            $save[$key] = $dato;
+        }
+        $newDatos->datos_demograficos = json_encode($save);
         
         $newDatos->save();
         $id_datos = $newDatos->id;
@@ -58,11 +57,20 @@ class DatosController extends Controller
     
     public function indexClima($id)
     {
-        $datos = Datos::has('encuesta_clima')->where('empresa_id',$id)->select('id','nombre','genero','titulo','empresa_id')->simplePaginate(10);
+        $datos = Datos::has('encuesta_clima')->where('empresa_id',$id)->select('id','nombre','mail','observacion','datos_demograficos','empresa_id')->simplePaginate(10);
+        $array_datos = [];
+
+        foreach($datos as $dato){
+            $viewDatos = json_decode($dato->datos_demograficos,true);
+            foreach($viewDatos as $viewDato => $key){
+                $viewDato = str_replace('_',' ',$viewDato);
+                $array_datos[] = $viewDato;
+            }
+        }
         $preguntas = ClimaLaboral::all();
         $empresa = Empresa::findOrFail($id)->nombre;
 
-        return view('reporte.climaLaboral',['preguntas'=>$preguntas,'datos'=>$datos,'empresaNombre'=>$empresa,'empresa'=>$id]);
+        return view('reporte.climaLaboral',['preguntas'=>$preguntas,'datos'=>$datos,'empresaNombre'=>$empresa,'empresa'=>$id,'array_datos'=>$array_datos]);
     }
 
     /**
