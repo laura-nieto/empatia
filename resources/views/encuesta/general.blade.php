@@ -16,7 +16,7 @@
                 @php
                     $dato = str_replace('_',' ',$dato); 
                 @endphp
-                @if($dato=='genero')
+                @if($dato=='genero' || $dato=='Genero')
                     <div class="div__datos">
                         <label for="">{{$dato}}</label>
                         <select name="{{$dato}}">

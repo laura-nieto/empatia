@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('title','Empatia 360°')
 @section('main')  
-    @if (session('create.empresa') || session('create.encuesta') || session('create.dato'))
+    @if (session('create.empresa') || session('create.encuesta') || session('create.dato') || session('create.automatizacion'))
         <div class="div--success">
             <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
             {{ session('create.empresa') }}
             {{ session('create.encuesta') }}
             {{ session('create.dato') }}
+            {{ session('create.automatizacion') }}
         </div>
     @endif
     <article class="article__index">
@@ -29,9 +30,9 @@
         <section>
             <h3>Modificar</h3>
             <ul class="section--ul">
+                <li><a href="">Mensaje de Clima Laboral</a></li>
+                <li><a href="">Mensaje de Desempeño Laboral</a></li>
                 <li><a href=""></a></li>
-                <li><a href="">E-mail</a></li>
-                <li><a href="">Mensaje de Bienvenida</a></li>
             </ul>
         </section>
         <section>
