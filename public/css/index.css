@@ -3,15 +3,34 @@
     grid-template-columns: repeat(3,1fr);
     margin-top: 100px;
     padding: 0 30px;
-    row-gap: 50px;
+    gap: 50px;
+}
+.article__index>section>h3{
+    background-color: rgba(32, 32, 32, 0.884);
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    padding: 15px 40px;
 }
 .section--ul{
     list-style: none;
 }
-.section--ul li{
-    margin: 5px 10px;
+.li__index{
+    background-color: #f4c544c2;
+    padding: 10px 20px;
+    align-items: center;
+    display: flex;
+    margin: 5px 0;
 }
-
+.li__index:last-child{
+    border-radius: 0 0 10px 10px;
+}
+.li__index>a{
+    font-size: 1.1rem;
+    margin-left: 20px;
+}
+.fa-2x{
+    color: #39741e;
+}
 /* MENSAJES */
 .div--success{
     align-items: center;
@@ -20,13 +39,14 @@
     border-radius: 5px;
     color: #0f5132;
     display: flex;
+    font-size: 1.1rem;
     justify-content: center;
     margin: 30px 30px;
     padding: 20px 30px;
 }
 .img--success{
     width: 20px;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 /* ELEGIR EMPRESA */

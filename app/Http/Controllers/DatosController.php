@@ -11,6 +11,12 @@ use App\Models\Empresa;
 
 class DatosController extends Controller
 {
+    public function indexAutomatizacion($idEmpresa, $idPersona)
+    {
+        $persona = Datos::with('empresas')->findOrFail($idPersona)->load(['encuesta_automatizacion','datos_categorias']);
+        return view('reporte.automatizacion',['persona'=>$persona]);
+    }
+
     public function indexDesempenio($idEmpresa){
         $preguntas = DesempenioLaboral::all();
         $empresa = Empresa::findOrFail($idEmpresa)->nombre;

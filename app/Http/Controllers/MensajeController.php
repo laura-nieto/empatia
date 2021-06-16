@@ -7,6 +7,51 @@ use Illuminate\Http\Request;
 
 class MensajeController extends Controller
 {
+    public function modificar_instrucciones(Request $request)
+    {
+        $mensaje = Mensaje::where('tipo','desempeño laboral')->get();
+        foreach ($mensaje as $key => $value) {
+            if ($key === 1) {
+                $value->mensaje = $request->editar1;
+                $value->save();
+            }elseif ($key === 2) {
+                $value->mensaje = $request->editar2;
+                $value->save();
+            }
+        }
+        return redirect('/')->with('update.mensaje','Mensaje actualizado correctamente');
+    }
+
+    public function mostrar_modificar_instrucciones()
+    {
+        $mensaje = Mensaje::where('tipo','desempeño laboral')->get();
+        foreach ($mensaje as $key => $value) {
+            if ($key === 1) {
+                $instruccion1 = $value->mensaje;
+            }elseif ($key === 2) {
+                $instruccion2 = $value->mensaje;
+            }
+        }
+        return view('edit.editInstrucciones',['instruccion1'=>$instruccion1,'instruccion2'=>$instruccion2]);
+    }
+
+    public function mensaje_desempeño()
+    {
+        $mensaje = Mensaje::where('tipo','desempeño laboral')->get();
+        foreach ($mensaje as $key => $value) {
+            if($key === 1){
+                $instruccion1 = $value->mensaje;
+            }elseif ($key === 2) {
+                $instruccion2 = $value->mensaje;
+            }
+        }
+        return view('encuesta.desempeño.instruccionesDesempeño',['instruccion1'=>$instruccion1,'instruccion2'=>$instruccion2]);
+    }
+    public function mensaje_clima()
+    {
+        $mensaje = Mensaje::where('tipo','clima laboral')->first();
+        return view('encuesta.welcomeClima',['mensaje'=>$mensaje->mensaje]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +69,7 @@ class MensajeController extends Controller
      */
     public function create()
     {
-        //
+        return view('edit.create');
     }
 
     /**
@@ -35,7 +80,17 @@ class MensajeController extends Controller
      */
     public function store(Request $request)
     {
+        $newMensaje = new Mensaje;
         
+        if (last($request->segments()) == 'clima-laboral') {
+            $newMensaje->tipo = 'clima laboral';
+        } elseif(last($request->segments()) == 'desempenio-laboral'){
+            $newMensaje->tipo = 'desempeño laboral';
+        } elseif (last($request->segments()) == 'automatizacion-laboral') {
+            $newMensaje->tipo = 'automatizacion';
+        }
+        $newMensaje->mensaje = $request->editar;
+        $newMensaje->save();
     }
 
     /**
@@ -55,9 +110,19 @@ class MensajeController extends Controller
      * @param  \App\Models\Mensaje  $mensaje
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mensaje $mensaje)
+    public function edit(Mensaje $mensaje, Request $request)
     {
-        //
+        if (last($request->segments()) == 'clima-laboral') {
+            $mensaje = Mensaje::where('tipo','clima laboral')->first();
+            $titulo = 'clima laboral';
+        } elseif(last($request->segments()) == 'desempenio-laboral'){
+            $mensaje = Mensaje::where('tipo','desempeño laboral')->first();
+            $titulo = 'desempeño laboral';
+        }elseif(last($request->segments()) == 'automatizacion-laboral'){
+            $mensaje = Mensaje::where('tipo','automatizacion')->first();
+            $titulo = 'automatizacion laboral';
+        }
+        return view('edit.edit',['mensaje'=>$mensaje->mensaje,'titulo'=>$titulo]);
     }
 
     /**
@@ -69,7 +134,21 @@ class MensajeController extends Controller
      */
     public function update(Request $request, Mensaje $mensaje)
     {
-        //
+        if (last($request->segments()) == 'clima-laboral') {
+            $mensaje = Mensaje::where('tipo','clima laboral')->first();
+            $mensaje->mensaje = $request->editar;
+            $mensaje->save();
+
+        } elseif(last($request->segments()) == 'desempenio-laboral'){
+            $mensaje = Mensaje::where('tipo','desempeño laboral')->first();
+            $mensaje->mensaje = $request->editar;
+            $mensaje->save();
+        } elseif(last($request->segments()) == 'automatizacion-laboral'){
+            $mensaje = Mensaje::where('tipo','automatizacion')->first();
+            $mensaje->mensaje = $request->editar;
+            $mensaje->save();
+        }
+        return redirect('/')->with('update.mensaje','Mensaje actualizado correctamente'); 
     }
 
     /**

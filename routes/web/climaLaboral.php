@@ -6,6 +6,7 @@ use App\Http\Controllers\ClimaLaboralController;
 use App\Http\Controllers\IdLinkController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DatosDemograficosController;
+use App\Http\Controllers\MensajeController;
 
 
 // ENVIAR
@@ -21,9 +22,7 @@ Route::get('/exportar/clima-laboral/{empresa}',[ClimaLaboralController::class,'e
 
 
 //ENCUESTA
-Route::get('/encuesta/clima-laboral/{id}',function(){
-    return view('encuesta.welcomeClima');
-});
+Route::get('/encuesta/clima-laboral/{id}',[MensajeController::class,'mensaje_clima']);
 Route::post('/encuesta/clima-laboral/{id}',[DatosController::class,'index']);
 
 Route::get('/encuesta/clima-laboral/{id}/datos',[IdLinkController::class,'index'])->name('datosClima');

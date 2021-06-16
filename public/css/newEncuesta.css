@@ -1,5 +1,5 @@
 .h2__title{
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     text-align: center;
 }
 
@@ -43,13 +43,13 @@
     margin-left: 20px;
     width: 50px;
 }
-.form--clima--div__email{
+.form--clima--div__email,.form--agregar--opciones{
     display: grid;
     column-gap: 50px;
     grid-template-columns: repeat(3,1fr);
     row-gap: 30px;
 }
-.form--clima--div__email div{
+.form--clima--div__email div,.form--agregar--opciones>div{
     display: flex;
     flex-direction: column;
 }

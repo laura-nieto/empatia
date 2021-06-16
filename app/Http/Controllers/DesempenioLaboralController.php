@@ -6,6 +6,7 @@ use App\Models\DesempenioLaboral;
 use Illuminate\Http\Request;
 use App\Models\Datos;
 use App\Models\idLink;
+use App\Models\Mensaje;
 
 use App\Exports\DesempenioLaboralExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -119,8 +120,9 @@ class DesempenioLaboralController extends Controller
     public function index($idLink,$idDatos)
     {
         $link = idLink::findOrFail($idLink);
+        $mensaje = Mensaje::where('tipo','desempeño laboral')->first();
         $cargo = json_decode($link->nombre_desempeño,true);
-        return view('encuesta.desempeño.welcomeDesempeño',['cargos'=>$cargo]);
+        return view('encuesta.desempeño.welcomeDesempeño',['cargos'=>$cargo,'mensaje'=>$mensaje->mensaje]);
     }
 
     /**

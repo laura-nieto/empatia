@@ -13,4 +13,8 @@ class AutomatizacionPruebas extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+    public function datos()
+    {
+        return $this->belongsToMany(Datos::class,'encuesta_automatizacion','pregunta_id','datos_id')->withPivot('respuesta');
+    }
 }

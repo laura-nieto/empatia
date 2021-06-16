@@ -37,12 +37,19 @@ class DatosDemograficosController extends Controller
     public function store(Request $request)
     {
         $dato = new DatosDemograficos;
+        $pass = [];
+
         $rules = ['name' => 'required'];
         $message = ['required'=>'El campo es obligatorio'];
-
         $validate = $request->validate($rules,$message);
-        
+
         $dato->nombre_dato = $request->name;
+        foreach ($request->opcion as $value) {
+            if($value != null){
+                array_push($pass,$value);
+            }
+        }
+        $dato->opciones = json_encode($pass);
         $dato->save();
 
         return redirect('/')->with('create.dato','Dato nuevo creado con éxito');

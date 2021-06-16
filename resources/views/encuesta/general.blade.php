@@ -14,31 +14,16 @@
             </div>
             @foreach ($datos as $dato)
                 @php
-                    $dato = str_replace('_',' ',$dato); 
+                    $opciones = json_decode($dato->opciones);           
                 @endphp
-                @if($dato=='genero' || $dato=='Genero')
-                    <div class="div__datos">
-                        <label for="">{{$dato}}</label>
-                        <select name="{{$dato}}">
-                            <option value="masculino">Masculino</option>
-                            <option value="femenino">Femenino</option>
-                        </select>
-                    </div>
-                @elseif($dato=='grado de instruccion')
-                    <div class="div__datos">
-                        <label for="">{{$dato}}</label>
-                        <select name="{{$dato}}">
-                            <option value="secundario completo">Secundario Completo</option>
-                            <option value="universitario en curso">Universitario en Curso</option>
-                            <option value="universitario finalizado">Universitario Finalizado</option>
-                        </select>
-                    </div>
-                @else
-                    <div class="div__datos">
-                        <label for="">{{$dato}}</label>
-                        <input type="text" name="{{$dato}}">
-                    </div>
-                @endif
+                <div class="div__datos">
+                    <label for="">{{$dato->nombre_dato}}</label>
+                    <select name="{{$dato->nombre_dato}}">
+                        @foreach ($opciones as $item)
+                            <option value="{{$item}}">{{$item}}</option>
+                        @endforeach
+                    </select>
+                </div>
             @endforeach
             <button type="submit" class="btn btn-center">Siguiente</button>
         </form>

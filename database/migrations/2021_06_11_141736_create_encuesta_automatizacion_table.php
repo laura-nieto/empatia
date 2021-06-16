@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDatosDemograficosTable extends Migration
+class CreateEncuestaAutomatizacionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateDatosDemograficosTable extends Migration
      */
     public function up()
     {
-        Schema::create('datos_demograficos', function (Blueprint $table) {
+        Schema::create('encuesta_automatizacion', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_dato');
-            $table->string('opciones');
+            $table->foreignId('datos_id')->constrained('datos');
+            $table->foreignId('pregunta_id')->constrained('automatizacion_pruebas');
+            $table->string('respuesta');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateDatosDemograficosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('datos_demograficos');
+        Schema::dropIfExists('encuesta_automatizacion');
     }
 }

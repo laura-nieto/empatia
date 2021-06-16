@@ -20,3 +20,37 @@
 .margin-bot{
     margin-bottom: 30px;
 }
+.ul__persona{
+    list-style-type: none;
+    margin: 0 auto;
+    width: 50%;
+}
+.ul__persona>li{
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+.ul__persona>li::before{ 
+    color: green;
+    content: '➤';
+    padding: 10px;
+}
+/* TABLA AUTOMATIZACION */
+.form--automatizacion__table{
+    border-collapse:collapse;
+    margin: 10px auto;
+}
+.form--automatizacion__table>thead>tr:first-child>th{
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+}
+.form--automatizacion__table>thead>tr>th:not(:first-child){
+    border: #000 solid 1px;
+    padding: 10px;
+}
+.form--automatizacion__table>tbody>tr>td{
+    border: #000 solid 1px;
+    padding: 5px;
+}
+.reporte-column-width{
+    width: 40%;
+}

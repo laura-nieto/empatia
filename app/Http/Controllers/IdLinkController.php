@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Mail;
 use App\Mail\EnviarMailable;
 use App\Mail\DesempeñoMailable;
+use App\Mail\AutomatizacionMailable;
 
+use App\Models\DatosDemograficos;
 use App\Models\Datos;
 
 class IdLinkController extends Controller
@@ -17,6 +19,7 @@ class IdLinkController extends Controller
         $link = new idLink;
         $datos = new Datos;
         $categorias = [];
+        $puesto['puestoAplicante'] = $request->puesto;
 
         foreach($request->categorias as $categoria){
             foreach($request->tiempo as $item => $tiempo){
@@ -25,7 +28,28 @@ class IdLinkController extends Controller
                 }
             }
         }
-        dd($categorias);
+
+        $link->categorias_automatizacion = json_encode($categorias);
+        $link->empresa_id = $idEmpresa;
+        $link->save();
+
+        $datos->nombre = $request->nombre;
+        $datos->mail = $request->email;
+        $datos->datos_demograficos = json_encode($puesto);
+        $datos->empresa_id = $idEmpresa;
+        $datos->save();
+
+        //DATOS-CATEGORIA
+        foreach($categorias as $categoria => $tiempo){
+            $datos->datos_categorias()->attach($categoria,['tiempo'=>$tiempo]);
+        }
+
+        //ENVIAR MAIL
+        $sendLink = $request->gethost() . '/encuesta/automatizacion-de-pruebas/' . $link->id . '/' . $datos->id;
+        $correo = new AutomatizacionMailable($sendLink,$request->nombre,$request->puesto);
+        Mail::to($request->email)->send($correo);
+
+        return redirect('/')->with('create.automatizacion','Automatización enviada con exito');
     }
 
     public function createDesempeño(Request $request,$id){
@@ -90,10 +114,20 @@ class IdLinkController extends Controller
     public function index($id)
     {
         $idLink = idLink::findOrFail($id);
-        $datos = json_decode($idLink->preguntar_datos);
-        $empresa = $idLink->empresa_id;
+        $datos = DatosDemograficos::all();
+        $pass = [];
+        $preg_datos = json_decode($idLink->preguntar_datos);
+        $preg_datos = str_replace('_',' ',$preg_datos);
 
-        return view('encuesta.general',['datos'=>$datos,'empresa_id'=>$empresa]);
+        foreach ($preg_datos as $value){
+            foreach ($datos as $position => $item) {
+                if($value === $item->nombre_dato){
+                    array_push($pass,$item);
+                }
+            }
+        }
+        $empresa = $idLink->empresa_id;
+        return view('encuesta.general',['datos'=>$pass,'empresa_id'=>$empresa]);
     }
 
     /**

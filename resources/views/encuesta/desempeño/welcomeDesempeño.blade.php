@@ -2,15 +2,7 @@
 @section('main')
 <article class="article--welcome__clima">
     <section class="section--margin">
-        <h2>Bienvenido!</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam nemo voluptatibus, quis aliquam placeat ullam
-            blanditiis aut officiis sed iste? Distinctio accusamus cum accusantium eum? Repudiandae tempore deleniti natus
-            obcaecati ut vitae non culpa aperiam eligendi est ab, animi inventore, magnam suscipit, quia quisquam saepe?
-            Inventore minima placeat animi possimus repellendus officiis architecto nobis quisquam error iure iste ullam
-            accusantium dolor earum quidem aspernatur, distinctio vel odit esse reiciendis porro, nam ea dolores? Architecto
-            cumque aperiam totam voluptas, hic repudiandae nam quod consequatur accusamus, expedita mollitia ipsum maiores
-            minus sunt ex explicabo laboriosam obcaecati quis dolore ratione numquam reiciendis optio.
-        </p>
+        {!! $mensaje !!}
     </section>
     <section class="welcome--table">
         <table>

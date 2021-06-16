@@ -5,6 +5,7 @@ use App\Http\Controllers\DesempenioLaboralController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\IdLinkController;
 use App\Http\Controllers\DatosController;
+use App\Http\Controllers\MensajeController;
 
 //ENVIAR
 Route::get('/enviar/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');
@@ -26,9 +27,7 @@ Route::post('/encuesta/desempenio-laboral/{id}/{datos}',function($id,$idDatos){
     return redirect()->route('instrucciones',['id'=>$id,'datos'=>$idDatos]);
 });
 
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/instrucciones',function(){
-    return view('encuesta.desempeño.instruccionesDesempeño');
-})->name('instrucciones');
+Route::get('/encuesta/desempenio-laboral/{id}/{datos}/instrucciones',[MensajeController::class,'mensaje_desempeño'])->name('instrucciones');
 Route::post('/encuesta/desempenio-laboral/{id}/{datos}/instrucciones',function($id,$idDatos){
     return redirect()->route('title_auto',['id'=>$id,'datos'=>$idDatos]);
 });

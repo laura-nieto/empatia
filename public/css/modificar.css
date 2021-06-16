@@ -1,6 +1,6 @@
 /* MODIFICAR */
 .modify_container{
-    max-width: 70vw;
+    max-width: 75vw;
     margin: 0 auto;
 }
 .modify__form{
@@ -10,6 +10,13 @@
 .editor__submit{
     justify-self: center;
 }
+.editor--container>h3{
+    margin: 10px 0;
+}
 .ck-content>ol, .ck-content>ul{
     padding: 20px;
+}
+.ck-editor__editable {
+    min-height: 500px;
+    max-width: 1500px;
 }
