@@ -14,6 +14,8 @@ Route::get('/enviar/clima-laboral',[EmpresaController::class,'index']);
 Route::get('/enviar/clima-laboral/{name}',[DatosDemograficosController::class,'index'])->middleware('auth');
 Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima'])->middleware('auth');
 
+Route::get('/importar/clima-laboral/{name}',[EmpresaController::class,'vistaCargarMail'])->middleware('auth');
+Route::post('/importar/clima-laboral/{name}',[ClimaLaboralController::class,'importMail'])->middleware('auth');
 
 //REPORTE
 Route::get('/reporte/clima-laboral',[EmpresaController::class,'index'])->middleware('auth');
@@ -48,3 +50,12 @@ Route::post('/encuesta/clima-laboral/{id}/{datos}/page=6',[ClimaLaboralControlle
 
 Route::get('/encuesta/clima-laboral/{id}/{datos}/page=7',[ClimaLaboralController::class,'page7'])->name('clima_pag7');
 Route::post('/encuesta/clima-laboral/{id}/{datos}/page=7',[ClimaLaboralController::class,'store']);
+
+Route::get('/encuesta/clima-laboral/{id}/{datos}/fin',function(){
+    return view('encuesta.finEncuesta');
+})->name('finEncuestaClima');
+Route::post('/encuesta/clima-laboral/{id}/{datos}/fin',[ClimaLaboralController::class,'finEncuesta']);
+
+Route::get('/encuesta/clima-laboral/{id}/{datos}/finalizar',function(){
+    return view('encuesta.fin');
+})->name('finalizarClima');

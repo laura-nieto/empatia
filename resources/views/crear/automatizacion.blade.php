@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Crear Automatización de Pruebas - Empatia 360°')
 @section('main')
-    <h2 class="h2__title">Automatización - Empresa</h2>
+    <h2 class="h2__title">Automatización - {{$empresa->nombre}}</h2>
     <form action="" method="post" class="form__automatizacion">
         @csrf
         <article class="article__automatizacion">
@@ -28,15 +28,15 @@
                             <th>Tiempo</th> 
                         </tr>  
                     </thead>
-                    <tbody>
-                        @foreach ($categorias as $categoria)
+                    @foreach ($categorias as $categoria)
+                        <tbody>
                             <tr>
                                 <td>{{$categoria->nombre}}</td>
                                 <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
                                 <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
                             </tr>
-                        @endforeach
-                    </tbody>
+                        </tbody>
+                    @endforeach
                 </table>
             </section>
         </article>

@@ -16,6 +16,11 @@ class CreateDesempenioLaboralsTable extends Migration
         Schema::create('desempenio_laboral', function (Blueprint $table) {
             $table->id();
             $table->string('pregunta');
+            $table->string('opcion_1')->nullable();
+            $table->string('opcion_2')->nullable();
+            $table->string('opcion_3')->nullable();
+            $table->string('opcion_4')->nullable();
+            $table->string('opcion_5')->nullable();
             $table->timestamps();
         });
     }

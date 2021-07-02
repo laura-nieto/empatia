@@ -4,56 +4,82 @@ namespace App\Http\Controllers;
 
 use App\Models\ClimaLaboral;
 use Illuminate\Http\Request;
+use App\Models\Datos;
 
 use App\Exports\ClimaLaboralExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\EmailsImport;
 
 class ClimaLaboralController extends Controller
 {
+    public function importMail(Request $request,$idEmpresa)
+    {
+        Excel::import(new EmailsImport($idEmpresa), request()->file('importMail'));
+        
+        return redirect('/')->with('import.emails', 'Emails importados con exito');
+    }
+    
     public function export($idEmpresa){
         return Excel::download(new ClimaLaboralExport($idEmpresa), 'climaLaboral.xlsx');
     }
 
+    public function finEncuesta(Request $request,$idLink,$idDatos)
+    {
+        $request->session()->all();
+        $newDatos = new Datos;
+        foreach ($request->session()->all() as $tipo => $datos) {
+            if ($tipo == 'encuesta') {
+                $newDatos->nombre = $datos['nombre'];
+                $newDatos->mail = $datos['mail'];
+                $newDatos->empresa_id = $datos['empresa_id'];
+                foreach($datos['datos_demograficos'] as $key => $dato){
+                    $save[$key] = $dato;
+                }
+                $newDatos->datos_demograficos = json_encode($save);
+                $newDatos->save();
+                foreach ($datos['preguntas'] as $pregunta => $respuesta) {
+                    $guardar = ClimaLaboral::find($pregunta);
+                    $guardar->datos()->attach($newDatos->id,['respuesta'=>$respuesta]);
+                }
+            }
+        }
+        $request->session()->flush();
+        $request->session()->save();
+        return redirect()->route('finalizarClima',['id'=>$idLink,'datos'=>$idDatos]);
+    }    
     public function page1()
     {
         $preguntas = ClimaLaboral::take(10)->get();
-        
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
     public function page2(Request $request) 
     {
         $preguntas = ClimaLaboral::skip(10)->take(10)->get();
-
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
     public function page3()
     {
         $preguntas = ClimaLaboral::skip(20)->take(10)->get();
-
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
     public function page4()
     {
         $preguntas = ClimaLaboral::skip(30)->take(10)->get();
-
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
     public function page5()
     {
         $preguntas = ClimaLaboral::skip(40)->take(10)->get();
-
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
     public function page6()
     {
         $preguntas = ClimaLaboral::skip(50)->take(5)->get();
-
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
     public function page7()
     {
         $preguntas = ClimaLaboral::skip(55)->take(5)->get();
-
         return view('encuesta.climaLaboralLibre',['preguntas'=>$preguntas]);
     }
 
@@ -85,21 +111,12 @@ class ClimaLaboralController extends Controller
      */
     public function store(Request $request,$id,$datos)
     {   
-        if( last($request->segments()) == 'page=7'){
-            foreach($request->except('_token') as $pregunta => $respuesta){
-                if ($request->filled($pregunta)) {
-                    $guardar = ClimaLaboral::find($pregunta);
-    
-                    $guardar->datos()->attach($datos,['respuesta'=>$respuesta]);
-                } 
-            }
-        }else {
-            foreach($request->except('_token') as $pregunta => $respuesta){
-                $guardar = ClimaLaboral::find($pregunta);
-    
-                $guardar->datos()->attach($datos,['respuesta'=>$respuesta]);
-            }
+        $session = $request->session()->get('encuesta');
+        foreach($request->except('_token') as $pregunta => $respuesta){
+            $session['preguntas'][$pregunta] = $respuesta;
         }
+        $request->session()->put('encuesta',$session);
+        $request->session()->save();
         
         switch (last($request->segments())){
             case 'page=1':
@@ -115,7 +132,7 @@ class ClimaLaboralController extends Controller
             case 'page=6':
                 return redirect()->route('clima_pag7',['id'=>$id,'datos'=>$datos]);
             case 'page=7':
-                return view('encuesta.fin');
+                return redirect()->route('finEncuestaClima',['id'=>$id,'datos'=>$datos]);
         }
     }
 

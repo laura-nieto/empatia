@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\DatosDemograficos;
 use Illuminate\Http\Request;
+use App\Models\Email;
+use App\Models\Empresa;
 
 class DatosDemograficosController extends Controller
 {
@@ -12,10 +14,12 @@ class DatosDemograficosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idEmpresa)
     {
-        $datosDemo = DatosDemograficos::all();
-        return view('crear.climaLaboral',['datosDemo'=>$datosDemo]);
+        $datosDemo = DatosDemograficos::all()->sortBy('nombre_dato');
+        $empresa = Empresa::findOrFail($idEmpresa);
+        $emails = Email::where('empresa_id',$idEmpresa)->get();
+        return view('crear.climaLaboral',['datosDemo'=>$datosDemo,'empresa'=>$empresa,'emailsGuardados'=>$emails]);
     }
 
     /**
@@ -44,12 +48,7 @@ class DatosDemograficosController extends Controller
         $validate = $request->validate($rules,$message);
 
         $dato->nombre_dato = $request->name;
-        foreach ($request->opcion as $value) {
-            if($value != null){
-                array_push($pass,$value);
-            }
-        }
-        $dato->opciones = json_encode($pass);
+        
         $dato->save();
 
         return redirect('/')->with('create.dato','Dato nuevo creado con éxito');

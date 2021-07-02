@@ -8,15 +8,38 @@
         <table>
             <thead>
                 <th>Evaluado</th>
-                <th>Rango</th>
-                <th>Puesto</th>
+                <th>Puesto del evaluado</th>
+                <th>Jerarquía del evaluado</th>
             </thead>
             <tbody>
                 @foreach ($cargos as $cargo => $nombre)
                     <tr>
-                        <td>{{$nombre[0]}}</td>
-                        <td>{{$cargo}}</td>
+                        <td class="color-white 
+                        @switch($cargo)
+                            @case('autoevaluacion')
+                                color-background-violet
+                                @break
+                            @case('supervisor')
+                                color-background-red
+                                @break
+                            @case('subalterno')
+                                color-background-blue
+                                @break
+                            @case('companiero')
+                                color-background-orange
+                                @break
+                        @endswitch
+                        ">{{$nombre[0]}}</td>
                         <td>{{$nombre[1]}}</td>
+                        <td>
+                            @if ($cargo == 'autoevaluacion')
+                                Es tu evaluación
+                            @elseif($cargo == 'compeniero')
+                                Eres su compañero
+                            @else
+                                Eres su {{$cargo}}
+                            @endif 
+                        </td>
                     </tr>
 
                 @endforeach

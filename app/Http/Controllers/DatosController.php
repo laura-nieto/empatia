@@ -19,8 +19,8 @@ class DatosController extends Controller
 
     public function indexDesempenio($idEmpresa){
         $preguntas = DesempenioLaboral::all();
-        $empresa = Empresa::findOrFail($idEmpresa)->nombre;
-                
+        $empresa = Empresa::findOrFail($idEmpresa)->nombre;  
+        
         $auto = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
             $query->wherePivot('tipo','autoevaluacion');
         }])->simplePaginate(5);
@@ -43,21 +43,32 @@ class DatosController extends Controller
     public function storeClima(Request $request,$id)
     {
         $pass = $request->except(['_token','empresa_id','nombre','mail']);
-        $save = [];
-        $newDatos = new Datos;
+        // VALIDACION
+        $rules = [
+            'nombre' => 'required',
+            'mail' => 'required|email',
+        ];
+        $message = [
+            'required'=>'El campo es obligatorio',
+            'email'=>'Debe ingresarse una dirección de correo correcta',
+        ];
+        $request->validate($rules,$message);
 
-        $newDatos->nombre = $request->nombre;
-        $newDatos->mail = $request->mail;
-        $newDatos->empresa_id = $request->empresa_id;
-        
+        // GUARDAR SESION
+        $datos_demograficos = [];
         foreach($pass as $key => $dato){
             $save[$key] = $dato;
         }
-        $newDatos->datos_demograficos = json_encode($save);
+        $session = [
+            'empresa_id' => $request->empresa_id,
+            'nombre' => $request->nombre,
+            'mail' => $request->mail,
+            'datos_demograficos' => $save,
+            'preguntas'=>[]
+        ];
+        $request->session()->put('encuesta',$session);
+        $id_datos = uniqid();
         
-        $newDatos->save();
-        $id_datos = $newDatos->id;
-
         return redirect()->route('clima_pag1',['id'=>$id,'datos'=>$id_datos]);
     }
     

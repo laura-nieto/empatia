@@ -41,3 +41,6 @@
     font-size: 0.9rem;
     margin-bottom: 10px;
 }
+.has-error{
+    border-color: rgb(240, 0, 0);
+}

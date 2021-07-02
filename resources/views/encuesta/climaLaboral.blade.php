@@ -2,12 +2,12 @@
 @section('main')
     <div class="encuesta--div__explain">
         <p>
-            Favor marque la alternativa que considere se alinea con el desempeño mostrado por la persona evaluada. De acuerdo al grado de intensidad
-            <br>1- No satifecho
-            <br>2- Poco satisfecho
-            <br>3- Moderadamente satisfecho
-            <br>4- Muy satisfecho
-            <br>5- Extremadamente satisfecho
+            Responder de acuerdo a lo que perciba dentro de su ambiente laboral, eligiendo alguna de las opciones que a continuación se presenta. Marque con una  "X" en el casillero correspondiente según su opinión.  
+            <br>TED - Totalmente en desacuerdo
+            <br>ED - En desacuerdo
+            <br>NDANED - Ni de acuerdo ni en desacuerdo
+            <br>DA - De acuerdo
+            <br>TDS - Totalmente de acuerdo
         </p>
     </div>
     <form action="" method="post">
@@ -17,22 +17,22 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class="cell-width">1</th>
-                        <th class="cell-width">2</th>
-                        <th class="cell-width">3</th>
-                        <th class="cell-width">4</th> 
-                        <th class="cell-width">5</th>
+                        <th class="cell-width">TED</th>
+                        <th class="cell-width">ED</th>
+                        <th class="cell-width">NDANED</th>
+                        <th class="cell-width">DA</th> 
+                        <th class="cell-width">TDS</th>
                     </tr>  
                 </thead>
                 <tbody>
                     @foreach ($preguntas as $pregunta)
                         <tr>
                             <td>{{$pregunta->pregunta}}</td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="1" class="radio-center"></td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="2" class="radio-center"></td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="3" class="radio-center"></td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="4" class="radio-center"></td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="5" class="radio-center"></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="TED" class="radio-center" required></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="ED" class="radio-center"></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="NDANED" class="radio-center"></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="DA" class="radio-center"></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="TDS" class="radio-center"></td>
                         </tr>
                     @endforeach
                 </tbody>

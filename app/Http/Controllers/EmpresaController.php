@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
 {
+    public function vistaCargarMail($idEmpresa)
+    {
+        $empresa = Empresa::findOrFail($idEmpresa);
+        return view('crear.importarClima',['empresa'=>$empresa]);
+    }
     /**
      * Display a listing of the resource.
      *

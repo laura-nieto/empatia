@@ -17,7 +17,7 @@ class CreateEncuestaClimaTable extends Migration
             $table->id();
             $table->foreignId('datos_id')->constrained('datos');
             $table->foreignId('pregunta_id')->constrained('clima_laboral');
-            $table->string('respuesta');
+            $table->string('respuesta')->nullable();
             $table->timestamps();
         });
     }

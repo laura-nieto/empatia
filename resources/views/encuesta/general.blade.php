@@ -6,19 +6,23 @@
             <input type="hidden" name="empresa_id" value="{{$empresa_id}}">
             <div class="div__datos">
                 <label for="">Nombre</label>
-                <input type="text" name="nombre">
+                <input type="text" name="nombre" class="{{$errors->has('nombre')?'has-error':''}}" value="{{old('nombre')}}">
+                @error('nombre')
+                    <small id="emailHelp" class="error-login">{{$message}}</small>
+                @enderror
             </div>
             <div class="div__datos">
                 <label for="">E-mail</label>
-                <input type="text" name="mail">
+                <input type="email" name="mail" class="{{$errors->has('mail')?'has-error':''}}" value="{{old('mail')}}">
+                @error('mail')
+                    <small id="emailHelp" class="error-login">{{$message}}</small>
+                @enderror
             </div>
-            @foreach ($datos as $dato)
-                @php
-                    $opciones = json_decode($dato->opciones);           
-                @endphp
+            @foreach ($datos as $dato => $opciones)
                 <div class="div__datos">
-                    <label for="">{{$dato->nombre_dato}}</label>
-                    <select name="{{$dato->nombre_dato}}">
+                    <label for="">{{$dato}}</label>
+                    <select name="{{$dato}}" required>
+                        <option value="" selected hidden>Elija una opción</option>
                         @foreach ($opciones as $item)
                             <option value="{{$item}}">{{$item}}</option>
                         @endforeach

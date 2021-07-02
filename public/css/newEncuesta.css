@@ -2,8 +2,27 @@
     margin-bottom: 50px;
     text-align: center;
 }
-
+/* IMPORTAR MAIL */
+.form__importMail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form__importMail>input[type='file']{
+    margin-bottom: 40px;
+}
 /* CLIMA LABORAL */
+.div__importar{
+    display: flex;
+    justify-content: center;
+}
+.link-color{
+    color: #000;
+    text-align: center;
+}
+.link-color:visited{
+    color: #000;
+}
 .form__clima{
     display: grid;
     grid-template-rows: max-content;
@@ -26,7 +45,7 @@
     width: 25%;
     text-align: center;
 }
-.form--clima__table tbody tr {
+.form--clima__table tbody{
     border-bottom: solid 1px rgb(105, 105, 105);
 }
 .form--clima__table tbody tr td{
@@ -77,6 +96,18 @@
 .btn-center{
     grid-column: span 2;
     justify-self: center;
+}
+.color-violet{
+    color: #7030a0;
+}
+.color-red{
+    color: #ff0000;
+}
+.color-blue{
+    color: #0070c0;
+}
+.color-orange{
+    color: #c55a11;
 }
 
 /* AUTOMATIZACION DE PRUEBAS */

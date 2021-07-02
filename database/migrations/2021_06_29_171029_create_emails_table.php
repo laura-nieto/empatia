@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDatosDemograficosTable extends Migration
+class CreateEmailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateDatosDemograficosTable extends Migration
      */
     public function up()
     {
-        Schema::create('datos_demograficos', function (Blueprint $table) {
+        Schema::create('emails', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_dato');
+            $table->string('email');
+            $table->foreignId('empresa_id')->constrained('empresas');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateDatosDemograficosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('datos_demograficos');
+        Schema::dropIfExists('emails');
     }
 }

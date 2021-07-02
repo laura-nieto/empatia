@@ -65,9 +65,14 @@
 .div__datos>label{
     margin-bottom: 5px;
 }
-.div__datos input, select{
-    height: 25px;
+.div__datos>input,.div__datos>select{
     width: 50%;
+}
+.div__datos>select{
+    padding: 5px;
+}
+.div__datos>select>option{
+    text-transform: capitalize;
 }
 .article__encuesta{
     display: grid;
@@ -85,7 +90,7 @@
     width: 60%;
 }
 .cell-width{
-    width: 5%;
+    width: 10%;
 }
 .radio-center{
     display: block;
@@ -126,11 +131,15 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
     margin: 50px 70px;
-    row-gap: 50px;
+    gap: 50px;
 }
 .libre--div{
     display: flex;
     flex-direction: column;
+}
+.libre--div>label{
+    width: 70%;
+    margin-bottom: 5px;
 }
 .libre--textarea{
     margin-top: 5px;
@@ -139,18 +148,40 @@
 }
 
 /* FIN */
+.encuesta--fin__form{
+    margin: 30px auto;
+    width: 75vw;
+}
+.encuesta--fin__form>h3{
+    margin-bottom: 30px;
+    text-align: center;
+}
+.encuesta--fin__form>p:not(:first-of-type){
+    margin-bottom: 10px;
+}
+.fin--bold{
+    font-weight: bold;
+    margin: 25px 0;
+}
+.fin--form__buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+.fin--form__buttons>input:first-child{
+    margin-right: 20px;
+}
 .encuesta--fin{
     align-items: center;
-    background-color: #2a8ebdb6;
+    border: solid 1px #253443;
     border-radius: 28px;
     display: flex;
     flex-direction: column;
-    height: 30vh;
-    justify-content: center;
+    height: 50vh;
+    justify-content: space-around;
     margin: 30px auto;
     width: 75%;
 }
-
 /* DESEMPEÑO LABORAL */
 /* WELCOME */
 .welcome--table{
@@ -174,6 +205,21 @@
 }
 .welcome--table>table>tbody>tr>td{
     padding: 2px;
+}
+.color-white{
+    color: #fff;
+}
+.color-background-violet{
+    background-color: #6f30a0e1;
+}
+.color-background-red{
+    background-color: #ff0000c5;
+}
+.color-background-blue{
+    background-color: #0070c0cb;
+}
+.color-background-orange{
+    background-color: #c55911ce;
 }
 /* INSTRUCCIONES */
 .article__instruction{

@@ -2,13 +2,14 @@
 @section('main')
     <div class="encuesta--div__explain">
         <p>
-            Favor marque la alternativa que considere se alinea con el desempeño mostrado por la persona evaluada. De acuerdo al grado de intensidad
+            Favor, elija la alternativa que considere se alinea con el desempeño mostrado por la persona evaluada, de acuerdo al grado de intensidad. Donde:
             <br>1- No satifecho
             <br>2- Poco satisfecho
             <br>3- Moderadamente satisfecho
             <br>4- Muy satisfecho
             <br>5- Extremadamente satisfecho
         </p>
+        <p><br>Recalcamos nuevamente. Procure ser objetivo e imparcial, centrándose en el desempeño profesional del evaluado como criterio fundamental.</p>
     </div>
     <div class="encuesta--div__title">
         @if(last(request()->segments()) == 'autoevaluacion')
@@ -20,26 +21,34 @@
     <form action="" method="post">
         @csrf
         <article class="article__encuesta">
+            @foreach ($preguntas as $pregunta)
             <table class="form--encuesta__table">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th class="cell-width">1</th>
-                        <th class="cell-width">2</th>
-                        <th class="cell-width">3</th>
-                        <th class="cell-width">4</th> 
-                        <th class="cell-width">5</th>
+                        <th>{{$pregunta->pregunta}}</th>
+                        <th class="cell-width">Elegir</th>
                     </tr>  
                 </thead>
                 <tbody>
-                    @foreach ($preguntas as $pregunta)
                         <tr>
-                            <td>{{$pregunta->pregunta}}</td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="1" class="radio-center"></td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="2" class="radio-center"></td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="3" class="radio-center"></td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="4" class="radio-center"></td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="5" class="radio-center"></td>
+                            <td>{{$pregunta->opcion_1}}</td>
+                            <td><input type="radio" name="{{$pregunta->id}}" value="5" class="radio-center" required></td>
+                        </tr>
+                        <tr>
+                            <td>{{$pregunta->opcion_2}}</td>
+                            <td><input type="radio" name="{{$pregunta->id}}" value="4" class="radio-center" required></td>
+                        </tr>
+                        <tr>
+                            <td>{{$pregunta->opcion_3}}</td>
+                            <td><input type="radio" name="{{$pregunta->id}}" value="3" class="radio-center" required></td>
+                        </tr>
+                        <tr>
+                            <td>{{$pregunta->opcion_4}}</td>
+                            <td><input type="radio" name="{{$pregunta->id}}" value="2" class="radio-center" required></td>
+                        </tr>
+                        <tr>
+                            <td>{{$pregunta->opcion_5}}</td>
+                            <td><input type="radio" name="{{$pregunta->id}}" value="1" class="radio-center" required></td>
                         </tr>
                     @endforeach
                 </tbody>

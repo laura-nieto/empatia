@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
-
+use App\Models\Empresa;
 
 class CategoriaController extends Controller
 {
@@ -16,7 +16,8 @@ class CategoriaController extends Controller
     public function index($idEmpresa)
     {
         $categorias = Categoria::all();
-        return view('crear.automatizacion',['empresa'=>$idEmpresa,'categorias'=>$categorias]);
+        $empresa = Empresa::findOrFail($idEmpresa);
+        return view('crear.automatizacion',['empresa'=>$empresa,'categorias'=>$categorias]);
     }
 
     /**

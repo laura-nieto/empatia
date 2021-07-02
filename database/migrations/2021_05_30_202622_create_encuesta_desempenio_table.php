@@ -17,7 +17,7 @@ class CreateEncuestaDesempenioTable extends Migration
             $table->id();
             $table->foreignId('datos_id')->constrained('datos');
             $table->foreignId('pregunta_id')->constrained('desempenio_laboral');
-            $table->string('respuesta');
+            $table->string('respuesta')->nullable();
             $table->string('tipo');
             $table->string('evaluado');
             $table->timestamps();

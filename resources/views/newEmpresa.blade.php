@@ -7,7 +7,7 @@
             @csrf
             <div class="newEmpresa">
                 <label for="name">Nombre de la empresa</label>
-                <input type="text" name="name" id="" placeholder="Nombre">
+                <input type="text" name="name" placeholder="Nombre">
                 @error('name')
                     <small id="emailHelp" class="error-login">{{$message}}</small>
                 @enderror

@@ -12,6 +12,7 @@ use App\Mail\AutomatizacionMailable;
 
 use App\Models\DatosDemograficos;
 use App\Models\Datos;
+use App\Models\Email;
 
 class IdLinkController extends Controller
 {
@@ -75,35 +76,55 @@ class IdLinkController extends Controller
 
         $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $datos->id;
 
-        $correo = new DesempeñoMailable($sendLink);
+        $correo = new DesempeñoMailable($sendLink,$request->autoevaluacion[0]);
         Mail::to($email)->send($correo);
 
         return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
     }
 
     public function createClima(Request $request,$id){
-
-        $link = new idLink;
-
-        $pass = [];
-        $show = $request->except(['who_send','_token','email']);
-        foreach($show as $key => $value){
-            array_push($pass,$key);
-        }
+        switch ($request->submitButton) {
+            case 'Guardar Datos':
+                foreach($request->email as $email){
+                    if($email != null){
+                        if (Email::where('empresa_id',$id)->where('email',$email)->doesntExist()){
+                            $newEmail = new Email;
+                            $newEmail->email = $email;
+                            $newEmail->empresa_id = $id;
+                            $newEmail->save();
+                        }
+                    }
+                }
+                return redirect('/')->with('create.emails','Emails guardados con exito');
+            
+            default:
+                $link = new idLink;
+                $datos_demograficos = DatosDemograficos::all();
         
-        $link->preguntar_datos = json_encode($pass);
-        $link->empresa_id = $id;
-        $link->save();
-
-        $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id;
-
-        $correo = new EnviarMailable($sendLink);
-        foreach($request->email as $email){
-            if($email != null){
-                Mail::to($email)->send($correo);
-            }
-        }
-        return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
+                $pass = [];
+                $show = $request->except(['who_send','_token','email']);
+                foreach($show as $key => $value){
+                    $opciones = explode(',',$value);
+                    foreach ($datos_demograficos as $dato_demografico) {
+                        if($key == $dato_demografico->id) {
+                            $pass[$dato_demografico->nombre_dato] = $opciones;
+                        }
+                    }
+                }
+                $link->preguntar_datos = json_encode($pass);
+                $link->empresa_id = $id;
+                $link->save();
+        
+                $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id;
+        
+                $correo = new EnviarMailable($sendLink);
+                foreach($request->email as $email){
+                    if($email != null){
+                        Mail::to($email)->send($correo);
+                    }
+                }
+            return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
+        } 
     }
 
     /**
@@ -116,18 +137,10 @@ class IdLinkController extends Controller
         $idLink = idLink::findOrFail($id);
         $datos = DatosDemograficos::all();
         $pass = [];
-        $preg_datos = json_decode($idLink->preguntar_datos);
-        $preg_datos = str_replace('_',' ',$preg_datos);
+        $preg_datos = json_decode($idLink->preguntar_datos,true);
 
-        foreach ($preg_datos as $value){
-            foreach ($datos as $position => $item) {
-                if($value === $item->nombre_dato){
-                    array_push($pass,$item);
-                }
-            }
-        }
         $empresa = $idLink->empresa_id;
-        return view('encuesta.general',['datos'=>$pass,'empresa_id'=>$empresa]);
+        return view('encuesta.general',['datos'=>$preg_datos,'empresa_id'=>$empresa]);
     }
 
     /**

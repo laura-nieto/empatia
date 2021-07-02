@@ -13,4 +13,8 @@ class Empresa extends Model
     {
         return $this->hasMany(Datos::class, 'empresa_id');
     }
+    public function emails()
+    {
+        return $this->hasMany(Email::class, 'empresa_id');
+    }
 }

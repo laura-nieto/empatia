@@ -16,7 +16,21 @@ class DesempenioLaboralController extends Controller
     public function export($idEmpresa){
         return Excel::download(new DesempenioLaboralExport($idEmpresa), 'desempenioLaboral.xlsx');
     }
-
+    public function finEncuesta(Request $request,$idLink,$idDatos)
+    {
+        foreach ($request->session()->all() as $tipo => $datos) {
+            if ($tipo == 'autoevaluacion' || $tipo == 'supervisor' || $tipo == 'subalterno' || $tipo == 'companiero') {
+                $evaluado = json_encode([$datos['nombre'],$datos['cargo']]);
+                foreach ($datos['preguntas'] as $pregunta => $respuesta) {
+                    $guardar = DesempenioLaboral::find($pregunta);
+                    $guardar->datos()->attach($idDatos,['respuesta'=>$respuesta,'tipo'=>$tipo,'evaluado'=>$evaluado]);
+                }
+            }
+        }
+        $request->session()->flush();
+        $request->session()->save();
+        return redirect()->route('finalizar',['id'=>$idLink,'datos'=>$idDatos]);
+    }
     public function encuesta2(Request $request,$id,$idDatos)
     {
         $datos = Datos::findOrFail($idDatos);
@@ -86,8 +100,7 @@ class DesempenioLaboralController extends Controller
                 return redirect()->route('compañero_page2',['id'=>$id,'datos'=>$idDatos]);
         }
     }
-
-    public function get_title(Request $request,$id,$idDatos){
+    public function get_title(Request $request,$id,$idDatos){       
         $datos = Datos::findOrFail($idDatos);
         $link = idLink::findOrFail($id);
         $cargo = json_decode($link->nombre_desempeño,true);
@@ -149,15 +162,29 @@ class DesempenioLaboralController extends Controller
         $cargos = json_decode($link->nombre_desempeño,true);
         foreach($cargos as $cargo => $datos){
             if($cargo == last($request->segments())){
-                $evaluador = json_encode([$datos[0],$datos[1]]);
                 $tipo = $cargo;
+                $evaluado = $datos[0];
+                $puesto = $datos[1];
             }
         }
-        foreach($request->except('_token') as $pregunta => $respuesta){
-            $guardar = DesempenioLaboral::find($pregunta);
-
-            $guardar->datos()->attach($idDatos,['respuesta'=>$respuesta,'tipo'=>$tipo,'evaluado'=>$evaluador]);
+        if($request->session()->missing($tipo)){
+            foreach($request->except('_token') as $pregunta => $respuesta){
+                $array[$pregunta] = $respuesta;
+            }
+            $session= array(
+                'nombre' => $evaluado,
+                'cargo' =>$puesto,
+                'preguntas' => $array
+            );
+            $request->session()->put($tipo,$session);
+        }else{
+            $session = $request->session()->get($tipo);
+            foreach($request->except('_token') as $pregunta => $respuesta){
+                $session['preguntas'][$pregunta] = $respuesta;
+            }
+            $request->session()->put($tipo,$session);
         }
+
         switch ($url) {
             case 'page=2/autoevaluacion':
                 return redirect()->route('auto_page3',['id'=>$idLink,'datos'=>$idDatos]);            
@@ -174,7 +201,7 @@ class DesempenioLaboralController extends Controller
             case 'page=2/companiero':
                 return redirect()->route('compañero_page3',['id'=>$idLink,'datos'=>$idDatos]);            
             case 'page=3/companiero':
-                return view('encuesta.fin');
+                return redirect()->route('finEncuesta',['id'=>$idLink,'datos'=>$idDatos]);
         }
     }
 

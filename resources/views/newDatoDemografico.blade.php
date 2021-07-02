@@ -12,18 +12,7 @@
                     <small class="error-login">{{$message}}</small>
                 @enderror
             </div>
-            <div class="form--clima--div__cantidad">
-                <label for="">Cantidad de opciones</label>
-                <input type="text" name="cant_opcion" id="cant_opcion" onKeyUp="typewatch(inputsOpciones);">
-            </div>
-            <div class="form--agregar--opciones">
-            
-            </div>
             <input type="submit" value="Agregar" class="btn">
         </form>
     </article>
-@endsection
-@section('js')
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script src="{{asset('js/app.js')}}"></script>
 @endsection

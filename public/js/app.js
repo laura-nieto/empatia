@@ -18,17 +18,14 @@ var crearInputs = function(){
 }
 
 // CREAR INPUTS AGREGAR CATEGORIA
-const divInsideOpc = $('.form--agregar--opciones');
+const tableInput = $(':radio');
 
-var inputsOpciones = function(){
-    var value = $("input#cant_opcion").val()
-    for(i=0;i<value;i++){
-        divInsideOpc.append('<div><label>Opcion</label><input type="text" name="opcion[]"></input></div>')
-    }
-    value = 0;
-}
+tableInput.click(function(){
+    var name = $(this).attr('name');
+    $(`#${name}`).append(`<td>Opciones</td><td><input type="text" name="${name}"></td>`)
+})
 
-//TEMPORIZADOR
+//TEMPORIZADOR DE ENCUESTA AUTOMATIZACION
 var salida = document.getElementById("temporizador"),
     tiempo = document.getElementById('tiempo'),
     minutos = tiempo.value,
@@ -43,7 +40,7 @@ var salida = document.getElementById("temporizador"),
       
     if (!minutos && !segundos){
         clearInterval(intervalo);
-        //document.getElementById("form-automatizacion").submit();
+        document.getElementById("form-automatizacion").submit();
     }
     salida.innerHTML = minutos + ":" + (segundos < 10 ? "0" + segundos : segundos);
 },1000);

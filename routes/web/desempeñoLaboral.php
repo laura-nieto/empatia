@@ -59,3 +59,11 @@ Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=2/companiero',[Desemp
 Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=2/companiero',[DesempenioLaboralController::class,'store']);
 Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=3/companiero',[DesempenioLaboralController::class,'encuesta2'])->name('compañero_page3');
 Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=3/companiero',[DesempenioLaboralController::class,'store']);
+
+Route::get('/encuesta/desempenio-laboral/{id}/{datos}/fin',function(){
+    return view('encuesta.finEncuesta');
+})->name('finEncuesta');
+Route::post('/encuesta/desempenio-laboral/{id}/{datos}/fin',[DesempenioLaboralController::class,'finEncuesta']);
+Route::get('/encuesta/desempenio-laboral/{id}/{datos}/finalizar',function(){
+    return view('encuesta.fin');
+})->name('finalizar');
