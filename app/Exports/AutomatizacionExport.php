@@ -23,7 +23,7 @@ class AutomatizacionExport implements FromView
     public function view(): View
     {
         $datos = Datos::find($this->persona)->load(['encuesta_automatizacion','datos_categorias']);
-        return view('reporte.export.AutomatizacionLaboral',[
+        return view('reporte.export.automatizacionLaboral',[
             'persona' => $datos
         ]);
     }
