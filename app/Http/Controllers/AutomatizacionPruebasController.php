@@ -42,7 +42,7 @@ class AutomatizacionPruebasController extends Controller
     {
         $datos = Datos::findOrFail($idDatos);
         foreach($datos->datos_categorias as $categoria){
-            if($categoria->pivot->respondio === 0){
+            if(!$categoria->pivot->respondio){
                 return redirect()->route('siguiente_categoria',['id'=>$idLink,'datos'=>$idDatos,'categoria'=>$categoria->id]);
             }
         }
