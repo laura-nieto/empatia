@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         //     'email' => 'admin@admin.com',
         //     'password' => Hash::make('admin'),
         // ]);
-        DB::table('users')->insert(
+        DB::table('users')->insert([
             [
                 'name'=>'Javier',
                 'email'=>'javier.puchuri@empatia.com.pe',
@@ -46,6 +46,6 @@ class UserSeeder extends Seeder
                 'email'=>'consultor03@empatia.com.pe',
                 'password' => Hash::make('consultor03-12345')
             ]
-        );
+        ]);
     }
 }

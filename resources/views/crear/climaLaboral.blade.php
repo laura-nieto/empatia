@@ -5,6 +5,11 @@
     <div class="div__importar">
         <a href="/importar/clima-laboral/{{last(request()->segments())}}" class="btn link-color">Cargar E-mails</a>
     </div>
+    <div class="encuesta--div__explain">
+        <p>
+            Recuerde que para las opciones debe separar cada opción con una coma <strong>,</strong>
+        </p>
+    </div>
     <form action="" method="post" class="form__clima">
         @csrf
         <table class="form--clima__table">
