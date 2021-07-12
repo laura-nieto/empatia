@@ -6,7 +6,7 @@
     </section>
     <form action="" method="post" class="acept--terms">
         @csrf
-        <button class="btn-terms btn-no" name="false">No acepto</button>
+        <button class="btn-terms btn-no" name="false">Terminar después</button>
         <button class="btn-terms btn-yes" name="true">Acepto</button>
     </form>
 </article>

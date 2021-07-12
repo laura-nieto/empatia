@@ -53,6 +53,16 @@
     margin: 20px auto;
     width: 85%;
 }
+.article__encuesta--datos>h3{
+    margin-bottom: 40px;
+    text-align: center;
+}
+.div__datos{
+    margin-bottom: 40px;
+}
+.div__datos>h5{
+    margin-bottom: 10px;
+}
 .form__encuesta--datos{
     display: grid;
     gap: 30px 60px;
@@ -255,6 +265,9 @@
 }
 .desempeño--title>form{
     margin-top: 50px;
+}
+.div__btn{
+    justify-self: center;
 }
 
 /* AUTOMATIZACION DE PRUEBAS */

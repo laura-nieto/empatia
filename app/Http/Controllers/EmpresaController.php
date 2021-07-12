@@ -19,7 +19,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $company = Empresa::all();
+        $company = Empresa::orderByDesc('created_at')->get();
         return view('elegirEmpresa',['empresas'=>$company]);
     }
 

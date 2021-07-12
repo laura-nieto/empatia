@@ -34,7 +34,7 @@
                         <td>
                             @if ($cargo == 'autoevaluacion')
                                 Es tu evaluación
-                            @elseif($cargo == 'compeniero')
+                            @elseif($cargo == 'companiero')
                                 Eres su compañero
                             @else
                                 Eres su {{$cargo}}

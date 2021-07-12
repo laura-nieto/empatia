@@ -49,19 +49,6 @@
     margin-right: 20px;
 }
 
-/* ELEGIR EMPRESA */
-.ul__empresa{
-    display: grid;
-    gap: 30px 30px;
-    grid-template-columns: repeat(5,1fr);
-    list-style: none;
-    margin: 50px 50px;
-}
-.ul__empresa li a{
-    font-size: 1.2rem;
-    text-decoration: none;
-}
-
 /* AGREGAR EMPRESA */
 .article__agregar form{
     display: grid;
@@ -77,4 +64,36 @@
 .newEmpresa input{
     margin-top: 5px;
     width: 300px;
+}
+
+/* AGREGAR OPCIONES - EMPRESA */
+.form--create__dato{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.form--create--dato__titles,.form--create--dato--opciones__nombres{
+    align-items: center;
+    column-gap: 10px;
+    display: grid;
+    grid-template-columns: 10px 1fr;
+    padding: 10px;
+}
+.form--create--dato__opciones{
+    display: flex;
+    flex-direction: column;
+}
+.form--create--dato__opciones>input{
+    margin-top: 5px;
+    width: 75%;
+}
+.input--center{
+    justify-self: end;
+}
+.border--bot{
+    border-bottom: 1px solid #000;
+    margin: 5px 0;
+}
+.padding-all{
+    padding: 10px;
 }

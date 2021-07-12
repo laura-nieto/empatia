@@ -9,14 +9,23 @@
                 <div class="automatizacion__div">
                     <label for="puesto">Puesto al que aplica</label>
                     <input type="text" name="puesto" id="puesto">
+                    @error('puesto')
+                        <small id="emailHelp" class="error-login">{{$message}}</small>
+                    @enderror
                 </div>
                 <div class="automatizacion__div">
                     <label for="name">Nombre</label>
                     <input type="text" name="nombre" id="name">
+                    @error('nombre')
+                        <small id="emailHelp" class="error-login">{{$message}}</small>
+                    @enderror
                 </div>
                 <div class="automatizacion__div">
                     <label for="email">E-mail</label>
                     <input type="email" name="email" id="email">
+                    @error('email')
+                        <small id="emailHelp" class="error-login">{{$message}}</small>
+                    @enderror
                 </div>
             </section>
             <section class="automatizacion__table">

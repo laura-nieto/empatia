@@ -9,6 +9,27 @@ use App\Models\Empresa;
 
 class DatosDemograficosController extends Controller
 {
+    public function guardarOpcionesEmpresa(Request $request,$idEmpresa)
+    {
+        $empresa = Empresa::findOrFail($idEmpresa);
+        $req = $request->except(['_token']);
+        foreach ($req as $demografico => $options) {
+            foreach ($options as $option) {
+                if ($option != null) {
+                    $entry[]=$option;
+                }
+            }
+            $empresa->opcionesDemograficos()->attach($demografico,['opciones'=>json_encode($entry)]);
+            $entry=[];
+        }
+        return redirect('/enviar/clima-laboral/'.$idEmpresa);
+    }
+    public function opcionesEmpresa($idEmpresa)
+    {
+        $datosDemo = DatosDemograficos::all()->sortBy('nombre_dato');
+        $empresa = Empresa::findOrFail($idEmpresa);
+        return view('agregarDatoEmpresa',['datosDemo'=>$datosDemo,'empresa'=>$empresa]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +37,9 @@ class DatosDemograficosController extends Controller
      */
     public function index($idEmpresa)
     {
-        $datosDemo = DatosDemograficos::all()->sortBy('nombre_dato');
         $empresa = Empresa::findOrFail($idEmpresa);
         $emails = Email::where('empresa_id',$idEmpresa)->get();
-        return view('crear.climaLaboral',['datosDemo'=>$datosDemo,'empresa'=>$empresa,'emailsGuardados'=>$emails]);
+        return view('crear.climaLaboral',['empresa'=>$empresa,'emailsGuardados'=>$emails]);
     }
 
     /**

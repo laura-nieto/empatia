@@ -36,6 +36,9 @@ Route::post('/new/empresa',[EmpresaController::class,'store'])->middleware('auth
 //NEW DATO
 Route::get('/new/dato',[DatosDemograficosController::class,'create'])->middleware('auth');
 Route::post('/new/dato',[DatosDemograficosController::class,'store'])->middleware('auth');
+Route::get('/agregar/dato',[EmpresaController::class,'index'])->middleware('auth');
+Route::get('/agregar/dato/{idEmpresa}',[DatosDemograficosController::class,'opcionesEmpresa'])->middleware('auth');
+Route::post('/agregar/dato/{idEmpresa}',[DatosDemograficosController::class,'guardarOpcionesEmpresa'])->middleware('auth');
 
 //EDIT MESSAGE
 Route::get('/modificar/clima-laboral',[MensajeController::class,'edit'])->middleware('auth');
@@ -50,12 +53,12 @@ Route::get('/modificar/automatizacion-laboral',[MensajeController::class,'edit']
 Route::post('/modificar/automatizacion-laboral',[MensajeController::class,'update'])->middleware('auth');
 
 //CREAR MESSAGE
-Route::get('/crear/clima-laboral',[MensajeController::class,'create'])->middleware('auth');
-Route::post('/crear/clima-laboral',[MensajeController::class,'store'])->middleware('auth');
-Route::get('/crear/desempenio-laboral',[MensajeController::class,'create'])->middleware('auth');
-Route::post('/crear/desempenio-laboral',[MensajeController::class,'store'])->middleware('auth');
-Route::get('/crear/automatizacion-laboral',[MensajeController::class,'create'])->middleware('auth');
-Route::post('/crear/automatizacion-laboral',[MensajeController::class,'store'])->middleware('auth');
+// Route::get('/crear/clima-laboral',[MensajeController::class,'create'])->middleware('auth');
+// Route::post('/crear/clima-laboral',[MensajeController::class,'store'])->middleware('auth');
+// Route::get('/crear/desempenio-laboral',[MensajeController::class,'create'])->middleware('auth');
+// Route::post('/crear/desempenio-laboral',[MensajeController::class,'store'])->middleware('auth');
+// Route::get('/crear/automatizacion-laboral',[MensajeController::class,'create'])->middleware('auth');
+// Route::post('/crear/automatizacion-laboral',[MensajeController::class,'store'])->middleware('auth');
 
 require __DIR__.'/web/automatizacion.php';
 require __DIR__.'/web/climaLaboral.php';

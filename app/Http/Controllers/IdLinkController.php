@@ -17,6 +17,18 @@ use App\Models\Email;
 class IdLinkController extends Controller
 {
     public function createAutomatizacion(Request $request,$idEmpresa){
+        //  VALIDACION
+        $rules = [
+            'nombre' => 'required',
+            'email' => 'required|email',
+            'puesto'=> 'required'
+        ];
+        $message = [
+            'required'=>'El campo es obligatorio',
+            'email'=>'Debe ingresarse una dirección de correo correcta',
+        ];
+        $request->validate($rules,$message);
+        
         $link = new idLink;
         $datos = new Datos;
         $categorias = [];
@@ -75,8 +87,13 @@ class IdLinkController extends Controller
         $datos->save();
 
         $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $datos->id;
-
-        $correo = new DesempeñoMailable($sendLink,$request->autoevaluacion[0]);
+        $auto = $request->autoevaluacion;
+        $supervisor = $request->supervisor;
+        $subalterno = $request->subalterno;
+        $compañero = $request->companiero;
+        
+        // MANDAR MAIL
+        $correo = new DesempeñoMailable($sendLink,$auto,$supervisor,$subalterno,$compañero);
         Mail::to($email)->send($correo);
 
         return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
@@ -95,23 +112,13 @@ class IdLinkController extends Controller
                         }
                     }
                 }
-                return redirect('/')->with('create.emails','Emails guardados con exito');
-            
+                return redirect('/enviar/clima-laboral/'.$id)->with('create.emails','Emails guardados con exito');
             default:
                 $link = new idLink;
                 $datos_demograficos = DatosDemograficos::all();
-        
-                $pass = [];
-                $show = $request->except(['who_send','_token','email']);
-                foreach($show as $key => $value){
-                    $opciones = explode(',',$value);
-                    foreach ($datos_demograficos as $dato_demografico) {
-                        if($key == $dato_demografico->id) {
-                            $pass[$dato_demografico->nombre_dato] = $opciones;
-                        }
-                    }
-                }
-                $link->preguntar_datos = json_encode($pass);
+                $show = $request->except(['who_send','_token','email','submitButton']);
+
+                $link->preguntar_datos = json_encode($show);
                 $link->empresa_id = $id;
                 $link->save();
         

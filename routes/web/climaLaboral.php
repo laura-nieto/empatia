@@ -7,6 +7,7 @@ use App\Http\Controllers\IdLinkController;
 use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DatosDemograficosController;
 use App\Http\Controllers\MensajeController;
+use App\Http\Controllers\EmailController;
 
 
 // ENVIAR
@@ -16,6 +17,8 @@ Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima
 
 Route::get('/importar/clima-laboral/{name}',[EmpresaController::class,'vistaCargarMail'])->middleware('auth');
 Route::post('/importar/clima-laboral/{name}',[ClimaLaboralController::class,'importMail'])->middleware('auth');
+
+Route::get('/borrar/email/{idEmpresa}/{idEmail}',[EmailController::class,'destroy'])->middleware('auth');
 
 //REPORTE
 Route::get('/reporte/clima-laboral',[EmpresaController::class,'index'])->middleware('auth');

@@ -32,11 +32,11 @@
                     @endforeach
                 </tbody>
             </table>
-            <input type="submit" value="Siguiente" class="btn">
+            <input type="submit" value="Siguiente" class="btn" id="sendButton">
         </article>
     </form>
 @section('js')
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-    <script src="{{asset('js/app.js')}}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{asset('js/temporizador.js')}}"></script>
 @endsection
 @endsection

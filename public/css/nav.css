@@ -1,4 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@font-face {
+    font-family: Questrial;
+    src: url('/fonts/QUESTRIAL FONT/Questrial-Regular.ttf');
+}
+@font-face {
+    font-family: Raleway-SemiBold;
+    src: url('/fonts/RALEWAY FONT/Raleway-SemiBold.ttf');
+}
+@font-face {
+    font-family: Raleway-Bold;
+    src: url('/fonts/RALEWAY FONT/Raleway-Bold.ttf');  
+}
 *{
     box-sizing: border-box;
     margin: 0;
@@ -8,13 +19,15 @@ html, body{
     min-height: 100vh;
     overflow: auto;
 }
-h1,h2,h3,h4,h5,h6,button{
-    font-family: 'Nunito', sans-serif;
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Raleway-Bold', sans-serif;
 }
 a,p,label,td,th,li{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Questrial', sans-serif;
 }
-
+button,input[type=submit]{
+    font-family: 'Raleway-SemiBold', sans-serif;
+}
 :focus:not(:focus-visible) {
     outline: 0;
 }
@@ -34,6 +47,10 @@ header nav{
     justify-content: space-between;
     height: 12vh;
     margin: 0 20px 100px;
+}
+.div__home{
+    display: flex;
+    align-items: center;
 }
 .img--logo{
     height: 12vh;

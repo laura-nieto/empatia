@@ -36,43 +36,46 @@
     margin: 10px auto;
     width: 35%;
 }
-.form--clima__table thead tr th{
+.form--clima__table>thead>tr>th{
     border-bottom: solid 1px #000;
     padding: 10px;
     text-align: left;
 }
-.form--clima__table thead tr th:last-child{
+.form--clima__table thead>tr>th:last-child{
     width: 25%;
     text-align: center;
 }
-.form--clima__table tbody{
+.form--clima__table>tbody{
     border-bottom: solid 1px rgb(105, 105, 105);
 }
-.form--clima__table tbody tr td{
+.form--clima__table tbody>tr>td{
     padding: 10px;
 }
-.td-radio-center{
-    display: flex;
-    justify-content: center;
+.form--clima__table tbody>tr:first-child>td{
+    text-align: center;
 }
-.form--clima__table tbody tr td input{
-    vertical-align: middle;
-}
-.form--clima--div__cantidad input {
+.form--clima--div__cantidad>input {
     margin-left: 20px;
     width: 50px;
 }
-.form--clima--div__email,.form--agregar--opciones{
+.form--clima--div__email,.form--create--dato__option{
     display: grid;
     column-gap: 50px;
     grid-template-columns: repeat(3,1fr);
     row-gap: 30px;
 }
-.form--clima--div__email div,.form--agregar--opciones>div{
+.form--clima--div__email>div,.form--create--dato__option>div{
     display: flex;
     flex-direction: column;
 }
-
+.div__email--borrar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.div__email--borrar>a{
+    margin-left: 5px;
+}
 /* DESEMPEÑO LABORAL */
 .form__desempeño{
     display: grid;
@@ -89,25 +92,33 @@
 .evaluar{
     grid-column: span 2;
 }
-.form--desempeño__div input{
-    height: 20px;
-    margin-top: 5px;
+.form--desempeño__div>input{
+    height: 25px;
+    margin-top: 8px;
 }
 .btn-center{
     grid-column: span 2;
     justify-self: center;
 }
 .color-violet{
-    color: #7030a0;
+    background-color:#7030a0 ;
+    color: #fff;
+    padding: 5px 5px 10px;
 }
 .color-red{
-    color: #ff0000;
+    background-color: #ff0000c7;
+    color: #fff;
+    padding: 5px 5px 10px;
 }
 .color-blue{
-    color: #0070c0;
+    background-color: #0070c0;
+    color: #fff;
+    padding: 5px 5px 10px;
 }
 .color-orange{
-    color: #c55a11;
+    background-color: #c55a11;
+    color: #fff;
+    padding: 5px 5px 10px;
 }
 
 /* AUTOMATIZACION DE PRUEBAS */

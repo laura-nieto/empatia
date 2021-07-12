@@ -77,13 +77,12 @@ class DatosController extends Controller
         $datos = Datos::has('encuesta_clima')->where('empresa_id',$id)->select('id','nombre','mail','observacion','datos_demograficos','empresa_id')->simplePaginate(10);
         $array_datos = [];
 
-        foreach($datos as $dato){
-            $viewDatos = json_decode($dato->datos_demograficos,true);
-            foreach($viewDatos as $viewDato => $key){
-                $viewDato = str_replace('_',' ',$viewDato);
-                $array_datos[] = $viewDato;
-            }
+        $viewDatos = json_decode($datos[1]->datos_demograficos,true);
+        foreach($viewDatos as $viewDato => $key){
+            $viewDato = str_replace('_',' ',$viewDato);
+            $array_datos[] = $viewDato;
         }
+        
         $preguntas = ClimaLaboral::all();
         $empresa = Empresa::findOrFail($id)->nombre;
 
@@ -98,7 +97,7 @@ class DatosController extends Controller
     public function index(Request $request,$id)
     {
         if($request->has('false')){
-            dd('lastima');
+            return view('encuesta.laterClima');
         } elseif($request->has('true')){
             return redirect()->route('datosClima',['id'=>$id]);
         }

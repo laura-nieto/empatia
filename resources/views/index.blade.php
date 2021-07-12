@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Empatia 360°')
 @section('main')  
-    @if (session('create.empresa') || session('create.encuesta') || session('create.dato') || session('create.automatizacion') || session('update.mensaje') || session('create.emails') || session('import.emails'))
+    @if (session('create.empresa') || session('create.encuesta') || session('create.dato') || session('create.automatizacion') || session('update.mensaje') || session('import.emails'))
         <div class="div--success">
             <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
             {{ session('create.empresa') }}
@@ -9,7 +9,6 @@
             {{ session('create.dato') }}
             {{ session('create.automatizacion') }}
             {{session('update.mensaje')}}
-            {{session('create.emails')}}
             {{session('import.emails')}}
         </div>
     @endif
@@ -84,7 +83,11 @@
                 <li class="li__index">
                     <i class="fas fa-caret-right fa-2x"></i>
                     <a href="/new/dato">Agregar dato nuevo</a>
-                </li>              
+                </li>
+                <li class="li__index">
+                    <i class="fas fa-caret-right fa-2x"></i>
+                    <a href="/agregar/dato">Agregar dato a una empresa</a>
+                </li>                   
             </ul>
         </section>
     </article>

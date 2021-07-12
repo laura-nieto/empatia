@@ -354,7 +354,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:28px;color:#333333;font-size:14px">
-                                                                        Estimado(a) {{$nombre}}</p>
+                                                                        Estimado(a) {{$auto[0]}}</p>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -378,24 +378,89 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                         Como parte del proceso de “Desempeño 360°” le
                                                                         invitamos a realizar la siguiente encuesta.
-                                                                        Favor de dar click al siguiente enlace para
-                                                                        empezar o puede copiar el referido enlace en una
-                                                                        ventana nueva de su navegador:</p>
+                                                                    </p>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="center"
-                                                                    style="padding:5px;Margin:0;font-size:0">
-                                                                    <table border="0" width="100%" height="100%"
-                                                                        cellpadding="0" cellspacing="0"
-                                                                        role="presentation"
-                                                                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                                                        <tr>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;border-bottom:0px solid #CCCCCC;background:none;height:1px;width:100%;margin:0px">
-                                                                            </td>
-                                                                        </tr>
+                                                                    style="padding:5px;Margin:0;">
+                                                                    <table border="1px solid #000" width="95%" height="100%" cellspacing="0" style="font-size:14px;">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th style="padding:2px;">
+                                                                                    <p style="margin:0;">Evaluado</p>
+                                                                                </th>
+                                                                                <th style="padding:2px;">
+                                                                                    <p style="margin:0;">Puesto del evaluado</p>
+                                                                                </th>
+                                                                                <th style="padding:2px;">
+                                                                                    <p style="margin:0;">Jerarquía del evaluado</p>
+                                                                                </th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="background-color:#6f30a0e1;padding-left:3px;">
+                                                                                    <p style="color:#fff;margin:0;">{{$auto[0]}}</p>
+                                                                                </td>
+                                                                                <td style="padding-left:3px;">
+                                                                                    <p style="margin:0;">{{$auto[1]}}</p>
+                                                                                </td>
+                                                                                <td style="padding-left:3px;">
+                                                                                    <p style="margin:0;">Es tu autoevaluación</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="background-color:#ff0000c5;color:#fff;padding-left:3px;">
+                                                                                    <p style="color:#fff;margin:0;">{{$supervisor[0]}}</p>
+                                                                                </td>
+                                                                                <td style="padding-left:3px;">
+                                                                                    <p style="margin:0;">{{$supervisor[1]}}</p>
+                                                                                </td>
+                                                                                <td style="padding-left:3px;">
+                                                                                    <p style="margin:0;">Eres su supervisor</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="background-color:#0070c0cb;color:#fff;padding-left:3px;">
+                                                                                    <p style="color:#fff;margin:0;">{{$subalterno[0]}}</p>
+                                                                                </td>
+                                                                                <td style="padding-left:3px;">
+                                                                                    <p style="margin:0;">{{$subalterno[1]}}</p>
+                                                                                </td>
+                                                                                <td style="padding-left:3px;">
+                                                                                    <p style="margin:0;">Eres su subalterno</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="background-color:#c55911ce;color:#fff;padding-left:3px;">
+                                                                                    <p style="color:#fff;margin:0;">{{$compañero[0]}}</p>
+                                                                                </td>
+                                                                                <td style="padding-left:3px;">
+                                                                                    <p style="margin:0;">{{$compañero[1]}}</p>
+                                                                                </td>
+                                                                                <td style="padding-left:3px;">
+                                                                                    <p style="margin:0;">Eres su compañero</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
                                                                     </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center" class="esd-block-spacer es-p5" style="font-size:0">
+                                                                    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="border-bottom: 0px solid #cccccc; background: none; height: 1px; width: 100%; margin: 0px;"></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="left" class="esd-block-text">
+                                                                    <p style="font-size:14px">Favor de dar click al siguiente enlace para empezar o puede copiar el referido enlace en una ventana nueva de su navegador:</p>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -449,12 +514,4 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
     </div>
 </body>
 
-</html>
-</tr>
-</table>
-</td>
-</tr>
-</table>
-</div>
-</body>
 </html>

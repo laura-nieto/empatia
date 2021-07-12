@@ -16,8 +16,15 @@
         <p>Si asi lo considera puede regresar oprimiendo el botón “Atrás” para cambiar alguna de sus respuestas. En el caso de estar satisfecho con lo respondido hasta el momento , favor dele al botón “Finalizar”.</p>
 
         <div class="fin--form__buttons">
-            <input type="button" value="Atrás" class="btn">
+            <input type="button" value="Atrás" onclick='goBack()' class="btn">
             <input type="submit" value="Finalizar" class="btn btn-yes">
         </div>
     </form>   
+@endsection
+@section('js')
+    <script>
+        function goBack() {
+        window.history.back();
+        }
+    </script>
 @endsection

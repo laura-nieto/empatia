@@ -21,8 +21,18 @@
         @endif
         <form action="" method="post">
             @csrf
-            <input type="submit" value="Siguiente" class="btn">
+            <div class="div__btn">
+                <input type="button" value="Atrás" onclick='goBack()' class="btn btn-no">
+                <input type="submit" value="Siguiente" class="btn">
+            </div>
         </form>
     </section>
     
+@endsection
+@section('js')
+    <script>
+        function goBack() {
+        window.history.back();
+        }
+    </script>
 @endsection

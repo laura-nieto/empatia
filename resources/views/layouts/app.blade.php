@@ -11,7 +11,10 @@
 <body>
     <header>
         <nav>
-            <a href="/"><img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="" class="img--logo"></a>            
+            <div class="div__home">
+                <a href="/"><img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="" class="img--logo"></a>
+                <a href="/">Home</a>            
+            </div>
             <a href="/logout">Cerrar sesión</a>
         </nav>
     </header>

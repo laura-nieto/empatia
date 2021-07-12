@@ -1,6 +1,11 @@
 @extends('layouts.encuesta')
 @section('main')
     <article class="article__encuesta--datos">
+        <h3>Encuesta de Clima Laboral</h3>
+        <div class="div__datos">
+            <h5>Datos Demográficos</h5>
+            <p>Desde Empatía Consultores le garantizamos la selección de los siguientes datos demográficos con fines netamente estadísticos, los mismos que nos ayudarán a encontrar patrones de respuestas generales en la organización, de ninguna manera se contempla compartir datos individuales de ningún participante</p>
+        </div>
         <form action="" method="post" class="form__encuesta--datos">
             @csrf
             <input type="hidden" name="empresa_id" value="{{$empresa_id}}">

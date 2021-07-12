@@ -17,4 +17,8 @@ class Empresa extends Model
     {
         return $this->hasMany(Email::class, 'empresa_id');
     }
+    public function opcionesDemograficos()
+    {
+        return $this->belongsToMany(DatosDemograficos::class,'datos_empresas','empresa_id','demograficos_id')->withPivot('opciones');
+    }
 }

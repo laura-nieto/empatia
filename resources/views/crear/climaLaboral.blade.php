@@ -1,14 +1,16 @@
 @extends('layouts.app')
 @section('title','Crear Clima Laboral - Empatia 360°')
 @section('main')
+    @if (session('create.emails') || session('destroy.emails'))
+        <div class="div--success">
+            <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
+            {{session('create.emails')}}
+            {{session('destroy.emails')}}
+        </div>
+    @endif
     <h2 class="h2__title">Clima Laboral - {{$empresa->nombre}}</h2>
     <div class="div__importar">
         <a href="/importar/clima-laboral/{{last(request()->segments())}}" class="btn link-color">Cargar E-mails</a>
-    </div>
-    <div class="encuesta--div__explain">
-        <p>
-            Recuerde que para las opciones debe separar cada opción con una coma <strong>,</strong>
-        </p>
     </div>
     <form action="" method="post" class="form__clima">
         @csrf
@@ -16,18 +18,26 @@
             <thead>
                 <tr>
                     <th>Categoría</th>
-                    <th>Seleccionar</th> 
+                    <th></th>
                 </tr>  
             </thead>
-            @foreach ($datosDemo as $dato)
+            @foreach ($empresa->opcionesDemograficos as $opcion)           
                 <tbody>
                     <tr>
-                        <td>{{$dato->nombre_dato}}</td>
-                        <td class="td-radio-center eleccion"><input type="radio" name="{{$dato->id}}"></td>
+                        <td colspan="2"><strong>{{$opcion->nombre_dato}}</strong></td>
                     </tr>
-                    <tr id="{{$dato->id}}">
-                        
-                    </tr>
+                    @php
+                        $i = 0;
+                    @endphp
+                    @foreach (json_decode($opcion->pivot->opciones) as $item)
+                        @php
+                            $i += 1;
+                        @endphp
+                        <tr>
+                            <td>Opcion {{$i}}</td>
+                            <td><input type="text" name="{{$opcion->nombre_dato}}[]" value="{{$item}}"></td>
+                        </tr>
+                    @endforeach                  
                 </tbody>
             @endforeach
         </table>
@@ -40,7 +50,10 @@
                 @foreach($emailsGuardados as $email)
                     <div>
                         <label>E-mail</label>
-                        <input type="email" name="email[]" value="{{$email->email}}">
+                        <div class="div__email--borrar">
+                            <input type="email" name="email[]" value="{{$email->email}}">
+                            <a href="/borrar/email/{{$empresa->id}}/{{$email->id}}"><img src="{{asset('/img/cancel.png')}}" alt="Icono borrar" class="img--success"></a>
+                        </div>
                     </div>
                 @endforeach
             @else

@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Evaluadores</th>
+            <th>Correo electrónico</th>
             <th>Evaluados</th>
             <th>Puesto del evaluado</th>
             <th>Relación Jerárquica</th>
@@ -14,6 +15,7 @@
         @foreach ($autoevaluacion as $dato)
             <tr>
                 <td>{{$dato->nombre}}</td>
+                <td>{{$dato->mail}}</td>
                 @foreach ($dato->encuesta_desempenio as $key => $rta) 
                     @if($key==0)
                         <td>{{json_decode($rta->pivot->evaluado)[0]}}</td>
@@ -44,6 +46,7 @@
         @foreach ($supervisor as $dato)
             <tr>
                 <td>{{$dato->nombre}}</td>
+                <td>{{$dato->mail}}</td>
                 @foreach ($dato->encuesta_desempenio as $key => $rta)
                     @if($key==0)
                         <td>{{json_decode($rta->pivot->evaluado)[0]}}</td>
@@ -74,6 +77,7 @@
         @foreach ($subalterno as $dato)
             <tr>
                 <td>{{$dato->nombre}}</td>
+                <td>{{$dato->mail}}</td>
                 @foreach ($dato->encuesta_desempenio as $key => $rta)
                     @if($key==0)
                         <td>{{json_decode($rta->pivot->evaluado)[0]}}</td>
@@ -104,6 +108,7 @@
         @foreach ($companiero as $dato)
             <tr>
                 <td>{{$dato->nombre}}</td>
+                <td>{{$dato->mail}}</td>
                 @foreach ($dato->encuesta_desempenio as $key => $rta)
                     @if($key==0)
                         <td>{{json_decode($rta->pivot->evaluado)[0]}}</td>

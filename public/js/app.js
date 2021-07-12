@@ -10,7 +10,7 @@ var typewatch = function(){
 }();
 
 var crearInputs = function(){
-    var value = $("input#who-send").val()
+    let value = $("input#who-send").val()
     for(i=0;i<value;i++){
         divInside.append('<div><label>E-mail</label><input type="email" name="email[]"></input></div>')
     }
@@ -18,29 +18,17 @@ var crearInputs = function(){
 }
 
 // CREAR INPUTS AGREGAR CATEGORIA
-const tableInput = $(':radio');
+const tableInput = $(':radio')
 
 tableInput.click(function(){
-    var name = $(this).attr('name');
-    $(`#${name}`).append(`<td>Opciones</td><td><input type="text" name="${name}"></td>`)
+    let name = $(this).attr('name');
+    $(`#${name}`).append(`<div class="form--clima--div__cantidad padding-all"><label>Cantidad de opciones</label><input type="text" id="option_${name}" onKeyUp="typewatch(crearOption(${this.name}));"></div>`)
 })
 
-//TEMPORIZADOR DE ENCUESTA AUTOMATIZACION
-var salida = document.getElementById("temporizador"),
-    tiempo = document.getElementById('tiempo'),
-    minutos = tiempo.value,
-    segundos = 0
-    salida.innerHTML = tiempo.value
-
-    intervalo = setInterval(function(){
-    if (--segundos < 0){
-        segundos = 59;
-        minutos--;
+var crearOption = function(id){
+    let value = $(`input#option_${id}`).val(),
+        div_option = $(`#form--create--dato__option--${id}`);
+    for (let i = 0; i < value; i++) {
+        div_option.append(`<div class="padding-all form--create--dato__opciones"><label>Opción ${i+1}</label><input type="text" name="${id}[]"></input></div>`)
     }
-      
-    if (!minutos && !segundos){
-        clearInterval(intervalo);
-        document.getElementById("form-automatizacion").submit();
-    }
-    salida.innerHTML = minutos + ":" + (segundos < 10 ? "0" + segundos : segundos);
-},1000);
+}
