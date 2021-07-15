@@ -31,7 +31,7 @@ class ClimaLaboralExport implements FromView,WithStyles
         $array_datos = [];
         $datos = Datos::has('encuesta_clima')->where('empresa_id',$this->empresa)->select('id','nombre','mail','observacion','datos_demograficos','empresa_id')->get();
      
-        $viewDatos = json_decode($datos[1]->datos_demograficos,true);
+        $viewDatos = json_decode($datos[0]->datos_demograficos,true);
         foreach($viewDatos as $viewDato => $key){
             $viewDato = str_replace('_',' ',$viewDato);
             $array_datos[] = $viewDato;

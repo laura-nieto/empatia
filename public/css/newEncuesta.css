@@ -100,22 +100,22 @@
     grid-column: span 2;
     justify-self: center;
 }
-.color-violet{
+.color-new-violet{
     background-color:#7030a0 ;
     color: #fff;
     padding: 5px 5px 10px;
 }
-.color-red{
+.color-new-red{
     background-color: #ff0000c7;
     color: #fff;
     padding: 5px 5px 10px;
 }
-.color-blue{
+.color-new-blue{
     background-color: #0070c0;
     color: #fff;
     padding: 5px 5px 10px;
 }
-.color-orange{
+.color-new-orange{
     background-color: #c55a11;
     color: #fff;
     padding: 5px 5px 10px;

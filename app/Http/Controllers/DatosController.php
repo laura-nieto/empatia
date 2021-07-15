@@ -21,23 +21,9 @@ class DatosController extends Controller
         $preguntas = DesempenioLaboral::all();
         $empresa = Empresa::findOrFail($idEmpresa)->nombre;  
         
-        $auto = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
-            $query->wherePivot('tipo','autoevaluacion');
-        }])->simplePaginate(5);
-
-        $supervisor = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
-            $query->wherePivot('tipo','supervisor');
-        }])->simplePaginate(5);
-
-        $subalterno = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
-            $query->wherePivot('tipo','subalterno');
-        }])->simplePaginate(5);
-
-        $companiero = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->with(['encuesta_desempenio' => function($query){
-            $query->wherePivot('tipo','companiero');
-        }])->simplePaginate(5);
+        $auto = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->simplePaginate(5);
        
-        return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'autoevaluacion'=>$auto,'supervisor'=>$supervisor,'subalterno'=>$subalterno,'companiero'=>$companiero]);
+        return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'evaluaciones'=>$auto]);
     }
 
     public function storeClima(Request $request,$id)
@@ -77,7 +63,7 @@ class DatosController extends Controller
         $datos = Datos::has('encuesta_clima')->where('empresa_id',$id)->select('id','nombre','mail','observacion','datos_demograficos','empresa_id')->simplePaginate(10);
         $array_datos = [];
 
-        $viewDatos = json_decode($datos[1]->datos_demograficos,true);
+        $viewDatos = json_decode($datos[0]->datos_demograficos,true);
         foreach($viewDatos as $viewDato => $key){
             $viewDato = str_replace('_',' ',$viewDato);
             $array_datos[] = $viewDato;

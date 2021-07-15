@@ -28,28 +28,11 @@ class DesempenioLaboralExport implements FromView,WithStyles
 
     public function view(): View
     {
-        $auto = Datos::has('encuesta_desempenio')->where('empresa_id',$this->empresa)->with(['encuesta_desempenio' => function($query){
-            $query->wherePivot('tipo','autoevaluacion');
-        }])->get();
-
-        $supervisor = Datos::has('encuesta_desempenio')->where('empresa_id',$this->empresa)->with(['encuesta_desempenio' => function($query){
-            $query->wherePivot('tipo','supervisor');
-        }])->get();
-
-        $subalterno = Datos::has('encuesta_desempenio')->where('empresa_id',$this->empresa)->with(['encuesta_desempenio' => function($query){
-            $query->wherePivot('tipo','subalterno');
-        }])->get();
-
-        $companiero = Datos::has('encuesta_desempenio')->where('empresa_id',$this->empresa)->with(['encuesta_desempenio' => function($query){
-            $query->wherePivot('tipo','companiero');
-        }])->get();
+        $auto = Datos::has('encuesta_desempenio')->where('empresa_id',$this->empresa)->get();
 
         return view('reporte.export.desempenioLaboral', [
             'preguntas' =>DesempenioLaboral::all(),
-            'autoevaluacion' => $auto,
-            'supervisor' => $supervisor,
-            'subalterno' => $subalterno,
-            'companiero' => $companiero,
+            'all' => $auto,
             'empresa' => $this->empresa
         ]);
     }

@@ -67,35 +67,72 @@ class IdLinkController extends Controller
 
     public function createDesempeño(Request $request,$id){
 
-        $link = new idLink;
-        $datos = new Datos;
-
-        $pass = [];
         $show = $request->except(['_token','email']);
-        $email = $request->email;
-        foreach($show as $key => $value){
-            $pass[$key] = $value;
+        
+        foreach ($show as $puesto => $datos) {
+            if ($puesto === 'autoevaluacion') {
+                if(is_null($datos[0]) || is_null($datos[2])){
+                    //TODOS LOS DATOS SON NULOS
+                    return redirect()->back()->with('desempeño.send','asd');
+                }elseif($datos[0] !=null && $datos[1]==null && $datos[2]!=null){
+                    //EL MAIL ESTA VACIO
+                    $pass[$puesto] = $datos;
+                }elseif(!is_null($datos[0]) && !is_null($datos[1]) && !is_null($datos[2])){
+                    $pass[$puesto] = $datos;
+                }
+            }else {
+                foreach ($datos as $dato) {
+                    if($dato === null){
+                        break;
+                    }else{
+                        $pass[$puesto] = $datos;
+                    }
+                }
+            }
         }
         
-        $link->nombre_desempeño = json_encode($pass);
-        $link->empresa_id = $id;
-        $link->save();
-        
-        $datos->nombre = $request->autoevaluacion[0];
-        $datos->empresa_id = $id;
-        $datos->mail = $request->email;
-        $datos->save();
+        $evaluado = $pass['autoevaluacion'];
 
-        $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $datos->id;
-        $auto = $request->autoevaluacion;
-        $supervisor = $request->supervisor;
-        $subalterno = $request->subalterno;
-        $compañero = $request->companiero;
-        
-        // MANDAR MAIL
-        $correo = new DesempeñoMailable($sendLink,$auto,$supervisor,$subalterno,$compañero);
-        Mail::to($email)->send($correo);
-
+        foreach ($pass as $puesto => $datos) {
+            if(!is_null($datos[1])){
+                if(!Datos::where('mail',$datos[1])->exists()){
+                    $evaluado =[$puesto =>[$pass['autoevaluacion'][0],$pass['autoevaluacion'][2]]];
+                    //CREACION LINK
+                    $link = new idLink;
+                    $link->nombre_desempeño = json_encode($evaluado);
+                    $link->empresa_id = $id;
+                    $link->save();
+    
+                    //CREACION DEL DATO
+                    $createDato = new Datos;
+                    $createDato->nombre = $datos[0];
+                    $createDato->mail = $datos[1];
+                    $createDato->empresa_id = $id;
+                    $createDato->save();
+                    $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $createDato->id;
+                    $evaluador = [$puesto,$datos[0],$datos[2]];
+    
+                    $correo = new DesempeñoMailable($sendLink,$evaluado,$evaluador);
+                    Mail::bcc($createDato->mail)->send($correo);
+                }else{
+                    $evaluado =[$puesto =>[$pass['autoevaluacion'][0],$pass['autoevaluacion'][2]]];
+                    //CREACION LINK
+                    $link = new idLink;
+                    $link->nombre_desempeño = json_encode($evaluado);
+                    $link->empresa_id = $id;
+                    $link->save();
+    
+                    $exist = Datos::where('mail',$datos[1])->first();
+                    $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $exist->id;
+    
+                    $evaluador = [$puesto,$datos[0],$datos[2]];
+    
+                    $correo = new DesempeñoMailable($sendLink,$evaluado,$evaluador);
+                    Mail::bcc($exist->mail)->send($correo);
+                }
+            }
+        }
+            
         return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
     }
 
@@ -127,7 +164,7 @@ class IdLinkController extends Controller
                 $correo = new EnviarMailable($sendLink);
                 foreach($request->email as $email){
                     if($email != null){
-                        Mail::to($email)->send($correo);
+                        Mail::bcc($email)->send($correo);
                     }
                 }
             return redirect('/')->with('create.encuesta','Encuesta enviada con exito');

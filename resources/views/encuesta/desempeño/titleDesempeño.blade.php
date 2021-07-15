@@ -2,11 +2,11 @@
 @section('main')
     <section class="desempeño--title">    
         <h1 class="margin-bot">Evaluado</h1>
-        @if(last(request()->segments()) == 'autoevaluacion')
-            <h2 class="color-violet">{{$nombre}}</h2>
-        @else
-            <h2 class="
-                @switch(last(request()->segments()))
+        <h2 class="
+                @switch(key($persona))
+                    @case('autoevaluacion')
+                        color-violet
+                        @break
                     @case('supervisor')
                         color-red
                         @break
@@ -17,8 +17,12 @@
                         color-orange
                         @break
                 @endswitch
-            ">{{$nombre[0]}} - {{$nombre[1]}}</h2>
-        @endif
+        ">
+            @foreach ($persona as $cargo => $datos)
+                {{$datos[0]}} - {{$datos[1]}}
+            @endforeach
+        </h2>
+
         <form action="" method="post">
             @csrf
             <div class="div__btn">

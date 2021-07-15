@@ -269,7 +269,18 @@
 .div__btn{
     justify-self: center;
 }
-
+.color-violet{
+    color: #6f30a0e1;
+}
+.color-red{
+    color: #ff0000c5;
+}
+.color-blue{
+    color: #0070c0cb;
+}
+.color-orange{
+    color: #c55911ce;
+}
 /* AUTOMATIZACION DE PRUEBAS */
 .th__time{
     width: 20%;

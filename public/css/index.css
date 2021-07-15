@@ -48,7 +48,18 @@
     width: 20px;
     margin-right: 20px;
 }
-
+.div--error{
+    align-items: center;
+    background-color: #f8d7da;
+    border-color: #f8d7da;
+    border-radius: 5px;
+    color: #842029;
+    display: flex;
+    font-size: 1.1rem;
+    justify-content: center;
+    margin: 30px 30px;
+    padding: 20px 30px;
+}
 /* AGREGAR EMPRESA */
 .article__agregar form{
     display: grid;

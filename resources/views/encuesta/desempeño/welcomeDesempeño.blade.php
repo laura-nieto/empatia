@@ -12,10 +12,10 @@
                 <th>Jerarquía del evaluado</th>
             </thead>
             <tbody>
-                @foreach ($cargos as $cargo => $nombre)
+                @foreach ($cargo as $name => $datos)
                     <tr>
                         <td class="color-white 
-                        @switch($cargo)
+                        @switch($name)
                             @case('autoevaluacion')
                                 color-background-violet
                                 @break
@@ -29,15 +29,15 @@
                                 color-background-orange
                                 @break
                         @endswitch
-                        ">{{$nombre[0]}}</td>
-                        <td>{{$nombre[1]}}</td>
+                        ">{{$datos[0]}}</td>
+                        <td>{{$datos[1]}}</td>
                         <td>
-                            @if ($cargo == 'autoevaluacion')
-                                Es tu evaluación
-                            @elseif($cargo == 'companiero')
-                                Eres su compañero
+                            @if ($name == 'autoevaluacion')
+                                Es tu Autoevaluación
+                            @elseif($name == 'companiero')
+                                Eres su Compañero
                             @else
-                                Eres su {{$cargo}}
+                                Eres su {{$name}}
                             @endif 
                         </td>
                     </tr>

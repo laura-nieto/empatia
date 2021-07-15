@@ -12,11 +12,7 @@
         <p><br>Recalcamos nuevamente. Procure ser objetivo e imparcial, centrándose en el desempeño profesional del evaluado como criterio fundamental.</p>
     </div>
     <div class="encuesta--div__title">
-        @if(last(request()->segments()) == 'autoevaluacion')
-            <h4 class="h4--title">Evaluado: {{$nombre}}</h4>
-        @else
-            <h4 class="h4--title">Evaluado: {{$nombre[0]}}</h4>
-        @endif
+        <h4 class="h4--title">Evaluado: {{$nombre}}</h4>
     </div>
     <form action="" method="post">
         @csrf

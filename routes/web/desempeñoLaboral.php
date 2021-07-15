@@ -32,33 +32,12 @@ Route::post('/encuesta/desempenio-laboral/{id}/{datos}/instrucciones',function($
     return redirect()->route('title_auto',['id'=>$id,'datos'=>$idDatos]);
 });
 
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=1/autoevaluacion',[DesempenioLaboralController::class,'get_title'])->name('title_auto');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=1/autoevaluacion',[DesempenioLaboralController::class,'view_encuesta']);
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=2/autoevaluacion',[DesempenioLaboralController::class,'encuesta'])->name('auto_page2');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=2/autoevaluacion',[DesempenioLaboralController::class,'store']);
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=3/autoevaluacion',[DesempenioLaboralController::class,'encuesta2'])->name('auto_page3');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=3/autoevaluacion',[DesempenioLaboralController::class,'store']);
-
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=1/supervisor',[DesempenioLaboralController::class,'get_title'])->name('title_supervisor');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=1/supervisor',[DesempenioLaboralController::class,'view_encuesta']);
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=2/supervisor',[DesempenioLaboralController::class,'encuesta'])->name('supervisor_page2');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=2/supervisor',[DesempenioLaboralController::class,'store']);
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=3/supervisor',[DesempenioLaboralController::class,'encuesta2'])->name('supervisor_page3');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=3/supervisor',[DesempenioLaboralController::class,'store']);
-
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=1/subalterno',[DesempenioLaboralController::class,'get_title'])->name('title_subalterno');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=1/subalterno',[DesempenioLaboralController::class,'view_encuesta']);
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=2/subalterno',[DesempenioLaboralController::class,'encuesta'])->name('subalterno_page2');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=2/subalterno',[DesempenioLaboralController::class,'store']);
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=3/subalterno',[DesempenioLaboralController::class,'encuesta2'])->name('subalterno_page3');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=3/subalterno',[DesempenioLaboralController::class,'store']);
-
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=1/companiero',[DesempenioLaboralController::class,'get_title'])->name('title_compañero');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=1/companiero',[DesempenioLaboralController::class,'view_encuesta']);
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=2/companiero',[DesempenioLaboralController::class,'encuesta'])->name('compañero_page2');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=2/companiero',[DesempenioLaboralController::class,'store']);
-Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=3/companiero',[DesempenioLaboralController::class,'encuesta2'])->name('compañero_page3');
-Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=3/companiero',[DesempenioLaboralController::class,'store']);
+Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=1',[DesempenioLaboralController::class,'get_title'])->name('title_auto');
+Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=1',[DesempenioLaboralController::class,'view_encuesta']);
+Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=2',[DesempenioLaboralController::class,'encuesta'])->name('preguntas');
+Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=2',[DesempenioLaboralController::class,'store']);
+Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=3',[DesempenioLaboralController::class,'encuesta2'])->name('preguntas_libre');
+Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=3',[DesempenioLaboralController::class,'store']);
 
 Route::get('/encuesta/desempenio-laboral/{id}/{datos}/fin',function(){
     return view('encuesta.finEncuesta');

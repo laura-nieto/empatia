@@ -23,7 +23,7 @@ form.addEventListener('submit',(e)=>{
     e.preventDefault();
     swal({
         title: "¿Seguro que quieres enviar la información?",
-          text: "Esta acción ya no se podrá deshacer.",
+          text: "Una vez enviada la información, no se podrán cambiar las respuestas.",
           type: "warning",
           buttons: ["No enviar", "Enviar"],
         }).then( value =>{
