@@ -22,7 +22,7 @@ html, body{
 h1,h2,h3,h4,h5,h6{
     font-family: 'Raleway-Bold', sans-serif;
 }
-a,p,label,td,th,li{
+a,p,label,td,th,li,caption{
     font-family: 'Questrial', sans-serif;
 }
 button,input[type=submit]{

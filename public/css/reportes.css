@@ -43,7 +43,7 @@
     font-size: 1.2rem;
     padding-bottom: 10px;
 }
-.form--automatizacion__table>thead>tr>th:not(:first-child){
+.form--automatizacion__table>thead>tr>th:not(:first-child),.form--automatizacion__table--report>thead>tr>th,.form--automatizacion__table--report>tbody>tr>td{
     border: #000 solid 1px;
     padding: 10px;
 }
@@ -53,4 +53,10 @@
 }
 .reporte-column-width{
     width: 40%;
+}
+.form--automatizacion__table--report{
+    border-collapse:collapse;
+    margin: 10px auto;
+    width: 40%;
+    text-align: center;
 }

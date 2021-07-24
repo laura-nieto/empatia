@@ -13,7 +13,7 @@ class DatosController extends Controller
 {
     public function indexAutomatizacion($idEmpresa, $idPersona)
     {
-        $persona = Datos::with('empresas')->findOrFail($idPersona)->load(['encuesta_automatizacion','datos_categorias']);
+        $persona = Datos::findOrFail($idPersona)->load(['datos_categorias']);
         return view('reporte.automatizacion',['persona'=>$persona]);
     }
 

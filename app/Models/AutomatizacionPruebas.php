@@ -9,6 +9,13 @@ class AutomatizacionPruebas extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'pregunta',
+        'opciones',
+        'category_id',
+        'imagen'
+    ];
+
     public function categorias()
     {
         return $this->belongsTo(Categoria::class);

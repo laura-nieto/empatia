@@ -15,7 +15,8 @@ class AutomatizacionPruebasController extends Controller
     public function export($idEmpresa,$idPersona){
         $dato = Datos::findOrFail($idPersona);
         $empresa = $dato->empresas->nombre;
-        return Excel::download(new AutomatizacionExport($idEmpresa,$idPersona), $dato->nombre . ' - ' . $empresa . '.xlsx');
+        $categories = $dato->datos_categorias;
+        return Excel::download(new AutomatizacionExport($idPersona,$categories), $dato->nombre . ' - ' . $empresa . '.xlsx');
     }
 
     public function responderCategoria($idLink,$idDatos,$idCategoria)
@@ -27,7 +28,8 @@ class AutomatizacionPruebasController extends Controller
             }
         }
         $preguntas = AutomatizacionPruebas::where('category_id',$idCategoria)->get();
-        return view('encuesta.automatizacion.preguntas',['preguntas'=>$preguntas,'tiempo'=>$tiempo]);
+        
+        return view('encuesta.automatizacion.preguntas',['preguntas'=>$preguntas,'tiempo'=>$tiempo,'idCategoria'=>$idCategoria]);
     }
     public function redireccionar($idLink,$idDatos,$idCategoria)
     {
@@ -84,9 +86,28 @@ class AutomatizacionPruebasController extends Controller
     public function store(Request $request,$idLink,$idDatos,$idCategoria)
     {
         $dato = Datos::findOrFail($idDatos);
-        foreach ($request->except(['_token','tiempo']) as $pregunta => $respuesta) {
-            $guardar = AutomatizacionPruebas::find($pregunta);
-            $guardar->datos()->attach($idDatos,['respuesta'=>$respuesta]);
+        $request = $request->except(['_token','tiempo']);
+        if ($idCategoria == 8 || $idCategoria == 5) {
+            foreach ($request as $pregunta =>$rta) {
+                $guardar = AutomatizacionPruebas::find($pregunta);
+                $guardar->datos()->attach($idDatos,['respuesta'=>json_encode($rta)]);
+            }
+        }elseif($idCategoria == 3){
+            $i=1;
+            foreach ($request as $pregunta => $rta) {
+                $guardar = AutomatizacionPruebas::find($pregunta);
+                if ($i%5 === 0) {
+                    $guardar->datos()->attach($idDatos,['respuesta'=>json_encode($rta)]);   
+                }else{
+                    $guardar->datos()->attach($idDatos,['respuesta'=>$rta]);
+                }
+            $i+=1;
+            }
+        }else{
+            foreach ($request as $pregunta => $respuesta) {
+                $guardar = AutomatizacionPruebas::find($pregunta);
+                $guardar->datos()->attach($idDatos,['respuesta'=>$respuesta]);
+            }
         }
         $dato->datos_categorias()->updateExistingPivot($idCategoria,['respondio' => 1]);
         return redirect()->route('welcome',['id'=>$idLink,'datos'=>$idDatos]);

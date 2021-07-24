@@ -24,7 +24,7 @@
             @foreach ($empresa->opcionesDemograficos as $opcion)           
                 <tbody>
                     <tr>
-                        <td colspan="2"><strong>{{$opcion->nombre_dato}}</strong></td>
+                        <td colspan="2" class="text-center"><strong>{{$opcion->nombre_dato}}</strong></td>
                     </tr>
                     @php
                         $i = 0;

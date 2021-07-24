@@ -5,26 +5,30 @@ namespace App\Exports;
 use App\Models\AutomatizacionPruebas;
 use App\Models\Datos;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\FromView;
-use Illuminate\Contracts\View\View;
+// use Maatwebsite\Excel\Concerns\FromView;
+// use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 
-class AutomatizacionExport implements FromView
+class AutomatizacionExport implements WithMultipleSheets
 {
-    protected $empresa;
     protected $persona;
+    protected $categories;
 
-    public function __construct($empresa,$persona)
+    public function __construct($persona,$categories)
     {
-        $this->empresa = $empresa;
         $this->persona = $persona;
+        $this->categories = $categories;
     }
     
-    public function view(): View
+    public function sheets(): array
     {
+        $sheets = [];
         $datos = Datos::find($this->persona)->load(['encuesta_automatizacion','datos_categorias']);
-        return view('reporte.export.automatizacionLaboral',[
-            'persona' => $datos
-        ]);
+
+        for ($i=0; $i < count($this->categories); $i++) {
+            $sheets[]= new AutomatizacionCategoriaSheet($datos,$this->categories[$i]);
+        }
+        return $sheets;
     }
 }

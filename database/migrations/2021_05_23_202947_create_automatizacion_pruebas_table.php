@@ -15,7 +15,9 @@ class CreateAutomatizacionPruebasTable extends Migration
     {
         Schema::create('automatizacion_pruebas', function (Blueprint $table) {
             $table->id();
-            $table->string('pregunta');
+            $table->text('pregunta');
+            $table->text('opciones');
+            $table->string('imagen')->nullable();
             $table->foreignId('category_id')->constrained('categorias');
             $table->timestamps();
         });

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use App\Models\AutomatizacionPruebas;
 
 
@@ -15,6 +16,6 @@ class AutomatizacionSeeder extends Seeder
      */
     public function run()
     {
-        AutomatizacionPruebas::factory()->count(30)->create();
+        //AutomatizacionPruebas::factory()->count(30)->create();
     }
 }

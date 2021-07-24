@@ -17,7 +17,7 @@ class CreateEncuestaAutomatizacionTable extends Migration
             $table->id();
             $table->foreignId('datos_id')->constrained('datos');
             $table->foreignId('pregunta_id')->constrained('automatizacion_pruebas');
-            $table->string('respuesta');
+            $table->string('respuesta')->nullable();
             $table->timestamps();
         });
     }

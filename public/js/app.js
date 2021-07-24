@@ -7,7 +7,7 @@ var typewatch = function(){
         clearTimeout (timer);
         timer = setTimeout(callback, 1000);
     }  
-}();
+};
 
 var crearInputs = function(){
     let value = $("input#who-send").val()

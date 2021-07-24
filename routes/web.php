@@ -6,6 +6,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\DatosDemograficosController;
 use App\Http\Controllers\MensajeController;
 
+use App\Imports\AutomatizacionImport;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,14 @@ Route::post('/modificar/automatizacion-laboral',[MensajeController::class,'updat
 // Route::get('/crear/automatizacion-laboral',[MensajeController::class,'create'])->middleware('auth');
 // Route::post('/crear/automatizacion-laboral',[MensajeController::class,'store'])->middleware('auth');
 
+
+Route::get('/migrate/automatizacion',function(){
+    return view('migrateAutomatizacion');
+});
+Route::post('/migrate/automatizacion',function(){
+    Excel::import(new AutomatizacionImport, request()->file('importAuto'));
+    dd('ya');
+});
 require __DIR__.'/web/automatizacion.php';
 require __DIR__.'/web/climaLaboral.php';
 require __DIR__.'/web/desempeñoLaboral.php';
