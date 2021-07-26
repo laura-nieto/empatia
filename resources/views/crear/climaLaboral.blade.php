@@ -43,7 +43,7 @@
         </table>
         <div class="form--clima--div__cantidad">
             <label for="">Cantidad de personas a enviar</label>
-            <input type="text" name="who_send" id="who-send" onKeyUp="typewatch(crearInputs);">
+            <input type="text" name="who_send" id="who-send" onKeyUp="typewatch(crearInputs());">
         </div>
         <div class="form--clima--div__email">
             @if ($emailsGuardados != null)
