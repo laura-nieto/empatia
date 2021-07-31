@@ -26,20 +26,20 @@ class ClimaLaboralController extends Controller
     public function finEncuesta(Request $request,$idLink,$idDatos)
     {
         $request->session()->all();
-        $newDatos = new Datos;
+        $persona = Datos::findOrFail($idDatos);
+
         foreach ($request->session()->all() as $tipo => $datos) {
             if ($tipo == 'encuesta') {
-                $newDatos->nombre = $datos['nombre'];
-                $newDatos->mail = $datos['mail'];
-                $newDatos->empresa_id = $datos['empresa_id'];
-                foreach($datos['datos_demograficos'] as $key => $dato){
-                    $save[$key] = $dato;
+                if (!$persona->importado) {
+                    foreach($datos['datos_demograficos'] as $key => $dato){
+                        $save[$key] = $dato;
+                    }
+                    $persona->datos_demograficos = json_encode($save);
+                    $persona->save();
                 }
-                $newDatos->datos_demograficos = json_encode($save);
-                $newDatos->save();
                 foreach ($datos['preguntas'] as $pregunta => $respuesta) {
                     $guardar = ClimaLaboral::find($pregunta);
-                    $guardar->datos()->attach($newDatos->id,['respuesta'=>$respuesta]);
+                    $guardar->datos()->attach($persona->id,['respuesta'=>$respuesta]);
                 }
             }
         }

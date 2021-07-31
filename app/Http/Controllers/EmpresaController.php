@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class EmpresaController extends Controller
 {
+    public function vistaCargarDatos($idEmpresa)
+    {
+        $empresa = Empresa::findOrFail($idEmpresa);
+        return view('crear.importarDatos',['empresa'=>$empresa]);
+    }
     public function vistaCargarMail($idEmpresa)
     {
         $empresa = Empresa::findOrFail($idEmpresa);

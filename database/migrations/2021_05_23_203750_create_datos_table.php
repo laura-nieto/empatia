@@ -18,7 +18,8 @@ class CreateDatosTable extends Migration
             $table->string('nombre');
             $table->string('mail');
             $table->string('observacion')->nullable();
-            $table->string('datos_demograficos')->nullable();
+            $table->text('datos_demograficos')->nullable();
+            $table->boolean('importado')->default('0');
             $table->foreignId('empresa_id')->constrained('empresas');
             $table->timestamps();
         });

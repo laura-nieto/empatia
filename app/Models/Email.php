@@ -15,6 +15,7 @@ class Email extends Model
      */
     protected $fillable = [
         'email',
+        'nombre',
         'empresa_id',
     ];
     

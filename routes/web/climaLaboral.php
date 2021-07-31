@@ -18,6 +18,9 @@ Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima
 Route::get('/importar/clima-laboral/{name}',[EmpresaController::class,'vistaCargarMail'])->middleware('auth');
 Route::post('/importar/clima-laboral/{name}',[ClimaLaboralController::class,'importMail'])->middleware('auth');
 
+Route::get('/importar/clima-laboral/datos/{name}',[EmpresaController::class,'vistaCargarDatos'])->middleware('auth');
+Route::post('/importar/clima-laboral/datos/{name}',[IdLinkController::class,'importDatos'])->middleware('auth');
+
 Route::get('/borrar/email/{idEmpresa}/{idEmail}',[EmailController::class,'destroy'])->middleware('auth');
 
 //REPORTE
@@ -27,11 +30,11 @@ Route::get('/exportar/clima-laboral/{empresa}',[ClimaLaboralController::class,'e
 
 
 //ENCUESTA
-Route::get('/encuesta/clima-laboral/{id}',[MensajeController::class,'mensaje_clima']);
-Route::post('/encuesta/clima-laboral/{id}',[DatosController::class,'index']);
+Route::get('/encuesta/clima-laboral/{id}/{datosID}',[MensajeController::class,'mensaje_clima']);
+Route::post('/encuesta/clima-laboral/{id}/{datosID}',[DatosController::class,'index']);
 
-Route::get('/encuesta/clima-laboral/{id}/datos',[IdLinkController::class,'index'])->name('datosClima');
-Route::post('/encuesta/clima-laboral/{id}/datos',[DatosController::class,'storeClima']);
+Route::get('/encuesta/clima-laboral/{id}/{datosID}/datos',[IdLinkController::class,'index'])->name('datosClima');
+Route::post('/encuesta/clima-laboral/{id}/{datosID}/datos',[DatosController::class,'storeClima']);
 
 Route::get('/encuesta/clima-laboral/{id}/{datos}/page=1',[ClimaLaboralController::class,'page1'])->name('clima_pag1');
 Route::post('/encuesta/clima-laboral/{id}/{datos}/page=1',[ClimaLaboralController::class,'store']);

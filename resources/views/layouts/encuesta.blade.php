@@ -9,7 +9,7 @@
 </head>
 <body>
     <header class="header--encuesta">
-        <img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" class="header--encuesta__img">
+        @yield('encabezado')
     </header>
     <main>
         <div class="container">

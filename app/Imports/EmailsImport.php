@@ -23,6 +23,7 @@ class EmailsImport implements ToModel, WithHeadingRow
     {
         return new Email([
             'email' => $row['email'] ?? $row['correo'],
+            'nombre'=>$row['nombre'],
             'empresa_id'=>$this->empresa
         ]);
     }

@@ -1,14 +1,39 @@
 @extends('layouts.encuesta')
+@section('encabezado')
+    <div class="header--encuesta--logo">
+        <h2 class="title--header--encuesta">Encuesta de Clima Laboral</h2>
+        <img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" class="header--encuesta__img--transparent">
+    </div>
+@endsection
 @section('main')
     <div class="encuesta--div__explain">
         <p>
-            Responder de acuerdo a lo que perciba dentro de su ambiente laboral, eligiendo alguna de las opciones que a continuación se presenta. Marque con una  "X" en el casillero correspondiente según su opinión.  
-            <br>TED - Totalmente en desacuerdo
-            <br>ED - En desacuerdo
-            <br>NDANED - Ni de acuerdo ni en desacuerdo
-            <br>DA - De acuerdo
-            <br>TDS - Totalmente de acuerdo
+            Responder de acuerdo a lo que perciba dentro de su ambiente laboral, eligiendo alguna de las opciones que a continuación se presenta. Marque con una  "X" en el casillero correspondiente según su opinión.
         </p>
+        <table>
+            <tbody>
+                <tr>
+                    <td>TED</td>
+                    <td>Totalmente en desacuerdo</td>
+                </tr>
+                <tr>
+                    <td>ED</td>
+                    <td>En desacuerdo</td>
+                </tr>
+                <tr>
+                    <td>NDANED</td>
+                    <td>Ni de acuerdo ni en desacuerdo</td>
+                </tr>
+                <tr>
+                    <td>DA</td>
+                    <td>De acuerdo</td>
+                </tr>
+                <tr>
+                    <td>TDS</td>
+                    <td>Totalmente de acuerdo</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <form action="" method="post">
         @csrf

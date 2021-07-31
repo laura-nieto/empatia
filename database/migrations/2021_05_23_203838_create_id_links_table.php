@@ -15,7 +15,7 @@ class CreateIdLinksTable extends Migration
     {
         Schema::create('id_links', function (Blueprint $table) {
             $table->id();
-            $table->string('preguntar_datos')->nullable();
+            $table->text('preguntar_datos')->nullable();
             $table->string('categorias_automatizacion')->nullable();
             $table->string('nombre_desempeño')->nullable();
             $table->foreignId('empresa_id')->constrained('empresas');

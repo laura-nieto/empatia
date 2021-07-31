@@ -9,6 +9,6 @@
 <body>
     <h3>{{$nombre}}</h3>
     <p>Usted pidió por el puesto <strong>{{$puesto}}</strong></p>
-    <a href="{{$link}}">{{$link}}</a>
+    <a href='http://{{$link}}'>{{$link}}</a>
 </body>
 </html>

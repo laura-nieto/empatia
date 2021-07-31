@@ -469,7 +469,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td style="padding:0;Margin:0"><a href="{{$link}}"
+                                                                <td style="padding:0;Margin:0"><a href='http://{{$link}}'
                                                                         style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#0645AD;font-size:14px">{{$link}}</a>
                                                                 </td>
                                                             </tr>

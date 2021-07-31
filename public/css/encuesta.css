@@ -73,6 +73,10 @@
     display: flex;
     flex-direction: column;
 }
+.div__datos>p{
+    line-height: 1.5;
+    width: 85%;
+}
 .div__datos>label{
     margin-bottom: 5px;
 }
@@ -82,7 +86,7 @@
 .div__datos>select{
     padding: 5px;
 }
-.div__datos>select>option{
+.div__datos>select>option,.text-capitalize{
     text-transform: capitalize;
 }
 .article__encuesta{
@@ -129,6 +133,13 @@
     color: #084298;
     margin: 30px 30px;
     padding: 20px 30px;
+}
+.encuesta--div__explain>table{
+    margin: 10px auto 0;
+}
+.encuesta--div__explain>table>tbody>tr>td{
+    border: #084298 solid 1px;
+    padding: 5px;
 }
 .encuesta--div__title{
     margin: 40px 0;
@@ -298,7 +309,7 @@
     align-items: flex-end;
     margin-bottom: 35px;
 }
-.div--separate>table,.div--bfq>table,.div--table--trueFalse>table,.div--table--liderazgo>table,.form-automatizacion__article--kenstel>table,.form-automatizacion__article--moss>table,.form-automatizacion__article--kostick>table,.form-automatizacion__article--valanti>table,.table--opciones,.form-automatizacion__article--bfq>table,.preguntas>table,.form-automatizacion__article--estres>table{
+.div--separate>table,.div--bfq>table,.div--table--trueFalse>table,.div--table--liderazgo>table,.form-automatizacion__article--kenstel>table,.form-automatizacion__article--moss>table,.form-automatizacion__article--kostick>table,.form-automatizacion__article--valanti>table,.table--opciones,.form-automatizacion__article--bfq>table,.preguntas>table,.form-automatizacion__article--estres>table,.encuesta--div__explain>table{
     border-collapse: collapse;
 }
 .div--separate>table>thead>tr>th{

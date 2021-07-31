@@ -9,6 +9,14 @@ class Datos extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'mail',
+        'nombre',
+        'empresa_id',
+        'datos_demograficos',
+        'importado'
+    ];
+
     public function empresas()
     {
         return $this->belongsTo(Empresa::class,'empresa_id');

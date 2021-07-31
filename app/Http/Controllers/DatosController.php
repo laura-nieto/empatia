@@ -26,36 +26,34 @@ class DatosController extends Controller
         return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'evaluaciones'=>$auto]);
     }
 
-    public function storeClima(Request $request,$id)
+    public function storeClima(Request $request,$id,$idDatos)
     {
         $pass = $request->except(['_token','empresa_id','nombre','mail']);
-        // VALIDACION
-        $rules = [
-            'nombre' => 'required',
-            'mail' => 'required|email',
-        ];
-        $message = [
-            'required'=>'El campo es obligatorio',
-            'email'=>'Debe ingresarse una dirección de correo correcta',
-        ];
-        $request->validate($rules,$message);
-
-        // GUARDAR SESION
-        $datos_demograficos = [];
-        foreach($pass as $key => $dato){
-            $save[$key] = $dato;
+        // // VALIDACION
+        // $rules = [
+        //     'nombre' => 'required',
+        //     'mail' => 'required|email',
+        // ];
+        // $message = [
+        //     'required'=>'El campo es obligatorio',
+        //     'email'=>'Debe ingresarse una dirección de correo correcta',
+        // ];
+        // $request->validate($rules,$message);
+        $findPerson = Datos::findOrFail($idDatos);
+        if (!$findPerson->importado) {
+            // GUARDAR SESION
+            $datos_demograficos = [];
+            foreach($pass as $key => $dato){
+                $save[$key] = $dato;
+            }
+            $session = [
+                'datos_demograficos' => $save,
+                'preguntas'=>[]
+            ];
+            $request->session()->put('encuesta',$session);
         }
-        $session = [
-            'empresa_id' => $request->empresa_id,
-            'nombre' => $request->nombre,
-            'mail' => $request->mail,
-            'datos_demograficos' => $save,
-            'preguntas'=>[]
-        ];
-        $request->session()->put('encuesta',$session);
-        $id_datos = uniqid();
         
-        return redirect()->route('clima_pag1',['id'=>$id,'datos'=>$id_datos]);
+        return redirect()->route('clima_pag1',['id'=>$id,'datos'=>$idDatos]);
     }
     
     public function indexClima($id)
@@ -80,12 +78,12 @@ class DatosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,$id)
+    public function index(Request $request,$id,$idDatos)
     {
         if($request->has('false')){
             return view('encuesta.laterClima');
         } elseif($request->has('true')){
-            return redirect()->route('datosClima',['id'=>$id]);
+            return redirect()->route('datosClima',['id'=>$id,'datosID'=>$idDatos]);
         }
     }
 

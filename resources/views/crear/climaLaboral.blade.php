@@ -4,13 +4,22 @@
     @if (session('create.emails') || session('destroy.emails'))
         <div class="div--success">
             <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
-            {{session('create.emails')}}
-            {{session('destroy.emails')}}
+            <p>{{session('create.emails')}}</p>
+            <p>{{session('destroy.emails')}}</p>
         </div>
     @endif
+    @if (session('null'))
+        <div class="div--error">
+            <p>{{session('null')}}</p>
+        </div> 
+    @endif
+    @error('null')
+        <small id="emailHelp" class="error-login">{{$message}}</small>
+    @enderror
     <h2 class="h2__title">Clima Laboral - {{$empresa->nombre}}</h2>
     <div class="div__importar">
         <a href="/importar/clima-laboral/{{last(request()->segments())}}" class="btn link-color">Cargar E-mails</a>
+        <a href="/importar/clima-laboral/datos/{{last(request()->segments())}}" class="btn link-color">Cargar Datos</a>
     </div>
     <form action="" method="post" class="form__clima">
         @csrf
@@ -48,12 +57,16 @@
         <div class="form--clima--div__email">
             @if ($emailsGuardados != null)
                 @foreach($emailsGuardados as $email)
-                    <div>
-                        <label>E-mail</label>
-                        <div class="div__email--borrar">
-                            <input type="email" name="email[]" value="{{$email->email}}">
-                            <a href="/borrar/email/{{$empresa->id}}/{{$email->id}}"><img src="{{asset('/img/cancel.png')}}" alt="Icono borrar" class="img--success"></a>
+                    <div class="div--email__guardados">
+                        <div>
+                            <label>Nombre</label>
+                            <input type="text" name="nombre[]" value="{{$email->nombre}}">
                         </div>
+                        <div class="div__email--borrar">
+                            <label>E-mail</label>
+                            <input type="email" name="email[]" value="{{$email->email}}">
+                        </div>
+                        <a href="/borrar/email/{{$empresa->id}}/{{$email->id}}"><img src="{{asset('/img/cancel.png')}}" alt="Icono borrar" class="img--success"></a>
                     </div>
                 @endforeach
             @else

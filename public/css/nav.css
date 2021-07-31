@@ -10,6 +10,10 @@
     font-family: Raleway-Bold;
     src: url('/fonts/RALEWAY FONT/Raleway-Bold.ttf');  
 }
+@font-face {
+    font-family: Raleway-ExtraLight;
+    src: url('/fonts/RALEWAY FONT/Raleway-ExtraLight.ttf');  
+}
 *{
     box-sizing: border-box;
     margin: 0;
@@ -58,12 +62,40 @@ header nav{
 
 /* HEADER ENCUESTA */
 .header--encuesta{
-    display: flex;
-    justify-content: center;
+    align-items: center;
+    display: grid;
+    margin: 0 auto;
     padding: 20px;
+    width: 85vw;
+}
+.header--encuesta--logo{
+    align-items: center;
+    display: flex;
+    grid-row: 1;
+    justify-self: flex-start;
 }
 .header--encuesta__img{
-    width: 7vw;
+    width: 10vw;
+}
+.header--encuesta__img--transparent{
+    opacity: 0.5;
+    width: 5vw;
+}
+.title--logo{
+    color: #0f8379;
+}
+.title--logo:last-of-type{
+    margin-left: 10px;
+}
+.header--encuesta--title{
+    grid-column: span 2;
+    grid-row: 1;
+}
+.header--encuesta--title>h3,.title--header--encuesta{
+    color: #0f8379;
+    font-family: Raleway-ExtraLight;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
 }
 
 /* BUTTON */

@@ -14,15 +14,20 @@ class EnviarMailable extends Mailable
     public $subject = 'Encuesta sobre el Clima Laboral';
 
     public $link;
+    public $empresa;
+    public $nombre;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($link)
+    public function __construct($link,$nombre,$empresa)
     {
         $this->link = $link;
+        $this->empresa = $empresa;
+        $this->nombre = $nombre;
+        
     }
 
     /**
