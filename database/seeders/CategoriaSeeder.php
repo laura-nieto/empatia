@@ -17,20 +17,56 @@ class CategoriaSeeder extends Seeder
     {
         //Categoria::factory()->count(12)->create();
         DB::table('categorias')->insert([
-            ['nombre'=>'Kenstel'],
-            ['nombre'=>'Moss'],
-            ['nombre'=>'Test Barsit'],
-            ['nombre'=>'Test Kostick'],
-            ['nombre'=>'Valanti'],
+            [
+                'nombre'=>'Kenstel',
+                'codigo' => 'INPEKE-01'
+            ],
+            [
+                'nombre'=>'Moss',
+                'codigo' => 'TEMOAS-03'
+            ],
+            [
+                'nombre'=>'Test Barsit',
+                'codigo' => 'TEBAT-01'
+            ],
+            [
+                'nombre'=>'Test Kostick',
+                'codigo'=>'TEKOS-02'
+            ],
+            [
+                'nombre'=>'Valanti',
+                'codigo' => 'CUVATI-02'
+            ],
             
-            ['nombre'=>'Test Wonderlic'],
-            ['nombre'=>'Cuestionario BFQ'],
-            ['nombre'=>'Test DISC'],
-            ['nombre'=>'Test Asertividad'],
-            ['nombre'=>'Cuestionario Estilos Liderazgo'],
+            [
+                'nombre'=>'Test Wonderlic',
+                'codigo' => 'TEWONHC-03'
+            ],
+            [
+                'nombre'=>'Cuestionario BFQ',
+                'codigo'=>'CUBIFI-01'
+            ],
+            [
+                'nombre'=>'Test DISC',
+                'codigo'=>'TEDI-02'
+            ],
+            [
+                'nombre'=>'Test Asertividad',
+                'codigo' => 'TEASER-03'
+            ],
+            [
+                'nombre'=>'Cuestionario Estilos Liderazgo',
+                'codigo' => 'ESLI-02'
+            ],
 
-            ['nombre'=>'Cuestionario Estrés Laboral'],
-            ['nombre'=>'Inventario ICE de Baron'],
+            [
+                'nombre'=>'Cuestionario Estrés Laboral',
+                'codigo'=>'ESLA-01'
+            ],
+            [
+                'nombre'=>'Inventario ICE de Baron',
+                'codigo'=>'ICE-01'
+            ],
 
         ]);
     }

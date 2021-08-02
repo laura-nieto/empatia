@@ -1,7 +1,7 @@
 @extends('layouts.encuesta')
 @section('encabezado')
     <div class="header--encuesta--logo">
-        <h2 class="title--header--encuesta"></h2>
+        <h2 class="title--header--encuesta">Evaluación de Competencias Profesionales</h2>
         <img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" class="header--encuesta__img--transparent">
     </div>
 @endsection

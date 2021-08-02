@@ -12,7 +12,7 @@ use App\Http\Controllers\EmailController;
 
 // ENVIAR
 Route::get('/enviar/clima-laboral',[EmpresaController::class,'index']);
-Route::get('/enviar/clima-laboral/{name}',[DatosDemograficosController::class,'index'])->middleware('auth');
+Route::get('/enviar/clima-laboral/{name}',[DatosDemograficosController::class,'index'])->name('enviarClima')->middleware('auth');
 Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima'])->middleware('auth');
 
 Route::get('/importar/clima-laboral/{name}',[EmpresaController::class,'vistaCargarMail'])->middleware('auth');

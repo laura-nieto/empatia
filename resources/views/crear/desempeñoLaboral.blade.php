@@ -8,7 +8,7 @@
             </p>
         </div>
     @endif
-    <h2 class="h2__title">Desempeño Laboral - Empresa</h2>
+    <h2 class="h2__title">Desempeño Laboral - {{$nombreEmpresa}}</h2>
     <form action="" method="post" class="form__desempeño">
         @csrf
         <div class="form--desempeño__div evaluar color-new-violet">

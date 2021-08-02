@@ -21,6 +21,6 @@
             </tbody>
         </table>
     </div>
-    <p>Tenga presente que marcar SI o NO, no es considerado ni bueno ni malo, conteste con sinceridad a fin de conocer</p>
+    <p>Tenga presente que marcar SI o NO, no es considerado ni bueno ni malo, conteste con sinceridad a fin de conocer a mayor detalle su forma de ser.</p>
     <p>Responda en forma rápida, siga su primer impulso. Trate de no dudar solo tiene dos alternativas</p>
 </section>

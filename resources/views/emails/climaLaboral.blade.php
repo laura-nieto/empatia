@@ -302,12 +302,25 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" class="es-left" align="left"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
                                                 <tr>
-                                                    <td class="es-m-p0r es-m-p20b" valign="top" align="center"
+                                                    <td class="es-m-p0r es-m-p20b" valign="top"
                                                         style="padding:0;Margin:0;width:160px"> 
                                                         <table cellpadding="0" cellspacing="0" width="100%"
                                                             role="presentation"
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
+                                                                <td>
+                                                                    <img src="{{$message->embed(public_path() .'/img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" width='100px'>
+                                                                </td>
+                                                                <td>
+                                                                    <h5
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
+                                                                        Empatia
+                                                                    </h6>
+                                                                    <h5
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
+                                                                        Consultores
+                                                                    </h5>
+                                                                </td>
                                                             </tr>
                                                         </table>
                                                     </td>

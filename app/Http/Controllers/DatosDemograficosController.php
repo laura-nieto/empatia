@@ -39,7 +39,9 @@ class DatosDemograficosController extends Controller
     {
         $empresa = Empresa::findOrFail($idEmpresa);
         $emails = Email::where('empresa_id',$idEmpresa)->get();
-        return view('crear.climaLaboral',['empresa'=>$empresa,'emailsGuardados'=>$emails]);
+        $importados = Empresa::findOrFail($idEmpresa)->datos->where('importado',true);
+        
+        return view('crear.climaLaboral',['empresa'=>$empresa,'emailsGuardados'=>$emails,'importados'=>$importados]);
     }
 
     /**

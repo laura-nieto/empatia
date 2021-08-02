@@ -14,7 +14,7 @@
                             <td rowspan="2" class="text-center">{{$pregunta->pregunta}}</td>
                         @endif
                         <td>{{$opcion}}</td>
-                        <td class="td--width"><input type="radio" name="{{$pregunta->id}}" value="{{$opcion}}"></td>
+                        <td class="td--width"><input type="radio" name="{{$pregunta->id}}" value="{{ $key == 0 ? 'A' : 'B'}}"></td>
                     </tr>
                 @endforeach
             </tbody>

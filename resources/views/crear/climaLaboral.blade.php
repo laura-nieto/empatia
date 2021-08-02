@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('title','Crear Clima Laboral - Empatia 360°')
 @section('main')
-    @if (session('create.emails') || session('destroy.emails'))
+    @if (session('create.emails') || session('destroy.emails')||session('import.datos')||session('import.emails'))
         <div class="div--success">
             <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
             <p>{{session('create.emails')}}</p>
             <p>{{session('destroy.emails')}}</p>
+            <p>{{session('import.datos')}}</p>
+            <p>{{session('import.emails')}}</p>
         </div>
     @endif
     @if (session('null'))
@@ -55,6 +57,20 @@
             <input type="text" name="who_send" id="who-send" onKeyUp="typewatch(crearInputs());">
         </div>
         <div class="form--clima--div__email">
+            @if ($importados !=null)
+                @foreach ($importados as $importado)
+                    <div class="div--email__guardados">
+                        <div>
+                            <label>Nombre</label>
+                            <input type="text" name="importados[{{$importado->id}}][]" value="{{$importado->nombre}}">
+                        </div>
+                        <div class="div--email__guardados">
+                            <label>E-mail</label>
+                            <input type="email" name="importados[{{$importado->id}}][]" value="{{$importado->mail}}">
+                        </div>
+                    </div>
+                @endforeach
+            @endif
             @if ($emailsGuardados != null)
                 @foreach($emailsGuardados as $email)
                     <div class="div--email__guardados">
@@ -68,9 +84,7 @@
                         </div>
                         <a href="/borrar/email/{{$empresa->id}}/{{$email->id}}"><img src="{{asset('/img/cancel.png')}}" alt="Icono borrar" class="img--success"></a>
                     </div>
-                @endforeach
-            @else
-                
+                @endforeach               
             @endif
         </div>
         <input type="submit" name="submitButton" value="Guardar Datos" class="btn">

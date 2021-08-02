@@ -10,7 +10,7 @@
             <ol class="list--style--letter ol--position--list">
                 <li>Como ha pasado el tiempo</li>
                 <li>Cuanto has cambiado desde la última vez</li>
-                <li>Te extrañé mucho</li>
+                <li class="background--check--other">Te extrañé mucho</li>
                 <li>Recalcar el afecto que le tiene</li>
             </ol>
         </ol>

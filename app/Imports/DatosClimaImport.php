@@ -24,7 +24,7 @@ class DatosClimaImport implements ToModel,WithHeadingRow
         $valores = $row;
         unset($valores['nombre'],$valores['email']);
         return new Datos([
-            'mail' => $row['email'] ?? $row['correo'],
+            'mail' => $row['email'],
             'nombre'=>$row['nombre'],
             'datos_demograficos'=>json_encode($valores),
             'empresa_id'=>$this->empresa,

@@ -302,12 +302,25 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" class="es-left" align="left"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
                                                 <tr>
-                                                    <td class="es-m-p0r es-m-p20b" valign="top" align="center"
+                                                    <td class="es-m-p0r es-m-p20b" valign="top"
                                                         style="padding:0;Margin:0;width:160px">
                                                         <table cellpadding="0" cellspacing="0" width="100%"
                                                             role="presentation"
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
+                                                                <td>
+                                                                    <img src="{{$message->embed(public_path() .'/img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" width='100px'>
+                                                                </td>
+                                                                <td>
+                                                                    <h5
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
+                                                                        Empatia
+                                                                    </h6>
+                                                                    <h5
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
+                                                                        Consultores
+                                                                    </h5>
+                                                                </td>
                                                             </tr>
                                                         </table>
                                                     </td>
@@ -322,13 +335,17 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                             role="presentation"
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
-                                                                <td align="center" style="padding:0;Margin:0">
+                                                                <td align="right" style="padding:0;Margin:0">
                                                                     <p
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:14px;margin-bottom:0px">
                                                                         Powered By</p>
                                                                     <h4
-                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;text-align:center;color:#EC741C">
-                                                                        Empatia <span style="color:#0C746C">360°</span>
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#EC741C">
+                                                                        Empatia
+                                                                    </h4>
+                                                                    <h4
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
+                                                                        360°
                                                                     </h4>
                                                                 </td>
                                                             </tr>
@@ -376,8 +393,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#333333;font-size:14px">
-                                                                        Como parte del proceso de “Desempeño 360°” le
-                                                                        invitamos a realizar la siguiente encuesta.
+                                                                        Como parte del proceso denominado <strong>Desempeño 360°</strong>, la empresa <strong>{{$empresa}}</strong> le invita a realizar la siguiente encuesta. Favor de desarrollarla de acuerdo a las indicaciones que se le den. Haga click en el enlace para empezar
                                                                     </p>
                                                                 </td>
                                                             </tr>
@@ -478,7 +494,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                     <p
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
                                                                         Si necesita ayuda nos puede contactar a través
-                                                                        del correo consultor01@empatía.com.pe o al
+                                                                        del correo soluciones@empatia.com.pe o al
                                                                         teléfono 998161316.o en última instancia
                                                                         contactar con el responsable dentro de su
                                                                         organización.</p>

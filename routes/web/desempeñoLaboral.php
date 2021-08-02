@@ -9,9 +9,7 @@ use App\Http\Controllers\MensajeController;
 
 //ENVIAR
 Route::get('/enviar/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');
-Route::get('/enviar/desempenio-laboral/{empresa}',function(){
-    return view('crear.desempeñoLaboral');
-})->middleware('auth');
+Route::get('/enviar/desempenio-laboral/{empresa}',[DesempenioLaboralController::class,'mostrarEnviar'])->middleware('auth');
 Route::post('/enviar/desempenio-laboral/{empresa}',[IdLinkController::class,'createDesempeño'])->middleware('auth');
 
 

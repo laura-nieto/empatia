@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Empatia 360°')
 @section('main')  
-    @if (session('create.empresa') || session('create.encuesta') || session('create.dato') || session('create.automatizacion') || session('update.mensaje') || session('import.emails') ||session('import.datos'))
+    @if (session('create.empresa') || session('create.encuesta') || session('create.dato') || session('create.automatizacion') || session('update.mensaje') || session('import.emails'))
         <div class="div--success">
             <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
             <p>{{session('create.empresa')}}</p>
@@ -10,7 +10,6 @@
             <p>{{session('create.automatizacion')}}</p>
             <p>{{session('update.mensaje')}}</p>
             <p>{{session('import.emails')}}</p>
-            <p>{{session('import.datos')}}</p>
         </div>
     @endif
     <article class="article__index">

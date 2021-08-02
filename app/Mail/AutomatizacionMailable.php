@@ -11,21 +11,21 @@ class AutomatizacionMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = 'Automatización de pruebas';
+    public $subject = 'Evaluación de Competencias Profesionales';
 
     public $link;
     public $nombre;
-    public $puesto;
+    public $empresa;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($link,$name,$puesto)
+    public function __construct($link,$name,$empresa)
     {
         $this->link = $link;
         $this->nombre = $name;
-        $this->puesto = $puesto;
+        $this->empresa = $empresa;
     }
 
     /**

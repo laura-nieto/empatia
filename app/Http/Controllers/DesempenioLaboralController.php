@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Datos;
 use App\Models\idLink;
 use App\Models\Mensaje;
+use App\Models\Empresa;
 
 use App\Exports\DesempenioLaboralExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -67,6 +68,12 @@ class DesempenioLaboralController extends Controller
         $cargo = json_decode($link->nombre_desempeño,true);
 
         return view('encuesta.desempeño.titleDesempeño',['persona'=>$cargo]);
+    }
+
+    public function mostrarEnviar($idEmpresa)
+    {
+        $empresa = Empresa::findOrFail($idEmpresa)->nombre;
+        return view('crear.desempeñoLaboral',['nombreEmpresa'=>$empresa]);
     }
 
     /**

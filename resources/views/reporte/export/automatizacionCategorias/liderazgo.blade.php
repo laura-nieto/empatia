@@ -13,15 +13,18 @@
             <th align="center">Respuesta</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach ($persona as $pregunta)
+    @foreach ($persona as $pregunta)
+        <tbody>
             <tr>
-                <td>{{$i}}</td>
-                <td>{{$pregunta->pivot->respuesta}}</td>
+                <td rowspan="2" align="center">{{$i}}</td>
+                <td align="center">{{$pregunta->pivot->respuesta == 'A' ? 'X':''}}</td>
+            </tr>
+            <tr>
+                <td align="center">{{$pregunta->pivot->respuesta == 'B' ? 'X':''}}</td>
             </tr>
             @php
                 $i+=1;
             @endphp
-        @endforeach
-    </tbody>
+        </tbody>
+    @endforeach
 </table>

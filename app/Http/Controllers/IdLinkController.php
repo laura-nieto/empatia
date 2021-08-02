@@ -25,31 +25,31 @@ class IdLinkController extends Controller
         $empresa = Empresa::findOrFail($idEmpresa)->nombre;
         
         Excel::import(new DatosClimaImport($idEmpresa), request()->file('importMail'));
-        $array = Excel::toArray(new DatosClimaImport($idEmpresa), request()->file('importMail'));
-        $valores = $array[0][0];
-        unset($valores['nombre'],$valores['email']);
-        foreach ($valores as $key => $value) {
-            $pass[] = $key;
-        }
-        $link = new idLink;
-        $link->preguntar_datos = json_encode($pass);
-        $link->empresa_id = $idEmpresa;
-        $link->save();
-        $idLink = $link->id;
+        // $array = Excel::toArray(new DatosClimaImport($idEmpresa), request()->file('importMail'));
+        // $valores = $array[0][0];
+        // unset($valores['nombre'],$valores['email']);
+        // foreach ($valores as $key => $value) {
+        //     $pass[] = $key;
+        // }
+        // $link = new idLink;
+        // $link->preguntar_datos = json_encode($pass);
+        // $link->empresa_id = $idEmpresa;
+        // $link->save();
+        // $idLink = $link->id;
       
-        foreach ($array as $personas) {
-            foreach ($personas as $persona) {
-                $nombre = $persona['nombre'];
-                $email = $persona['email'];
+        // foreach ($array as $personas) {
+        //     foreach ($personas as $persona) {
+        //         $nombre = $persona['nombre'];
+        //         $email = $persona['email'];
                 
-                $findPersona = Datos::where('empresa_id',$idEmpresa)->where('nombre',$nombre)->where('mail',$email)->first();
-                $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $idLink . '/' . $findPersona->id;
+        //         $findPersona = Datos::where('empresa_id',$idEmpresa)->where('nombre',$nombre)->where('mail',$email)->first();
+        //         $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $idLink . '/' . $findPersona->id;
 
-                $correo = new EnviarMailable($sendLink,$nombre,$empresa);
-                Mail::bcc($email)->send($correo);
-            }
-        }
-        return redirect('/')->with('import.datos', 'Datos improtados y Emails enviados con exito');
+        //         $correo = new EnviarMailable($sendLink,$nombre,$empresa);
+        //         Mail::bcc($email)->send($correo);
+        //     }
+        // }
+        return redirect()->route('enviarClima',[$idEmpresa])->with('import.datos', 'Datos improtados');
     }
 
     public function createAutomatizacion(Request $request,$idEmpresa){
@@ -57,7 +57,7 @@ class IdLinkController extends Controller
         $rules = [
             'nombre' => 'required',
             'email' => 'required|email',
-            'puesto'=> 'required'
+            'empresa'=> 'required'
         ];
         $message = [
             'required'=>'El campo es obligatorio',
@@ -68,7 +68,6 @@ class IdLinkController extends Controller
         $link = new idLink;
         $datos = new Datos;
         $categorias = [];
-        $puesto['puestoAplicante'] = $request->puesto;
 
         foreach($request->categorias as $categoria){
             foreach($request->tiempo as $item => $tiempo){
@@ -84,7 +83,6 @@ class IdLinkController extends Controller
 
         $datos->nombre = $request->nombre;
         $datos->mail = $request->email;
-        $datos->datos_demograficos = json_encode($puesto);
         $datos->empresa_id = $idEmpresa;
         $datos->save();
 
@@ -95,7 +93,7 @@ class IdLinkController extends Controller
 
         //ENVIAR MAIL
         $sendLink = $request->gethost() . '/encuesta/automatizacion-de-pruebas/' . $link->id . '/' . $datos->id;
-        $correo = new AutomatizacionMailable($sendLink,$request->nombre,$request->puesto);
+        $correo = new AutomatizacionMailable($sendLink,$request->nombre,$request->empresa);
         Mail::to($request->email)->send($correo);
 
         return redirect('/')->with('create.automatizacion','Automatización enviada con exito');
@@ -104,7 +102,8 @@ class IdLinkController extends Controller
     public function createDesempeño(Request $request,$id){
 
         $show = $request->except(['_token','email']);
-        
+        $empresa = Empresa::findOrFail($id)->nombre;
+
         foreach ($show as $puesto => $datos) {
             if ($puesto === 'autoevaluacion') {
                 if(is_null($datos[0]) || is_null($datos[2])){
@@ -148,7 +147,7 @@ class IdLinkController extends Controller
                     $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $createDato->id;
                     $evaluador = [$puesto,$datos[0],$datos[2]];
     
-                    $correo = new DesempeñoMailable($sendLink,$evaluado,$evaluador);
+                    $correo = new DesempeñoMailable($sendLink,$evaluado,$evaluador,$empresa);
                     Mail::bcc($createDato->mail)->send($correo);
                 }else{
                     $evaluado =[$puesto =>[$pass['autoevaluacion'][0],$pass['autoevaluacion'][2]]];
@@ -163,7 +162,7 @@ class IdLinkController extends Controller
     
                     $evaluador = [$puesto,$datos[0],$datos[2]];
     
-                    $correo = new DesempeñoMailable($sendLink,$evaluado,$evaluador);
+                    $correo = new DesempeñoMailable($sendLink,$evaluado,$evaluador,$empresa);
                     Mail::bcc($exist->mail)->send($correo);
                 }
             }
@@ -198,7 +197,7 @@ class IdLinkController extends Controller
             default:
                 $link = new idLink;
                 $datos_demograficos = DatosDemograficos::all();
-                $show = $request->except(['who_send','_token','email','nombre','submitButton']);
+                $show = $request->except(['who_send','_token','email','nombre','submitButton','importados']);
 
                 $link->preguntar_datos = json_encode($show);
                 $link->empresa_id = $id;
@@ -207,35 +206,43 @@ class IdLinkController extends Controller
                 //$sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id;
                 $emails = $request->email;
                 $nombres = $request->nombre;
+                $nombreEmpresa = Empresa::findOrFail($id)->nombre;
                 
-                foreach ($emails as $key => $email) {
-                    foreach ($nombres as $keyN => $nombre) {
-                        if ($key == $keyN) {
-                            if (is_null($email) && is_null($nombre) ) {
-                                # code...
-                            } elseif (is_null($email) && !is_null($nombre) || is_null($nombre) && !is_null($email)) {
-                                return redirect()->back()->with('null','Algún campo quedó vacío');
-                            } else {
-                                //CREACION DEL DATO
-                                $createDato = new Datos;
-                                $createDato->nombre = $nombre;
-                                $createDato->mail = $email;
-                                $createDato->empresa_id = $id;
-                                $createDato->save();
 
-                                $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id . '/' . $createDato->id;
-                                $correo = new EnviarMailable($sendLink,$nombre,$createDato->empresas->nombre);
-                                Mail::bcc($email)->send($correo);
+                if (!is_null($emails) && !is_null($nombres)) {
+                    foreach ($emails as $key => $email) {
+                        foreach ($nombres as $keyN => $nombre) {
+                            if ($key == $keyN) {
+                                if (is_null($email) && is_null($nombre) ) {
+                                    # code...
+                                } elseif (is_null($email) && !is_null($nombre) || is_null($nombre) && !is_null($email)) {
+                                    return redirect()->back()->with('null','Algún campo quedó vacío');
+                                } else {
+                                    //CREACION DEL DATO
+                                    $createDato = new Datos;
+                                    $createDato->nombre = $nombre;
+                                    $createDato->mail = $email;
+                                    $createDato->empresa_id = $id;
+                                    $createDato->save();
+
+                                    $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id . '/' . $createDato->id;
+                                    $correo = new EnviarMailable($sendLink,$nombre,$nombreEmpresa);
+                                    Mail::bcc($email)->send($correo);
+                                }
                             }
                         }
                     }
                 }
-                // $correo = new EnviarMailable($sendLink);
-                // foreach($request->email as $email){
-                //     if($email != null){
-                //         Mail::bcc($email)->send($correo);
-                //     }
-                // }
+                $importados = $request->importados;
+                if (!is_null($importados)) {
+                    foreach($importados as $key => $person){
+                        if(!is_null($person[0]) && !is_null($person[1])){
+                            $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id . '/' . $key;
+                            $correo = new EnviarMailable($sendLink,$person[0],$nombreEmpresa);
+                            Mail::bcc($person[1])->send($correo);
+                        }
+                    }
+                }
             return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
         } 
     }

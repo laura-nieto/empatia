@@ -16,7 +16,7 @@ class ClimaLaboralController extends Controller
     {
         Excel::import(new EmailsImport($idEmpresa), request()->file('importMail'));
         
-        return redirect('/')->with('import.emails', 'Emails importados con exito');
+        return redirect()->route('enviarClima',[$idEmpresa])->with('import.emails', 'Emails importados con exito');
     }
     
     public function export($idEmpresa){

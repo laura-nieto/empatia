@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="header--encuesta--title">
-        <h3></h3>
+        <h3>Evaluación de Competencias Profesionales</h3>
     </div>
 @endsection
 @section('main')
@@ -26,7 +26,7 @@
             <tbody>
                 @foreach ($datos->datos_categorias as $categoria)
                     <tr>
-                        <td class="sentence-center">{{$categoria->nombre}}</td>
+                        <td class="sentence-center">{{$categoria->codigo}}</td>
                         <td class="sentence-center">{{$categoria->pivot->tiempo}}</td>
                         <td class="sentence-center">
                             @if ($categoria->pivot->respondio == 0)

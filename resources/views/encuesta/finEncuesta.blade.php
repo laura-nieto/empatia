@@ -1,7 +1,15 @@
 @extends('layouts.encuesta')
 @section('encabezado')
     <div class="header--encuesta--logo">
-        <h2 class="title--header--encuesta">Encuesta de Clima Laboral</h2>
+        <h2 class="title--header--encuesta">Encuesta de 
+            @if (Request::segment(2) == 'clima-laboral')
+                Clima Laboral
+            @elseif(Request::segment(2) == 'desempenio-laboral')
+                Desempeño Laboral
+            @elseif(Request::segment(2) == 'automatizacion-de-pruebas')
+                Evaluación de Competencias Profesionales
+            @endif
+        </h2>
         <img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" class="header--encuesta__img--transparent">
     </div>
 @endsection
@@ -14,7 +22,7 @@
             @elseif(Request::segment(2) == 'desempenio-laboral')
                 Desempeño Laboral
             @elseif(Request::segment(2) == 'automatizacion-de-pruebas')
-                Automatizacion de pruebas
+                Evaluación de Competencias Profesionales
             @endif
         </h3>
         <p class="fin--bold">De haber culminado con éxito toda la encuesta favor de hacer click en el botón “Finalizar”, el mismo que se encuentra en la parte inferior de esta ventana.</p>

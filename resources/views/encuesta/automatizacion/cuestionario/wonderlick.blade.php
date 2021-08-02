@@ -1,8 +1,14 @@
+<div class="encuesta--div__explain">
+    <p>
+        A continuación proceda a leer el enunciado y elija la alternativa que usted considere es la correcta.
+    </p>
+</div>
 <article class="form-automatizacion__article--wonderlick">
     @php
         $i=1;
     @endphp
     @foreach ($preguntas as $pregunta)
+        
         <input type="hidden" name="{{$pregunta->id}}">
         <section>
             <div class="wonderlick--question">
@@ -21,7 +27,7 @@
                             @endif
                         @endforeach
                     </div>
-                @elseif($i==8||$i==17||$i==22)
+                @elseif($i==8||$i==17||$i==22||$i==37)
                     <div class="wonderlick--question--grid">
                         <p>{{$i}}</p>
                         @foreach (json_decode($pregunta->pregunta) as $key => $item)
@@ -60,7 +66,7 @@
                             @endforeach
                         </div>      
                     </div>
-                @elseif($i==13||$i==20||$i==26||$i==39||$i==44)
+                @elseif($i==13||$i==20||$i==26||$i==39||$i==44||$i==47)
                     <div class="wonderlick--question--grid">
                         <p>{{$i}}</p>
                         @foreach (json_decode($pregunta->pregunta) as $key => $item)

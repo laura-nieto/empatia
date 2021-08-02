@@ -7,8 +7,8 @@
         <article class="article__automatizacion">
             <section class="automatizacion__section">
                 <div class="automatizacion__div">
-                    <label for="puesto">Puesto al que aplica</label>
-                    <input type="text" name="puesto" id="puesto">
+                    <label for="puesto">Nombre de la Empresa</label>
+                    <input type="text" name="empresa" id="empresa">
                     @error('puesto')
                         <small id="emailHelp" class="error-login">{{$message}}</small>
                     @enderror
@@ -33,6 +33,7 @@
                     <thead>
                         <tr>
                             <th>Categoría</th>
+                            <th>Código</th>
                             <th>Seleccionar</th>
                             <th>Tiempo</th> 
                         </tr>  
@@ -41,6 +42,7 @@
                         <tbody>
                             <tr>
                                 <td>{{$categoria->nombre}}</td>
+                                <td>{{$categoria->codigo}}</td>
                                 <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
                                 <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
                             </tr>

@@ -10,7 +10,7 @@
             <ol class="list--style--letter ol--position--list">
                 <li>Aceptas el regalo pero te sientes mal.</li>
                 <li>Aceptas el regalo pero demuestras que no lo quieres.</li>
-                <li>Aceptas el regalo para evitarle a tu amigo una situación incómoda.</li>
+                <li class="background--check--notWidth">Aceptas el regalo para evitarle a tu amigo una situación incómoda.</li>
                 <li>Le agradeces a tu amigo el regalo, pero le explicas que no lo puedes aceptar.</li>
                 <li>No aceptas el regalo.</li>
             </ol>
