@@ -22,7 +22,7 @@ class DatosClimaImport implements ToModel,WithHeadingRow
     public function model(array $row)
     {
         $valores = $row;
-        unset($valores['nombre'],$valores['email']);
+        unset($valores['nombre'],$valores['email'],$valores['']);
         return new Datos([
             'mail' => $row['email'],
             'nombre'=>$row['nombre'],
