@@ -38,7 +38,8 @@ class AutomatizacionPruebasController extends Controller
     public function categoria($idLink,$idDatos,$idCategoria)
     {
         $datos = Datos::findOrFail($idDatos);
-        return view('encuesta.automatizacion.categoria',['datos'=>$datos,'idCategoria'=>$idCategoria]);
+        $empresa = $datos->empresas;
+        return view('encuesta.automatizacion.categoria',['datos'=>$datos,'idCategoria'=>$idCategoria,'empresa'=>$empresa]);
     }
     public function siguienteCategoria($idLink,$idDatos)
     {
@@ -54,7 +55,8 @@ class AutomatizacionPruebasController extends Controller
     {
         $datos = Datos::findOrFail($idDatos);
         $mensaje = Mensaje::where('tipo','automatizacion')->first();
-        return view('encuesta.automatizacion.welcome',['datos'=>$datos,'mensaje'=>$mensaje->mensaje]);
+        $empresa = $datos->empresas;
+        return view('encuesta.automatizacion.welcome',['datos'=>$datos,'mensaje'=>$mensaje->mensaje,'empresa'=>$empresa]);
     }
     /**
      * Display a listing of the resource.

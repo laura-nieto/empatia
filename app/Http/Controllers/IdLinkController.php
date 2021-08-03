@@ -73,7 +73,9 @@ class IdLinkController extends Controller
             foreach($request->tiempo as $item => $tiempo){
                 if($categoria == $item && $tiempo!=null){
                     $categorias[$categoria] = $tiempo;
-                }
+                }if($categoria==$item && is_null($tiempo)) {
+                    return redirect()->back()->with('automatizacion.error','A una de las categorias no se le ingresó el tiempo.')->withInput();
+                } 
             }
         }
 
@@ -260,7 +262,8 @@ class IdLinkController extends Controller
         $preg_datos = json_decode($idLink->preguntar_datos,true);
         
         $empresa = $idLink->empresa_id;
-        return view('encuesta.general',['datos'=>$preg_datos,'persona'=>$datos,'empresa_id'=>$empresa]);
+        $vistaEmpresa = $datos->empresas;
+        return view('encuesta.general',['datos'=>$preg_datos,'persona'=>$datos,'empresa_id'=>$empresa,'empresa'=>$vistaEmpresa]);
     }
 
     /**

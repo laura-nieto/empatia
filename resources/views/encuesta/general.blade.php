@@ -7,9 +7,14 @@
             <h4 class="title--logo">Consultores</h4>
         </div>
     </div>
-    <div class="header--encuesta--title">
+    <div class="header--encuesta--title {{is_null($empresa->logo)?'column-span-2':''}}">
         <h3>Encuesta de Clima Laboral</h3>
     </div>
+    @if(!is_null($empresa->logo))
+        <div class="header--logo--empresa">
+            <img src="{{asset('storage/logos/'.$empresa->logo)}}" alt="Logo de la empresa" class="header--encuesta__img">
+        </div>
+    @endif
 @endsection
 @section('main')
     <article class="article__encuesta--datos">
@@ -55,6 +60,7 @@
                         <select name="{{$dato}}" required>
                             <option value="" selected hidden>Elija una opción</option>
                             @foreach ($opciones as $item)
+                                {{dd($item)}}
                                 <option value="{{$item}}">{{$item}}</option>
                             @endforeach
                         </select>

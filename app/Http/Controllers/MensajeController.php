@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mensaje;
 use Illuminate\Http\Request;
+use App\Models\Datos;
 
 class MensajeController extends Controller
 {
@@ -47,10 +48,11 @@ class MensajeController extends Controller
         }
         return view('encuesta.desempeño.instruccionesDesempeño',['instruccion1'=>$instruccion1,'instruccion2'=>$instruccion2]);
     }
-    public function mensaje_clima()
+    public function mensaje_clima($id,$idDatos)
     {
+        $empresa = Datos::findOrFail($idDatos)->empresas;
         $mensaje = Mensaje::where('tipo','clima laboral')->first();
-        return view('encuesta.welcomeClima',['mensaje'=>$mensaje->mensaje]);
+        return view('encuesta.welcomeClima',['mensaje'=>$mensaje->mensaje,'empresa'=>$empresa]);
     }
     /**
      * Display a listing of the resource.

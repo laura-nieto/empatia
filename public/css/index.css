@@ -76,6 +76,9 @@
     margin-top: 5px;
     width: 300px;
 }
+.margin-top-bot{
+    margin: 40px 0;
+}
 
 /* AGREGAR OPCIONES - EMPRESA */
 .form--create__dato{

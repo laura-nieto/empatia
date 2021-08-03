@@ -2,27 +2,32 @@
 @section('title','Crear Automatización de Pruebas - Empatia 360°')
 @section('main')
     <h2 class="h2__title">Automatización - {{$empresa->nombre}}</h2>
+    @if (session('automatizacion.error'))
+        <div class="div--error">
+            <p>{{session('automatizacion.error')}}</p>
+        </div>
+    @endif
     <form action="" method="post" class="form__automatizacion">
         @csrf
         <article class="article__automatizacion">
             <section class="automatizacion__section">
                 <div class="automatizacion__div">
                     <label for="puesto">Nombre de la Empresa</label>
-                    <input type="text" name="empresa" id="empresa">
-                    @error('puesto')
+                    <input type="text" name="empresa" id="empresa" value="{{old('empresa')}}">
+                    @error('empresa')
                         <small id="emailHelp" class="error-login">{{$message}}</small>
                     @enderror
                 </div>
                 <div class="automatizacion__div">
                     <label for="name">Nombre</label>
-                    <input type="text" name="nombre" id="name">
+                    <input type="text" name="nombre" id="name" value="{{old('nombre')}}">
                     @error('nombre')
                         <small id="emailHelp" class="error-login">{{$message}}</small>
                     @enderror
                 </div>
                 <div class="automatizacion__div">
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" value="{{old('email')}}">
                     @error('email')
                         <small id="emailHelp" class="error-login">{{$message}}</small>
                     @enderror

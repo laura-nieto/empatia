@@ -46,13 +46,27 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
-        $company = new Empresa;
-        $rules = ['name' => 'required'];
-        $message = ['required'=>'El campo es obligatorio'];
-
-        $validate = $request->validate($rules,$message);
+        $rules = [
+            'name' => 'required',
+            'logo' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
+        ];
+        $message = [
+            'required'=>'El campo es obligatorio',
+            'image' => 'El archivo debe ser una imágen',
+            'mimes' => 'La imágen debe ser jpeg,png,jpg o svg',
+            'max' => 'El archivo debe como máximo :max kb'
+        ];
         
+        $validate = $request->validate($rules,$message);
+
+        $company = new Empresa;
         $company->nombre = $request->name;
+        
+        if($request->hasfile('logo')){
+            $nameImg = $request->name . '.' . $request->file('logo')->getClientOriginalExtension();
+            $path = $request->file('logo')->storeAs('logos',$nameImg,'public');
+            $company->logo = $nameImg;
+        }
         $company->save();
 
         return redirect('/')->with('create.empresa','Empresa creada con éxito');

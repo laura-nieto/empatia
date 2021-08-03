@@ -88,8 +88,13 @@ header nav{
     margin-left: 10px;
 }
 .header--encuesta--title{
-    grid-column: span 2;
     grid-row: 1;
+}
+.header--logo--empresa{
+    grid-column: 3;
+}
+.column-span-2{
+    grid-column: span 2;
 }
 .header--encuesta--title>h3,.title--header--encuesta{
     color: #0f8379;
