@@ -7,11 +7,16 @@ use Illuminate\Http\Request;
 use App\Models\Datos;
 
 use App\Exports\ClimaLaboralExport;
+use App\Exports\ExampleDatosExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\EmailsImport;
 
 class ClimaLaboralController extends Controller
 {
+    public function exportPlantilla()
+    {
+        return Excel::download(new ExampleDatosExport,'plantilla-datos.xlsx');
+    }
     public function importMail(Request $request,$idEmpresa)
     {
         Excel::import(new EmailsImport($idEmpresa), request()->file('importMail'));

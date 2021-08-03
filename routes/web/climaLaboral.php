@@ -20,6 +20,7 @@ Route::post('/importar/clima-laboral/{name}',[ClimaLaboralController::class,'imp
 
 Route::get('/importar/clima-laboral/datos/{name}',[EmpresaController::class,'vistaCargarDatos'])->middleware('auth');
 Route::post('/importar/clima-laboral/datos/{name}',[IdLinkController::class,'importDatos'])->middleware('auth');
+Route::get('/exportar/plantilla/clima-laboral',[ClimaLaboralController::class,'exportPlantilla'])->middleware('auth');
 
 Route::get('/borrar/email/{idEmpresa}/{idEmail}',[EmailController::class,'destroy'])->middleware('auth');
 

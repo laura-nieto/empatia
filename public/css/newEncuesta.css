@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
 }
-.form__importMail>input[type='file']{
+.form__importMail>input[type='file'],.download--template{
     margin-bottom: 40px;
 }
 /* CLIMA LABORAL */

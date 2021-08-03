@@ -1,0 +1,10 @@
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Edad</th>
+            <th>Sexo</th>
+        </tr>
+    </thead>
+</table>
