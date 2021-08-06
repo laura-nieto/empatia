@@ -17,7 +17,7 @@ class CreateEmailsTable extends Migration
             $table->id();
             $table->string('email');
             $table->string('nombre');
-            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('SET NULL');
+            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
             $table->timestamps();
         });
     }

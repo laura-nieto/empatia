@@ -15,8 +15,8 @@ class CreateDatosCategoriasTable extends Migration
     {
         Schema::create('datos_categorias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('datos_id')->constrained('datos')->onDelete('SET NULL');
-            $table->foreignId('categorias_id')->constrained('categorias')->onDelete('SET NULL');
+            $table->foreignId('datos_id')->constrained('datos')->onDelete('cascade');
+            $table->foreignId('categorias_id')->constrained('categorias')->onDelete('cascade');
             $table->tinyInteger('tiempo');
             $table->boolean('respondio')->default('0');
             $table->timestamps();

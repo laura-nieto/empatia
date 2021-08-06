@@ -20,7 +20,7 @@ class CreateDatosTable extends Migration
             $table->string('observacion')->nullable();
             $table->text('datos_demograficos')->nullable();
             $table->boolean('importado')->default('0');
-            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('SET NULL');
+            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class CreateDatosEmpresasTable extends Migration
     {
         Schema::create('datos_empresas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('SET NULL');
-            $table->foreignId('demograficos_id')->constrained('datos_demograficos')->onDelete('SET NULL');
+            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
+            $table->foreignId('demograficos_id')->constrained('datos_demograficos')->onDelete('cascade');
             $table->string('opciones');
             $table->timestamps();
         });
