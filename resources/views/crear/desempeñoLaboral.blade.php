@@ -10,8 +10,13 @@
     @if (session('desempeño.send'))
         <div class="div--error">
             <p>
-                Tanto <strong>Nombre</strong> como <strong>Cargo</strong> de Autoevaluacion deben estar completados
+                Todos los datos de <strong>Autoevaluación</strong> deben estar completos.
             </p>
+        </div>
+    @endif
+    @if (session('desempeño.error'))
+        <div class="div--error">
+            <p>{{session('desempeño.error')}}</p>
         </div>
     @endif
     <h2 class="h2__title">Desempeño Laboral - {{$nombreEmpresa->nombre}}</h2>
@@ -25,17 +30,17 @@
             <input type="text" name="autoevaluacion[]" placeholder="Cargo">
         </div>
         <div class="form--desempeño__div color-new-red">
-            <label for="">Es su Supervisor</label>
+            <label for="">Eres su Supervisor</label>
             <input type="text" name="supervisor[]" placeholder="Nombre">
             <input type="text" name="supervisor[]" placeholder="Cargo">
         </div>
         <div class="form--desempeño__div color-new-blue">
-            <label for="">Es su Subalterno</label>
+            <label for="">Eres su Subalterno</label>
             <input type="text" name="subalterno[]" placeholder="Nombre">
             <input type="text" name="subalterno[]" placeholder="Cargo">
         </div>
         <div class="form--desempeño__div color-new-orange">
-            <label for="">Es su Compañero</label>
+            <label for="">Eres su Compañero</label>
             <input type="text" name="companiero[]" placeholder="Nombre">
             <input type="text" name="companiero[]" placeholder="Cargo">
         </div>
