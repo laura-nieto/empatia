@@ -115,7 +115,11 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        $empresa = Empresa::findOrFail($id)->delete();
+        $empresa = Empresa::findOrFail($id);
+        $empresa->datos()->delete();
+        $empresa->emails()->delete();
+        $empresa->opcionesDemograficos()->delete();
+        $empresa->delete();
         return redirect('/delete/empresa')->with('delete.empresa','La empresa fue eliminada');
     }
 }
