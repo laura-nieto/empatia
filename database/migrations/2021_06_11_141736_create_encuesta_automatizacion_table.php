@@ -15,8 +15,8 @@ class CreateEncuestaAutomatizacionTable extends Migration
     {
         Schema::create('encuesta_automatizacion', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('datos_id')->constrained('datos');
-            $table->foreignId('pregunta_id')->constrained('automatizacion_pruebas')->onDelete('cascade');
+            $table->foreignId('datos_id')->constrained('datos')->onDelete('SET NULL');
+            $table->foreignId('pregunta_id')->constrained('automatizacion_pruebas')->onDelete('SET NULL');
             $table->string('respuesta')->nullable();
             $table->timestamps();
         });

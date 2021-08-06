@@ -15,8 +15,8 @@ class CreateEncuestaDesempenioTable extends Migration
     {
         Schema::create('encuesta_desempenio', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('datos_id')->constrained('datos_desempenio')->onDelete('cascade');
-            $table->foreignId('pregunta_id')->constrained('desempenio_laboral')->onDelete('cascade');
+            $table->foreignId('datos_id')->constrained('datos_desempenio')->onDelete('SET NULL');
+            $table->foreignId('pregunta_id')->constrained('desempenio_laboral')->onDelete('SET NULL');
             $table->string('respuesta')->nullable();
             // $table->string('tipo');
             // $table->string('evaluado');
