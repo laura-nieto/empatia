@@ -64,7 +64,7 @@ class EmpresaController extends Controller
         
         if($request->hasfile('logo')){
             $nameImg = $request->name . '.' . $request->file('logo')->getClientOriginalExtension();
-            $path = $request->file('logo')->storeAs('logos',$nameImg,'public');
+            $path = $request->file('logo')->storeAs('logos',$nameImg);
             $company->logo = $nameImg;
         }
         $company->save();
