@@ -14,19 +14,19 @@ class DesempeñoMailable extends Mailable
     public $subject = 'Encuesta sobre el Desempeño Laboral';
 
     public $link;
-    public $evaluado;
-    public $evaluador;
     public $empresa;
+    public $evaluador;
+    public $evaluados;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($link,$evaluado,$evaluador,$empresa)
+    public function __construct($link,$empresa,$evaluador,$evaluados)
     {
         $this->link = $link;
         $this->evaluador = $evaluador;
-        $this->evaluado = $evaluado;
+        $this->evaluados = $evaluados;
         $this->empresa = $empresa;
     }
 

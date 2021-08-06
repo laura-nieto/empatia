@@ -3,7 +3,7 @@
 namespace App\Exports;
 
 use App\Models\DesempenioLaboral;
-use App\Models\Datos;
+use App\Models\DatosDesempenio;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromView;
 use Illuminate\Contracts\View\View;
@@ -28,8 +28,7 @@ class DesempenioLaboralExport implements FromView,WithStyles
 
     public function view(): View
     {
-        $auto = Datos::has('encuesta_desempenio')->where('empresa_id',$this->empresa)->get();
-
+        $auto = DatosDesempenio::has('encuesta_desempenio')->where('empresa_id',$this->empresa)->get()->groupBy('evaluado');
         return view('reporte.export.desempenioLaboral', [
             'preguntas' =>DesempenioLaboral::all(),
             'all' => $auto,

@@ -89,9 +89,10 @@ class EmpresaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $company = Empresa::orderByDesc('created_at')->get();
+        return view('borrarEmpresa',['empresas'=>$company]);
     }
 
     /**
@@ -114,6 +115,7 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $empresa = Empresa::findOrFail($id)->delete();
+        return redirect('/delete/empresa')->with('delete.empresa','La empresa fue eliminada');
     }
 }

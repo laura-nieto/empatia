@@ -15,11 +15,11 @@ class CreateEncuestaDesempenioTable extends Migration
     {
         Schema::create('encuesta_desempenio', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('datos_id')->constrained('datos');
+            $table->foreignId('datos_id')->constrained('datos_desempenio');
             $table->foreignId('pregunta_id')->constrained('desempenio_laboral');
             $table->string('respuesta')->nullable();
-            $table->string('tipo');
-            $table->string('evaluado');
+            // $table->string('tipo');
+            // $table->string('evaluado');
             $table->timestamps();
         });
     }

@@ -309,7 +309,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="{{$message->embed(public_path() .'/img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" width='100px'>
+                                                                    <img src="{{$message->embed(public_path() .'/img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" width='100'>
                                                                 </td>
                                                                 <td>
                                                                     <h5

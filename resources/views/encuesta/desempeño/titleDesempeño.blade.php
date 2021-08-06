@@ -12,10 +12,9 @@
     </div>
 @endsection
 @section('main')
-    <section class="desempeño--title">    
-        <h1 class="margin-bot">Evaluado</h1>
-        <h2 class="
-                @switch(key($persona))
+    <section class="desempeño--title">
+        <h2 class="margin-bot 
+                @switch($persona->jerarquia)
                     @case('autoevaluacion')
                         color-violet
                         @break
@@ -30,11 +29,24 @@
                         @break
                 @endswitch
         ">
-            @foreach ($persona as $cargo => $datos)
-                {{$datos[0]}} - {{$datos[1]}}
-            @endforeach
+            @switch($persona->jerarquia)
+                @case('autoevaluacion')
+                    Es tu Autoevaluación
+                    @break
+                @case('supervisor')
+                    Es tu Supervisor
+                    @break
+                @case('subalterno')
+                    Es tu Subalterno
+                    @break
+                @case('companiero')
+                    Es tu Compañero
+                    @break
+            @endswitch
         </h2>
-
+        <h2>
+            {{$persona->evaluado}} - {{$persona->puesto_evaluado}}
+        </h2>
         <form action="" method="post">
             @csrf
             <div class="div__btn">

@@ -13,6 +13,6 @@ class DesempenioLaboral extends Model
 
     public function datos()
     {
-        return $this->belongsToMany(Datos::class,'encuesta_desempenio','pregunta_id','datos_id')->withPivot('respuesta','tipo','evaluado');
+        return $this->belongsToMany(DatosDesempenio::class,'encuesta_desempenio','pregunta_id','datos_id')->withPivot('respuesta');
     }
 }

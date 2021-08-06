@@ -24,7 +24,11 @@ class AutomatizacionPruebasController extends Controller
         $dato = Datos::findOrFail($idDatos);
         foreach($dato->datos_categorias as $categoria){
             if($categoria->id == $idCategoria){
-                $tiempo = $categoria->pivot->tiempo;
+                if ($categoria->pivot->respondio != 0) {
+                    return redirect()->route('welcome',['id'=>$idLink,'datos'=>$idDatos]);
+                }else{
+                    $tiempo = $categoria->pivot->tiempo;
+                }
             }
         }
         $preguntas = AutomatizacionPruebas::where('category_id',$idCategoria)->get();

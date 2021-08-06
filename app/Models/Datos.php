@@ -26,11 +26,6 @@ class Datos extends Model
     {
         return $this->belongsToMany(ClimaLaboral::class,'encuesta_clima','datos_id','pregunta_id')->withPivot('respuesta');
     }
-    
-    public function encuesta_desempenio()
-    {
-        return $this->belongsToMany(DesempenioLaboral::class,'encuesta_desempenio','datos_id','pregunta_id')->withPivot('respuesta','tipo','evaluado');
-    }
 
     public function encuesta_automatizacion()
     {

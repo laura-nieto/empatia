@@ -18,7 +18,8 @@ class AutomatizacionImport implements ToModel
             'pregunta' => $row[0],
             'opciones' => $row[1],
             'category_id' => $row[2],
-            'imagen'=>$row[3]
+            'imagen'=>$row[3],
+            'position'=>$row[4]
         ]);
     }
 }

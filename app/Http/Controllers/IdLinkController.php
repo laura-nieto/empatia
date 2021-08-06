@@ -14,6 +14,7 @@ use App\Models\DatosDemograficos;
 use App\Models\Datos;
 use App\Models\Email;
 use App\Models\Empresa;
+use App\Models\DatosDesempenio;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\DatosClimaImport;
@@ -103,74 +104,90 @@ class IdLinkController extends Controller
 
     public function createDesempeño(Request $request,$id){
 
-        $show = $request->except(['_token','email']);
+        $show = $request->except(['_token','email','submitButton']);
         $empresa = Empresa::findOrFail($id)->nombre;
 
-        foreach ($show as $puesto => $datos) {
-            if ($puesto === 'autoevaluacion') {
-                if(is_null($datos[0]) || is_null($datos[2])){
-                    //TODOS LOS DATOS SON NULOS
-                    return redirect()->back()->with('desempeño.send','asd');
-                }elseif($datos[0] !=null && $datos[1]==null && $datos[2]!=null){
-                    //EL MAIL ESTA VACIO
-                    $pass[$puesto] = $datos;
-                }elseif(!is_null($datos[0]) && !is_null($datos[1]) && !is_null($datos[2])){
-                    $pass[$puesto] = $datos;
-                }
-            }else {
-                foreach ($datos as $dato) {
-                    if($dato === null){
-                        break;
+        switch ($request->submitButton) {
+            case 'Guardar Datos':
+                //Evaluar que evaluador no este vacio
+                foreach ($show as $puesto => $datos) {
+                    if ($puesto === 'autoevaluacion') {
+                        if(is_null($datos[0]) || is_null($datos[2]) || $datos[1]==null){
+                            //TODOS LOS DATOS SON NULOS
+                            return redirect()->back()->with('desempeño.send','asd');
+                        }else{
+                            $pass[$puesto] = $datos;
+                            array_splice($pass[$puesto],1,1);
+                        }
                     }else{
-                        $pass[$puesto] = $datos;
+                        foreach ($datos as $dato) {
+                            if($dato === null){
+                                break;
+                            }else{
+                                $pass[$puesto] = $datos;
+                            }
+                        }
                     }
                 }
-            }
-        }
-        
-        $evaluado = $pass['autoevaluacion'];
+                foreach($pass as $key => $persona){
+                    if ($key === 'autoevaluacion') {
+                        if (!DatosDesempenio::where('mail',$show['autoevaluacion'][1])->where('jerarquia','autoevaluacion')->where('evaluador',$show['autoevaluacion'][0])->exists()) {
+                            $newDato = new DatosDesempenio;
+                            $newDato->evaluador = $show['autoevaluacion'][0];
+                            $newDato->mail = $show['autoevaluacion'][1];
+                            $newDato->puesto_evaluador = $show['autoevaluacion'][2];
+                            $newDato->empresa_id = $id;
+                            $newDato->evaluado = $persona[0];
+                            $newDato->puesto_evaluado = $persona[1];
+                            $newDato->jerarquia = $key;
+                            $newDato->save();
+                        }
+                    }else{
+                        $newDato = new DatosDesempenio;
+                        $newDato->evaluador = $show['autoevaluacion'][0];
+                        $newDato->mail = $show['autoevaluacion'][1];
+                        $newDato->puesto_evaluador = $show['autoevaluacion'][2];
+                        $newDato->empresa_id = $id;
+                        $newDato->evaluado = $persona[0];
+                        $newDato->puesto_evaluado = $persona[1];
+                        $newDato->jerarquia = $key;
+                        $newDato->save();
+                    }
+                }
+                
+                return redirect()->route('desempenioEnviar',[$id])->with('desempeño.guardar','Los datos fueron guardados exitosamente');
 
-        foreach ($pass as $puesto => $datos) {
-            if(!is_null($datos[1])){
-                if(!Datos::where('mail',$datos[1])->exists()){
-                    $evaluado =[$puesto =>[$pass['autoevaluacion'][0],$pass['autoevaluacion'][2]]];
-                    //CREACION LINK
+            default:
+                $enviar = DatosDesempenio::where('empresa_id',$id)->get()->groupBy('mail');
+                foreach ($enviar as $evaluador) {
+
+                    $pass = [];
+                    $alEmail = [];
+
                     $link = new idLink;
-                    $link->nombre_desempeño = json_encode($evaluado);
                     $link->empresa_id = $id;
+                    foreach ($evaluador as $evaluado) {
+                        $pass[] = $evaluado->id;
+                        $alEmail[$evaluado->jerarquia][] = [$evaluado->evaluado,$evaluado->puesto_evaluado];
+                        $guardarDato = [$evaluado->evaluador,$evaluado->mail];
+                    }
+                    $link->nombre_desempeño = json_encode($pass);
                     $link->save();
-    
-                    //CREACION DEL DATO
+                    
                     $createDato = new Datos;
-                    $createDato->nombre = $datos[0];
-                    $createDato->mail = $datos[1];
+                    $createDato->nombre = $guardarDato[0];
+                    $createDato->mail = $guardarDato[1];
                     $createDato->empresa_id = $id;
                     $createDato->save();
-                    $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $createDato->id;
-                    $evaluador = [$puesto,$datos[0],$datos[2]];
-    
-                    $correo = new DesempeñoMailable($sendLink,$evaluado,$evaluador,$empresa);
+                    
+                    $nombreEvaluador = $createDato->nombre;
+                    $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id;
+                    $correo = new DesempeñoMailable($sendLink,$empresa,$nombreEvaluador,$alEmail);
                     Mail::bcc($createDato->mail)->send($correo);
-                }else{
-                    $evaluado =[$puesto =>[$pass['autoevaluacion'][0],$pass['autoevaluacion'][2]]];
-                    //CREACION LINK
-                    $link = new idLink;
-                    $link->nombre_desempeño = json_encode($evaluado);
-                    $link->empresa_id = $id;
-                    $link->save();
-    
-                    $exist = Datos::where('mail',$datos[1])->first();
-                    $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id . '/' . $exist->id;
-    
-                    $evaluador = [$puesto,$datos[0],$datos[2]];
-    
-                    $correo = new DesempeñoMailable($sendLink,$evaluado,$evaluador,$empresa);
-                    Mail::bcc($exist->mail)->send($correo);
+                    
                 }
-            }
+                return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
         }
-            
-        return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
     }
 
     public function createClima(Request $request,$id){

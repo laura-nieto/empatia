@@ -84,7 +84,8 @@ class DatosDemograficosController extends Controller
      */
     public function show(DatosDemograficos $datosDemograficos)
     {
-        //
+        $datosDemograficos = $datosDemograficos->orderByDesc('created_at')->get();
+        return view('eliminarDato',['datos'=>$datosDemograficos]);
     }
 
     /**
@@ -116,8 +117,9 @@ class DatosDemograficosController extends Controller
      * @param  \App\Models\DatosDemograficos  $datosDemograficos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DatosDemograficos $datosDemograficos)
+    public function destroy(DatosDemograficos $datosDemograficos,$id)
     {
-        //
+        $datosDemograficos = $datosDemograficos->findOrFail($id)->delete();
+        return redirect('/delete/dato')->with('delete.dato','El dato fue eliminado');
     }
 }

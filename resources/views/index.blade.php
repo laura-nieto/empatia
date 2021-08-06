@@ -75,6 +75,10 @@
                     <i class="fas fa-caret-right fa-2x"></i>
                     <a href="/new/empresa">Agregar empresa</a>
                 </li>
+                <li class="li__index">
+                    <i class="fas fa-caret-right fa-2x"></i>
+                    <a href="/delete/empresa">Borrar empresa</a>
+                </li>
             </ul>
         </section>
         <section>
@@ -87,7 +91,11 @@
                 <li class="li__index">
                     <i class="fas fa-caret-right fa-2x"></i>
                     <a href="/agregar/dato">Agregar dato a una empresa</a>
-                </li>                   
+                </li>
+                <li class="li__index">
+                    <i class="fas fa-caret-right fa-2x"></i>
+                    <a href="/delete/dato">Eliminar dato</a>
+                </li>         
             </ul>
         </section>
     </article>

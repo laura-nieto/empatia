@@ -309,7 +309,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="{{$message->embed(public_path() .'/img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" width='100px'>
+                                                                    <img src="{{$message->embed(public_path() .'/img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" width='100'>
                                                                 </td>
                                                                 <td>
                                                                     <h5
@@ -371,7 +371,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:28px;color:#333333;font-size:14px">
-                                                                        Estimado(a) {{$evaluador[1]}}</p>
+                                                                        Estimado(a) {{$evaluador}}</p>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -415,55 +415,55 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            <tr>
-                                                                                <td style="background-color:
-                                                                                    @switch($evaluador[0])
-                                                                                            @case('autoevaluacion')
-                                                                                                #6f30a0e1
-                                                                                                @break
-                                                                                            @case('subalterno')
-                                                                                                #0070c0cb
-                                                                                                @break
-                                                                                            @case('supervisor')
-                                                                                                #ff0000c5
-                                                                                                @break
-                                                                                            @case('companiero')
-                                                                                                #c55911ce
-                                                                                                @break
-                                                                                        @endswitch
-                                                                                ;padding-left:3px;">
-                                                                                    <p style="color:#fff;margin:0;">
-                                                                                        @foreach ($evaluado as $key => $datos)
-                                                                                            {{$datos[0]}}
-                                                                                        @endforeach
-                                                                                    </p>
-                                                                                </td>
-                                                                                <td style="padding-left:3px;">
-                                                                                    <p style="margin:0;">
-                                                                                        @foreach ($evaluado as $key => $datos)
-                                                                                            {{$datos[1]}}
-                                                                                        @endforeach
-                                                                                    </p>
-                                                                                </td>
-                                                                                <td style="padding-left:3px;">
-                                                                                    <p style="margin:0;">
-                                                                                        @switch($evaluador[0])
-                                                                                            @case('autoevaluacion')
-                                                                                                Es tu Autoevaluación
-                                                                                                @break
-                                                                                            @case('subalterno')
-                                                                                                Eres su Subalterno
-                                                                                                @break
-                                                                                            @case('supervisor')
-                                                                                                Eres su Supervisor
-                                                                                                @break
-                                                                                            @case('companiero')
-                                                                                                Eres su Compañero
-                                                                                                @break
-                                                                                        @endswitch
-                                                                                    </p>
-                                                                                </td>
-                                                                            </tr>
+                                                                            @foreach ($evaluados as $key => $datos)
+                                                                                @foreach ($datos as $item)
+                                                                                    <tr>
+                                                                                        <td style="background-color:
+                                                                                            @switch($key)
+                                                                                                @case('autoevaluacion')
+                                                                                                    #6f30a0e1
+                                                                                                    @break
+                                                                                                @case('subalterno')
+                                                                                                    #0070c0cb
+                                                                                                    @break
+                                                                                                @case('supervisor')
+                                                                                                    #ff0000c5
+                                                                                                    @break
+                                                                                                @case('companiero')
+                                                                                                    #c55911ce
+                                                                                                    @break
+                                                                                            @endswitch
+                                                                                            ;padding-left:3px;">
+                                                                                            <p style="color:#fff;margin:0;">
+                                                                                                {{$item[0]}}
+                                                                                            </p>
+                                                                                        </td>
+                                                                                        <td style="padding-left:3px;">
+                                                                                            <p style="margin:0;">
+                                                                                                {{$item[1]}}
+                                                                                            </p>
+                                                                                        </td>
+                                                                                        <td style="padding-left:3px;">
+                                                                                            <p style="margin:0;">
+                                                                                                @switch($key)
+                                                                                                    @case('autoevaluacion')
+                                                                                                        Es tu Autoevaluación
+                                                                                                        @break
+                                                                                                    @case('subalterno')
+                                                                                                        Eres su Subalterno
+                                                                                                        @break
+                                                                                                    @case('supervisor')
+                                                                                                        Eres su Supervisor
+                                                                                                        @break
+                                                                                                    @case('companiero')
+                                                                                                        Eres su Compañero
+                                                                                                        @break
+                                                                                                @endswitch
+                                                                                            </p>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                @endforeach
+                                                                            @endforeach
                                                                         </tbody>
                                                                     </table>
                                                                 </td>

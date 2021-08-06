@@ -12,9 +12,13 @@ var typewatch = function(){
 var crearInputs = function(){
     let value = $("input#who-send").val()
     for(i=0;i<value;i++){
-        divInside.append(`<div><label>Nombre</label><input type="text" name="nombre[]"></input><label>E-mail</label><input type="email" name="email[]"></input></div>`)
+        divInside.append(`<div id="${i+1}"><label>Nombre</label><input type="text" name="nombre[]"></input><label>E-mail</label><input type="email" name="email[]"></input><button class="btn button--eliminarInput" onclick="event.preventDefault();eliminarInput(${i+1})">Eliminar</button></div>`)
     }
-    value = 0;
+}
+
+var eliminarInput = function(input) {
+    let div = $(`div#${input}`);
+    div.remove();
 }
 
 // CREAR INPUTS AGREGAR CATEGORIA

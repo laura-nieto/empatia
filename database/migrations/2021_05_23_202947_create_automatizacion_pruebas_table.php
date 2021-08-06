@@ -18,6 +18,7 @@ class CreateAutomatizacionPruebasTable extends Migration
             $table->text('pregunta');
             $table->text('opciones');
             $table->string('imagen')->nullable();
+            //$table->string('position');
             $table->foreignId('category_id')->constrained('categorias');
             $table->timestamps();
         });

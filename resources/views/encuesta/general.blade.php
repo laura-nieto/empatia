@@ -60,7 +60,6 @@
                         <select name="{{$dato}}" required>
                             <option value="" selected hidden>Elija una opción</option>
                             @foreach ($opciones as $item)
-                                {{dd($item)}}
                                 <option value="{{$item}}">{{$item}}</option>
                             @endforeach
                         </select>
