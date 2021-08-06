@@ -23,7 +23,7 @@ class DesempenioLaboralController extends Controller
         $preguntas = DesempenioLaboral::all();
         $empresa = Empresa::findOrFail($idEmpresa)->nombre;  
         
-        $auto = DatosDesempenio::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->get();
+        $auto = DatosDesempenio::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->simplePaginate(5);
         
         return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'evaluaciones'=>$auto]);
     }
@@ -98,8 +98,15 @@ class DesempenioLaboralController extends Controller
 
     public function mostrarEnviar($idEmpresa)
     {
-        $empresa = Empresa::findOrFail($idEmpresa)->nombre;
+        $empresa = Empresa::findOrFail($idEmpresa);
         return view('crear.desempeñoLaboral',['nombreEmpresa'=>$empresa]);
+    }
+
+    public function verCreados($idEmpresa)
+    {
+        $empresa = Empresa::findOrFail($idEmpresa)->nombre;
+        $evaluados = DatosDesempenio::where('empresa_id',$idEmpresa)->get();
+        return view('crear.desempeñoGuardados',['evaluados'=>$evaluados,'nombreEmpresa'=>$empresa]);
     }
 
     /**

@@ -14,10 +14,10 @@
             </p>
         </div>
     @endif
-    <h2 class="h2__title">Desempeño Laboral - {{$nombreEmpresa}}</h2>
+    <h2 class="h2__title">Desempeño Laboral - {{$nombreEmpresa->nombre}}</h2>
     <form action="" method="post" class="form__desempeño">
         @csrf
-        <input type="submit" name="submitButton" value="Enviar" class="btn btn-center">
+        <a href="/enviar/guardados/{{$nombreEmpresa->id}}" class="btn btn-center type-btn">Enviar</a>
         <div class="form--desempeño__div evaluar color-new-violet">
             <label for="">Es su Autoevaluacion</label>
             <input type="text" name="autoevaluacion[]" placeholder="Nombre">

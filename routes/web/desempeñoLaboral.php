@@ -11,7 +11,8 @@ use App\Http\Controllers\MensajeController;
 Route::get('/enviar/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');
 Route::get('/enviar/desempenio-laboral/{empresa}',[DesempenioLaboralController::class,'mostrarEnviar'])->middleware('auth')->name('desempenioEnviar');
 Route::post('/enviar/desempenio-laboral/{empresa}',[IdLinkController::class,'createDesempeño'])->middleware('auth');
-
+Route::get('/enviar/guardados/{empresa}',[DesempenioLaboralController::class,'verCreados'])->middleware('auth');
+Route::post('/enviar/guardados/{empresa}',[IdLinkController::class,'createDesempeño'])->middleware('auth');
 
 //REPORTE
 Route::get('/reporte/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');
