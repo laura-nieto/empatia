@@ -15,8 +15,8 @@ class CreateEncuestaClimaTable extends Migration
     {
         Schema::create('encuesta_clima', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('datos_id')->constrained('datos');
-            $table->foreignId('pregunta_id')->constrained('clima_laboral');
+            $table->foreignId('datos_id')->constrained('datos')->onDelete('cascade');
+            $table->foreignId('pregunta_id')->constrained('clima_laboral')->onDelete('cascade');
             $table->string('respuesta')->nullable();
             $table->timestamps();
         });
