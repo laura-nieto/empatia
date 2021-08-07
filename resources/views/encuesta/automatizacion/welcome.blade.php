@@ -12,7 +12,7 @@
     </div>
     @if(!is_null($empresa->logo))
         <div class="header--logo--empresa">
-            <img src="{{asset('storage/logos/'.$empresa->logo)}}" alt="Logo de la empresa" class="header--encuesta__img">
+            <img src="{{asset('img/empresas/'.$empresa->logo)}}" alt="Logo de la empresa" class="header--encuesta__img">
         </div>
     @endif
 @endsection
