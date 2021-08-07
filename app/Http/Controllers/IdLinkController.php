@@ -162,7 +162,7 @@ class IdLinkController extends Controller
                 return redirect()->route('desempenioEnviar',[$id])->with('desempeño.guardar','Los datos fueron guardados exitosamente');
 
             default:
-                $enviar = DatosDesempenio::where('empresa_id',$id)->get()->groupBy('mail');
+                $enviar = DatosDesempenio::where('empresa_id',$id)->where('enviado',0)->get()->groupBy('mail');
                 foreach ($enviar as $evaluador) {
 
                     $pass = [];
@@ -188,7 +188,10 @@ class IdLinkController extends Controller
                     $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id;
                     $correo = new DesempeñoMailable($sendLink,$empresa,$nombreEvaluador,$alEmail);
                     Mail::bcc($createDato->mail)->send($correo);
-                    
+                    foreach ($evaluador as $evaluado) {
+                        $evaluado->enviado = 1;
+                        $evaluado->save();
+                    }
                 }
                 return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
         }
@@ -224,8 +227,10 @@ class IdLinkController extends Controller
             default:
                 $link = new idLink;
                 $datos_demograficos = DatosDemograficos::all();
-                $show = $request->except(['who_send','_token','email','nombre','submitButton','importados']);
-
+                $show = $request->except(['who_send','_token','email','nombre','submitButton','importados']);    
+                if (empty($show)) {
+                    return redirect()->back()->with('null','Deben ingresarse datos demograficos');
+                }
                 $link->preguntar_datos = json_encode($show);
                 $link->empresa_id = $id;
                 $link->save();

@@ -22,6 +22,7 @@ class CreateDatosDesempeniosTable extends Migration
             $table->string('puesto_evaluado');
             $table->string('jerarquia');
             $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
+            $table->boolean('enviado')->default('0');
             $table->boolean('respondio')->default('0');
             $table->timestamps();
         });

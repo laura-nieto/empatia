@@ -8,11 +8,16 @@ use App\Models\Datos;
 
 use App\Exports\ClimaLaboralExport;
 use App\Exports\ExampleDatosExport;
+use App\Exports\ExampleEmailsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\EmailsImport;
 
 class ClimaLaboralController extends Controller
 {
+    public function exportPlantillaEmail()
+    {
+        return Excel::download(new ExampleEmailsExport,'plantilla-emails.xlsx');
+    }
     public function exportPlantilla()
     {
         return Excel::download(new ExampleDatosExport,'plantilla-datos.xlsx');

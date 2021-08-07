@@ -105,7 +105,7 @@ class DesempenioLaboralController extends Controller
     public function verCreados($idEmpresa)
     {
         $empresa = Empresa::findOrFail($idEmpresa)->nombre;
-        $evaluados = DatosDesempenio::where('empresa_id',$idEmpresa)->get();
+        $evaluados = DatosDesempenio::where('empresa_id',$idEmpresa)->where('enviado',0)->get();
         return view('crear.desempeñoGuardados',['evaluados'=>$evaluados,'nombreEmpresa'=>$empresa]);
     }
 
