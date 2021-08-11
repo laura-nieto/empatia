@@ -23,6 +23,7 @@ var eliminarInput = function(input) {
 
 // CREAR INPUTS AGREGAR CATEGORIA
 const tableInput = $(':radio')
+var index=0
 
 tableInput.click(function(){
     let name = $(this).attr('name');
@@ -33,6 +34,21 @@ var crearOption = function(id){
     let value = $(`input#option_${id}`).val(),
         div_option = $(`#form--create--dato__option--${id}`);
     for (let i = 0; i < value; i++) {
-        div_option.append(`<div class="padding-all form--create--dato__opciones"><label>Opción ${i+1}</label><input type="text" name="${id}[]"></input></div>`)
+        div_option.append(`<div class="padding-all dg" id="borrar-${id}-${index}"><label>Opción ${index+1}</label><input type="text" name="${id}[]"></input><input type="button" class="btn-eliminar" onclick="event.preventDefault();eliminarInputOpcion(${index},${id})"></input></div>`)
+        index+=1
     }
 }
+
+var eliminarInputOpcion = function(input,id) {
+    let div = $(`div#borrar-${id}-${input}`);
+    div.remove();
+}
+
+// var borrarSeleccion = function(id) {
+//     let divOpciones = $(`#form--create--dato__option--${id}`),
+//         inputCrear = $(`#${id}`),
+//         radio = $(`input[name=${id}]`)
+//     divOpciones.remove();
+//     inputCrear.remove();
+//     radio.removeAttr("checked")
+// }

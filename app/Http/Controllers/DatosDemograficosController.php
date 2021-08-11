@@ -14,6 +14,9 @@ class DatosDemograficosController extends Controller
         $empresa = Empresa::findOrFail($idEmpresa);
         $req = $request->except(['_token']);
         foreach ($req as $demografico => $options) {
+            if (!array_filter($options)) {
+                return redirect()->back()->with('error','Uno de los datos demográficos no fue ingresado con opciones');
+            }
             foreach ($options as $option) {
                 if ($option != null) {
                     $entry[]=$option;

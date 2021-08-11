@@ -96,6 +96,20 @@
     margin-top: 10px;
     padding: 5px 20px;
 }
+.btn-eliminar{
+    align-self: end;
+    background: url('/img/cancel.png');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    border:none;
+    height: 20px;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin: 5px 10px;
+}
+.dg{
+    display: grid;
+}
 /* DESEMPEÑO LABORAL */
 .form__desempeño{
     display: grid;
@@ -143,7 +157,18 @@
     color: #fff;
     padding: 5px 5px 10px;
 }
-
+/* MODIFICAR DATOS DESEMPEÑO */
+.form--modify{
+    grid-template-columns: repeat(2,1fr);
+    row-gap: 60px;
+}
+.form--modify>input[type='submit']{
+    grid-column: span 2;
+    justify-self: center;
+}
+.form--modify>.form--desempeño__div>label{
+    margin-top: 20px;
+}
 /* AUTOMATIZACION DE PRUEBAS */
 .form__automatizacion{
     display: flex;

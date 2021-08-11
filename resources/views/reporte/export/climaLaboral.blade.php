@@ -3,7 +3,6 @@
     <tr>
         <th>Nombre</th>
         <th>Email</th> 
-        <th>Observacioner</th>
         @foreach ($datos_demograficos as $dato)
             <th>{{$dato}}</th>
         @endforeach
@@ -20,7 +19,6 @@
         <tr>
             <td>{{$dato->nombre}}</td>
             <td>{{$dato->mail}}</td>
-            <td>{{$dato->observacion}}</td>
             @foreach ($viewDatos as $item)
                 <td>{{$item}}</td>
             @endforeach

@@ -382,9 +382,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                         role="presentation"
                                                                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                                         <tr>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;border-bottom:0px solid #CCCCCC;background:none;height:1px;width:100%;margin:0px">
-                                                                            </td>
+                                                                           <td></td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
@@ -392,7 +390,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                             <tr>
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#333333;font-size:14px">
+                                                                        style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                         Como parte del proceso denominado <strong>Clima Laboral</strong>, la empresa <strong>{{$empresa}}</strong> le invita a realizar la siguiente encuesta. Favor de desarrollarla de acuerdo a las indicaciones que se le den. Haga click en el enlace para empezar</p>
                                                                 </td>
                                                             </tr>
@@ -404,22 +402,46 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                         role="presentation"
                                                                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                                         <tr>
-                                                                            <td
-                                                                                style="padding:0;Margin:0;border-bottom:0px solid #CCCCCC;background:none;height:1px;width:100%;margin:0px">
-                                                                            </td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center"
+                                                                    style="padding:10px;Margin:0;font-size:0">
+                                                                    <table border="0" width="100%" height="100%"
+                                                                        cellpadding="0" cellspacing="0"
+                                                                        role="presentation"
+                                                                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                                        <tr>
+                                                                           <td></td>
                                                                         </tr>
                                                                     </table>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="padding:0;Margin:0"><a href='http://{{$link}}'
-                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#0645AD;font-size:14px">{{$link}}</a>
+                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#0645AD;font-size:16px">{{$link}}</a>
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td align="center"
+                                                                    style="padding:10px;Margin:0;font-size:0">
+                                                                    <table border="0" width="100%" height="100%"
+                                                                        cellpadding="0" cellspacing="0"
+                                                                        role="presentation"
+                                                                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                                        <tr>
+                                                                            <td style="border-bottom: 0px solid #cccccc; background: none; height: 1px; width: 100%; margin: 0px;"></td>
+                                                                        </tr>                                                                        
+                                                                    </table>
+                                                                </td>
+                                                            </tr>                                                       
+                                                            <tr>
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
+                                                                        style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
                                                                         Si necesita ayuda nos puede contactar a través
                                                                         del correo soluciones@empatia.com.pe o al
                                                                         teléfono 998161316.o en última instancia

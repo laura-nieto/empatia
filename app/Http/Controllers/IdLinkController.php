@@ -172,7 +172,6 @@ class IdLinkController extends Controller
                     $link->empresa_id = $id;
                     foreach ($evaluador as $evaluado) {
                         $pass[] = $evaluado->id;
-                        $alEmail[$evaluado->jerarquia][] = [$evaluado->evaluado,$evaluado->puesto_evaluado];
                         $guardarDato = [$evaluado->evaluador,$evaluado->mail];
                     }
                     $link->nombre_desempeño = json_encode($pass);
@@ -186,7 +185,7 @@ class IdLinkController extends Controller
                     
                     $nombreEvaluador = $createDato->nombre;
                     $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id;
-                    $correo = new DesempeñoMailable($sendLink,$empresa,$nombreEvaluador,$alEmail);
+                    $correo = new DesempeñoMailable($sendLink,$empresa,$nombreEvaluador);
                     Mail::bcc($createDato->mail)->send($correo);
                     foreach ($evaluador as $evaluado) {
                         $evaluado->enviado = 1;

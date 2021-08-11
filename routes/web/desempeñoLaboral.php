@@ -5,14 +5,20 @@ use App\Http\Controllers\DesempenioLaboralController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\IdLinkController;
 use App\Http\Controllers\DatosController;
+use App\Http\Controllers\DatosDesempenioController;
 use App\Http\Controllers\MensajeController;
 
 //ENVIAR
 Route::get('/enviar/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');
 Route::get('/enviar/desempenio-laboral/{empresa}',[DesempenioLaboralController::class,'mostrarEnviar'])->middleware('auth')->name('desempenioEnviar');
 Route::post('/enviar/desempenio-laboral/{empresa}',[IdLinkController::class,'createDesempeño'])->middleware('auth');
-Route::get('/enviar/guardados/{empresa}',[DesempenioLaboralController::class,'verCreados'])->middleware('auth');
+Route::get('/enviar/guardados/{empresa}',[DesempenioLaboralController::class,'verCreados'])->middleware('auth')->name('ver_datos_desempenio');
 Route::post('/enviar/guardados/{empresa}',[IdLinkController::class,'createDesempeño'])->middleware('auth');
+
+//DATOS DESEMPENIO CRUD
+Route::get('/datos/desempenio/borrar/{empresa}/{id}',[DatosDesempenioController::class,'destroy'])->middleware('auth');
+Route::get('/datos/desempenio/modificar/{empresa}/{id}',[DatosDesempenioController::class,'edit'])->middleware('auth');
+Route::post('/datos/desempenio/modificar/{empresa}/{id}',[DatosDesempenioController::class,'update'])->middleware('auth');
 
 //REPORTE
 Route::get('/reporte/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');

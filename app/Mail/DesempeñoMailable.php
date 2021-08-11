@@ -16,17 +16,15 @@ class DesempeñoMailable extends Mailable
     public $link;
     public $empresa;
     public $evaluador;
-    public $evaluados;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($link,$empresa,$evaluador,$evaluados)
+    public function __construct($link,$empresa,$evaluador)
     {
         $this->link = $link;
         $this->evaluador = $evaluador;
-        $this->evaluados = $evaluados;
         $this->empresa = $empresa;
     }
 

@@ -383,7 +383,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                                         <tr>
                                                                             <td
-                                                                                style="padding:0;Margin:0;border-bottom:0px solid #CCCCCC;background:none;height:1px;width:100%;margin:0px">
+                                                                                style="padding:0;Margin:0;background:none;height:1px;width:100%;margin:0px">
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -392,107 +392,51 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                             <tr>
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#333333;font-size:14px">
+                                                                        style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                         Como parte del proceso denominado <strong>Desempeño 360°</strong>, la empresa <strong>{{$empresa}}</strong> le invita a realizar la siguiente encuesta. Favor de desarrollarla de acuerdo a las indicaciones que se le den. Haga click en el enlace para empezar
                                                                     </p>
                                                                 </td>
                                                             </tr>
+                                                            
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center"
+                                                        style="padding:10px;Margin:0;font-size:0">
+                                                        <table border="0" width="100%" height="100%"
+                                                            cellpadding="0" cellspacing="0"
+                                                            role="presentation"
+                                                            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
-                                                                <td align="center"
-                                                                    style="padding:5px;Margin:0;">
-                                                                    <table border="1px solid #000" width="95%" height="100%" cellspacing="0" style="font-size:14px;">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th style="padding:2px;">
-                                                                                    <p style="margin:0;">Evaluado</p>
-                                                                                </th>
-                                                                                <th style="padding:2px;">
-                                                                                    <p style="margin:0;">Puesto del evaluado</p>
-                                                                                </th>
-                                                                                <th style="padding:2px;">
-                                                                                    <p style="margin:0;">Jerarquía del evaluado</p>
-                                                                                </th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            @foreach ($evaluados as $key => $datos)
-                                                                                @foreach ($datos as $item)
-                                                                                    <tr>
-                                                                                        <td style="background-color:
-                                                                                            @switch($key)
-                                                                                                @case('autoevaluacion')
-                                                                                                    #6f30a0e1
-                                                                                                    @break
-                                                                                                @case('subalterno')
-                                                                                                    #0070c0cb
-                                                                                                    @break
-                                                                                                @case('supervisor')
-                                                                                                    #ff0000c5
-                                                                                                    @break
-                                                                                                @case('companiero')
-                                                                                                    #c55911ce
-                                                                                                    @break
-                                                                                            @endswitch
-                                                                                            ;padding-left:3px;">
-                                                                                            <p style="color:#fff;margin:0;">
-                                                                                                {{$item[0]}}
-                                                                                            </p>
-                                                                                        </td>
-                                                                                        <td style="padding-left:3px;">
-                                                                                            <p style="margin:0;">
-                                                                                                {{$item[1]}}
-                                                                                            </p>
-                                                                                        </td>
-                                                                                        <td style="padding-left:3px;">
-                                                                                            <p style="margin:0;">
-                                                                                                @switch($key)
-                                                                                                    @case('autoevaluacion')
-                                                                                                        Es tu Autoevaluación
-                                                                                                        @break
-                                                                                                    @case('subalterno')
-                                                                                                        Eres su Subalterno
-                                                                                                        @break
-                                                                                                    @case('supervisor')
-                                                                                                        Eres su Supervisor
-                                                                                                        @break
-                                                                                                    @case('companiero')
-                                                                                                        Eres su Compañero
-                                                                                                        @break
-                                                                                                @endswitch
-                                                                                            </p>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                @endforeach
-                                                                            @endforeach
-                                                                        </tbody>
-                                                                    </table>
-                                                                </td>
+                                                               <td></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td align="center" class="esd-block-spacer es-p5" style="font-size:0">
-                                                                    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0">
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td style="border-bottom: 0px solid #cccccc; background: none; height: 1px; width: 100%; margin: 0px;"></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="left" class="esd-block-text">
-                                                                    <p style="font-size:14px">Favor de dar click al siguiente enlace para empezar o puede copiar el referido enlace en una ventana nueva de su navegador:</p>
-                                                                </td>
-                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
                                                             <tr>
                                                                 <td style="padding:0;Margin:0"><a href='http://{{$link}}'
-                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#0645AD;font-size:14px">{{$link}}</a>
+                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#0645AD;font-size:16px">{{$link}}</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="center"
+                                                                    style="padding:10px;Margin:0;font-size:0">
+                                                                    <table border="0" width="100%" height="100%"
+                                                                        cellpadding="0" cellspacing="0"
+                                                                        role="presentation"
+                                                                        style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                                        <tr>
+                                                                            <td style="border-bottom: 0px solid #cccccc; background: none; height: 1px; width: 100%; margin: 0px;"></td>
+                                                                        </tr>                                                                        
+                                                                    </table>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
+                                                                        style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
                                                                         Si necesita ayuda nos puede contactar a través
                                                                         del correo soluciones@empatia.com.pe o al
                                                                         teléfono 998161316.o en última instancia

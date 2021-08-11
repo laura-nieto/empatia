@@ -392,7 +392,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                             <tr>
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#333333;font-size:14px">
+                                                                        style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#333333;font-size:14px">
                                                                         La empresa <strong>{{$empresa}}</strong> nos encomienda la labor de ponderar sus competencias profesionales, para cumplir dicho fin es que a continuación le presentamos una serie de pruebas psicotécnicas elegidas minuciosamente, las cuales usted tendrá que desarrollar de acuerdo a las indicaciones que se le vayan dando. Haga click en el enlace para empezar.
                                                                     </p>
                                                                 </td>
@@ -414,13 +414,13 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                             </tr>
                                                             <tr>
                                                                 <td style="padding:0;Margin:0"><a href='http://{{$link}}'
-                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#0645AD;font-size:14px">{{$link}}</a>
+                                                                        style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#0645AD;font-size:16px">{{$link}}</a>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
+                                                                        style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
                                                                         Si necesita ayuda nos puede contactar a través
                                                                         del correo soluciones@empatia.com.pe o al
                                                                         teléfono 998161316.o en última instancia

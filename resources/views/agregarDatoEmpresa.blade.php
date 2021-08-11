@@ -3,6 +3,11 @@
 @section('main')
     <article class="article__agregar">
         <h2 class="h2__title">Agregar Dato Demográfico - {{$empresa->nombre}}</h2>
+        @if (session('error'))
+            <div class="div--error">
+                <p>{{session('error')}}</p>
+            </div> 
+        @endif
         <form action="" method="post">
             @csrf
             <div class="form--create__dato">
@@ -23,8 +28,7 @@
                         <div id="form--create--dato__option--{{$dato->id}}">
 
                         </div>
-                    </section>
-                    
+                    </section>                   
                 @endforeach
             </div>
             <input type="submit" value="Agregar" class="btn">

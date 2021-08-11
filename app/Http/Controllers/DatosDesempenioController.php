@@ -1,0 +1,106 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\DatosDesempenio;
+
+
+class DatosDesempenioController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($empresa,$id)
+    {
+        $dato = DatosDesempenio::findOrFail($id);
+        return view('modificar_dato',['dato'=>$dato]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request,$empresa,$id)
+    {
+        // VALIDATION
+        $rules=[
+            '*'=>'required',
+        ];
+        $message=[
+            'required' => 'El campo es obligatorio',
+        ];
+        $request->validate($rules,$message);
+        
+        $dato = DatosDesempenio::findOrFail($id);
+        $dato->evaluador = $request->evaluador;
+        $dato->mail = $request->mail;
+        $dato->puesto_evaluador = $request->puesto_evaluador;
+        $dato->evaluado = $request->evaluado;
+        $dato->puesto_evaluado = $request->puesto_evaluado;
+        $dato->jerarquia = $request->jerarquia;
+        $dato->save();
+
+        return redirect()->route('ver_datos_desempenio',$empresa)->with('success','El dato ha sido modificado.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($empresa,$id)
+    {
+        DatosDesempenio::findOrFail($id)->delete();
+        return redirect()->route('ver_datos_desempenio',$empresa)->with('success','El dato ha sido eliminado.');
+    }
+}
