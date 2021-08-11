@@ -53,6 +53,8 @@ class ClimaLaboralController extends Controller
                 }
             }
         }
+        $persona->links()->attach($idLink,['respondio'=>true]);
+        
         $request->session()->flush();
         $request->session()->save();
         return redirect()->route('finalizarClima',['id'=>$idLink,'datos'=>$idDatos]);

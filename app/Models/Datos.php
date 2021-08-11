@@ -36,4 +36,9 @@ class Datos extends Model
     {
         return $this->belongsToMany(Categoria::class,'datos_categorias','datos_id','categorias_id')->withPivot('respondio','tiempo');
     }
+
+    public function links()
+    {
+        return $this->belongsToMany(idLink::class,'link_dato','datos_id','link_id')->withPivot('respondio');
+    }
 }

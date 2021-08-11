@@ -34,7 +34,7 @@ var crearOption = function(id){
     let value = $(`input#option_${id}`).val(),
         div_option = $(`#form--create--dato__option--${id}`);
     for (let i = 0; i < value; i++) {
-        div_option.append(`<div class="padding-all dg" id="borrar-${id}-${index}"><label>Opción ${index+1}</label><input type="text" name="${id}[]"></input><input type="button" class="btn-eliminar" onclick="event.preventDefault();eliminarInputOpcion(${index},${id})"></input></div>`)
+        div_option.append(`<div class="padding-all dg" id="borrar-${id}-${index}"><label>Opción</label><input type="text" name="${id}[]"></input><input type="button" class="btn-eliminar" onclick="event.preventDefault();eliminarInputOpcion(${index},${id})"></input></div>`)
         index+=1
     }
 }

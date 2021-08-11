@@ -393,7 +393,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
                                                                         style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#333333;font-size:14px">
-                                                                        Como parte del proceso denominado <strong>Desempeño 360°</strong>, la empresa <strong>{{$empresa}}</strong> le invita a realizar la siguiente encuesta. Favor de desarrollarla de acuerdo a las indicaciones que se le den. Haga click en el enlace para empezar
+                                                                        Como parte del proceso denominado <strong>Desempeño 360°</strong>, la empresa <strong>{{$empresa}}</strong> le invita a realizar la siguiente encuesta. Favor de desarrollarla de acuerdo a las indicaciones que se le den. Haga click en el enlace para empezar.
                                                                     </p>
                                                                 </td>
                                                             </tr>

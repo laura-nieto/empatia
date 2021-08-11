@@ -51,6 +51,10 @@ class MensajeController extends Controller
     public function mensaje_clima($id,$idDatos)
     {
         $empresa = Datos::findOrFail($idDatos)->empresas;
+        $dato =Datos::findOrFail($idDatos);
+        if (!$dato->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
         $mensaje = Mensaje::where('tipo','clima laboral')->first();
         return view('encuesta.welcomeClima',['mensaje'=>$mensaje->mensaje,'empresa'=>$empresa]);
     }
