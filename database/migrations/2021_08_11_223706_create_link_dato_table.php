@@ -15,7 +15,7 @@ class CreateLinkDatoTable extends Migration
     {
         Schema::create('link_dato', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('datos_id')->constrained('datos_desempenio')->onDelete('cascade');
+            $table->foreignId('datos_id')->constrained('datos')->onDelete('cascade');
             $table->foreignId('link_id')->constrained('id_links')->onDelete('cascade');
             $table->boolean('respondio')->default('0');
             $table->timestamps();

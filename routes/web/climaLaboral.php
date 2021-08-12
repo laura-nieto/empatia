@@ -59,9 +59,7 @@ Route::post('/encuesta/clima-laboral/{id}/{datos}/page=6',[ClimaLaboralControlle
 Route::get('/encuesta/clima-laboral/{id}/{datos}/page=7',[ClimaLaboralController::class,'page7'])->name('clima_pag7');
 Route::post('/encuesta/clima-laboral/{id}/{datos}/page=7',[ClimaLaboralController::class,'store']);
 
-Route::get('/encuesta/clima-laboral/{id}/{datos}/fin',function(){
-    return view('encuesta.finEncuesta');
-})->name('finEncuestaClima');
+Route::get('/encuesta/clima-laboral/{id}/{datos}/fin',[ClimaLaboralController::class,'finVista'])->name('finEncuestaClima');
 Route::post('/encuesta/clima-laboral/{id}/{datos}/fin',[ClimaLaboralController::class,'finEncuesta']);
 
 Route::get('/encuesta/clima-laboral/{id}/{datos}/finalizar',function(){

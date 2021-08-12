@@ -287,7 +287,9 @@ class IdLinkController extends Controller
     {
         $idLink = idLink::findOrFail($id);
         $datos = Datos::findOrFail($idDatos);
-        
+        if (!$datos->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
         $preg_datos = json_decode($idLink->preguntar_datos,true);
         
         $empresa = $idLink->empresa_id;

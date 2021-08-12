@@ -58,39 +58,75 @@ class ClimaLaboralController extends Controller
         $request->session()->flush();
         $request->session()->save();
         return redirect()->route('finalizarClima',['id'=>$idLink,'datos'=>$idDatos]);
-    }    
-    public function page1()
+    }
+    public function finVista($id,$idDatos)
     {
+        $datos = Datos::findOrFail($idDatos);
+        if (!$datos->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
+        return view('encuesta.finEncuesta');
+    } 
+    public function page1($id,$idDatos)
+    {
+        $datos = Datos::findOrFail($idDatos);
+        if (!$datos->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
         $preguntas = ClimaLaboral::take(10)->get();
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
-    public function page2(Request $request) 
+    public function page2($id,$idDatos) 
     {
+        $datos = Datos::findOrFail($idDatos);
+        if (!$datos->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
         $preguntas = ClimaLaboral::skip(10)->take(10)->get();
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
-    public function page3()
+    public function page3($id,$idDatos)
     {
+        $datos = Datos::findOrFail($idDatos);
+        if (!$datos->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
         $preguntas = ClimaLaboral::skip(20)->take(10)->get();
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
-    public function page4()
+    public function page4($id,$idDatos)
     {
+        $datos = Datos::findOrFail($idDatos);
+        if (!$datos->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
         $preguntas = ClimaLaboral::skip(30)->take(10)->get();
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
-    public function page5()
+    public function page5($id,$idDatos)
     {
+        $datos = Datos::findOrFail($idDatos);
+        if (!$datos->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
         $preguntas = ClimaLaboral::skip(40)->take(10)->get();
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
-    public function page6()
+    public function page6($id,$idDatos)
     {
+        $datos = Datos::findOrFail($idDatos);
+        if (!$datos->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
         $preguntas = ClimaLaboral::skip(50)->take(5)->get();
         return view('encuesta.climaLaboral',['preguntas'=>$preguntas]);
     }
-    public function page7()
+    public function page7($id,$idDatos)
     {
+        $datos = Datos::findOrFail($idDatos);
+        if (!$datos->links->isEmpty()) {
+            return redirect()->route('finalizarClima',[$id,$idDatos]);
+        }
         $preguntas = ClimaLaboral::skip(55)->take(5)->get();
         return view('encuesta.climaLaboralLibre',['preguntas'=>$preguntas]);
     }
