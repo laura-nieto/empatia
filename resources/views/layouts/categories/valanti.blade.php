@@ -10,7 +10,7 @@
         De la pregunta 10 a la 30, <span class="color--brown">para la frase más inaceptable,</span> según su juicio. El puntaje más alto, será para la frase que indique lo peor.
     </p>
     <p>Las únicas opciones de respuesta son:</p>
-    <div class="div--puntuacion">
+    <div class="div--puntuacion responsive--valanti--grid2c">
         <div class="div--puntuacion__group">
             <p>3</p>
             <p>0</p>
@@ -29,7 +29,7 @@
         </div>
     </div>
     <p>Ejemplo:</p>
-    <div class="div--puntuacion">
+    <div class="div--puntuacion  responsive--valanti">
         <div class="div--puntuacion__group">
             <p class="background--color--green">1</p>
             <p>La solidaridad la practico a diario</p>

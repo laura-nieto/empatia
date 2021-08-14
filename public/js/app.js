@@ -22,19 +22,30 @@ var eliminarInput = function(input) {
 }
 
 // CREAR INPUTS AGREGAR CATEGORIA
-const tableInput = $(':radio')
+const checking = $(':checkbox')
 var index=0
 
-tableInput.click(function(){
-    let name = $(this).attr('name');
-    $(`#${name}`).append(`<div class="form--clima--div__cantidad padding-all"><label>Cantidad de opciones</label><input type="text" id="option_${name}" onKeyUp="typewatch(crearOption(${this.name}));"></div>`)
+checking.click(function(){
+    let name = $(this).attr('name')
+
+    if (this.checked) {
+        let divCrearInput = $(`#${name}`)
+        divCrearInput.append(`<div class="form--clima--div__cantidad padding-all"><label>Cantidad de opciones</label><input type="text" id="option_${name}" onKeyUp="typewatch(crearOption(${this.name}));"></div>`)
+    }else{
+        let divOpciones = $(`#form--create--dato__option--${name}`)
+
+        divOpciones.empty();
+        $(`#${name}`).empty();
+    }
+   
 })
 
 var crearOption = function(id){
     let value = $(`input#option_${id}`).val(),
         div_option = $(`#form--create--dato__option--${id}`);
     for (let i = 0; i < value; i++) {
-        div_option.append(`<div class="padding-all dg" id="borrar-${id}-${index}"><label>Opción</label><input type="text" name="${id}[]"></input><input type="button" class="btn-eliminar" onclick="event.preventDefault();eliminarInputOpcion(${index},${id})"></input></div>`)
+        var asd = $(`<div class="padding-all dg" id="borrar-${id}-${index}"><label>Opción</label><input type="text" name="${id}[]"></input><input type="button" class="btn-eliminar" onclick="event.preventDefault();eliminarInputOpcion(${index},${id})"></input></div>`)
+        asd.appendTo(div_option)
         index+=1
     }
 }

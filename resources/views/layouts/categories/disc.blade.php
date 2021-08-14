@@ -8,7 +8,7 @@
         <li>Ninguno de las 28 grupos debe quedar en blanco, necesariamente debes marcar, uno en MAS y otro en MENOS</li>
     </ol>
     <p>Ejemplo:</p>
-    <div class="div--table--trueFalse">
+    <div class="div--table--trueFalse no-margin">
         <table>
             <thead>
                 <tr>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title','Agregar Dato Demografico - Empatia 360°')
 @section('main')
+    {{-- {{dd(session()->all())}}  --}}
     <article class="article__agregar">
         <h2 class="h2__title">Agregar Dato Demográfico - {{$empresa->nombre}}</h2>
         @if (session('error'))
@@ -17,16 +18,29 @@
                 </section>
                 @foreach ($datosDemo as $dato)
                     <div class="border--bot"></div>
-                    <section>
+                    <section id="section--{{$dato->id}}">
                         <div class="form--create--dato--opciones__nombres">
-                            <input type="radio" name="{{$dato->id}}" class="input--center">
+                            <input type="checkbox" name="{{$dato->id}}" class="input--center">
                             <h4>{{$dato->nombre_dato}}</h4>
                         </div>
                         <div id="{{$dato->id}}">
 
                         </div>
                         <div id="form--create--dato__option--{{$dato->id}}">
-
+                            @if (session('categorias'))
+                                @foreach (session('categorias') as $item)
+                                    @foreach ($item as $category => $array)
+                                        @if ($category == $dato->id)
+                                            @foreach ($array as $value)
+                                                <div class="padding-all dg">
+                                                    <label>Opción</label>
+                                                    <input type="text" name="{{$dato->id}}[]" value="{{$value}}">
+                                                </div>   
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                @endforeach                                        
+                            @endif
                         </div>
                     </section>                   
                 @endforeach
@@ -34,6 +48,9 @@
             <input type="submit" value="Agregar" class="btn">
         </form>
     </article>
+    @php
+        session()->forget('categorias');
+    @endphp
 @endsection
 @section('js')
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>

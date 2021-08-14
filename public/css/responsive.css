@@ -1,0 +1,355 @@
+@media screen and (max-width: 1200px) { 
+    /* CLIMA ENCUESTA */
+    .form--encuesta__table{
+        width: 80%;
+    }
+    /* FIN ENCUESTA */
+    .encuesta--fin__form{
+        width: 70vw;
+    }
+    /* DESEMPEÑO - ENCUESTA */
+    .welcome--table{
+        width: 60%;
+    }
+    /* AUTOMATIZACION - ENCUESTA */
+    .form-automatizacion__article--moss,.form-automatizacion__article--valanti,.form-automatizacion__article--bfq,.form-automatizacion__article--kostick
+    {
+        width: 70%;
+    }
+    .responsive--valanti{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    .responsive--valanti>.div--puntuacion__group:nth-child(2){
+        justify-self: center;
+    }
+    
+
+}
+
+@media screen and (max-width: 992px){
+    /* INDEX */
+    .article__index{
+        grid-template-columns: repeat(2,1fr);
+    }
+    /* DESEMPEÑO */
+    .form__desempeño{
+        column-gap: 30px;
+    }
+    .form--desempeño__div{
+        width: 30vw;
+    }   
+    /* UNIR DATO DEMOGRAFICO - EMPRESA */
+    .form--create__dato{
+        width: 75%;
+    }
+    .div__datos>input, .div__datos>select{
+        width: 75%;
+    }
+    .libre--div>label,.libre--div>textarea{
+        width: 100%;
+    }
+    /* FIN ENCUESTA */
+    .encuesta--fin__form{
+        width: 80vw;
+    }
+    /* DESEMPEÑO - ENCUESTA */
+    .welcome--table{
+        margin-bottom: 40px;
+        width: 70%;
+    }
+    .article__instruction{
+        margin: 70px 20px 0;
+    }
+    .section__instruction>*, .section__instruction2>*{
+        width: 95%;
+    }
+    /* AUTOMATIZACION - ENCUESTA */
+    .form-automatizacion__article--kenstel,.form-automatizacion__article--moss,.form-automatizacion__article--valanti,.form-automatizacion__article--bfq,.form-automatizacion__article--estres{
+        width: 70%;
+    }
+    .div--ol,.form-automatizacion__article--wonderlick,.form-automatizacion__article--kostick{
+        width: 80%;
+    }
+    .responsive--valanti--grid2c{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        justify-items: center;
+        row-gap: 15px;
+    }
+    .ol--position--row{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        row-gap: 15px;
+    }
+    .div--bfq{
+        display: grid;
+        row-gap: 15px;
+    }
+    .div--bfq>table>thead>tr>th{
+        text-align: center;
+    }
+    .form-automatizacion__article--disc{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    /* HEADER ENCUESTAS */
+    .header--encuesta__img--transparent{
+        width: 10vw;
+    }
+    .header--encuesta__img{
+        width: 10vw;
+    }
+    .header--encuesta--title>h3{
+        font-size: 1.3rem;
+    }
+    .column-span-2>h3{
+        text-align: end;
+    }
+    
+}
+@media screen and (min-width: 481px) and (max-width: 768px) { 
+    /* LOGIN */
+    .section--login{
+        width: 75%;
+    }
+    /* INDEX */
+    .article__index{
+        grid-template-columns: repeat(2,1fr);
+    }
+    /* CLIMA - ENVIAR */
+    .form--clima--div__email{
+        width: 100%;
+    }
+    /* DESEMPEÑO - ENVIAR */
+    .form__desempeño{
+        grid-template-columns: 1fr;
+    }
+    .evaluar{
+        grid-column: 1;
+    }
+    .form__desempeño>.btn-center{
+        grid-column: 1;
+    }
+    .form--desempeño__div{
+        width: 50vw;
+    }
+    /* AUTOMATIZACION - ENVIAR */
+    .article__automatizacion{
+        align-items: center;
+        flex-direction: column;
+    }
+    .automatizacion__section,.automatizacion__table{
+        width: 100%;
+    }
+    .automatizacion__div{
+        align-items: center;
+    }
+    /* UNIR DATO DEMOGRAFICO - EMPRESA */
+    .form--create__dato{
+        width: 75%;
+    }
+    /* CLIMA - ENCUESTA */
+    .acept--terms{
+        margin: 0;
+        width: 100%;
+    }
+    .form--encuesta__table{
+        width: 90%;
+    }
+    .div__container--libre{
+        grid-template-columns: 1fr;
+    }
+    .libre--div>label,.libre--div>textarea,.div--ol--barsit{
+        width: 100%;
+    }
+    /* DESEMPEÑO - ENCUESTA */
+    .welcome--table{
+        width: 100%;
+    }
+    .article__instruction{
+        grid-template-columns: 1fr;
+    }
+    .article__instruction>form{
+        grid-column: 1;
+    }
+    /* AUTOMATIZACION - ENCUESTA */
+    .form-automatizacion__article--kenstel,.form-automatizacion__article--barsit,.form-automatizacion__article--kostick,.form-automatizacion__article--valanti,.form-automatizacion__article--wonderlick,.form-automatizacion__article--bfq,.form-automatizacion__article--kostick,.form-automatizacion__article--estres{
+        width: 90%;
+    }
+    .section--margin>.section__kenstel{
+        width: 100%;
+    }
+    .responsive--valanti{
+        justify-items: center;
+        grid-template-columns: 1fr;
+        row-gap: 15px;
+    }
+    .responsive--valanti>.div--puntuacion__group:nth-child(2){
+        flex-direction: column;
+    }
+    .ol--position--row{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .ol--position--row>li:last-of-type{
+        grid-column: span 2;
+        justify-self: center;
+    }
+    .no-margin{
+        margin: 0;
+    }
+    .form-automatizacion__article--disc{
+        grid-template-columns:1fr;
+    }
+    .preguntas:last-child{
+        grid-column: 1;
+    }
+
+    /* FIN ENCUESTA */
+    .encuesta--fin__form{
+        width: 80vw;
+    }
+    .encuesta--fin{
+        width: 100%;
+    }
+
+    /* HEADER ENCUESTAS */
+    .header--encuesta__img--transparent{
+        width: 15vw;
+    }
+    .header--encuesta__img{
+        width: 15vw;
+    }
+    .header--encuesta--title>h3{
+        font-size: 1.3rem;
+    }
+    .column-span-2>h3{
+        text-align: end;
+    }
+   
+}
+
+@media screen and (max-width: 480px) {
+    /* LOGIN */
+    .section--login{
+        width: 95%;
+    }
+    /* INDEX */
+    .article__index{
+        grid-template-columns: 1fr;
+    }
+    /* CLIMA - ENVIAR */
+    .form--clima--div__email{
+        grid-template-columns: 1fr;
+    }
+    /* DESEMPEÑO - ENVIAR */
+    .form__desempeño{
+        grid-template-columns: 1fr;
+    }
+    .evaluar{
+        grid-column: 1;
+    }
+    .form__desempeño>.btn-center{
+        grid-column: 1;
+    }
+    .form--desempeño__div{
+        width: 60vw;
+    } 
+    /* AUTOMATIZACION - ENVIAR */
+    .article__automatizacion{
+        align-items: center;
+        flex-direction: column;
+    }
+    .automatizacion__section,.automatizacion__table{
+        width: 100%;
+    }
+    .automatizacion__div{
+        align-items: center;
+    }
+    /* UNIR DATO DEMOGRAFICO - EMPRESA */
+    .form--create__dato{
+        width: 75%;
+    }
+    /* CLIMA - ENCUESTA */
+    .article--welcome__clima{
+        border: none;
+        padding: 0;
+    }
+    .section--margin>*:not(.text--time,h2){
+        width: 100%;
+    }
+    .acept--terms{
+        margin: 0;
+        width: 100%;
+    }
+    .form__encuesta--datos{
+        grid-template-columns: 1fr;
+    }
+    .div__datos>input, .div__datos>select{
+        width: 75%;
+    }
+    .form__encuesta--datos>.btn-center{
+        grid-column: 1;
+    }
+    .form--encuesta__table{
+        width: 100%;
+    }
+    .div__container--libre{
+        grid-template-columns: 1fr;
+    }
+    .libre--div>label,.libre--div>textarea{
+        width: 100%;
+    }
+    /* DESEMPEÑO - ENCUESTA */
+    .welcome--table{
+        width: 100%;
+    }
+    .article__instruction{
+        grid-template-columns: 1fr;
+    }
+    .article__instruction>form{
+        grid-column: 1;
+    }
+    /* AUTOMATIZACION - ENCUESTA */
+    .form-automatizacion__article--kenstel,.form-automatizacion__article--moss,.form-automatizacion__article--barsit,.form-automatizacion__article--kostick,.form-automatizacion__article--valanti,.form-automatizacion__article--wonderlick,.form-automatizacion__article--bfq,.form-automatizacion__article--kostick,.form-automatizacion__article--estres
+    {
+        width: 90%;
+    }
+    .div--ol{
+        width: 90%;
+    }
+    .div--puntuacion{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        justify-items: center;
+        row-gap: 20px;
+    }
+    .responsive--valanti{
+        justify-items: center;
+        grid-template-columns: 1fr;
+        row-gap: 15px;
+    }
+    .responsive--valanti>.div--puntuacion__group:nth-child(2){
+        flex-direction: column;
+    }
+    .no-margin{
+        margin: 0;
+    }
+    .form-automatizacion__article--disc{
+        grid-template-columns:1fr;
+    }
+    .preguntas:last-child{
+        grid-column: 1;
+    }
+    /* FIN ENCUESTA */
+    .encuesta--fin__form{
+        width: 80vw;
+    }
+    .encuesta--fin{
+        width: 100%;
+    }
+    /* HEADER ENCUESTAS */
+    .header--encuesta__img--transparent{
+        width: 10vw;
+    }
+}

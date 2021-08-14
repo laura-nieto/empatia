@@ -11,14 +11,29 @@ class DatosDemograficosController extends Controller
 {
     public function guardarOpcionesEmpresa(Request $request,$idEmpresa)
     {
+        // $request->session()->forget(['categorias']);
+        // $request->session()->save();
+        //dd($request->session()->all());
         $empresa = Empresa::findOrFail($idEmpresa);
         $req = $request->except(['_token']);
         foreach ($req as $demografico => $options) {
+            $data=[];
             if ($options == 'on') {
+                foreach ($req as $key => $value) {
+                    if ($value != 'on'){
+                        $data[$key] = $value;
+                    }
+                }
+                $request->session()->push('categorias',$data);
+
                 return redirect()->back()->with('error','No se agregaron opciones');
             }
             if (!$empresa->opcionesDemograficos->contains($demografico)) {
-                if (!array_filter($options)) {
+                if (!array_filter($options)){
+                    foreach ($req as $key => $value) {
+                        $data[$key] = array_filter($value);
+                    }
+                    $request->session()->push('categorias',$data);
                     return redirect()->back()->with('error','Uno de los datos demográficos no fue ingresado con opciones');
                 }
                 foreach ($options as $option) {

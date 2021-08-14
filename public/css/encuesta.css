@@ -24,9 +24,11 @@
     padding-left: 50px;
 }
 .section--margin>*:not(.text--time,h2){
-    width: 90%;
     line-height: 1.5;
     text-align: justify;
+}
+.section--margin>*:not(.section__kenstel,.text--time,h2){
+    width: 90%;
 }
 .acept--terms{
     display: flex;
