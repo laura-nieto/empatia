@@ -10,7 +10,7 @@
     @if (session('desempeño.send'))
         <div class="div--error">
             <p>
-                Todos los datos de <strong>Autoevaluación</strong> deben estar completos.
+                Tanto el nombre como el cargo en <strong>Autoevaluación</strong> deben estar completos.
             </p>
         </div>
     @endif
@@ -32,16 +32,19 @@
         <div class="form--desempeño__div color-new-red">
             <label for="">Eres su Supervisor</label>
             <input type="text" name="supervisor[]" placeholder="Nombre">
+            <input type="email" name="supervisor[]" placeholder="E-mail">
             <input type="text" name="supervisor[]" placeholder="Cargo">
         </div>
         <div class="form--desempeño__div color-new-blue">
             <label for="">Eres su Subalterno</label>
             <input type="text" name="subalterno[]" placeholder="Nombre">
+            <input type="email" name="subalterno[]" placeholder="E-mail">
             <input type="text" name="subalterno[]" placeholder="Cargo">
         </div>
         <div class="form--desempeño__div color-new-orange">
             <label for="">Eres su Compañero</label>
             <input type="text" name="companiero[]" placeholder="Nombre">
+            <input type="email" name="companiero[]" placeholder="E-mail">
             <input type="text" name="companiero[]" placeholder="Cargo">
         </div>
         <input type="submit" name="submitButton" value="Guardar Datos" class="btn btn-center margin-bot">

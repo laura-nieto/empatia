@@ -1,3 +1,8 @@
+.justify-line{
+    line-height: 1.5;
+    text-align: justify;
+}
+
 @media screen and (max-width: 1200px) { 
     /* CLIMA ENCUESTA */
     .form--encuesta__table{
@@ -351,5 +356,16 @@
     /* HEADER ENCUESTAS */
     .header--encuesta__img--transparent{
         width: 10vw;
+    }
+    .header--encuesta{
+        row-gap: 40px;
+    }
+    .header--encuesta__img{
+        width: 15vw;
+    }
+    .header--encuesta--title--responsive{
+        grid-row: 2;
+        grid-column: span 3;
+        text-align: center;
     }
 }

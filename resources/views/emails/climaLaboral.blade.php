@@ -326,6 +326,9 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                     </td>
                                                 </tr>
                                             </table>
+                                        </td>
+                                        <td lign="left"
+                                        style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                                             <!--[if mso]></td><td style="width:20px"></td><td style="width:340px" valign="top"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" align="right"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
@@ -337,16 +340,16 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                             <tr>
                                                                 <td align="right" style="padding:0;Margin:0">
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:14px;margin-bottom:0px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:13px;margin-bottom:0px">
                                                                         Powered By</p>
-                                                                    <h4
+                                                                    <h5
                                                                         style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#EC741C">
                                                                         Empatia
-                                                                    </h4>
-                                                                    <h4
+                                                                    </h5>
+                                                                    <h5
                                                                         style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
                                                                         360°
-                                                                    </h4>
+                                                                    </h5>
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -357,7 +360,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td align="left"
+                                        <td colspan="2" align="left"
                                             style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                                             <table width="100%" cellspacing="0" cellpadding="0"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
@@ -443,8 +446,8 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                                                     <p
                                                                         style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
                                                                         Si necesita ayuda nos puede contactar a través
-                                                                        del correo soluciones@empatia.com.pe o al
-                                                                        teléfono 998161316.o en última instancia
+                                                                        del correo <u>soluciones@empatia.com.pe</u> o al
+                                                                        teléfono 998161316. En última instancia
                                                                         contactar con el responsable dentro de su
                                                                         organización.</p>
                                                                 </td>

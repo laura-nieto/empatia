@@ -8,7 +8,7 @@
 @section('main')
     <div class="encuesta--div__explain">
         <h5>Comentarios</h5>
-        <p>Favor, comparta sus comentarios con nosotros, los mismos que utilizaremos para optimizar el clima laboral. Al
+        <p class="justify-line">Favor, comparta sus comentarios con nosotros, los mismos que utilizaremos para optimizar el clima laboral. Al
             igual como sus respuestas del cuestionario, esta sección es anónima. 
             <strong>Las respuestas a estas preguntas son opcionales.</strong> 
         </p>
@@ -19,7 +19,7 @@
             <div class="div__container--libre">
                 @foreach ($preguntas as $pregunta)
                 <div class="libre--div">
-                    <label for="" class="libre--label">{{$pregunta->pregunta}}</label>
+                    <label for="" class="libre--label justify-line">{{$pregunta->pregunta}}</label>
                     <textarea cols="30" rows="10" name="{{$pregunta->id}}" class="libre--textarea"></textarea>
                 </div>
                 @endforeach

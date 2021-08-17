@@ -21,7 +21,7 @@
     <h2 class="h2__title">Clima Laboral - {{$empresa->nombre}}</h2>
     <div class="div__importar">
         <a href="/importar/clima-laboral/{{last(request()->segments())}}" class="btn link-color">Cargar E-mails</a>
-        <a href="/importar/clima-laboral/datos/{{last(request()->segments())}}" class="btn link-color">Cargar Datos</a>
+        {{-- <a href="/importar/clima-laboral/datos/{{last(request()->segments())}}" class="btn link-color">Cargar Datos</a> --}}
     </div>
     <form action="" method="post" class="form__clima">
         @csrf

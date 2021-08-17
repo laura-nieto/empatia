@@ -7,7 +7,7 @@
 @endsection
 @section('main')
     <div class="encuesta--div__explain">
-        <p>
+        <p class="justify-line">
             Responder de acuerdo a lo que perciba dentro de su ambiente laboral, eligiendo alguna de las opciones que a continuación se presenta. Marque con una  "X" en el casillero correspondiente según su opinión.
         </p>
         <table>
@@ -52,7 +52,7 @@
                 <tbody>
                     @foreach ($preguntas as $pregunta)
                         <tr>
-                            <td>{{$pregunta->pregunta}}</td>
+                            <td class="justify-line">{{$pregunta->pregunta}}</td>
                             <td ><input type="radio" name="{{$pregunta->id}}" value="TED" class="radio-center" required></td>
                             <td ><input type="radio" name="{{$pregunta->id}}" value="ED" class="radio-center"></td>
                             <td ><input type="radio" name="{{$pregunta->id}}" value="NDANED" class="radio-center"></td>

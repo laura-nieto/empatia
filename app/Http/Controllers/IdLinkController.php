@@ -106,7 +106,6 @@ class IdLinkController extends Controller
 
         $show = $request->except(['_token','email','submitButton']);
         $empresa = Empresa::findOrFail($id)->nombre;
-
         switch ($request->submitButton) {
             case 'Guardar Datos':
                 //Evaluar que evaluador no este vacio
@@ -115,16 +114,16 @@ class IdLinkController extends Controller
                         if(is_null($datos[0]) || is_null($datos[2]) || $datos[1]==null){
                             //TODOS LOS DATOS SON NULOS
                             return redirect()->back()->with('desempeño.send','asd');
-                        }else{
-                            $pass[$puesto] = $datos;
-                            array_splice($pass[$puesto],1,1);
                         }
                     }else{
-                        foreach ($datos as $dato) {
-                            if($dato === null){
-                                break;
+                        if (!array_filter($show[$puesto])) {
+                            
+                        }else{
+                            if(is_null($datos[0]) || is_null($datos[2]) || $datos[1]==null){
+                                //TODOS LOS DATOS SON NULOS
+                                return redirect()->back()->with('desempeño.error','Uno de los campos no fue completado correctamente');
                             }else{
-                                $pass[$puesto] = $datos;
+                                $pass[$puesto]=$datos;
                             }
                         }
                     }
@@ -135,28 +134,28 @@ class IdLinkController extends Controller
                             return redirect()->back()->with('desempeño.error','Uno de los Puestos no fue completado');
                         }else{
                             $newDato = new DatosDesempenio;
-                            $newDato->evaluador = $show['autoevaluacion'][0];
-                            $newDato->mail = $show['autoevaluacion'][1];
-                            $newDato->puesto_evaluador = $show['autoevaluacion'][2];
+                            $newDato->evaluador= $persona[0];
+                            $newDato->mail= $persona[1];
+                            $newDato->puesto_evaluador = $persona[2];
+
                             $newDato->empresa_id = $id;
-                            $newDato->evaluado = $persona[0];
-                            $newDato->puesto_evaluado = $persona[1];
-                            $newDato->jerarquia = $key;
-                            $newDato->save();
-                        }
-                    }else{
-                        if (!DatosDesempenio::where('mail',$show['autoevaluacion'][1])->where('jerarquia','autoevaluacion')->where('evaluador',$show['autoevaluacion'][0])->exists()) {
-                            $newDato = new DatosDesempenio;
-                            $newDato->evaluador = $show['autoevaluacion'][0];
-                            $newDato->mail = $show['autoevaluacion'][1];
-                            $newDato->puesto_evaluador = $show['autoevaluacion'][2];
-                            $newDato->empresa_id = $id;
-                            $newDato->evaluado = $persona[0];
-                            $newDato->puesto_evaluado = $persona[1];
+                            $newDato->evaluado =  $show['autoevaluacion'][0];
+                            $newDato->puesto_evaluado = $show['autoevaluacion'][2];
                             $newDato->jerarquia = $key;
                             $newDato->save();
                         }
                     }
+                }
+                if (!DatosDesempenio::where('mail',$show['autoevaluacion'][1])->where('jerarquia','autoevaluacion')->where('evaluador',$show['autoevaluacion'][0])->exists()) {
+                    $newDato = new DatosDesempenio;
+                    $newDato->evaluador = $show['autoevaluacion'][0];
+                    $newDato->mail = $show['autoevaluacion'][1];
+                    $newDato->puesto_evaluador = $show['autoevaluacion'][2];
+                    $newDato->empresa_id = $id;
+                    $newDato->evaluado = $show['autoevaluacion'][0];
+                    $newDato->puesto_evaluado = $show['autoevaluacion'][2];
+                    $newDato->jerarquia = 'autoevaluacion';
+                    $newDato->save();
                 }
                 
                 return redirect()->route('desempenioEnviar',[$id])->with('desempeño.guardar','Los datos fueron guardados exitosamente');
