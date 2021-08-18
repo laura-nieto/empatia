@@ -327,7 +327,7 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td lign="left"
+                                        <td valign="center"  align="left"
                                         style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                                             <!--[if mso]></td><td style="width:20px"></td><td style="width:340px" valign="center"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" align="right"
@@ -338,7 +338,7 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                                             role="presentation"
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
-                                                                <td align="right" style="padding:0;Margin:0">
+                                                                <td valign="center" align="right" style="padding:0;Margin:0">
                                                                     <p
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:12px;margin-bottom:0px">
                                                                         Powered By</p>
