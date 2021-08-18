@@ -297,8 +297,7 @@ a {text-decoration: none;}
                                     <tr>
                                         <td align="left"
                                             style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
-                                            {{-- <!--[if mso]><table style="width:520px" cellpadding="0"
-cellspacing="0"><tr><td style="width:160px" valign="middle"><![endif]--> --}}
+                                            {{--  --}}
                                             <table cellpadding="0" cellspacing="0" class="es-left" align="left"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
                                                 <tr>
@@ -329,7 +328,7 @@ cellspacing="0"><tr><td style="width:160px" valign="middle"><![endif]--> --}}
                                         </td>
                                         <td valign="middle" height="100%" align="left"
                                         style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
-                                            {{-- <!--[if mso]></td><td style="width:20px"></td><td style="width:340px;" height="100" valign="middle"><![endif]--> --}}
+                                            {{--  --}}
                                             <table cellpadding="0" cellspacing="0" align="right" height="100%"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
                                                 <tr>
@@ -356,7 +355,7 @@ cellspacing="0"><tr><td style="width:160px" valign="middle"><![endif]--> --}}
                                                     </td>
                                                 </tr>
                                             </table>
-                                            {{-- <!--[if mso]></td></tr></table><![endif]--> --}}
+                                            {{--  --}}
                                         </td>
                                     </tr>
                                     <tr>
