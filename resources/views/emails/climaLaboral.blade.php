@@ -327,17 +327,17 @@ a {text-decoration: none;}
                                             </table>
                                         </td>
                                         <td valign="middle" height="100%" align="left"
-                                        style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px;min-height:100%;">
+                                        style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                                             {{--  --}}
-                                            <table cellpadding="0" cellspacing="0" align="right" height="100%"
-                                                style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;min-height:100%;">
+                                            {{-- <table cellpadding="0" cellspacing="0" align="right" height="100%"
+                                                style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                 <tr>
                                                     <td valign="middle" height="100%" align="left" style="padding:0;Margin:0;width:340px">
                                                         <table height="100%" cellpadding="0" cellspacing="0" width="100%"
                                                             role="presentation"
-                                                            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;min-height:100%;">
+                                                            style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
-                                                                <td valign="middle" align="right" style="padding:0;Margin:0;min-height:100%;">
+                                                                <td valign="middle" align="right" style="padding:0;Margin:0;min-height:100%;"> --}}
                                                                     <p
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:12px;margin-bottom:0px">
                                                                         Powered By</p>
@@ -349,12 +349,12 @@ a {text-decoration: none;}
                                                                         style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
                                                                         360°
                                                                     </h5>
-                                                                </td>
+                                                                {{-- </td>
                                                             </tr>
                                                         </table>
                                                     </td>
                                                 </tr>
-                                            </table>
+                                            </table> --}}
                                             {{--  --}}
                                         </td>
                                     </tr>
