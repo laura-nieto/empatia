@@ -330,7 +330,7 @@ cellspacing="0"><tr><td style="width:160px" valign="middle"><![endif]--> --}}
                                         <td valign="middle" height="100" align="left"
                                         style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                                             {{-- <!--[if mso]></td><td style="width:20px"></td><td style="width:340px;" height="100" valign="middle"><![endif]--> --}}
-                                            <table cellpadding="0" cellspacing="0" align="right"
+                                            <table cellpadding="0" cellspacing="0" align="right" height="100%"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
                                                 <tr>
                                                     <td valign="middle" align="left" style="padding:0;Margin:0;width:340px">
