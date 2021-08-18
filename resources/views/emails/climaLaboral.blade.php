@@ -326,7 +326,7 @@ a {text-decoration: none;}
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td valign="middle" height="100%" align="left"
+                                        <td valign="middle" height="100%" align="right"
                                         style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px;width:340px">
                                             {{--  --}}
                                             {{-- <table cellpadding="0" cellspacing="0" align="right" height="100%"
