@@ -298,11 +298,11 @@ a {text-decoration: none;}
                                         <td align="left"
                                             style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                                             <!--[if mso]><table style="width:520px" cellpadding="0"
-cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
+cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" class="es-left" align="left"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
                                                 <tr>
-                                                    <td class="es-m-p0r es-m-p20b" valign="top"
+                                                    <td class="es-m-p0r es-m-p20b" valign="center"
                                                         style="padding:0;Margin:0;width:160px"> 
                                                         <table cellpadding="0" cellspacing="0" width="100%"
                                                             role="presentation"
