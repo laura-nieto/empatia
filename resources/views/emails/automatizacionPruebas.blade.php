@@ -329,7 +329,7 @@ cellspacing="0"><tr><td style="width:160px" valign="top"><![endif]-->
                                         </td>
                                         <td lign="left"
                                         style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
-                                            <!--[if mso]></td><td style="width:20px"></td><td style="width:340px" valign="top"><![endif]-->
+                                            <!--[if mso]></td><td style="width:20px"></td><td style="width:340px" valign="center"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" align="right"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                 <tr>
