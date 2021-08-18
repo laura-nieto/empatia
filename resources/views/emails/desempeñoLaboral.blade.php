@@ -327,7 +327,7 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td valign="center"  align="left"
+                                        <td valign="center" align="left"
                                         style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                                             <!--[if mso]></td><td style="width:20px"></td><td style="width:340px" valign="center"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" align="right"
