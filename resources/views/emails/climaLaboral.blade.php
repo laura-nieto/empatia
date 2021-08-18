@@ -286,7 +286,7 @@ a {text-decoration: none;}
         <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0"
             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top">
             <tr>
-                <td valign="center" style="padding:0;Margin:0">
+                <td valign="middle" style="padding:0;Margin:0">
                     <table cellpadding="0" cellspacing="0" class="es-content" align="center"
                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
                         <tr>
@@ -298,11 +298,11 @@ a {text-decoration: none;}
                                         <td align="left"
                                             style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                                             <!--[if mso]><table style="width:520px" cellpadding="0"
-cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
+cellspacing="0"><tr><td style="width:160px" valign="middle"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" class="es-left" align="left"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
                                                 <tr>
-                                                    <td class="es-m-p0r es-m-p20b" valign="center"
+                                                    <td class="es-m-p0r es-m-p20b" valign="middle"
                                                         style="padding:0;Margin:0;width:160px"> 
                                                         <table cellpadding="0" cellspacing="0" width="100%"
                                                             role="presentation"
@@ -327,18 +327,18 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                                 </tr>
                                             </table>
                                         </td>
-                                        <td valign="center" align="left"
+                                        <td valign="middle" align="left"
                                         style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
-                                            <!--[if mso]></td><td style="width:20px"></td><td style="width:340px" valign="center"><![endif]-->
+                                            <!--[if mso]></td><td style="width:20px"></td><td style="width:340px" valign="middle"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" align="right"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                 <tr>
-                                                    <td valign="center" align="left" style="padding:0;Margin:0;width:340px">
+                                                    <td valign="middle" align="left" style="padding:0;Margin:0;width:340px">
                                                         <table cellpadding="0" cellspacing="0" width="100%"
                                                             role="presentation"
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
-                                                                <td valign="center" align="right" style="padding:0;Margin:0">
+                                                                <td valign="middle" align="right" style="padding:0;Margin:0">
                                                                     <p
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:12px;margin-bottom:0px">
                                                                         Powered By</p>
