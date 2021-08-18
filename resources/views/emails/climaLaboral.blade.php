@@ -333,7 +333,7 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" align="right"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                 <tr>
-                                                    <td align="left" style="padding:0;Margin:0;width:340px">
+                                                    <td valign="center" align="left" style="padding:0;Margin:0;width:340px">
                                                         <table cellpadding="0" cellspacing="0" width="100%"
                                                             role="presentation"
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
