@@ -297,7 +297,7 @@ a {text-decoration: none;}
                                     <tr>
                                         <td align="left"
                                             style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
-                                            <!--[if mso]><table style="width:520px" cellpadding="0"
+                                            <!--[if mso]><table style="width:100%" cellpadding="0"
                                                 cellspacing="0"><tr><td style="width:160px" valign="middle"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" class="es-left" align="left"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
