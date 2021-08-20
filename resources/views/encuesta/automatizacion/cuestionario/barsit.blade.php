@@ -27,8 +27,14 @@
                     </ul>
                 @else
                     <ol>
+                        @php
+                            $op ='A';
+                        @endphp
                         @foreach (json_decode($pregunta->opciones) as $opcion)
-                            <li><input type="radio" name="{{$pregunta->id}}" value="{{$opcion}}">{{$opcion}}</li>
+                            <li><input type="radio" name="{{$pregunta->id}}" value="{{$op}}">{{$opcion}}</li>
+                            @php
+                                $op++;
+                            @endphp
                         @endforeach
                     </ol>
                 @endif

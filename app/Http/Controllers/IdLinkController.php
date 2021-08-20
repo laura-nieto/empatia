@@ -146,7 +146,7 @@ class IdLinkController extends Controller
                         }
                     }
                 }
-                if (!DatosDesempenio::where('mail',$show['autoevaluacion'][1])->where('jerarquia','autoevaluacion')->where('evaluador',$show['autoevaluacion'][0])->exists()) {
+                if (!DatosDesempenio::where('mail',$show['autoevaluacion'][1])->where('jerarquia','autoevaluacion')->where('evaluador',$show['autoevaluacion'][0])->where('empresa_id',$id)->where('enviado',false)->exists()) {
                     $newDato = new DatosDesempenio;
                     $newDato->evaluador = $show['autoevaluacion'][0];
                     $newDato->mail = $show['autoevaluacion'][1];

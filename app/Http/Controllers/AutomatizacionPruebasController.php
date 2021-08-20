@@ -31,8 +31,7 @@ class AutomatizacionPruebasController extends Controller
                 }
             }
         }
-        $preguntas = AutomatizacionPruebas::where('category_id',$idCategoria)->get();
-        
+        $preguntas = AutomatizacionPruebas::where('category_id',$idCategoria)->orderBy('id', 'ASC')->get();
         return view('encuesta.automatizacion.preguntas',['preguntas'=>$preguntas,'tiempo'=>$tiempo,'idCategoria'=>$idCategoria]);
     }
     public function redireccionar($idLink,$idDatos,$idCategoria)

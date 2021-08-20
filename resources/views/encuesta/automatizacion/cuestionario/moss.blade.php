@@ -17,17 +17,23 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $op ='A';
+                @endphp
                 @foreach (json_decode($pregunta->opciones) as $opcion)
                     <tr>
                         <td></td>
-                        <td><input type="radio" name="{{$pregunta->id}}" value="{{$opcion}}"></td>
+                        <td><input type="radio" name="{{$pregunta->id}}" value="{{$op}}"></td>
                         <td>{{$opcion}}</td>
                     </tr>
+                    @php
+                        $op++;
+                    @endphp
                 @endforeach
             </tbody>
         </table>
         @php
-            $i +=1    
+            $i +=1;
         @endphp
     @endforeach
     
