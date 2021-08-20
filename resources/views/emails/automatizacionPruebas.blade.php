@@ -350,8 +350,8 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]--> --}}
                                                                         style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C;font-size:14px">
                                                                         360°
                                                                     </h4>
-                                                                </td>
-                                                            {{-- </tr>
+                                                            {{--     </td>
+                                                            </tr>
                                                         </table>
                                                     </td>
                                                 </tr>

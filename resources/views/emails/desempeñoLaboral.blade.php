@@ -290,7 +290,7 @@ a {text-decoration: none;}
                     <table cellpadding="0" cellspacing="0" class="es-content" align="center"
                         style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
                         <tr>
-                            <td align="center" style="padding:0;Margin:0">
+                            <td valign="middle" align="center" style="padding:0;Margin:0">
                                 <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0"
                                     cellspacing="0"
                                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;border-top:10px solid transparent;border-right:10px solid transparent;border-left:10px solid transparent;width:650px;border-bottom:10px solid transparent">
@@ -350,8 +350,8 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]--> --}}
                                                                         style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C;font-size:14px">
                                                                         360°
                                                                     </h4>
-                                                                </td>
-                                                            {{-- </tr>
+                                                            {{-- </td>
+                                                            </tr>
                                                         </table>
                                                     </td>
                                                 </tr>
