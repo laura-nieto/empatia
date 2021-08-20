@@ -294,7 +294,7 @@ a {text-decoration: none;}
                                 <table bgcolor="#ffffff" class="es-content-body" align="center" cellpadding="0"
                                     cellspacing="0"
                                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;border-top:10px solid transparent;border-right:10px solid transparent;border-left:10px solid transparent;width:650px;border-bottom:10px solid transparent">
-                                    <tr>
+                                    <tr style="display:flex;align-items:center;">
                                         <td align="left"
                                             style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
                                             {{-- <!--[if mso]><table style="width:520px" cellpadding="0"
