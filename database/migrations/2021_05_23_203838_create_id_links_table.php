@@ -18,6 +18,7 @@ class CreateIdLinksTable extends Migration
             $table->text('preguntar_datos')->nullable();
             $table->string('categorias_automatizacion')->nullable();
             $table->string('nombre_desempeño')->nullable();
+            $table->boolean('respondio')->default('0');
             $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
             $table->timestamps();
         });

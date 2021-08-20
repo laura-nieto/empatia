@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mensaje;
 use Illuminate\Http\Request;
 use App\Models\Datos;
+use App\Models\idLink;
 
 class MensajeController extends Controller
 {
@@ -36,8 +37,9 @@ class MensajeController extends Controller
         return view('edit.editInstrucciones',['instruccion1'=>$instruccion1,'instruccion2'=>$instruccion2]);
     }
 
-    public function mensaje_desempeño()
+    public function mensaje_desempeño($idLink)
     {
+        $empresa = idLink::findOrFail($idLink)->empresas;
         $mensaje = Mensaje::where('tipo','desempeño laboral')->get();
         foreach ($mensaje as $key => $value) {
             if($key === 1){
@@ -46,7 +48,7 @@ class MensajeController extends Controller
                 $instruccion2 = $value->mensaje;
             }
         }
-        return view('encuesta.desempeño.instruccionesDesempeño',['instruccion1'=>$instruccion1,'instruccion2'=>$instruccion2]);
+        return view('encuesta.desempeño.instruccionesDesempeño',['instruccion1'=>$instruccion1,'instruccion2'=>$instruccion2,'empresa'=>$empresa]);
     }
     public function mensaje_clima($id,$idDatos)
     {

@@ -169,6 +169,14 @@
 .form--modify>.form--desempeño__div>label{
     margin-top: 20px;
 }
+.desempenio-modify{
+    display: flex;
+    justify-content: center;
+}
+.no-button{
+    background-color: transparent;
+    border: none;
+}
 /* AUTOMATIZACION DE PRUEBAS */
 .form__automatizacion{
     display: flex;

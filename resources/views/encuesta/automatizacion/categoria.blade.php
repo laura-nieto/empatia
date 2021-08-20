@@ -7,7 +7,7 @@
             <h4 class="title--logo">Consultores</h4>
         </div>
     </div>
-    <div class="header--encuesta--title {{is_null($empresa->logo)?'column-span-2':''}}">
+    <div class="header--encuesta--title header--encuesta--title--responsive">
         <h3>Evaluación de Competencias Profesionales</h3>
     </div>
     @if(!is_null($empresa->logo))

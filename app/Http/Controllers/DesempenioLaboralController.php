@@ -28,6 +28,15 @@ class DesempenioLaboralController extends Controller
         return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'evaluaciones'=>$auto]);
     }
 
+    public function finVista($idLink)
+    {
+        $link = idLink::findOrFail($idLink);
+        if ($link->respondio) {
+            return redirect()->route('finalizar',[$idLink]);
+        }
+        return view('encuesta.finEncuesta');
+    }
+
     public function finEncuesta(Request $request,$idLink)
     {
         foreach ($request->session()->all() as $key => $evaluacion) {
@@ -45,7 +54,9 @@ class DesempenioLaboralController extends Controller
                 }
             }
         }
-        
+        $link = idLink::findOrFail($idLink);
+        $link->respondio = true;
+        $link->save();
         $request->session()->flush();
         $request->session()->save();
         
@@ -77,11 +88,11 @@ class DesempenioLaboralController extends Controller
     }
 
     public function get_title(Request $request,$id,$datoDesempeño){
-        $link = idLink::findOrFail($id);
+        $link = idLink::findOrFail($id)->empresas;
         $evaluado = DatosDesempenio::findOrFail($datoDesempeño);
         //  $request->session()->flush();
         //  $request->session()->save();
-        return view('encuesta.desempeño.titleDesempeño',['persona'=>$evaluado]);
+        return view('encuesta.desempeño.titleDesempeño',['persona'=>$evaluado,'empresa'=>$link]);
     }
 
     public function obtenerTitle(Request $request,$idLink)
@@ -118,11 +129,12 @@ class DesempenioLaboralController extends Controller
     {
         $link = idLink::findOrFail($idLink);
         $mensaje = Mensaje::where('tipo','desempeño laboral')->first();
+        $empresa= $link->empresas;
         $cargo = json_decode($link->nombre_desempeño,true);
         foreach ($cargo as $idDesempeño) {
             $pass[]=DatosDesempenio::findOrFail($idDesempeño);
         }
-        return view('encuesta.desempeño.welcomeDesempeño',['cargo'=>$pass,'mensaje'=>$mensaje->mensaje]);
+        return view('encuesta.desempeño.welcomeDesempeño',['cargo'=>$pass,'mensaje'=>$mensaje->mensaje,'empresa'=>$empresa]);
     }
 
     /**

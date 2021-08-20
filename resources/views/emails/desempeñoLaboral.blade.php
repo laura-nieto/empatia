@@ -297,8 +297,8 @@ a {text-decoration: none;}
                                     <tr>
                                         <td align="left"
                                             style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
-                                            <!--[if mso]><table style="width:520px" cellpadding="0"
-cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
+                                            {{-- <!--[if mso]><table style="width:520px" cellpadding="0"
+cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]--> --}}
                                             <table cellpadding="0" cellspacing="0" class="es-left" align="left"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
                                                 <tr>
@@ -313,11 +313,11 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                                                 </td>
                                                                 <td>
                                                                     <h5
-                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C;font-size:14px">
                                                                         Empatia
                                                                     </h6>
                                                                     <h5
-                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C;font-size:14px">
                                                                         Consultores
                                                                     </h5>
                                                                 </td>
@@ -329,8 +329,8 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                         </td>
                                         <td valign="center" align="left"
                                         style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
-                                            <!--[if mso]></td><td style="width:20px"></td><td style="width:340px" valign="center"><![endif]-->
-                                            <table cellpadding="0" cellspacing="0" align="right"
+                                            {{-- <!--[if mso]></td><td style="width:20px"></td><td style="width:340px" valign="center"><![endif]--> --}}
+                                            {{-- <table cellpadding="0" cellspacing="0" align="right"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                 <tr>
                                                     <td align="left" style="padding:0;Margin:0;width:340px">
@@ -338,25 +338,25 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                                             role="presentation"
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
-                                                                <td valign="center" align="right" style="padding:0;Margin:0">
+                                                                <td valign="center" align="right" style="padding:0;Margin:0"> --}}
                                                                     <p
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:12px;margin-bottom:0px">
                                                                         Powered By</p>
                                                                     <h4
-                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#EC741C">
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#EC741C;font-size:14px">
                                                                         Empatia
                                                                     </h4>
                                                                     <h4
-                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C">
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C;font-size:14px">
                                                                         360°
                                                                     </h4>
                                                                 </td>
-                                                            </tr>
+                                                            {{-- </tr>
                                                         </table>
                                                     </td>
                                                 </tr>
-                                            </table>
-                                            <!--[if mso]></td></tr></table><![endif]-->
+                                            </table> --}}
+                                            {{-- <!--[if mso]></td></tr></table><![endif]--> --}}
                                         </td>
                                     </tr>
                                     <tr>
@@ -442,9 +442,7 @@ cellspacing="0"><tr><td style="width:160px" valign="center"><![endif]-->
                                                                         style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
                                                                         Si necesita ayuda nos puede contactar a través
                                                                         del correo <u>soluciones@empatia.com.pe</u> o al
-                                                                        teléfono 998161316. En última instancia
-                                                                        contactar con el responsable dentro de su
-                                                                        organización.</p>
+                                                                        teléfono 998161316. En última instancia favor de contactar con el responsable del proceso de su organización. </p>
                                                                 </td>
                                                             </tr>
                                                         </table>

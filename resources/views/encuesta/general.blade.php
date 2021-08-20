@@ -7,7 +7,7 @@
             <h4 class="title--logo">Consultores</h4>
         </div>
     </div>
-    <div class="header--encuesta--title {{is_null($empresa->logo)?'column-span-2':'header--encuesta--title--responsive'}}">
+    <div class="header--encuesta--title header--encuesta--title--responsive">
         <h3>Encuesta de Clima Laboral</h3>
     </div>
     @if(!is_null($empresa->logo))

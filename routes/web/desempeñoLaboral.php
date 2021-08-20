@@ -8,6 +8,15 @@ use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DatosDesempenioController;
 use App\Http\Controllers\MensajeController;
 
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+Route::get('/asd',function(){
+    Schema::table('id_links', function (Blueprint $table) {
+        $table->boolean('respondio')->default('0');
+    });
+});
+
 //ENVIAR
 Route::get('/enviar/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');
 Route::get('/enviar/desempenio-laboral/{empresa}',[DesempenioLaboralController::class,'mostrarEnviar'])->middleware('auth')->name('desempenioEnviar');
@@ -16,7 +25,7 @@ Route::get('/enviar/guardados/{empresa}',[DesempenioLaboralController::class,'ve
 Route::post('/enviar/guardados/{empresa}',[IdLinkController::class,'createDesempeño'])->middleware('auth');
 
 //DATOS DESEMPENIO CRUD
-Route::get('/datos/desempenio/borrar/{empresa}/{id}',[DatosDesempenioController::class,'destroy'])->middleware('auth');
+Route::post('/datos/desempenio/borrar/{empresa}/{id}',[DatosDesempenioController::class,'destroy'])->middleware('auth')->name('borrar_datos');
 Route::get('/datos/desempenio/modificar/{empresa}/{id}',[DatosDesempenioController::class,'edit'])->middleware('auth');
 Route::post('/datos/desempenio/modificar/{empresa}/{id}',[DatosDesempenioController::class,'update'])->middleware('auth');
 
@@ -42,9 +51,7 @@ Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=2',[DesempenioLabora
 Route::get('/encuesta/desempenio-laboral/{id}/{datos}/page=3',[DesempenioLaboralController::class,'encuesta2'])->name('preguntas_libre');
 Route::post('/encuesta/desempenio-laboral/{id}/{datos}/page=3',[DesempenioLaboralController::class,'store']);
 
-Route::get('/encuesta/desempenio-laboral/{id}/fin',function(){
-    return view('encuesta.finEncuesta');
-})->name('finEncuesta');
+Route::get('/encuesta/desempenio-laboral/{id}/fin',[DesempenioLaboralController::class,'finVista'])->name('finEncuesta');
 Route::post('/encuesta/desempenio-laboral/{id}/fin',[DesempenioLaboralController::class,'finEncuesta']);
 Route::get('/encuesta/desempenio-laboral/{id}/finalizar',function(){
     return view('encuesta.fin');

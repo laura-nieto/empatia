@@ -7,9 +7,14 @@
             <h4 class="title--logo">Consultores</h4>
         </div>
     </div>
-    <div class="header--encuesta--title">
+    <div class="header--encuesta--title header--encuesta--title--responsive">
         <h3>Encuesta de Desempeño Laboral</h3>
     </div>
+    @if(!is_null($empresa->logo))
+        <div class="header--logo--empresa">
+            <img src="{{asset('img/empresas/'.$empresa->logo)}}" alt="Logo de la empresa" class="header--encuesta__img">
+        </div>
+    @endif
 @endsection
 @section('main')
     <section class="desempeño--title">
