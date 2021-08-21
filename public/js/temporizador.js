@@ -31,4 +31,22 @@ form.addEventListener('submit',(e)=>{
                 form.submit();
             }
         })
-})
+});
+
+// PRUEBA VALANTI
+var sumar = function (name) {
+    let index1 = $(`input[name=${name}]`)[0],
+        index2 = $(`input[name=${name}]`)[1],
+        total = parseInt(index1.value) + parseInt(index2.value),
+        nameReplace = name.replace('[','').replace(']','')
+        id = $(`td#${nameReplace}`);
+    
+    if (total === 3 || isNaN(total)) {
+        console.log('suma 3 o is nan')
+        if (!id.hasClass('suma-error')) {
+            id.addClass("suma-error");
+        }
+    }else{
+        id.removeClass("suma-error");
+    }
+}

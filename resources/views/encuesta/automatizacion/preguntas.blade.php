@@ -58,8 +58,8 @@
 @endsection
 @section('js')
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="{{asset('js/temporizador.js')}}"></script>
     @if ($idCategoria == 5)
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     @endif
+    <script src="{{asset('js/temporizador.js')}}"></script>
 @endsection

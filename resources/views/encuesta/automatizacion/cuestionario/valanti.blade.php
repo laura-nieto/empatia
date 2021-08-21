@@ -22,13 +22,13 @@
             @endphp
             <tbody>
                 <tr>
-                    <td class="{{ $pregunta->pregunta <= 10 ? 'background--color--green' : 'background--color--brown'}} text-center">{{$pregunta->pregunta}}</td>
+                    <td rowspan='2' class="{{ $pregunta->pregunta <= 10 ? 'background--color--green' : 'background--color--brown'}} text-center">{{$pregunta->pregunta}}</td>
                     <td>{{$opcion1}}</td>
-                    <td><input type="number" name="{{$pregunta->id}}[]" min="0" max="3" onkeyup="agregar(this.name,this.value)"></td>
-                    <td><input type="number" name="{{$pregunta->id}}[]" min="0" max="3" onchange="sumar(this)"></td>
+                    <td><input type="number" name="{{$pregunta->id}}[]" min="0" max="3" onchange="sumar(this.name)"></td>
+                    <td><input type="number" name="{{$pregunta->id}}[]" min="0" max="3" onchange="sumar(this.name)"></td>
                     <td>{{$opcion2}}</td>
                 </tr>
-                <td colspan="5" class="text-center error-login suma-error" id="{{$pregunta->id}}"><strong>La suma debe ser de 3</strong></td>
+                <td colspan="4" class="text-center error-login suma-error" id="{{$pregunta->id}}"><strong>La suma debe ser de 3</strong></td>
             </tbody>
         @endforeach
     </table>

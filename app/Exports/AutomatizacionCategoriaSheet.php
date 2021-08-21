@@ -52,7 +52,7 @@ class AutomatizacionCategoriaSheet implements FromView,WithTitle
                     'persona' => $dato
                 ]);
             case 8:
-                $preguntas = AutomatizacionPruebas::where('category_id',8)->get();
+                $preguntas = AutomatizacionPruebas::where('category_id',8)->orderBy('id', 'ASC')->get();
                 return view('reporte.export.automatizacionCategorias.disc',[
                     'persona' => $dato,
                     'preguntas' => $preguntas
