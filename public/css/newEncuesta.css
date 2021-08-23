@@ -177,6 +177,17 @@
     background-color: transparent;
     border: none;
 }
+.btn-agregar{
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 40px;
+}
+.form_desempeño_create{
+    display: grid;
+}
+.justify-self-center{
+    justify-self: center;
+}
 /* AUTOMATIZACION DE PRUEBAS */
 .form__automatizacion{
     display: flex;

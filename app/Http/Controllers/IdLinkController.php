@@ -128,6 +128,17 @@ class IdLinkController extends Controller
                         }
                     }
                 }
+                if (!DatosDesempenio::where('mail',$show['autoevaluacion'][1])->where('jerarquia','autoevaluacion')->where('evaluador',$show['autoevaluacion'][0])->where('empresa_id',$id)->where('enviado',false)->exists()) {
+                    $newDato = new DatosDesempenio;
+                    $newDato->evaluador = $show['autoevaluacion'][0];
+                    $newDato->mail = $show['autoevaluacion'][1];
+                    $newDato->puesto_evaluador = $show['autoevaluacion'][2];
+                    $newDato->empresa_id = $id;
+                    $newDato->evaluado = $show['autoevaluacion'][0];
+                    $newDato->puesto_evaluado = $show['autoevaluacion'][2];
+                    $newDato->jerarquia = 'autoevaluacion';
+                    $newDato->save();
+                }
                 foreach($pass as $key => $persona){
                     if ($key != 'autoevaluacion') {
                         if (is_null($persona[1])) {
@@ -145,17 +156,6 @@ class IdLinkController extends Controller
                             $newDato->save();
                         }
                     }
-                }
-                if (!DatosDesempenio::where('mail',$show['autoevaluacion'][1])->where('jerarquia','autoevaluacion')->where('evaluador',$show['autoevaluacion'][0])->where('empresa_id',$id)->where('enviado',false)->exists()) {
-                    $newDato = new DatosDesempenio;
-                    $newDato->evaluador = $show['autoevaluacion'][0];
-                    $newDato->mail = $show['autoevaluacion'][1];
-                    $newDato->puesto_evaluador = $show['autoevaluacion'][2];
-                    $newDato->empresa_id = $id;
-                    $newDato->evaluado = $show['autoevaluacion'][0];
-                    $newDato->puesto_evaluado = $show['autoevaluacion'][2];
-                    $newDato->jerarquia = 'autoevaluacion';
-                    $newDato->save();
                 }
                 
                 return redirect()->route('desempenioEnviar',[$id])->with('desempeño.guardar','Los datos fueron guardados exitosamente');

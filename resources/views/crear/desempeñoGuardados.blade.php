@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','Crear Automatización de Pruebas - Empatia 360°')
 @section('main')
-    <h2 class="h2__title">Importar Datos - {{$nombreEmpresa->nombre}}</h2>
+    <h2 class="h2__title">Previsualización de Datos - {{$nombreEmpresa->nombre}}</h2>
     @if (session('success'))
         <div class="div--success">
             <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
@@ -9,6 +9,9 @@
         </div>
     @endif
     <article class="article__report">
+        <div class="btn-agregar">
+            <a href="/datos/desempenio/agregar/{{$nombreEmpresa->id}}" class="btn btn-center type-btn">Agregar nuevo</a>
+        </div>
         <table class="form--clima__table ancho-completo" id="table-autoevaluación">
             <thead>
                 <tr>

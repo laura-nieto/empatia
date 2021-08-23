@@ -10,6 +10,16 @@ class DatosDesempenio extends Model
     use HasFactory;
     
     protected $table = 'datos_desempenio';
+    
+    protected $fillable = [
+        'evaluador',
+        'mail',
+        'puesto_evaluador',
+        'evaluado',
+        'puesto_evaluado',
+        'jerarquia',
+        'empresa_id',
+    ];
 
     public function encuesta_desempenio()
     {

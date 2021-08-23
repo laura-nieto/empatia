@@ -22,7 +22,8 @@
     <h2 class="h2__title">Desempeño Laboral - {{$nombreEmpresa->nombre}}</h2>
     <form action="" method="post" class="form__desempeño">
         @csrf
-        <a href="/enviar/guardados/{{$nombreEmpresa->id}}" class="btn btn-center type-btn">Enviar</a>
+        <a href="/enviar/guardados/{{$nombreEmpresa->id}}" class="btn type-btn justify-self-center">Previsualizar</a>
+        <a href="/cargar/desempenio/{{$nombreEmpresa->id}}" class="btn type-btn justify-self-center">Cargar Datos</a>
         <div class="form--desempeño__div evaluar color-new-violet">
             <label for="">Es su Autoevaluacion</label>
             <input type="text" name="autoevaluacion[]" placeholder="Nombre">

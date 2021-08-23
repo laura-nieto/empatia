@@ -1,10 +1,12 @@
 <table>
     <thead>
         <tr>
-            <th>Nombre</th>
+            <th>Evaluador</th>
             <th>Email</th>
-            <th>Edad</th>
-            <th>Sexo</th>
+            <th>Puesto del evaluador</th>
+            <th>Evaluado</th>
+            <th>Puesto del evaluado</th>
+            <th>Jerarquia</th>
         </tr>
     </thead>
 </table>

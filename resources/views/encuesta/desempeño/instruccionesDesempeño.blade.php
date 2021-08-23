@@ -19,7 +19,7 @@
 @section('main')
     <article class="article__instruction">
         <section class="section__instruction">
-            <h4>Instrucciones Genereales</h4>
+            <h4>Instrucciones Generales</h4>
             {!! $instruccion1 !!}
         </section>
         <section class="section__instruction2">

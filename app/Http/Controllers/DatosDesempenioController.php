@@ -4,10 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DatosDesempenio;
+use App\Models\Empresa;
+
+use App\Exports\ExampleDatosExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\DatosDesempenioImport;
 
 
 class DatosDesempenioController extends Controller
 {
+    public function download_plantilla()
+    {
+        return Excel::download(new ExampleDatosExport,'plantilla-datos.xlsx');
+    }
+
+    public function import_datos(Request $request,$idEmpresa)
+    {
+        Excel::import(new DatosDesempenioImport($idEmpresa), request()->file('importMail'));
+        return redirect()->route('ver_datos_desempenio',[$idEmpresa])->with('success','Datos importados con exito');
+    }
+
+    public function cargar_vista($idEmpresa)
+    {
+        $empresa = Empresa::findOrFail($idEmpresa);
+        return view('crear.importarDatos',['empresa'=>$empresa]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,9 +45,10 @@ class DatosDesempenioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $empresa=Empresa::findOrFail($id);
+        return view('crear.nuevoDatoDesempeño',['empresa'=>$empresa]);
     }
 
     /**
@@ -34,9 +57,29 @@ class DatosDesempenioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$idEmpresa)
     {
-        //
+        // VALIDATION
+        $rules=[
+            '*'=>'required',
+        ];
+        $message=[
+            'required' => 'El campo es obligatorio',
+        ];
+        $request->validate($rules,$message);
+
+        // NUEVO DATO
+        $newDato = new DatosDesempenio;
+        $newDato->evaluador = $request->evaluador;
+        $newDato->mail = $request->mail;
+        $newDato->puesto_evaluador = $request->puesto_evaluador;
+        $newDato->evaluado = $request->evaluado;
+        $newDato->puesto_evaluado = $request->puesto_evaluado;
+        $newDato->jerarquia = $request->jerarquia;
+        $newDato->empresa_id = $idEmpresa;
+        $newDato->save();
+        
+        return redirect()->route('ver_datos_desempenio',$idEmpresa)->with('success','El dato ha sido agregado.');
     }
 
     /**
