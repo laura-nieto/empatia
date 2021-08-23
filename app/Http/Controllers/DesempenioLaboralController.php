@@ -105,6 +105,7 @@ class DesempenioLaboralController extends Controller
                 return redirect()->route('title_auto',['id'=>$idLink,'datos'=>$value]);
             }
         }
+        return redirect()->route('finalizar',[$idLink]);
     }
 
     public function mostrarEnviar($idEmpresa)
