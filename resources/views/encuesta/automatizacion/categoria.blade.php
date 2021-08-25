@@ -17,6 +17,10 @@
     @endif
 @endsection
 @section('main')
+<div class="cellphone-atencion">
+    <img src="{{asset('img/mobile-vertical-horizontal.png')}}" alt="Logo de atención" class="latido" title="">
+    <p class="img__description">Para una mejor experiencia de llenado favor de cambiar la orientación de su equipo móvil.</p>
+</div>
 <article class="article--welcome__clima">
     <section class="section--margin">
         @foreach ($datos->datos_categorias as $categoria)

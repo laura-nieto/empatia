@@ -29,7 +29,7 @@
         </div>
     </div>
     <p>Ejemplo:</p>
-    <div class="div--puntuacion  responsive--valanti">
+    <div class="responsive--valanti">
         <div class="div--puntuacion__group">
             <p class="background--color--green">1</p>
             <p>La solidaridad la practico a diario</p>

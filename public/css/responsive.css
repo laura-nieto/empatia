@@ -6,15 +6,41 @@
     .section--margin{
         font-size: 1.5rem;
     }
+    .responsive--valanti{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    .responsive--valanti>.div--puntuacion__group:nth-child(2){
+        justify-self: center;
+    }
+    .cellphone-atencion{
+        display: none;
+    }
 }
 @media screen and (max-width: 2000px){
     .section--margin{
         font-size: 1.4rem;
     }
+    .responsive--valanti{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    .responsive--valanti>.div--puntuacion__group:nth-child(2){
+        justify-self: center;
+    }
+    #form-automatizacion{
+        font-size: 1.2rem;
+    }
+    .cellphone-atencion{
+        display: none;
+    }
 }
 @media screen and (max-width: 1500px){
     .section--margin{
         font-size: 1.2rem;
+    }
+    #form-automatizacion{
+        font-size: 1rem;
     }
 }
 @media screen and (max-width: 1200px) { 
@@ -35,15 +61,9 @@
     {
         width: 70%;
     }
-    .responsive--valanti{
-        display: grid;
-        grid-template-columns: repeat(3,1fr);
+    #form-automatizacion{
+        font-size: 1rem;
     }
-    .responsive--valanti>.div--puntuacion__group:nth-child(2){
-        justify-self: center;
-    }
-    
-
 }
 
 @media screen and (max-width: 992px){
@@ -202,13 +222,21 @@
     .section--margin>.section__kenstel{
         width: 100%;
     }
-    .responsive--valanti{
+    /* .responsive--valanti{
         justify-items: center;
         grid-template-columns: 1fr;
         row-gap: 15px;
     }
     .responsive--valanti>.div--puntuacion__group:nth-child(2){
         flex-direction: column;
+    } */
+    .responsive--valanti{
+        font-size: 1rem;
+    }
+    .responsive--valanti>.div--puntuacion__group>p{
+        align-items: center;
+        display: flex;
+        padding: 5px 10px;
     }
     .ol--position--row{
         grid-template-columns: repeat(2,1fr);
@@ -349,13 +377,21 @@
         justify-items: center;
         row-gap: 20px;
     }
-    .responsive--valanti{
+    /* .responsive--valanti{
         justify-items: center;
         grid-template-columns: 1fr;
         row-gap: 15px;
     }
     .responsive--valanti>.div--puntuacion__group:nth-child(2){
         flex-direction: column;
+    } */
+    .responsive--valanti{
+        font-size: 1rem;
+    }
+    .responsive--valanti>.div--puntuacion__group>p{
+        align-items: center;
+        display: flex;
+        padding: 5px 10px;
     }
     .no-margin{
         margin: 0;
@@ -372,10 +408,11 @@
     }
     .encuesta--fin{
         width: 100%;
+        text-align: center;
     }
     /* HEADER ENCUESTAS */
     .header--encuesta__img--transparent{
-        width: 10vw;
+        width: 15vw;
     }
     .header--encuesta{
         row-gap: 40px;
@@ -387,5 +424,8 @@
         grid-row: 2;
         grid-column: span 3;
         text-align: center;
+    }
+    .cellphone-atencion{
+        display: block;
     }
 }
