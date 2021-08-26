@@ -32,7 +32,7 @@
                             <th class="cell-width">Elegir</th>
                         </tr>  
                     </thead>
-                    <tbody>
+                    <tbody class="font-size">
                             <tr>
                                 <td>5</td>
                                 <td class="justify-line">{{$pregunta->opcion_1}}</td>

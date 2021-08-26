@@ -129,6 +129,9 @@ class DesempenioLaboralController extends Controller
     public function index($idLink)
     {
         $link = idLink::findOrFail($idLink);
+        if ($link->respondio) {
+            return redirect()->route('finalizar',$idLink);
+        }
         $mensaje = Mensaje::where('tipo','desempeño laboral')->first();
         $empresa= $link->empresas;
         $cargo = json_decode($link->nombre_desempeño,true);

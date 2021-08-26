@@ -49,7 +49,7 @@
                         <th class="cell-width">TDS</th>
                     </tr>  
                 </thead>
-                <tbody>
+                <tbody class="font-size">
                     @foreach ($preguntas as $pregunta)
                         <tr>
                             <td class="justify-line">{{$pregunta->pregunta}}</td>

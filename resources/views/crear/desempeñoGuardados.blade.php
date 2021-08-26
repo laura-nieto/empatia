@@ -9,9 +9,9 @@
         </div>
     @endif
     <article class="article__report">
-        <div class="btn-agregar">
+        {{-- <div class="btn-agregar">
             <a href="/datos/desempenio/agregar/{{$nombreEmpresa->id}}" class="btn btn-center type-btn">Agregar nuevo</a>
-        </div>
+        </div> --}}
         <table class="form--clima__table ancho-completo" id="table-autoevaluación">
             <thead>
                 <tr>
@@ -53,7 +53,7 @@
                                 @csrf
                                 <button type="submit" class="no-button"><img src="{{asset('/img/cancel.png')}}" alt="Icono borrar" class="img--success"></button>
                             </form>
-                            {{-- <a href="/datos/desempenio/borrar/{{$nombreEmpresa->id}}/{{$persona->id}}"><img src="{{asset('/img/cancel.png')}}" alt="Icono borrar" class="img--success"></a> --}}
+                            <a href="/datos/desempenio/agregar/{{$nombreEmpresa->id}}"><img src="{{asset('/img/add.png')}}" alt="Icono borrar" class="img--success"></a>
                         </td>
                     </tr>
                 @endforeach

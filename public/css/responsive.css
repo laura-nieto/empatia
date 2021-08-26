@@ -16,6 +16,9 @@
     .cellphone-atencion{
         display: none;
     }
+    .section__instruction,.section__instruction2{
+        font-size: 1.4rem;
+    }
 }
 @media screen and (max-width: 2000px){
     .section--margin{
@@ -28,8 +31,11 @@
     .responsive--valanti>.div--puntuacion__group:nth-child(2){
         justify-self: center;
     }
-    #form-automatizacion{
+    #form-automatizacion,.section__instruction,.section__instruction2{
         font-size: 1.2rem;
+    }
+    .encuesta--div__explain,.font-size{
+        font-size: 1.1rem;
     }
     .cellphone-atencion{
         display: none;
@@ -212,6 +218,9 @@
     .article__instruction>form{
         grid-column: 1;
     }
+    .form--encuesta__table--desempeño{
+        width: 80%;
+    }
     /* AUTOMATIZACION - ENCUESTA */
     .section--margin{
         font-size: 1.1rem;
@@ -363,6 +372,15 @@
     .article__instruction>form{
         grid-column: 1;
     }
+    .section__instruction,.section__instruction2{
+        font-size: 1.1rem;
+    }
+    .font-size{
+        font-size: 1rem;
+    }
+    .form--encuesta__table--desempeño{
+        width: 90%;
+    }
     /* AUTOMATIZACION - ENCUESTA */
     .form-automatizacion__article--kenstel,.form-automatizacion__article--moss,.form-automatizacion__article--barsit,.form-automatizacion__article--kostick,.form-automatizacion__article--valanti,.form-automatizacion__article--wonderlick,.form-automatizacion__article--bfq,.form-automatizacion__article--kostick,.form-automatizacion__article--estres
     {
@@ -426,6 +444,6 @@
         text-align: center;
     }
     .cellphone-atencion{
-        display: block;
+        display: flex;
     }
 }
