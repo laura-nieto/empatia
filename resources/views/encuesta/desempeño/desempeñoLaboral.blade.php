@@ -7,15 +7,15 @@
 @endsection
 @section('main')
     <div class="encuesta--div__explain">
-        <p class="justify-line">
-            Favor, elija la alternativa que considere se alinea con el desempeño mostrado por la persona evaluada, de acuerdo al grado de intensidad. Donde:
-            <br>5- Extremadamente satisfecho
-            <br>4- Muy satisfecho
-            <br>3- Moderadamente satisfecho
-            <br>2- Poco satisfecho
-            <br>1- No satifecho
-        </p>
-        <p class="justify-line"><br>Recalcamos nuevamente. Procure ser objetivo e imparcial, centrándose en el desempeño profesional del evaluado como criterio fundamental.</p>
+        <p class="justify-line">Favor, elija la alternativa que considere se alinea con el desempeño mostrado por la persona evaluada, de acuerdo al grado de intensidad. Donde:</p>
+        <ol class="list--style--number">
+            <li> Extremadamente satisfecho</li>
+            <li> Muy satisfecho</li>
+            <li> Moderadamente satisfecho</li>
+            <li> Poco satisfecho</li>
+            <li> No satifecho</li>
+        </ol>
+        <p class="justify-line">Recalcamos nuevamente. Procure ser objetivo e imparcial, centrándose en el desempeño profesional del evaluado como criterio fundamental.</p>
     </div>
     <div class="encuesta--div__title">
         <h4 class="h4--title">Evaluado: {{$nombre}} - {{$puesto}}</h4>

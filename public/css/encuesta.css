@@ -311,6 +311,18 @@
 .color-orange{
     color: #c55911ce;
 }
+.list--style--number{
+    padding: 10px;
+    list-style-type: none;
+    counter-reset: a 6;
+}
+.list--style--number>li{
+    line-height: 1.5;
+}
+.list--style--number>li::before{
+    content: counter(a)'-';
+    counter-increment: a -1;
+}
 /* AUTOMATIZACION DE PRUEBAS */
 .text--time{
     display: flex;
