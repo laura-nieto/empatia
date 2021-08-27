@@ -31,22 +31,7 @@
             <tbody>
                 @foreach ($cargo as $evaluado)
                     <tr>
-                        <td class="text-bold  
-                        @switch($evaluado->jerarquia)
-                            @case('autoevaluacion')
-                                color-violet
-                                @break
-                            @case('supervisor')
-                                color-red
-                                @break
-                            @case('subalterno')
-                                color-blue
-                                @break
-                            @case('companiero')
-                                color-orange
-                                @break
-                        @endswitch
-                        ">{{$evaluado->evaluado}}</td>
+                        <td class="text-bold">{{$evaluado->evaluado}}</td>
                         <td>{{$evaluado->puesto_evaluado}}</td>
                         <td>
                             @if ($evaluado->jerarquia == 'autoevaluacion')

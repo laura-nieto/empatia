@@ -8,14 +8,6 @@ use App\Http\Controllers\DatosController;
 use App\Http\Controllers\DatosDesempenioController;
 use App\Http\Controllers\MensajeController;
 
-// use Illuminate\Database\Schema\Blueprint;
-// use Illuminate\Support\Facades\Schema;
-
-// Route::get('/asd',function(){
-//     Schema::table('id_links', function (Blueprint $table) {
-//         $table->boolean('respondio')->default('0');
-//     });
-// });
 
 //ENVIAR
 Route::get('/enviar/desempenio-laboral',[EmpresaController::class,'index'])->middleware('auth');

@@ -164,7 +164,7 @@ class IdLinkController extends Controller
                 return redirect()->route('desempenioEnviar',[$id])->with('desempeño.guardar','Los datos fueron guardados exitosamente');
 
             default:
-                $enviar = DatosDesempenio::where('empresa_id',$id)->where('enviado',0)->get()->groupBy('mail');
+                $enviar = DatosDesempenio::where('empresa_id',$id)->where('enviado',0)->get()->sortBy('jerarquia')->groupBy('mail');
                 foreach ($enviar as $evaluador) {
 
                     $pass = [];

@@ -296,20 +296,20 @@ a {text-decoration: none;}
                                     style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;border-top:10px solid transparent;border-right:10px solid transparent;border-left:10px solid transparent;width:650px;border-bottom:10px solid transparent">
                                     <tr>
                                         <td align="left"
-                                            style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px">
+                                            style="padding:0;Margin:0;padding-top:20px;padding-right:20px">
                                             <!--[if mso]><table style="width:100%" cellpadding="0"
                                                 cellspacing="0"><tr><td style="width:160px" valign="middle"><![endif]-->
                                             <table cellpadding="0" cellspacing="0" class="es-left" align="left"
                                                 style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
                                                 <tr>
-                                                    <td class="es-m-p0r es-m-p20b" valign="middle"
-                                                        style="padding:0;Margin:0;width:160px"> 
+                                                    <td class="es-m-p0r" valign="middle"
+                                                        style="padding:0;Margin:0;width:130px"> 
                                                         <table cellpadding="0" cellspacing="0" width="100%"
                                                             role="presentation"
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="{{$message->embed(public_path() .'/img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" width='100'>
+                                                                    <img src="{{$message->embed(public_path() .'/img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" width='90'>
                                                                 </td>
                                                                 <td>
                                                                     <h5
@@ -340,7 +340,7 @@ a {text-decoration: none;}
                                                             <tr>
                                                                 <td valign="middle" align="right" style="padding:0;Margin:0;min-height:100%;"> --}}
                                                                     <p
-                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:12px;margin-bottom:0px">
+                                                                        style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:12px!important;margin-bottom:0px">
                                                                         Powered By</p>
                                                                     <h5
                                                                         style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#EC741C;font-size:14px">
