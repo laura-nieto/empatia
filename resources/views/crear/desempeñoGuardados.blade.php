@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Crear Automatización de Pruebas - Empatia 360°')
+@section('title','Crear Desempeño Laboral - Empatia 360°')
 @section('main')
     <h2 class="h2__title">Previsualización de Datos - {{$nombreEmpresa->nombre}}</h2>
     @if (session('success'))

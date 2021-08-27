@@ -128,6 +128,9 @@ class IdLinkController extends Controller
                         }
                     }
                 }
+                if (empty($pass)) {
+                    return redirect()->back()->with('desempeño.error','Debe ingresar al menos un evaluador');
+                }
                 if (!DatosDesempenio::where('mail',$show['autoevaluacion'][1])->where('jerarquia','autoevaluacion')->where('evaluador',$show['autoevaluacion'][0])->where('empresa_id',$id)->where('enviado',false)->exists()) {
                     $newDato = new DatosDesempenio;
                     $newDato->evaluador = $show['autoevaluacion'][0];

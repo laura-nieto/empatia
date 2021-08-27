@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Crear Automatización de Pruebas - Empatia 360°')
+@section('title','Crear Dato de Desempeño Laboral - Empatia 360°')
 @section('main')
     <h2 class="h2__title">Modificar dato</h2>
     <form action="" method="post" class="dg form--modify">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Editar e-mail - Empatia 360°')
+@section('title','Editar Mensaje - Empatia 360°')
 @section('main')
     <h2 class="h2__title">Modificar mensaje de {{$titulo}}</h2>
     <div class="modify_container">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Reporte Clima Laboral - Empatia 360°')
+@section('title','Reporte Automatización - Empatia 360°')
 @section('main')
     <h2 class="h2__title">Automatización de prueba - Elegir Evaluado</h2>
     <ul class="ul__persona">
