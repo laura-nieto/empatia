@@ -27,7 +27,7 @@ class DatosDesempenioImport implements ToModel,WithHeadingRow
             'puesto_evaluador'=> $row['puesto_del_evaluador'],
             'evaluado' => $row['evaluado'],
             'puesto_evaluado' => $row['puesto_del_evaluado'],
-            'jerarquia' => strtolower($row['jerarquia']),
+            'jerarquia' => trim(strtolower($row['jerarquia'])),
             'empresa_id' => $this->empresa
         ]);
     }
