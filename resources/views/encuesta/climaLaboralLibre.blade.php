@@ -6,6 +6,10 @@
     </div>
 @endsection
 @section('main')
+    <div class="cellphone-atencion">
+        <img src="{{asset('img/mobile-vertical-horizontal.png')}}" alt="Logo de atención" class="latido" title="">
+        <p class="img__description">Para una mejor experiencia de llenado favor de cambiar la orientación de su equipo móvil.</p>
+    </div>
     <div class="encuesta--div__explain">
         <h5>Comentarios</h5>
         <p class="justify-line">Favor, comparta sus comentarios con nosotros, los mismos que utilizaremos para optimizar el clima laboral. Al

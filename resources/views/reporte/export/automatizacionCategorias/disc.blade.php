@@ -15,11 +15,13 @@
                         @if ($pregPers->id === $pregunta->id)
                             @php
                             if (!is_null(json_decode($pregPers->pivot->respuesta,true))) {
-                                $asd =json_decode($pregPers->pivot->respuesta,true);
-                                if (!is_null($asd['mas']) && !is_null($asd['menos'])) {
+                                $asd = json_decode($pregPers->pivot->respuesta,true);
+                                if (array_key_exists('mas', $asd)) {
                                     $mas = $asd['mas'];
-                                    $menos = $asd['menos'];
                                 }
+                                if (array_key_exists('menos', $asd)) {
+                                    $menos = $asd['menos'];
+                                }                                
                             }  
                             @endphp
                             <td align="center">{{isset($mas) && $mas == $opcion ? 'X' : ''}}</td>

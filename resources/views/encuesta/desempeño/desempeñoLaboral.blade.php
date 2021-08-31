@@ -13,7 +13,7 @@
             <li> Muy satisfecho</li>
             <li> Moderadamente satisfecho</li>
             <li> Poco satisfecho</li>
-            <li> No satifecho</li>
+            <li> No satisfecho</li>
         </ol>
         <p class="justify-line">Recalcamos nuevamente. Procure ser objetivo e imparcial, centrándose en el desempeño profesional del evaluado como criterio fundamental.</p>
     </div>

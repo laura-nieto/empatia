@@ -6,6 +6,10 @@
     </div>
 @endsection
 @section('main')
+    <div class="cellphone-atencion">
+        <img src="{{asset('img/mobile-vertical-horizontal.png')}}" alt="Logo de atención" class="latido" title="">
+        <p class="img__description">Para una mejor experiencia de llenado favor de cambiar la orientación de su equipo móvil.</p>
+    </div>
     <div class="encuesta--div__explain">
         <p class="justify-line">
             Responder de acuerdo a lo que perciba dentro de su ambiente laboral, eligiendo alguna de las opciones que a continuación se presenta. Marque con una  "X" en el casillero correspondiente según su opinión.
@@ -29,7 +33,7 @@
                     <td>De acuerdo</td>
                 </tr>
                 <tr>
-                    <td>TDS</td>
+                    <td>TDA</td>
                     <td>Totalmente de acuerdo</td>
                 </tr>
             </tbody>
@@ -46,7 +50,7 @@
                         <th class="cell-width">ED</th>
                         <th class="cell-width">NDANED</th>
                         <th class="cell-width">DA</th> 
-                        <th class="cell-width">TDS</th>
+                        <th class="cell-width">TDA</th>
                     </tr>  
                 </thead>
                 <tbody class="font-size">
@@ -57,7 +61,7 @@
                             <td ><input type="radio" name="{{$pregunta->id}}" value="ED" class="radio-center"></td>
                             <td ><input type="radio" name="{{$pregunta->id}}" value="NDANED" class="radio-center"></td>
                             <td ><input type="radio" name="{{$pregunta->id}}" value="DA" class="radio-center"></td>
-                            <td ><input type="radio" name="{{$pregunta->id}}" value="TDS" class="radio-center"></td>
+                            <td ><input type="radio" name="{{$pregunta->id}}" value="TDA" class="radio-center"></td>
                         </tr>
                     @endforeach
                 </tbody>
