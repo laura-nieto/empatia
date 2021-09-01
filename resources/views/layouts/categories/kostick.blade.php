@@ -1,7 +1,7 @@
 <section class="section__kenstel">
     <p>
         Este es básicamente un cuestionario sobre sus preferencias. Se le van a presentar 90 parejas de afirmaciones,
-        debe elegir sólo una, escoja la que mejor corresponda con usted y marquela con una "X".
+        debe elegir solo una, escoja la que mejor corresponda con usted y marquela con una "X".
     </p>
     <h5>La elección es obligatoria.</h5>
     <ol class="ol--kostick">

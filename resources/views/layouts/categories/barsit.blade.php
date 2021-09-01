@@ -1,6 +1,6 @@
 <section class="section__kenstel">
     <p>
-        Usted tendrá que ir resolviendo cuestiones parecidas a éstas.Para los ejercicios de ejemplo elija la letra que
+        Usted tendrá que ir resolviendo cuestiones parecidas a éstas. Para los ejercicios de ejemplo elija la letra que
         indique la respuesta correcta o escriba los números que usted considere le den solución al problema.
     </p>
     <p>Ejemplos:</p>
