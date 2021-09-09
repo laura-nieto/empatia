@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use Mail;
 use App\Mail\EnviarMailable;
-use App\Mail\DesempeñoMailable;
+use App\Mail\DesempenioMailable;
 use App\Mail\AutomatizacionMailable;
 
 use App\Models\DatosDemograficos;
@@ -187,7 +187,7 @@ class IdLinkController extends Controller
                     
                     $nombreEvaluador = $createDato->nombre;
                     $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id;
-                    $correo = new DesempeñoMailable($sendLink,$empresa,$nombreEvaluador);
+                    $correo = new DesempenioMailable($sendLink,$empresa,$nombreEvaluador);
                     Mail::bcc($createDato->mail)->send($correo);
                     foreach ($evaluador as $evaluado) {
                         $evaluado->enviado = 1;

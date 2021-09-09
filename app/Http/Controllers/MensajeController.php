@@ -48,7 +48,7 @@ class MensajeController extends Controller
                 $instruccion2 = $value->mensaje;
             }
         }
-        return view('encuesta.desempeño.instruccionesDesempeño',['instruccion1'=>$instruccion1,'instruccion2'=>$instruccion2,'empresa'=>$empresa]);
+        return view('encuesta.desempenio.instruccionesDesempenio',['instruccion1'=>$instruccion1,'instruccion2'=>$instruccion2,'empresa'=>$empresa]);
     }
     public function mensaje_clima($id,$idDatos)
     {

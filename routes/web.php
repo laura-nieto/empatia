@@ -75,7 +75,7 @@ Route::post('/migrate/automatizacion',function(){
 });
 require __DIR__.'/web/automatizacion.php';
 require __DIR__.'/web/climaLaboral.php';
-require __DIR__.'/web/desempeñoLaboral.php';
+require __DIR__.'/web/desempenioLaboral.php';
 
 // Route::get('/linkstorage', function () {
 //     Artisan::call('storage:link');

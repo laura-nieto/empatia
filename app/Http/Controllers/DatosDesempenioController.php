@@ -48,7 +48,7 @@ class DatosDesempenioController extends Controller
     public function create($id)
     {
         $empresa=Empresa::findOrFail($id);
-        return view('crear.nuevoDatoDesempeño',['empresa'=>$empresa]);
+        return view('crear.nuevoDatoDesempenio',['empresa'=>$empresa]);
     }
 
     /**

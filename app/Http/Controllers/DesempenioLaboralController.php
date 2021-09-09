@@ -25,7 +25,7 @@ class DesempenioLaboralController extends Controller
         
         $auto = DatosDesempenio::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->simplePaginate(5);
         
-        return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'evaluaciones'=>$auto]);
+        return view('reporte.desempenioLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'evaluaciones'=>$auto]);
     }
 
     public function finVista($idLink)
@@ -70,7 +70,7 @@ class DesempenioLaboralController extends Controller
 
         $preguntas = DesempenioLaboral::skip(10)->take(3)->get();
 
-        return view('encuesta.desempeño.desempeñoLibre',['preguntas'=>$preguntas,'nombre'=>$nombre,'puesto'=>$puesto]);
+        return view('encuesta.desempenio.desempenioLibre',['preguntas'=>$preguntas,'nombre'=>$nombre,'puesto'=>$puesto]);
     }
     public function encuesta(Request $request,$id,$idDatos)
     {
@@ -80,7 +80,7 @@ class DesempenioLaboralController extends Controller
 
         $preguntas = DesempenioLaboral::take(10)->get();
 
-        return view('encuesta.desempeño.desempeñoLaboral',['preguntas'=>$preguntas,'nombre'=>$nombre,'puesto'=>$puesto]);      
+        return view('encuesta.desempenio.desempenioLaboral',['preguntas'=>$preguntas,'nombre'=>$nombre,'puesto'=>$puesto]);      
     }
     public function view_encuesta(Request $request,$id,$idDatos)
     {
@@ -92,7 +92,7 @@ class DesempenioLaboralController extends Controller
         $evaluado = DatosDesempenio::findOrFail($datoDesempeño);
         //  $request->session()->flush();
         //  $request->session()->save();
-        return view('encuesta.desempeño.titleDesempeño',['persona'=>$evaluado,'empresa'=>$link]);
+        return view('encuesta.desempenio.titleDesempenio',['persona'=>$evaluado,'empresa'=>$link]);
     }
 
     public function obtenerTitle(Request $request,$idLink)
@@ -111,14 +111,14 @@ class DesempenioLaboralController extends Controller
     public function mostrarEnviar($idEmpresa)
     {
         $empresa = Empresa::findOrFail($idEmpresa);
-        return view('crear.desempeñoLaboral',['nombreEmpresa'=>$empresa]);
+        return view('crear.desempenioLaboral',['nombreEmpresa'=>$empresa]);
     }
 
     public function verCreados($idEmpresa)
     {
         $empresa = Empresa::findOrFail($idEmpresa);
         $evaluados = DatosDesempenio::where('empresa_id',$idEmpresa)->where('enviado',0)->get();
-        return view('crear.desempeñoGuardados',['evaluados'=>$evaluados,'nombreEmpresa'=>$empresa]);
+        return view('crear.desempenioGuardados',['evaluados'=>$evaluados,'nombreEmpresa'=>$empresa]);
     }
 
     /**
@@ -138,7 +138,7 @@ class DesempenioLaboralController extends Controller
         foreach ($cargo as $idDesempeño) {
             $pass[]=DatosDesempenio::findOrFail($idDesempeño);
         }
-        return view('encuesta.desempeño.welcomeDesempeño',['cargo'=>$pass,'mensaje'=>$mensaje->mensaje,'empresa'=>$empresa]);
+        return view('encuesta.desempenio.welcomeDesempenio',['cargo'=>$pass,'mensaje'=>$mensaje->mensaje,'empresa'=>$empresa]);
     }
 
     /**

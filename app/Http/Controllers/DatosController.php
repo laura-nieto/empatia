@@ -23,7 +23,7 @@ class DatosController extends Controller
         
         $auto = Datos::has('encuesta_desempenio')->where('empresa_id',$idEmpresa)->simplePaginate(5);
        
-        return view('reporte.desempeñoLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'evaluaciones'=>$auto]);
+        return view('reporte.desempenioLaboral',['empresa'=>$idEmpresa,'empresaNombre'=>$empresa,'preguntas'=>$preguntas,'evaluaciones'=>$auto]);
     }
 
     public function storeClima(Request $request,$id,$idDatos)
