@@ -21,6 +21,10 @@ use App\Imports\AutomatizacionImport;
 
 Route::get('/', function () {
     return view('index');
+})->middleware(['auth','isAdmin']);
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
 })->middleware('auth');
 
 // LOGIN - LOG-OUT
@@ -29,6 +33,9 @@ Route::get('/login',function(){
 })->name('login');
 Route::post('/login',[UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logOut']);
+
+//CRUD USUARIOS
+Route::resource('usuarios',UserController::class)->middleware(['auth','isAdmin']);
 
 //NEW EMPRESA
 Route::get('/new/empresa',[EmpresaController::class,'create'])->middleware('auth');
@@ -46,16 +53,16 @@ Route::get('/delete/dato',[DatosDemograficosController::class,'show'])->middlewa
 Route::get('/delete/dato/{id}',[DatosDemograficosController::class,'destroy'])->middleware('auth');
 
 //EDIT MESSAGE
-Route::get('/modificar/clima-laboral',[MensajeController::class,'edit'])->middleware('auth');
-Route::post('/modificar/clima-laboral',[MensajeController::class,'update'])->middleware('auth');
+Route::get('/modificar/clima-laboral',[MensajeController::class,'edit'])->middleware(['auth','isAdmin']);
+Route::post('/modificar/clima-laboral',[MensajeController::class,'update'])->middleware(['auth','isAdmin']);
 
-Route::get('/modificar/desempenio-laboral',[MensajeController::class,'edit'])->middleware('auth');
-Route::post('/modificar/desempenio-laboral',[MensajeController::class,'update'])->middleware('auth');
-Route::get('/modificar/instrucciones/desempenio-laboral',[MensajeController::class,'mostrar_modificar_instrucciones'])->middleware('auth');
-Route::post('/modificar/instrucciones/desempenio-laboral',[MensajeController::class,'modificar_instrucciones'])->middleware('auth');
+Route::get('/modificar/desempenio-laboral',[MensajeController::class,'edit'])->middleware(['auth','isAdmin']);
+Route::post('/modificar/desempenio-laboral',[MensajeController::class,'update'])->middleware(['auth','isAdmin']);
+Route::get('/modificar/instrucciones/desempenio-laboral',[MensajeController::class,'mostrar_modificar_instrucciones'])->middleware(['auth','isAdmin']);
+Route::post('/modificar/instrucciones/desempenio-laboral',[MensajeController::class,'modificar_instrucciones'])->middleware(['auth','isAdmin']);
 
-Route::get('/modificar/automatizacion-laboral',[MensajeController::class,'edit'])->middleware('auth');
-Route::post('/modificar/automatizacion-laboral',[MensajeController::class,'update'])->middleware('auth');
+Route::get('/modificar/automatizacion-laboral',[MensajeController::class,'edit'])->middleware(['auth','isAdmin']);
+Route::post('/modificar/automatizacion-laboral',[MensajeController::class,'update'])->middleware(['auth','isAdmin']);
 
 //CREAR MESSAGE
 // Route::get('/crear/clima-laboral',[MensajeController::class,'create'])->middleware('auth');
@@ -66,13 +73,13 @@ Route::post('/modificar/automatizacion-laboral',[MensajeController::class,'updat
 // Route::post('/crear/automatizacion-laboral',[MensajeController::class,'store'])->middleware('auth');
 
 
-Route::get('/migrate/automatizacion',function(){
-    return view('migrateAutomatizacion');
-});
-Route::post('/migrate/automatizacion',function(){
-    Excel::import(new AutomatizacionImport, request()->file('importAuto'));
-    dd('ya');
-});
+// Route::get('/migrate/automatizacion',function(){
+//     return view('migrateAutomatizacion');
+// });
+// Route::post('/migrate/automatizacion',function(){
+//     Excel::import(new AutomatizacionImport, request()->file('importAuto'));
+//     dd('ya');
+// });
 require __DIR__.'/web/automatizacion.php';
 require __DIR__.'/web/climaLaboral.php';
 require __DIR__.'/web/desempenioLaboral.php';

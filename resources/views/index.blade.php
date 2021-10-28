@@ -98,5 +98,14 @@
                 </li>         
             </ul>
         </section>
+        <section>
+            <h3>Usuarios</h3>
+            <ul class="section--ul">
+                <li class="li__index">
+                    <i class="fas fa-caret-right fa-2x"></i>
+                    <a href="/usuarios">Ver Usuarios</a>
+                </li>      
+            </ul>
+        </section>
     </article>
 @endsection
