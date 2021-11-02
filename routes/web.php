@@ -38,19 +38,19 @@ Route::get('/logout', [UserController::class, 'logOut']);
 Route::resource('usuarios',UserController::class)->middleware(['auth','isAdmin']);
 
 //NEW EMPRESA
-Route::get('/new/empresa',[EmpresaController::class,'create'])->middleware('auth');
-Route::post('/new/empresa',[EmpresaController::class,'store'])->middleware('auth');
-Route::get('/delete/empresa',[EmpresaController::class,'edit'])->middleware('auth');
-Route::get('/delete/empresa/{id}',[EmpresaController::class,'destroy'])->middleware('auth');
+Route::get('/new/empresa',[EmpresaController::class,'create'])->middleware(['auth','isAdmin']);
+Route::post('/new/empresa',[EmpresaController::class,'store'])->middleware(['auth','isAdmin']);
+Route::get('/delete/empresa',[EmpresaController::class,'edit'])->middleware(['auth','isAdmin']);
+Route::get('/delete/empresa/{id}',[EmpresaController::class,'destroy'])->middleware(['auth','isAdmin']);
 
 //NEW DATO
-Route::get('/new/dato',[DatosDemograficosController::class,'create'])->middleware('auth');
-Route::post('/new/dato',[DatosDemograficosController::class,'store'])->middleware('auth');
-Route::get('/agregar/dato',[EmpresaController::class,'index'])->middleware('auth');
-Route::get('/agregar/dato/{idEmpresa}',[DatosDemograficosController::class,'opcionesEmpresa'])->middleware('auth');
-Route::post('/agregar/dato/{idEmpresa}',[DatosDemograficosController::class,'guardarOpcionesEmpresa'])->middleware('auth');
-Route::get('/delete/dato',[DatosDemograficosController::class,'show'])->middleware('auth');
-Route::get('/delete/dato/{id}',[DatosDemograficosController::class,'destroy'])->middleware('auth');
+Route::get('/new/dato',[DatosDemograficosController::class,'create'])->middleware(['auth','isAdmin']);
+Route::post('/new/dato',[DatosDemograficosController::class,'store'])->middleware(['auth','isAdmin']);
+Route::get('/agregar/dato',[EmpresaController::class,'index'])->middleware(['auth','isAdmin']);
+Route::get('/agregar/dato/{idEmpresa}',[DatosDemograficosController::class,'opcionesEmpresa'])->middleware(['auth','empresa']);
+Route::post('/agregar/dato/{idEmpresa}',[DatosDemograficosController::class,'guardarOpcionesEmpresa'])->middleware(['auth','empresa']);
+Route::get('/delete/dato',[DatosDemograficosController::class,'show'])->middleware(['auth','isAdmin']);
+Route::get('/delete/dato/{id}',[DatosDemograficosController::class,'destroy'])->middleware(['auth','isAdmin']);
 
 //EDIT MESSAGE
 Route::get('/modificar/clima-laboral',[MensajeController::class,'edit'])->middleware(['auth','isAdmin']);

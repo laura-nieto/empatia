@@ -18,6 +18,7 @@ use App\Models\DatosDesempenio;
 
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\DatosClimaImport;
+use Illuminate\Support\Facades\Auth;
 
 class IdLinkController extends Controller
 {
@@ -99,7 +100,11 @@ class IdLinkController extends Controller
         $correo = new AutomatizacionMailable($sendLink,$request->nombre,$request->empresa);
         Mail::to($request->email)->send($correo);
 
-        return redirect('/')->with('create.automatizacion','Automatización enviada con exito');
+        if (Auth::user()->admin == 0) {
+            return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
+        }else{
+            return redirect('/dashboard')->with('create.encuesta','Encuesta enviada con exito');
+        }
     }
 
     public function createDesempeño(Request $request,$id){
@@ -194,7 +199,11 @@ class IdLinkController extends Controller
                         $evaluado->save();
                     }
                 }
-                return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
+                if (Auth::user()->admin == 0) {
+                    return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
+                }else{
+                    return redirect('/dashboard')->with('create.encuesta','Encuesta enviada con exito');
+                }
         }
     }
 
@@ -276,7 +285,11 @@ class IdLinkController extends Controller
                         }
                     }
                 }
-            return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
+            if (Auth::user()->admin == 0) {
+                return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
+            }else{
+                return redirect('/dashboard')->with('create.encuesta','Encuesta enviada con exito');
+            }
         } 
     }
 

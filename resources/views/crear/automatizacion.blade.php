@@ -44,14 +44,105 @@
                         </tr>  
                     </thead>
                     @foreach ($categorias as $categoria)
-                        <tbody>
-                            <tr>
-                                <td>{{$categoria->nombre}}</td>
-                                <td>{{$categoria->codigo}}</td>
-                                <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
-                                <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
-                            </tr>
-                        </tbody>
+                        @if (Auth::user()->admin == 0)
+                            <tbody>
+                                <tr>
+                                    <td>{{$categoria->nombre}}</td>
+                                    <td>{{$categoria->codigo}}</td>
+                                    <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                    <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                </tr>
+                            </tbody>
+                        @else
+                            <tbody>
+                                @if($categoria->id == 1 && Auth::user()->permisos->kenstel)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 2 && Auth::user()->permisos->moss)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 3 && Auth::user()->permisos->barsit)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 4 && Auth::user()->permisos->kostick)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 5 && Auth::user()->permisos->valanti)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 6 && Auth::user()->permisos->wonderlick)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 7 && Auth::user()->permisos->bfq)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 8 && Auth::user()->permisos->disc)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 9 && Auth::user()->permisos->asertividad)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 10 && Auth::user()->permisos->liderazgo)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 11 && Auth::user()->permisos->estres)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @elseif($categoria->id == 12 && Auth::user()->permisos->ice)
+                                    <tr>
+                                        <td>{{$categoria->nombre}}</td>
+                                        <td>{{$categoria->codigo}}</td>
+                                        <td><input type="checkbox" name="categorias[]" value="{{$categoria->id}}"></td>
+                                        <td><input type="text" name="tiempo[{{$categoria->id}}]" class="time--input"></td>
+                                    </tr>
+                                @endif
+                                
+                            </tbody>
+                        @endif 
                     @endforeach
                 </table>
             </section>

@@ -11,24 +11,24 @@ use App\Http\Controllers\EmailController;
 
 
 // ENVIAR
-Route::get('/enviar/clima-laboral',[EmpresaController::class,'index']);
-Route::get('/enviar/clima-laboral/{name}',[DatosDemograficosController::class,'index'])->name('enviarClima')->middleware('auth');
-Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima'])->middleware('auth');
+Route::get('/enviar/clima-laboral',[EmpresaController::class,'index'])->middleware(['auth','isAdmin']);
+Route::get('/enviar/clima-laboral/{name}',[DatosDemograficosController::class,'index'])->name('enviarClima')->middleware(['auth','empresa']);
+Route::post('/enviar/clima-laboral/{name}',[IdLinkController::class,'createClima'])->middleware(['auth','empresa']);
 
-Route::get('/importar/clima-laboral/{name}',[EmpresaController::class,'vistaCargarMail'])->middleware('auth');
-Route::post('/importar/clima-laboral/{name}',[ClimaLaboralController::class,'importMail'])->middleware('auth');
+Route::get('/importar/clima-laboral/{name}',[EmpresaController::class,'vistaCargarMail'])->middleware(['auth','empresa']);
+Route::post('/importar/clima-laboral/{name}',[ClimaLaboralController::class,'importMail'])->middleware(['auth','empresa']);
 
 // Route::get('/importar/clima-laboral/datos/{name}',[EmpresaController::class,'vistaCargarDatos'])->middleware('auth');
 // Route::post('/importar/clima-laboral/datos/{name}',[IdLinkController::class,'importDatos'])->middleware('auth');
 // Route::get('/exportar/plantilla/clima-laboral',[ClimaLaboralController::class,'exportPlantilla'])->middleware('auth');
 Route::get('/exportar/plantilla/emails',[ClimaLaboralController::class,'exportPlantillaEmail'])->middleware('auth');
 
-Route::get('/borrar/email/{idEmpresa}/{idEmail}',[EmailController::class,'destroy'])->middleware('auth');
+Route::get('/borrar/email/{idEmpresa}/{idEmail}',[EmailController::class,'destroy'])->middleware(['auth','empresa']);
 
 //REPORTE
-Route::get('/reporte/clima-laboral',[EmpresaController::class,'index'])->middleware('auth');
-Route::get('/reporte/clima-laboral/{name}',[DatosController::class,'indexClima'])->middleware('auth');
-Route::get('/exportar/clima-laboral/{empresa}',[ClimaLaboralController::class,'export'])->middleware('auth');
+Route::get('/reporte/clima-laboral',[EmpresaController::class,'index'])->middleware(['auth','isAdmin']);
+Route::get('/reporte/clima-laboral/{name}',[DatosController::class,'indexClima'])->middleware(['auth','empresa']);
+Route::get('/exportar/clima-laboral/{empresa}',[ClimaLaboralController::class,'export'])->middleware(['auth','empresa']);
 
 
 //ENCUESTA

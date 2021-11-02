@@ -9,16 +9,16 @@ use App\Http\Controllers\IdLinkController;
 
 
 //ENVIAR
-Route::get('/enviar/automatizacion',[EmpresaController::class,'index'])->middleware('auth');
-Route::get('/enviar/automatizacion/{empresa}',[CategoriaController::class,'index'])->middleware('auth');
-Route::post('/enviar/automatizacion/{empresa}',[IdLinkController::class,'createAutomatizacion'])->middleware('auth');
+Route::get('/enviar/automatizacion',[EmpresaController::class,'index'])->middleware(['auth','isAdmin']);
+Route::get('/enviar/automatizacion/{empresa}',[CategoriaController::class,'index'])->middleware(['auth','empresa']);
+Route::post('/enviar/automatizacion/{empresa}',[IdLinkController::class,'createAutomatizacion'])->middleware(['auth','empresa']);
 
 
 //REPORTE
-Route::get('/reporte/automatizacion',[EmpresaController::class,'index']);
-Route::get('/reporte/automatizacion/{empresa}',[AutomatizacionPruebasController::class,'index'])->middleware('auth');
-Route::get('/reporte/automatizacion/{empresa}/{idPersona}',[DatosController::class,'indexAutomatizacion'])->middleware('auth');
-Route::get('/exportar/automatizacion/{empresa}/{idPersona}',[AutomatizacionPruebasController::class,'export'])->middleware('auth');
+Route::get('/reporte/automatizacion',[EmpresaController::class,'index'])->middleware(['auth','isAdmin']);
+Route::get('/reporte/automatizacion/{empresa}',[AutomatizacionPruebasController::class,'index'])->middleware(['auth','empresa']);
+Route::get('/reporte/automatizacion/{empresa}/{idPersona}',[DatosController::class,'indexAutomatizacion'])->middleware(['auth','empresa']);
+Route::get('/exportar/automatizacion/{empresa}/{idPersona}',[AutomatizacionPruebasController::class,'export'])->middleware(['auth','empresa']);
 
 
 //ENCUESTA

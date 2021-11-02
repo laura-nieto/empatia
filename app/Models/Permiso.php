@@ -16,9 +16,19 @@ class Permiso extends Model
         'desempenio',
         'kenstel','moss','barsit','kostick','valanti','wonderlick','bfq','disc','asertividad','liderazgo','estres','ice'
     ];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function automatizacion()
+    {
+        if ($this->kenstel ||$this->moss || $this->barsit || $this->kostick || $this->valanti || $this->wonderlick || $this->bfq || $this->disc || $this->asertividad || $this->liderazgo ||$this->estres || $this->ice) {
+            //EXISTE EL PERMISO EN ALGUNA CATEGORIA DE AUTOMATIZACION
+            return true;  
+        }else{
+            //NO EXISTE EL PERMISO
+            return false;
+        }
     }
 }

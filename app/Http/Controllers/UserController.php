@@ -15,16 +15,13 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-
         $rules = [
             'email' => 'required',
             'password' => 'required',
         ];
-
         $message = [
             'required' => 'El campo :attribute es obligatorio',
         ];
-
         $validate = $request->validate($rules,$message);
 
         if($request->remember){
