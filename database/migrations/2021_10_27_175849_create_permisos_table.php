@@ -15,12 +15,13 @@ class CreatePermisosTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('admin')->default('0');
-            
-            //$table->integer('empresa_id')->unsigned();
             $table->foreignId('empresa_id')->nullable()->constrained('empresas')->onDelete('cascade');
-
-
         });
+
+        Schema::table('datos_demograficos', function (Blueprint $table) {
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
+        });
+
         Schema::create('permisos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
@@ -51,6 +52,6 @@ class CreatePermisosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permisos');
+        //Schema::dropIfExists('permisos');
     }
 }

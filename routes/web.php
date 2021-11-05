@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\DatosDemograficosController;
 use App\Http\Controllers\MensajeController;
+use App\Http\Controllers\MensajesEmailController;
 
 use App\Imports\AutomatizacionImport;
 
@@ -42,10 +43,12 @@ Route::get('/new/empresa',[EmpresaController::class,'create'])->middleware(['aut
 Route::post('/new/empresa',[EmpresaController::class,'store'])->middleware(['auth','isAdmin']);
 Route::get('/delete/empresa',[EmpresaController::class,'edit'])->middleware(['auth','isAdmin']);
 Route::get('/delete/empresa/{id}',[EmpresaController::class,'destroy'])->middleware(['auth','isAdmin']);
+Route::get('/modificar/empresa/{id}',[EmpresaController::class,'show'])->middleware(['auth','empresa']);
+Route::post('/modificar/empresa/{id}',[EmpresaController::class,'update'])->middleware(['auth','empresa']);
 
 //NEW DATO
-Route::get('/new/dato',[DatosDemograficosController::class,'create'])->middleware(['auth','isAdmin']);
-Route::post('/new/dato',[DatosDemograficosController::class,'store'])->middleware(['auth','isAdmin']);
+Route::get('/new/dato',[DatosDemograficosController::class,'create'])->middleware(['auth']);
+Route::post('/new/dato',[DatosDemograficosController::class,'store'])->middleware(['auth']);
 Route::get('/agregar/dato',[EmpresaController::class,'index'])->middleware(['auth','isAdmin']);
 Route::get('/agregar/dato/{idEmpresa}',[DatosDemograficosController::class,'opcionesEmpresa'])->middleware(['auth','empresa']);
 Route::post('/agregar/dato/{idEmpresa}',[DatosDemograficosController::class,'guardarOpcionesEmpresa'])->middleware(['auth','empresa']);
@@ -64,13 +67,9 @@ Route::post('/modificar/instrucciones/desempenio-laboral',[MensajeController::cl
 Route::get('/modificar/automatizacion-laboral',[MensajeController::class,'edit'])->middleware(['auth','isAdmin']);
 Route::post('/modificar/automatizacion-laboral',[MensajeController::class,'update'])->middleware(['auth','isAdmin']);
 
-//CREAR MESSAGE
-// Route::get('/crear/clima-laboral',[MensajeController::class,'create'])->middleware('auth');
-// Route::post('/crear/clima-laboral',[MensajeController::class,'store'])->middleware('auth');
-// Route::get('/crear/desempenio-laboral',[MensajeController::class,'create'])->middleware('auth');
-// Route::post('/crear/desempenio-laboral',[MensajeController::class,'store'])->middleware('auth');
-// Route::get('/crear/automatizacion-laboral',[MensajeController::class,'create'])->middleware('auth');
-// Route::post('/crear/automatizacion-laboral',[MensajeController::class,'store'])->middleware('auth');
+//EDIT EMAILS
+Route::get('/modificar/email/{id}',[MensajesEmailController::class,'edit'])->middleware(['auth','empresa']);
+Route::post('/modificar/email/{id}',[MensajesEmailController::class,'update'])->middleware(['auth','empresa']);
 
 
 // Route::get('/migrate/automatizacion',function(){

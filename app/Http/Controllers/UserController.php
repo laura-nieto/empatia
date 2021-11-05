@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\Empresa;
+use App\Models\MensajesEmail;
 
 class UserController extends Controller
 {
@@ -105,6 +106,21 @@ class UserController extends Controller
 
         //PERMISOS
         $user->permisos()->create($request->all());
+        $empresa = $user->empresas->nombre;
+        $font = "'lucida sans unicode', 'lucida grande', sans-serif";
+        $msj = new MensajesEmail;
+        if ($request->has('clima')) {
+            $msj->clima = '<p style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'.$font.';line-height:21px;color:#333333;font-size:14px">Como parte del proceso denominado <strong>Clima Laboral</strong>, la empresa <strong>'.$empresa.'</strong> le invita a realizar la siguiente encuesta. Favor de desarrollarla de acuerdo a las indicaciones que se le den. Haga click en el enlace para empezar.</p>';
+        }
+        if ($request->has('desempenio')) {
+            $msj->desempenio = '<p style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'.$font.';line-height:21px;color:#333333;font-size:14px">Como parte del proceso denominado <strong>Desempeño 360°</strong>, la empresa <strong>'.$empresa.'</strong> le invita a realizar la siguiente encuesta. Favor de desarrollarla de acuerdo a las indicaciones que se le den. Haga click en el enlace para empezar.</p>';
+        }
+        if ($request->has('kenstel')||$request->has('moss')||$request->has('barsit')||$request->has('kostick')||$request->has('valanti')||$request->has('wonderlick')||$request->has('bfq')||$request->has('disc')||$request->has('asertividad')||$request->has('liderazgo')||$request->has('estres')||$request->has('ice')) {
+            $msj->automatizacion = '<p style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'.$font.';line-height:21px;color:#333333;font-size:14px">La empresa <strong>'.$empresa.'</strong> nos encomienda la labor de ponderar sus competencias profesionales, para cumplir dicho fin es que a continuación le presentamos una serie de pruebas psicotécnicas elegidas minuciosamente, las cuales usted tendrá que desarrollar de acuerdo a las indicaciones que se le vayan dando. Haga click en el enlace para empezar.</p>';
+        }
+        $msj->empresa_id = $request->empresa_id;
+        $msj->save();
+
         return redirect()->route('usuarios.index')->with('msj','Usuario creado correctamente');
     }
 

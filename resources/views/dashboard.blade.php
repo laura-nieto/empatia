@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('title','Empatia 360°')
 @section('main')
-    @if (session('create.encuesta') || session('create.automatizacion') || session('import.emails'))
+    @if (session('create.encuesta') || session('create.automatizacion') || session('import.emails') || session('msj'))
         <div class="div--success">
             <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
             <p>{{session('create.encuesta')}}</p>
             <p>{{session('create.automatizacion')}}</p>
             <p>{{session('import.emails')}}</p>
+            <p>{{session('msj')}}</p>
         </div>
     @endif
     @if (session('error'))
@@ -20,6 +21,10 @@
             <section>
                 <h3>Clima Laboral</h3>
                 <ul class="section--ul">
+                    <li class="li__index">
+                        <i class="fas fa-caret-right fa-2x"></i>
+                        <a href="/new/dato">Nuevo Dato</a>
+                    </li>
                     <li class="li__index">
                         <i class="fas fa-caret-right fa-2x"></i>
                         <a href="/agregar/dato/{{Auth::user()->empresa_id}}">Agregar Datos</a>
@@ -64,6 +69,19 @@
                     </li>
                 </ul>
             </section> 
-        @endif         
+        @endif     
+        <section>
+            <h3>Modificar</h3>
+            <ul class="section--ul">
+                <li class="li__index">
+                    <i class="fas fa-caret-right fa-2x"></i>
+                    <a href="/modificar/email/{{Auth::user()->empresa_id}}">Mensajes E-mail</a>
+                </li>
+                <li class="li__index">
+                    <i class="fas fa-caret-right fa-2x"></i>
+                    <a href="/modificar/empresa/{{Auth::user()->empresa_id}}">Empresa</a>
+                </li>
+            </ul>
+        </section>    
     </article>
 @endsection

@@ -47,9 +47,9 @@ class DatosDemograficosController extends Controller
         }
         return redirect('/enviar/clima-laboral/'.$idEmpresa);
     }
-    public function opcionesEmpresa($idEmpresa)
+    public function opcionesEmpresa($idEmpresa,Request $request)
     {
-        $datosDemo = DatosDemograficos::all()->sortBy('nombre_dato');
+        $datosDemo = DatosDemograficos::where('user_id',$request->user()->id)->get();
         $empresa = Empresa::findOrFail($idEmpresa);
         return view('agregarDatoEmpresa',['datosDemo'=>$datosDemo,'empresa'=>$empresa]);
     }
@@ -85,18 +85,21 @@ class DatosDemograficosController extends Controller
      */
     public function store(Request $request)
     {
-        $dato = new DatosDemograficos;
-        $pass = [];
-
         $rules = ['name' => 'required'];
         $message = ['required'=>'El campo es obligatorio'];
         $validate = $request->validate($rules,$message);
-
+        
+        $dato = new DatosDemograficos;
         $dato->nombre_dato = $request->name;
+        $dato->user_id = $request->user()->id;
         
         $dato->save();
 
-        return redirect('/')->with('create.dato','Dato nuevo creado con éxito');
+        if ($request->user()->admin == 1) {
+            return redirect('/dashboard')->with('msj','Dato nuevo creado con éxito');
+        }else{
+            return redirect('/')->with('create.dato','Dato nuevo creado con éxito');
+        }
     }
 
     /**

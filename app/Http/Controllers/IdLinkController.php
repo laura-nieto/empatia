@@ -9,6 +9,7 @@ use Mail;
 use App\Mail\EnviarMailable;
 use App\Mail\DesempenioMailable;
 use App\Mail\AutomatizacionMailable;
+use App\Mail\UserMailable;
 
 use App\Models\DatosDemograficos;
 use App\Models\Datos;
@@ -97,8 +98,14 @@ class IdLinkController extends Controller
 
         //ENVIAR MAIL
         $sendLink = $request->gethost() . '/encuesta/automatizacion-de-pruebas/' . $link->id . '/' . $datos->id;
-        $correo = new AutomatizacionMailable($sendLink,$request->nombre,$request->empresa);
-        Mail::to($request->email)->send($correo);
+        if ($request->user()->admin == 1) {
+            $msj = $request->user()->empresas->mensajes[0]->automatizacion;
+            $correo = new UserMailable($sendLink,$request->nombre,$request->empresa,'automatizacion',$msj);
+            Mail::to($request->email)->send($correo);
+        }else{
+            $correo = new AutomatizacionMailable($sendLink,$request->nombre,$request->empresa);
+            Mail::to($request->email)->send($correo);
+        }
 
         if (Auth::user()->admin == 0) {
             return redirect('/')->with('create.encuesta','Encuesta enviada con exito');
@@ -191,9 +198,17 @@ class IdLinkController extends Controller
                     $createDato->save();
                     
                     $nombreEvaluador = $createDato->nombre;
+                    $empresa = Empresa::findOrFail($id)->nombre;
+
                     $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id;
-                    $correo = new DesempenioMailable($sendLink,$empresa,$nombreEvaluador);
-                    Mail::bcc($createDato->mail)->send($correo);
+                    if ($request->user()->admin == 1) {
+                        $msj = $request->user()->empresas->mensajes[0]->desempenio;
+                        $correo = new UserMailable($sendLink,$nombreEvaluador,$empresa,'desempenio',$msj);
+                        Mail::bcc($createDato->mail)->send($correo);
+                    }else{
+                        $correo = new DesempenioMailable($sendLink,$empresa,$nombreEvaluador);
+                        Mail::bcc($createDato->mail)->send($correo);
+                    }
                     foreach ($evaluador as $evaluado) {
                         $evaluado->enviado = 1;
                         $evaluado->save();
@@ -266,10 +281,16 @@ class IdLinkController extends Controller
                                     $createDato->mail = $email;
                                     $createDato->empresa_id = $id;
                                     $createDato->save();
-
                                     $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id . '/' . $createDato->id;
-                                    $correo = new EnviarMailable($sendLink,$nombre,$nombreEmpresa);
-                                    Mail::bcc($email)->send($correo);
+                                    if ($request->user()->admin == 1) {
+                                        $logo = $request->user()->empresas->logo;
+                                        $msj = $request->user()->empresas->mensajes[0]->clima;
+                                        $correo = new UserMailable($sendLink,$nombre,$nombreEmpresa,'clima',$msj,$logo);
+                                        Mail::bcc($email)->send($correo);
+                                    }else{
+                                        $correo = new EnviarMailable($sendLink,$nombre,$nombreEmpresa);
+                                        Mail::bcc($email)->send($correo);
+                                    }
                                 }
                             }
                         }
@@ -280,8 +301,14 @@ class IdLinkController extends Controller
                     foreach($importados as $key => $person){
                         if(!is_null($person[0]) && !is_null($person[1])){
                             $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id . '/' . $key;
-                            $correo = new EnviarMailable($sendLink,$person[0],$nombreEmpresa);
-                            Mail::bcc($person[1])->send($correo);
+                            if ($request->user()->admin == 1) {
+                                $msj = $request->user()->empresas->mensajes[0]->clima;
+                                $correo = new UserMailable($sendLink,$person[0],$nombreEmpresa,'clima',$msj);
+                                Mail::bcc($email)->send($correo);
+                            }else{
+                                $correo = new EnviarMailable($sendLink,$person[0],$nombreEmpresa);
+                                Mail::bcc($email)->send($correo);
+                            }
                         }
                     }
                 }

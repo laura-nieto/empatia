@@ -17,11 +17,11 @@ Route::get('/enviar/guardados/{empresa}',[DesempenioLaboralController::class,'ve
 Route::post('/enviar/guardados/{empresa}',[IdLinkController::class,'createDesempeño'])->middleware(['auth','empresa']);
 
 //DATOS DESEMPENIO CRUD
-Route::post('/datos/desempenio/borrar/{empresa}/{id}',[DatosDesempenioController::class,'destroy'])->middleware(['auth','empresa'])->name('borrar_datos');
-Route::get('/datos/desempenio/modificar/{empresa}/{id}',[DatosDesempenioController::class,'edit'])->middleware(['auth','empresa']);
-Route::post('/datos/desempenio/modificar/{empresa}/{id}',[DatosDesempenioController::class,'update'])->middleware(['auth','empresa']);
-Route::get('/datos/desempenio/agregar/{empresa}',[DatosDesempenioController::class,'create'])->middleware(['auth','empresa']);
-Route::post('/datos/desempenio/agregar/{empresa}',[DatosDesempenioController::class,'store'])->middleware(['auth','empresa']);
+Route::post('/datos/desempenio/{empresa}/borrar/{id}',[DatosDesempenioController::class,'destroy'])->middleware(['auth','empresa'])->name('borrar_datos');
+Route::get('/datos/desempenio/{empresa}/modificar/{id}',[DatosDesempenioController::class,'edit'])->middleware(['auth','empresa']);
+Route::post('/datos/desempenio/{empresa}/modificar/{id}',[DatosDesempenioController::class,'update'])->middleware(['auth','empresa']);
+Route::get('/datos/desempenio/{empresa}/agregar',[DatosDesempenioController::class,'create'])->middleware(['auth','empresa']);
+Route::post('/datos/desempenio/{empresa}/agregar',[DatosDesempenioController::class,'store'])->middleware(['auth','empresa']);
 
 Route::get('/cargar/desempenio/{id}',[DatosDesempenioController::class,'cargar_vista'])->middleware(['auth','empresa']);
 Route::get('/exportar/plantilla/desempenio-laboral',[DatosDesempenioController::class,'download_plantilla'])->middleware('auth');

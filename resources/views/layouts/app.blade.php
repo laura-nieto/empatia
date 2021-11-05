@@ -13,8 +13,13 @@
     <header>
         <nav>
             <div class="div__home">
+                @if (Auth::user()->admin == 0)
                 <a href="/"><img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="" class="img--logo"></a>
-                <a href="/">Home</a>            
+                <a href="/">Home</a>
+                @else
+                <a href="/dashboard"><img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="" class="img--logo"></a>
+                <a href="/dashboard">Home</a>
+                @endif   
             </div>
             <a href="/logout">Cerrar sesión</a>
         </nav>

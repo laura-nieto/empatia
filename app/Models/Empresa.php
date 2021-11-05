@@ -21,4 +21,8 @@ class Empresa extends Model
     {
         return $this->belongsToMany(DatosDemograficos::class,'datos_empresas','empresa_id','demograficos_id')->withPivot('opciones');
     }
+    public function mensajes()
+    {
+        return $this->hasMany(MensajesEmail::class, 'empresa_id');
+    }
 }

@@ -82,7 +82,8 @@ class EmpresaController extends Controller
      */
     public function show($id)
     {
-        //
+        $empresa = Empresa::findOrFail($id);
+        return view('usuarios.empresa',compact('empresa'));
     }
 
     /**
@@ -106,7 +107,26 @@ class EmpresaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'logo' => 'image|mimes:jpeg,png,jpg,svg|max:2048'
+        ];
+        $message = [
+            'image' => 'El archivo debe ser una imágen',
+            'mimes' => 'La imágen debe ser jpeg,png,jpg o svg',
+            'max' => 'El archivo tiene que tener un peso como máximo de :max kb'
+        ];
+        $validate = $request->validate($rules,$message);
+        $empresa = Empresa::findOrFail($id);
+        
+        if($request->hasfile('logo')){
+            //$nameImg = $request->name . '.' . $request->file('logo')->getClientOriginalExtension();
+            $nameImg= uniqid() . '.'. $request->file('logo')->getClientOriginalExtension();
+            $request->file('logo')->move(public_path('img/empresas'), $nameImg);
+            //$path = $request->file('logo')->storeAs('logos',$nameImg);
+            $empresa->logo = $nameImg;
+        }
+        $empresa->save();
+        return redirect('/dashboard')->with('msj','El logo fue modificado correctamente');
     }
 
     /**

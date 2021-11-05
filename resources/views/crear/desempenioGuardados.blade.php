@@ -48,12 +48,12 @@
                             @endswitch
                         </td>
                         <td class="text-center desempenio-modify">
-                            <a href="/datos/desempenio/modificar/{{$nombreEmpresa->id}}/{{$persona->id}}"><img src="{{asset('/img/edit.png')}}" alt="Icono editar" class="img--success"></a>
+                            <a href="/datos/desempenio/{{$nombreEmpresa->id}}/modificar/{{$persona->id}}"><img src="{{asset('/img/edit.png')}}" alt="Icono editar" class="img--success"></a>
                             <form action="{{route('borrar_datos',[$nombreEmpresa->id,$persona->id])}}" method="post" id="form-borrar">
                                 @csrf
                                 <button type="submit" class="no-button"><img src="{{asset('/img/cancel.png')}}" alt="Icono borrar" class="img--success"></button>
                             </form>
-                            <a href="/datos/desempenio/agregar/{{$nombreEmpresa->id}}"><img src="{{asset('/img/add.png')}}" alt="Icono borrar" class="img--success"></a>
+                            <a href="/datos/desempenio/{{$nombreEmpresa->id}}/agregar"><img src="{{asset('/img/add.png')}}" alt="Icono borrar" class="img--success"></a>
                         </td>
                     </tr>
                 @endforeach
