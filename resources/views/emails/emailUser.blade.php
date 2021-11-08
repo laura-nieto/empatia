@@ -309,7 +309,7 @@ a {text-decoration: none;}
                                                             style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                                                             <tr>
                                                                 <td>
-                                                                    <img src="{{$message->embed(public_path() .'/img/empresas/'.$logo)}}" alt="Logo de la empresa" width='90'>
+                                                                    <img src="{{$message->embed(public_path() . $logo)}}" alt="Logo de la empresa" width='90'>
                                                                 </td>
                                                                 <td>
                                                                     <h5
@@ -340,11 +340,11 @@ a {text-decoration: none;}
                                                                         Powered By</p>
                                                                     <h4
                                                                         style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#EC741C;font-size:14px">
-                                                                        Empatia
+                                                                        Psicología y
                                                                     </h4>
                                                                     <h4
                                                                         style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C;font-size:14px">
-                                                                        360°
+                                                                        Emprendimiento
                                                                     </h4>
                                                             {{-- </td>
                                                             </tr>
@@ -429,7 +429,7 @@ a {text-decoration: none;}
                                                                     </table>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                            {{-- <tr>
                                                                 <td align="left" style="padding:0;Margin:0">
                                                                     <p
                                                                         style="text-align:justify;Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:17px;color:#333333;font-size:11px">
@@ -437,7 +437,7 @@ a {text-decoration: none;}
                                                                         del correo <u>soluciones@empatia.com.pe</u> o al
                                                                         teléfono 998161316. En última instancia favor de contactar con el responsable del proceso de su organización. </p>
                                                                 </td>
-                                                            </tr>
+                                                            </tr> --}}
                                                         </table>
                                                     </td>
                                                 </tr>

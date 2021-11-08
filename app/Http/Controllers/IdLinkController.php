@@ -100,7 +100,12 @@ class IdLinkController extends Controller
         $sendLink = $request->gethost() . '/encuesta/automatizacion-de-pruebas/' . $link->id . '/' . $datos->id;
         if ($request->user()->admin == 1) {
             $msj = $request->user()->empresas->mensajes[0]->automatizacion;
-            $correo = new UserMailable($sendLink,$request->nombre,$request->empresa,'automatizacion',$msj);
+            if ($request->user()->empresas->logo != null) {
+                $logo = '/img/empresas/'.$request->user()->empresas->logo;
+            }else{
+                $logo = '/img/Logo de Empatia PNG.png';
+            }
+            $correo = new UserMailable($sendLink,$request->nombre,$request->empresa,'automatizacion',$msj,$logo);
             Mail::to($request->email)->send($correo);
         }else{
             $correo = new AutomatizacionMailable($sendLink,$request->nombre,$request->empresa);
@@ -203,7 +208,12 @@ class IdLinkController extends Controller
                     $sendLink = $request->gethost() . '/encuesta/desempenio-laboral/' . $link->id;
                     if ($request->user()->admin == 1) {
                         $msj = $request->user()->empresas->mensajes[0]->desempenio;
-                        $correo = new UserMailable($sendLink,$nombreEvaluador,$empresa,'desempenio',$msj);
+                        if ($request->user()->empresas->logo != null) {
+                            $logo = '/img/empresas/'.$request->user()->empresas->logo;
+                        }else{
+                            $logo = '/img/Logo de Empatia PNG.png';
+                        }
+                        $correo = new UserMailable($sendLink,$nombreEvaluador,$empresa,'desempenio',$msj,$logo);
                         Mail::bcc($createDato->mail)->send($correo);
                     }else{
                         $correo = new DesempenioMailable($sendLink,$empresa,$nombreEvaluador);
@@ -283,7 +293,11 @@ class IdLinkController extends Controller
                                     $createDato->save();
                                     $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id . '/' . $createDato->id;
                                     if ($request->user()->admin == 1) {
-                                        $logo = $request->user()->empresas->logo;
+                                        if ($request->user()->empresas->logo != null) {
+                                            $logo = '/img/empresas/'.$request->user()->empresas->logo;
+                                        }else{
+                                            $logo = '/img/Logo de Empatia PNG.png';
+                                        }
                                         $msj = $request->user()->empresas->mensajes[0]->clima;
                                         $correo = new UserMailable($sendLink,$nombre,$nombreEmpresa,'clima',$msj,$logo);
                                         Mail::bcc($email)->send($correo);
@@ -302,8 +316,13 @@ class IdLinkController extends Controller
                         if(!is_null($person[0]) && !is_null($person[1])){
                             $sendLink = $request->gethost() . '/encuesta/clima-laboral/' . $link->id . '/' . $key;
                             if ($request->user()->admin == 1) {
+                                if ($request->user()->empresas->logo != null) {
+                                    $logo = '/img/empresas/'.$request->user()->empresas->logo;
+                                }else{
+                                    $logo = '/img/Logo de Empatia PNG.png';
+                                }
                                 $msj = $request->user()->empresas->mensajes[0]->clima;
-                                $correo = new UserMailable($sendLink,$person[0],$nombreEmpresa,'clima',$msj);
+                                $correo = new UserMailable($sendLink,$nombre,$nombreEmpresa,'clima',$msj,$logo);
                                 Mail::bcc($email)->send($correo);
                             }else{
                                 $correo = new EnviarMailable($sendLink,$person[0],$nombreEmpresa);
