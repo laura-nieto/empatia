@@ -44,88 +44,88 @@
                 <h3 class="mb-1">Accesos</h3>
                 <div class="mb-3 form-check-column">
                     <input type="checkbox" name="clima" id="clima" value="1">
-                    <label for="clima">Clima</label>
+                    <label for="clima" class="color-modulo"><strong>Clima</strong></label>
                 </div>
                 <div class="mb-3 form-check-column">
                     <input type="checkbox" name="desempenio" id="desempenio" value="1">
-                    <label for="desempenio">Desempeño</label>
+                    <label for="desempenio" class="color-modulo"><strong>Desempeño</strong></label>
                 </div>
                 <div class="mb-3">
                     <div class="mb-3 form-check-column">
                         <input type="checkbox" id="automatizacion">
-                        <label for="automatizacion"><strong>Automatización</strong></label>
+                        <label for="automatizacion" class="color-modulo"><strong>Automatización</strong></label>
                     </div>
                     <ul class="section--ul">
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="kenstel" id="kenstel" value="1" class="checked">
-                                <label for="kenstel">Kenstel</label>
+                                <label for="kenstel" class="color-cuestionarios">Kenstel</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="moss" id="moss" value="1" class="checked">
-                                <label for="moss">Moss</label>
+                                <label for="moss" class="color-cuestionarios">Moss</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="barsit" id="barsit" value="1" class="checked">
-                                <label for="barsit">Barsit</label>
+                                <label for="barsit" class="color-cuestionarios">Barsit</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="kostick" id="kostick" value="1" class="checked">
-                                <label for="kostick">Kostick</label>
+                                <label for="kostick" class="color-cuestionarios">Kostick</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="valanti" id="valanti" value="1" class="checked">
-                                <label for="valanti">Valanti</label>
+                                <label for="valanti" class="color-cuestionarios">Valanti</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="wonderlick" id="wonderlick" value="1" class="checked">
-                                <label for="wonderlick">Wonderlick</label>
+                                <label for="wonderlick" class="color-cuestionarios">Wonderlick</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="bfq" id="bfq" value="1" class="checked">
-                                <label for="bfq">BFQ</label>
+                                <label for="bfq" class="color-cuestionarios">BFQ</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="disc" id="disc" value="1" class="checked">
-                                <label for="disc">Disc</label>
+                                <label for="disc" class="color-cuestionarios">Disc</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="asertividad" id="asertividad" value="1" class="checked">
-                                <label for="asertividad">Asertividad</label>
+                                <label for="asertividad" class="color-cuestionarios">Asertividad</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="liderazgo" id="liderazgo" value="1" class="checked">
-                                <label for="liderazgo">Liderazgo</label>
+                                <label for="liderazgo" class="color-cuestionarios">Liderazgo</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="estres" id="estres" value="1" class="checked">
-                                <label for="estres">Estres</label>
+                                <label for="estres" class="color-cuestionarios">Estres</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-check-column pl-3">
                                 <input type="checkbox" name="ice" id="ice" value="1" class="checked">
-                                <label for="ice">ICE</label>
+                                <label for="ice" class="color-cuestionarios">ICE</label>
                             </div>
                         </li>
                     </ul>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\DesempenioLaboral;
 use App\Models\ClimaLaboral;
 use App\Models\Empresa;
+use App\Models\DatosDemograficos;
 
 
 class DatosController extends Controller
@@ -56,15 +57,22 @@ class DatosController extends Controller
         return redirect()->route('clima_pag1',['id'=>$id,'datos'=>$idDatos]);
     }
     
-    public function indexClima($id)
+    public function indexClima(Request $request,$id)
     {
-        $datos = Datos::has('encuesta_clima')->where('empresa_id',$id)->select('id','nombre','mail','observacion','datos_demograficos','empresa_id')->simplePaginate(10);
+        $datos = Datos::has('encuesta_clima')->where('empresa_id',$id)->select('id','nombre','mail','observacion','datos_demograficos','empresa_id')->get();
         $array_datos = [];
 
-        $viewDatos = json_decode($datos[0]->datos_demograficos,true);
-        foreach($viewDatos as $viewDato => $key){
-            $viewDato = str_replace('_',' ',$viewDato);
-            $array_datos[] = $viewDato;
+        if ($datos->isEmpty()) {
+            $viewDato = DatosDemograficos::where('user_id',$request->user()->id)->get();
+            foreach ($viewDato as $value) {
+                $array_datos[] = $value->nombre_dato;
+            }
+        }else{
+            $viewDatos = json_decode($datos[0]->datos_demograficos,true);
+            foreach($viewDatos as $viewDato => $key){
+                $viewDato = str_replace('_',' ',$viewDato);
+                $array_datos[] = $viewDato;
+            }
         }
         
         $preguntas = ClimaLaboral::all();
