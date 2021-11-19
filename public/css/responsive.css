@@ -49,6 +49,11 @@
         font-size: 1rem;
     }
 }
+@media screen and (max-width: 1460px) {
+    .article__index{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
 @media screen and (max-width: 1200px) { 
     /* CLIMA ENCUESTA */
     .form--encuesta__table{
@@ -74,8 +79,14 @@
 
 @media screen and (max-width: 992px){
     /* INDEX */
+    .body-home{
+        justify-content: space-around;
+    }
+    .header-home{
+        width: 30%;
+    }
     .article__index{
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: 1fr;
     }
     /* DESEMPEÑO */
     .form__desempeño{
@@ -159,8 +170,14 @@
         width: 75%;
     }
     /* INDEX */
+    .body-home{
+        justify-content: space-around;
+    }
+    .header-home{
+        width: 50%;
+    }
     .article__index{
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: 1fr;
     }
     /* CLIMA - ENVIAR */
     .form--clima--div__email{

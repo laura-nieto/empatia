@@ -1,7 +1,7 @@
-@extends('layouts.app')
-@section('title','Empatia 360°')
+@extends('layouts.home')
+@section('title','Psicologia y Emprendimiento')
 @section('main')
-    @if (session('create.encuesta') || session('create.automatizacion') || session('import.emails') || session('msj'))
+    {{--@if (session('create.encuesta') || session('create.automatizacion') || session('import.emails') || session('msj'))
         <div class="div--success">
             <img src="{{asset('/img/check-icon2.png')}}" alt="Check image" class="img--success">    
             <p>{{session('create.encuesta')}}</p>
@@ -9,13 +9,13 @@
             <p>{{session('import.emails')}}</p>
             <p>{{session('msj')}}</p>
         </div>
-    @endif
-    @if (session('error'))
+    @endif--}}
+    {{--@if (session('error'))
         <div class="div--error">
             <img src="{{asset('/img/cancel.png')}}" alt="Wrong Image" class="img--success">    
             <p>{{session('error')}}</p>
         </div>
-    @endif
+    @endif--}}
     <article class="article__index">
         @if (Auth::user()->permisos->clima)
             <section>
@@ -81,7 +81,53 @@
                     <i class="fas fa-caret-right fa-2x"></i>
                     <a href="/modificar/empresa/{{Auth::user()->empresa_id}}">Empresa</a>
                 </li>
+                <li class="li__index">
+                    <i class="fas fa-caret-right fa-2x"></i>
+                    <a href="/edit/setting/{{Auth::id()}}">Configurar</a>
+                </li>
             </ul>
         </section>    
     </article>
+@endsection
+@section('js')
+<script>
+    $.ajax({
+        url: '{{url("/settings/")}}',
+        data: {
+            '_token': '{{ csrf_token() }}',
+            'id': '{{Auth::user()->id}}',
+        },
+        type: 'POST',
+        dataType: 'JSON',
+        success: function (res) {
+            if (res.logo != null) {
+                $('nav img').attr('src', "{{asset('img/empresas')}}" + '/' + res.logo);
+                $('#img-home').attr('src', "{{asset('img/empresas')}}" + '/' + res.logo);
+            }
+            if (res.color_header != null) {
+                $('header').css('background-color', res.color_header);
+            }
+            if (res.letras_header != null) {
+                $('nav a').css('color', res.letras_header);
+                $('nav a').css('border-color', res.letras_header);
+            }
+            if (res.color_menu != null) {
+                $('.li__index').css('background-color', res.color_menu);
+            }
+            if (res.letras_menu != null) {
+                $('.li__index a').css('color', res.letras_menu);
+            }
+            if (res.color_main) {
+                $('body').css('background-color', res.color_main);
+            }
+            if (res.letras_main) {
+                $('body').css('color', res.letras_main);
+                $('.btn').css('border-color', res.letras_main);
+            }
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    })
+</script>
 @endsection

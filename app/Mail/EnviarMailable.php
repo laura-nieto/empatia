@@ -11,7 +11,7 @@ class EnviarMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = 'Clima Laboral: Encuesta (Empatia 360º)';
+    public $subject = 'Clima Laboral: Encuesta (Psicología y Emprendimiento)';
 
     public $link;
     public $empresa;

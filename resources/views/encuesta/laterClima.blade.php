@@ -1,10 +1,10 @@
 @extends('layouts.encuesta')
 @section('encabezado')
     <div class="header--encuesta--logo">
-        <img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" class="header--encuesta__img">
-        <div>
-            <h4 class="title--logo">Empatía</h4>
-            <h4 class="title--logo">Consultores</h4>
+        <img src="{{asset('img/psicologia_emprendimiento_border_white.jpeg')}}" alt="Logo de la empresa" class="header--encuesta__img">
+        <div class="ml-3">
+            <h4 class="title--logo">Psicología y</h4>
+            <h4 class="title--logo">Emprendimiento</h4>
         </div>
     </div>
     <div class="header--encuesta--title header--encuesta--title--responsive">

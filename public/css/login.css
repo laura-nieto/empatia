@@ -1,12 +1,12 @@
 .section--login{
-    border: solid 1px #000;
+    border: solid 1px white;
     border-radius: 5px;
     margin: 50px auto;
     padding: 30px 10px;
     width: 50%;
 }
 .section--login--article__title{
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid white;
     margin: 0 0 30px;
     padding-bottom: 10px;
 }
@@ -20,6 +20,7 @@
     flex-direction: column;
 }
 .div__login{
+    align-items: center;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     row-gap: 30px;

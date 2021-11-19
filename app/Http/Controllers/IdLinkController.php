@@ -103,7 +103,7 @@ class IdLinkController extends Controller
             if ($request->user()->empresas->logo != null) {
                 $logo = '/img/empresas/'.$request->user()->empresas->logo;
             }else{
-                $logo = '/img/Logo de Empatia PNG.png';
+                $logo = '/img/Psicologia&emprendimiento.jpeg';
             }
             $correo = new UserMailable($sendLink,$request->nombre,$request->empresa,'automatizacion',$msj,$logo);
             Mail::to($request->email)->send($correo);
@@ -211,7 +211,7 @@ class IdLinkController extends Controller
                         if ($request->user()->empresas->logo != null) {
                             $logo = '/img/empresas/'.$request->user()->empresas->logo;
                         }else{
-                            $logo = '/img/Logo de Empatia PNG.png';
+                            $logo = '/img/Psicologia&emprendimiento.jpeg';
                         }
                         $correo = new UserMailable($sendLink,$nombreEvaluador,$empresa,'desempenio',$msj,$logo);
                         Mail::bcc($createDato->mail)->send($correo);
@@ -296,7 +296,7 @@ class IdLinkController extends Controller
                                         if ($request->user()->empresas->logo != null) {
                                             $logo = '/img/empresas/'.$request->user()->empresas->logo;
                                         }else{
-                                            $logo = '/img/Logo de Empatia PNG.png';
+                                            $logo = '/img/Psicologia&emprendimiento.jpeg';
                                         }
                                         $msj = $request->user()->empresas->mensajes[0]->clima;
                                         $correo = new UserMailable($sendLink,$nombre,$nombreEmpresa,'clima',$msj,$logo);
@@ -319,7 +319,7 @@ class IdLinkController extends Controller
                                 if ($request->user()->empresas->logo != null) {
                                     $logo = '/img/empresas/'.$request->user()->empresas->logo;
                                 }else{
-                                    $logo = '/img/Logo de Empatia PNG.png';
+                                    $logo = '/img/Psicologia&emprendimiento.jpeg';
                                 }
                                 $msj = $request->user()->empresas->mensajes[0]->clima;
                                 $correo = new UserMailable($sendLink,$nombre,$nombreEmpresa,'clima',$msj,$logo);

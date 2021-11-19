@@ -44,11 +44,11 @@
     padding-bottom: 10px;
 }
 .form--automatizacion__table>thead>tr>th:not(:first-child),.form--automatizacion__table--report>thead>tr>th,.form--automatizacion__table--report>tbody>tr>td{
-    border: #000 solid 1px;
+    border: #fff solid 1px;
     padding: 10px;
 }
 .form--automatizacion__table>tbody>tr>td{
-    border: #000 solid 1px;
+    border: #fff solid 1px;
     padding: 5px;
 }
 .reporte-column-width{

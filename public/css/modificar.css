@@ -2,6 +2,7 @@
 .modify_container{
     max-width: 75vw;
     margin: 0 auto;
+    color:black!important;
 }
 .modify__form{
     display: grid;
@@ -12,6 +13,7 @@
 }
 .editor--container>h3{
     margin: 10px 0;
+    color:white!important;
 }
 .ck-content>ol, .ck-content>ul{
     padding: 20px;

@@ -1,6 +1,6 @@
 <div class="encuesta--div__explain">
     <p>
-        A continuaci√≥n elija la alternativa que considere correcta o escriba el n√∫mero que considere es la respuesta al problema. 
+        A continuaci√≥n elija la alternativa que considere correcta o escriba el n®≤mero que considere es la respuesta al problema. 
     </p>
 </div>
 <article class="form-automatizacion__article--barsit">

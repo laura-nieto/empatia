@@ -6,7 +6,7 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\DatosDemograficosController;
 use App\Http\Controllers\MensajeController;
 use App\Http\Controllers\MensajesEmailController;
-
+use App\Http\Controllers\SettingController;
 use App\Imports\AutomatizacionImport;
 
 /*
@@ -71,6 +71,11 @@ Route::post('/modificar/automatizacion-laboral',[MensajeController::class,'updat
 Route::get('/modificar/email/{id}',[MensajesEmailController::class,'edit'])->middleware(['auth','empresa']);
 Route::post('/modificar/email/{id}',[MensajesEmailController::class,'update'])->middleware(['auth','empresa']);
 
+//GET SETTINGS
+Route::post('/settings',[UserController::class,'get_settings'])->middleware(['auth']);
+Route::post('/settings/login',[SettingController::class,'get_setting']);
+Route::get('/edit/setting/{id}',[SettingController::class,'edit'])->middleware(['auth']);
+Route::post('/edit/setting/{id}',[SettingController::class,'update'])->middleware(['auth']);
 
 // Route::get('/migrate/automatizacion',function(){
 //     return view('migrateAutomatizacion');

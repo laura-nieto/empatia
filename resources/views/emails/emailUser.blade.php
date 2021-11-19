@@ -339,11 +339,11 @@ a {text-decoration: none;}
                                                                         style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'lucida sans unicode', 'lucida grande', sans-serif;line-height:21px;color:#595959;font-size:12px!important;margin-bottom:0px">
                                                                         Powered By</p>
                                                                     <h4
-                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#EC741C;font-size:14px">
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#1D245A;font-size:14px">
                                                                         Psicología y
                                                                     </h4>
                                                                     <h4
-                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#0C746C;font-size:14px">
+                                                                        style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;color:#1D245A;font-size:14px">
                                                                         Emprendimiento
                                                                     </h4>
                                                             {{-- </td>

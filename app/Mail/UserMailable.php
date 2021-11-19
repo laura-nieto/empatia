@@ -42,7 +42,7 @@ class UserMailable extends Mailable
         switch ($this->tipo){
             case 'clima':
                 return $this
-                    ->subject('Clima Laboral: Encuesta (Empatia 360º)')
+                    ->subject('Clima Laboral: Encuesta (Psicología y Emprendimiento)')
                     ->from('example@example.com', $this->empresa)
                     ->view('emails.emailUser');
                 break;

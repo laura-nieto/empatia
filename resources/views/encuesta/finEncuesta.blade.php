@@ -10,7 +10,7 @@
                 Evaluación de Competencias Profesionales
             @endif
         </h2>
-        <img src="{{asset('img/Logo de Empatia PNG.png')}}" alt="Logo de la empresa" class="header--encuesta__img--transparent">
+        <img src="{{asset('img/psicologia_emprendimiento_border_white.jpeg')}}" alt="Logo de la empresa" class="header--encuesta__img--transparent">
     </div>
 @endsection
 @section('main')

@@ -1,25 +1,48 @@
+.body-home{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.body-home>aside{
+    display: flex;
+    align-items: center;
+}
+.body-home>article{
+    flex-grow: 1;
+}
+.align-self-center{
+    align-self: center;
+}
+.header-index-home nav{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 12vh;
+    margin: 0 20px;
+}
 .article__index{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    margin-top: 100px;
+    margin-top:20px;
     padding: 0 30px;
     gap: 50px;
 }
 .article__index>section>h3{
-    background-color: rgba(32, 32, 32, 0.884);
     color: #fff;
-    border-radius: 10px 10px 0 0;
-    padding: 15px 40px;
+    border-bottom: white 1px solid;
+    padding: 15px 15px;
 }
 .section--ul{
     list-style: none;
 }
 .li__index{
-    background-color: #f4c544c2;
+    background-color: #F0D67B;
     padding: 10px 20px;
     align-items: center;
     display: flex;
     margin: 5px 0;
+}
+.li__index>a{
+    color: #1D245A;
 }
 .li__index:last-child{
     border-radius: 0 0 10px 10px;
@@ -29,7 +52,7 @@
     margin-left: 20px;
 }
 .fa-2x{
-    color: #39741e;
+    color: #447323;
 }
 /* MENSAJES */
 .div--success{
@@ -105,9 +128,14 @@
     justify-self: end;
 }
 .border--bot{
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #fff;
     margin: 5px 0;
 }
 .padding-all{
     padding: 10px;
+}
+@media screen and (min-width: 1600px){
+    .img--logo--home{
+        height: 40vh;
+    }
 }

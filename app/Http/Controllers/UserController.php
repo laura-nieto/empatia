@@ -9,9 +9,16 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Empresa;
 use App\Models\MensajesEmail;
+use App\Models\Setting;
 
 class UserController extends Controller
 {
+    public function get_settings(Request $request)
+    {
+        $id = $request->id;
+        $setting = Setting::where('user_id',$id)->first();
+        return response()->json($setting);
+    }
 
     public function login(Request $request)
     {
@@ -121,6 +128,11 @@ class UserController extends Controller
         $msj->empresa_id = $request->empresa_id;
         $msj->save();
 
+        //SETTINGS
+        $setting = new Setting;
+        $setting->logo = $user->empresas->logo;
+        $setting->user_id = $user->id;
+        $setting->save();
         return redirect()->route('usuarios.index')->with('msj','Usuario creado correctamente');
     }
 

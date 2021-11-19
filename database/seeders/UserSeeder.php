@@ -21,30 +21,35 @@ class UserSeeder extends Seeder
         //     'password' => Hash::make('admin'),
         // ]);
         DB::table('users')->insert([
+            // [
+            //     'name'=>'Javier',
+            //     'email'=>'javier.puchuri@empatia.com.pe',
+            //     'password' => Hash::make('javier12345')
+            // ],
+            // [
+            //     'name'=>'Williams',
+            //     'email'=>'williams.garcia@empatia.com.pe',
+            //     'password' => Hash::make('williams12345')
+            // ],
+            // [
+            //     'name'=>'Consultor 1',
+            //     'email'=>'consultor01@empatia.com.pe',
+            //     'password' => Hash::make('consultor01-12345')
+            // ],
+            // [
+            //     'name'=>'Consultor 2',
+            //     'email'=>'consultor02@empatia.com.pe',
+            //     'password' => Hash::make('consultor02-12345')
+            // ],
+            // [
+            //     'name'=>'Consultor 3',
+            //     'email'=>'consultor03@empatia.com.pe',
+            //     'password' => Hash::make('consultor03-12345')
+            // ]
             [
-                'name'=>'Javier',
-                'email'=>'javier.puchuri@empatia.com.pe',
-                'password' => Hash::make('javier12345')
-            ],
-            [
-                'name'=>'Williams',
-                'email'=>'williams.garcia@empatia.com.pe',
-                'password' => Hash::make('williams12345')
-            ],
-            [
-                'name'=>'Consultor 1',
-                'email'=>'consultor01@empatia.com.pe',
-                'password' => Hash::make('consultor01-12345')
-            ],
-            [
-                'name'=>'Consultor 2',
-                'email'=>'consultor02@empatia.com.pe',
-                'password' => Hash::make('consultor02-12345')
-            ],
-            [
-                'name'=>'Consultor 3',
-                'email'=>'consultor03@empatia.com.pe',
-                'password' => Hash::make('consultor03-12345')
+                'name' => 'Williams',
+                'email' => 'williams.garcia@psicologiayemprendimiento.com',
+                'password' => Hash::make('williams67890')
             ]
         ]);
     }

@@ -2,17 +2,29 @@
     width: 60%;
     margin: 0 auto;
 }
+.color-white{
+    color: white;
+}
 .mt-3{
     margin-top: 1.2rem;
 }
+.mb-6{
+    margin-bottom: 2.5rem;
+}
 .mb-3{
     margin-bottom: 1.2rem;
+}
+.mb-2{
+    margin-bottom: 1rem;
 }
 .mb-1{
     margin-bottom: 0.5rem;
 }
 .mr-1{
     margin-right: 0.5rem;
+}
+.ml-3{
+    margin-left: 1.2rem;
 }
 .pl-3{
     padding-left: 1.2rem;
@@ -76,4 +88,18 @@
     .div__file{
         margin-bottom: 50px;
     }
+}
+/* EDIT COLORES */
+.justify-self-center{
+    justify-self: center;
+}
+.input-colores{
+    display: flex;
+    align-items: center;
+}
+.color-picker:hover{
+    cursor: pointer;
+}
+.img-preview-colores{
+    width: 100px;
 }
